@@ -29,6 +29,7 @@ impl Ord for Float {
 }
 
 impl PartialOrd<Float> for Float {
+	#[allow(float_cmp)]
 	fn partial_cmp(&self, other: &Float) -> Option<Ordering> {
 		if self.lt(other) {
 			Some(Ordering::Less)

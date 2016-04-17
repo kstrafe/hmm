@@ -25,12 +25,10 @@ fn main() {
 	let mut fpscnt = fps_counter::FPSCounter::new();
 
 	while window.is_open() {
-		{
-			let fps = fpscnt.tick();
-			if once_in.count() {
-				println!("fps: {}", fps);
-			}
-		}
+		let fps = fpscnt.tick();
+		once_in.exe(|| {
+			println!("fps: {}", fps);
+		});
 		handle_events::handle_events(&mut window, &mut view);
 
 		window.set_view(&view);

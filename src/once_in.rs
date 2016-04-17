@@ -19,6 +19,11 @@ impl OnceIn {
 			false
 		}
 	}
+	pub fn exe<F: FnOnce()>(&mut self, function: F) {
+		if self.count() {
+			function();
+		}
+	}
 }
 
 
