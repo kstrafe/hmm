@@ -10,6 +10,7 @@ impl OnceIn {
 			max_val: max,
 		}
 	}
+
 	pub fn count(&mut self) -> bool {
 		if self.counter == self.max_val {
 			self.counter = 0;
@@ -19,6 +20,7 @@ impl OnceIn {
 			false
 		}
 	}
+
 	pub fn exe<F: FnOnce()>(&mut self, function: F) {
 		if self.count() {
 			function();
