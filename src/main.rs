@@ -5,7 +5,6 @@ extern crate sfml;
 mod float_order;
 mod handle_events;
 mod once_in;
-mod setup_ground;
 mod setup_window;
 mod test;
 
@@ -17,10 +16,9 @@ use std::collections::Bound;
 
 fn main() {
 	let (mut window, mut view) = setup_window::setup();
-	let mut map = setup_ground::setup();
 	let mut once_in = OnceIn::new(20);
 
-	println!("Created a 1-DTree containing: {} elements", map.len());
+	println!("Created a 1-DTree containing: {} elements", 1);
 
 	let mut fpscnt = fps_counter::FPSCounter::new();
 
