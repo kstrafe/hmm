@@ -1,0 +1,8 @@
+[package]
+name = "program"
+version = "0.1.0"
+authors = ["Bourgond Aries <macocio@gmail.com>"]
+
+[dependencies]
+fps_counter = "0.2.0"
+sfml = "0.11.2"
