@@ -1,5 +1,7 @@
+mod once_in;
+
 use fps_counter::FPSCounter;
-use once_in::OnceIn;
+use self::once_in::OnceIn;
 
 pub struct Fps {
 	fps: FPSCounter,

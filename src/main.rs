@@ -12,7 +12,6 @@ extern crate time;
 mod float_order;
 mod fps;
 mod handle_events;
-mod once_in;
 mod setup_window;
 
 use sfml::graphics::{RenderTarget, Color};
