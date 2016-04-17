@@ -14,11 +14,12 @@ impl Fps {
 		}
 	}
 
-	pub fn count_and_report(&mut self) {
+	pub fn count_and_report(&mut self) -> usize {
 		let fps = self.fps.tick();
 		self.per.exe(|| {
 			trace!("fps: {}", fps);
 		});
+		fps
 	}
 }
 
