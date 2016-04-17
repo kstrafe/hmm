@@ -25,6 +25,26 @@ fn main() {
 		}
 	}
 
+	match std::fs::read_dir("tree") {
+		Ok(read) => {
+			for i in read {
+				match i {
+					Ok(entry) => {
+						trace!("{:?}", entry.path());
+					}
+					Err(err) => {
+						error!("Could not get an entry: {:?}", err);
+					}
+				}
+			}
+		}
+		Err(err) => {
+			error!("Could not read tree directory: {:?}", err);
+			error!("No point in continuing, aborting");
+			std::process::exit(1);
+		}
+	}
+
 	let (mut window, mut view) = setup_window::setup();
 	let mut fps = fps::Fps::new();
 
@@ -34,6 +54,7 @@ fn main() {
 		fps.count_and_report();
 		handle_events::handle_events(&mut window, &mut view);
 
+		debug!("OKEOKOAKEOAKEOKA");
 		window.set_view(&view);
 
 		window.clear(&Color::new_rgb(0, 0, 0));
