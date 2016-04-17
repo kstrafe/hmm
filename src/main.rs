@@ -16,6 +16,29 @@ mod handle_events;
 mod setup_window;
 
 use sfml::graphics::{RenderTarget, Color};
+use std::io::Read;
+
+fn file_to_string(filename: &std::path::PathBuf) -> Option<String> {
+	let file = std::fs::File::open(filename);
+	let mut file = match file {
+		Ok(file) => file,
+		Err(err) => {
+			error!("Unable to open file: {:?}", err);
+			return None;
+		}
+	};
+	let mut string = String::new();
+	match file.read_to_string(&mut string) {
+		Ok(bytes) => {
+			trace!("Read {} bytes from file", bytes);
+		}
+		Err(err) => {
+			error!("Unable to read file: {:?}", err);
+			return None;
+		}
+	}
+	Some(string)
+}
 
 fn main() {
 	match env_logger::init() {
@@ -28,10 +51,29 @@ fn main() {
 
 	match std::fs::read_dir("tree") {
 		Ok(read) => {
-			for i in read {
-				match i {
+			for file in read {
+				match file {
 					Ok(entry) => {
 						trace!("{:?}", entry.path());
+						if let Some(string) = file_to_string(&entry.path()) {
+							let mut parser = toml::Parser::new(&string);
+							match parser.parse() {
+								Some(_) => {
+									trace!("Parsed a table");
+								}
+								None => {
+									error!("Unable to parse the toml file {:?}", entry.path());
+									for error in &parser.errors {
+										let (line, col) = parser.to_linecol(error.lo);
+										error!("Error on line {}, column {}: {}",
+											line, col,
+											error.desc);
+									}
+								}
+							}
+						} else {
+							error!("Could not get the file into a string");
+						}
 					}
 					Err(err) => {
 						error!("Could not get an entry: {:?}", err);
