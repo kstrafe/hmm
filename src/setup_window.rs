@@ -6,7 +6,7 @@ pub fn setup() -> (RenderWindow, View)  {
 	let size = Size(800, 600);
 
 	let mut window = match RenderWindow::new(VideoMode::new_init(size.0, size.1, 32),
-		"ln(n) collision detection",
+		"hmm",
 		window_style::CLOSE,
 		&ContextSettings::default()
 	) {

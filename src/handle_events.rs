@@ -1,7 +1,7 @@
-use sfml::window::{ContextSettings, Key, event, window_style};
-use sfml::graphics::{RenderWindow, RenderTarget, Color, Transformable, View};
+use sfml::window::{Key, event};
+use sfml::graphics::{RenderWindow, RenderTarget, View};
 
-pub fn handle_events<'a>(window: &mut RenderWindow, view: &mut View) {
+pub fn handle_events(window: &mut RenderWindow, view: &mut View) {
 	for event in window.events() {
 		use sfml::window::event::KeyPressed;
 		use sfml::window::event::Closed;

@@ -1,19 +1,20 @@
-#![feature(btree_range, collections_bound, plugin)]
+#![feature(plugin)]
 #![plugin(clippy, dotenv_macros)]
+extern crate dotenv;
+extern crate env_logger;
+extern crate log;
 extern crate fps_counter;
+extern crate rand;
 extern crate sfml;
+extern crate time;
 
 mod float_order;
 mod handle_events;
 mod once_in;
 mod setup_window;
-mod test;
 
-use float_order::Float;
 use once_in::OnceIn;
-use sfml::window::{ContextSettings, Key, event, window_style};
-use sfml::graphics::{RenderWindow, Shape, RenderTarget, Color, Transformable, View};
-use std::collections::Bound;
+use sfml::graphics::{RenderTarget, Color};
 
 fn main() {
 	let (mut window, mut view) = setup_window::setup();
