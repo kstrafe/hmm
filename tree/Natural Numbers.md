@@ -8,5 +8,6 @@ The symbols we normally use for natural numbers are
 
 The above system is one of many systems used to describe natural numbers. This system is called the `decimal system`.
 
-There are no values between two natural numbers.
+There are no values between two adjecent natural numbers.
 '''
+parents = []

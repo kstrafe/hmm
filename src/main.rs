@@ -8,6 +8,7 @@ extern crate fps_counter;
 extern crate rand;
 extern crate sfml;
 extern crate time;
+extern crate toml;
 
 mod float_order;
 mod fps;
@@ -54,7 +55,6 @@ fn main() {
 		fps.count_and_report();
 		handle_events::handle_events(&mut window, &mut view);
 
-		debug!("OKEOKOAKEOAKEOKA");
 		window.set_view(&view);
 
 		window.clear(&Color::new_rgb(0, 0, 0));
