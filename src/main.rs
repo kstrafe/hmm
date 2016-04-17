@@ -1,4 +1,5 @@
-#![feature(btree_range, collections_bound)]
+#![feature(btree_range, collections_bound, plugin)]
+#![plugin(clippy, dotenv_macros)]
 extern crate fps_counter;
 extern crate sfml;
 
