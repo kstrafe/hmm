@@ -66,7 +66,43 @@ fn main() {
 		}
 	}
 
-	// let chapters = vec!();
+	fn get_str_from_table(table: &toml::Value, path: &str, missing: String, wrong: String) -> String {
+		let title = table.lookup(path);
+		match title {
+			Some(title) => {
+				match title {
+					&toml::Value::String(ref title) => title.clone(),
+					_ => {
+						warn!("{}", wrong);
+						wrong
+					}
+				}
+			}
+			None => {
+				warn!("{}", missing);
+				missing
+			}
+		}
+	}
+
+	fn get_vec_str_from_table(table: &toml::Value, path: &str, missing: String, wrong: String) -> Vec<toml::Value> {
+		let element = table.lookup(path);
+		match element {
+			Some(element) => {
+				match element{
+					&toml::Value::Array(ref element) => element.clone(),
+					_ => {
+						warn!("{}", wrong);
+						vec!(toml::Value::String(wrong))
+					}
+				}
+			}
+			None => {
+				warn!("{}", missing);
+				vec!(toml::Value::String(missing))
+			}
+		}
+	}
 
 	match std::fs::read_dir("tree") {
 		Ok(read) => {
@@ -81,26 +117,17 @@ fn main() {
 									trace!("Parsed a table");
 									let table: toml::Value = toml::Value::Table(table);
 									let mut chapter = Chapter::new();
-									let title = table.lookup("title");
-									// get_title(&table);
-									// get_content(&table);
-									// get_parents(&table);
-									let title = match title {
-										Some(title) => {
-											match title {
-												&toml::Value::String(ref title) => title.clone(),
-												_ => {
-													warn!("Wrong title type: {:?}", entry.path());
-													String::from(format!("WRONG TITLE TYPE: {:?}", entry.path()))
-												}
-											}
-										}
-										None => {
-											warn!("Missing title: {:?}", entry.path());
-											String::from(format!("MISSING TITLE: {:?}", entry.path()))
-										}
-									};
-									// chapters.push(Rc::new(v));
+
+									get_str_from_table(&table, "title",
+										format!("MISSING TITLE: {:?}", entry.path()),
+										format!("WRONG TITLE TYPE: {:?}", entry.path()));
+									get_str_from_table(&table, "content",
+										format!("MISSING CONTENT: {:?}", entry.path()),
+										format!("WRONG CONTENT TYPE: {:?}", entry.path()));
+									get_vec_str_from_table(&table, "parents",
+										format!("MISSING PARENTS: {:?}", entry.path()),
+										format!("WRONG PARENTS TYPE: {:?}", entry.path()));
+
 								}
 								None => {
 									error!("Unable to parse the toml file {:?}", entry.path());
