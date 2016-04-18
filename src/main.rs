@@ -30,8 +30,8 @@ fn main() {
 	let (mut window, mut view) = setup_window::setup();
 	let mut fps = fps::Fps::new();
 
-	build_tree::build_bubble_tree();
-	trace!("Created a 1-DTree containing: {} elements", 1);
+	let tree = build_tree::build_bubble_tree();
+	trace!("Created a tree containing {} chapters", tree.len());
 
 	while window.is_open() {
 		fps.count_and_report();

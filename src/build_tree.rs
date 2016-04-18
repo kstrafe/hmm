@@ -1,78 +1,10 @@
 use std;
-use std::cmp::Ordering;
 use std::io::Read;
-use std::rc::Rc;
 use toml;
 
-fn file_to_string(filename: &std::path::PathBuf) -> Option<String> {
-	let file = std::fs::File::open(filename);
-	let mut file = match file {
-		Ok(file) => file,
-		Err(err) => {
-			error!("Unable to open file: {:?}", err);
-			return None;
-		}
-	};
-	let mut string = String::new();
-	match file.read_to_string(&mut string) {
-		Ok(bytes) => {
-			trace!("Read {} bytes from file", bytes);
-		}
-		Err(err) => {
-			error!("Unable to read file: {:?}", err);
-			return None;
-		}
-	}
-	Some(string)
-}
+pub type ChapterTree = std::collections::BTreeMap<String, Chapter>;
 
-pub fn build_bubble_tree() -> () {
-	struct Chapter {
-		title: String,
-		content: String,
-		parents: Vec<Rc<Chapter>>,
-	}
-
-	impl Chapter {
-		fn new() -> Chapter {
-			let vector =  Vec::<Rc<Chapter>>::new();
-			Chapter {
-				title: String::new(),
-				content: String::new(),
-				parents: vector,
-			}
-		}
-	}
-
-	struct ChapterRaw {
-		title: String,
-		content: String,
-		parents: Vec<String>,
-	}
-
-	impl Eq for ChapterRaw {}
-	impl PartialEq<ChapterRaw> for ChapterRaw {
-		fn eq(&self, other: &ChapterRaw) -> bool {
-			self.title == other.title
-		}
-
-		fn ne(&self, other: &ChapterRaw) -> bool {
-			self.title != other.title
-		}
-	}
-
-	impl Ord for ChapterRaw {
-		fn cmp(&self, other: &ChapterRaw) -> Ordering {
-			self.title.cmp(&other.title)
-		}
-	}
-
-	impl PartialOrd<ChapterRaw> for ChapterRaw {
-		fn partial_cmp(&self, other: &ChapterRaw) -> Option<Ordering> {
-			self.title.partial_cmp(&other.title)
-		}
-	}
-
+pub fn build_bubble_tree() -> ChapterTree {
 	fn get_str_from_table(table: &mut toml::Table, path: &str, missing: String, wrong: String) -> String {
 		if let Some(string) = table.remove(path) {
 			if let toml::Value::String(string) = string {
@@ -110,7 +42,7 @@ pub fn build_bubble_tree() -> () {
 		}
 	}
 
-	let mut chapters: Vec<_> = vec![];
+	let mut chapters = ChapterTree::new();
 	match std::fs::read_dir("tree") {
 		Ok(read) => {
 			for file in read {
@@ -132,11 +64,10 @@ pub fn build_bubble_tree() -> () {
 										format!("MISSING PARENTS: {:?}", entry.path()),
 										format!("WRONG PARENTS TYPE: {:?}", entry.path()));
 
-									chapters.push(Rc::new(ChapterRaw {
-										title: title,
+									chapters.insert(title, Chapter {
 										content: content,
 										parents: parents,
-									}));
+									});
 								}
 								None => {
 									error!("Unable to parse the toml file {:?}", entry.path());
@@ -160,10 +91,51 @@ pub fn build_bubble_tree() -> () {
 		}
 		Err(err) => {
 			error!("Could not read tree directory: {:?}", err);
-			error!("No point in continuing, aborting");
-			std::process::exit(1);
 		}
 	};
-
-
+	chapters
 }
+
+fn file_to_string(filename: &std::path::PathBuf) -> Option<String> {
+	let file = std::fs::File::open(filename);
+	let mut file = match file {
+		Ok(file) => file,
+		Err(err) => {
+			error!("Unable to open file: {:?}", err);
+			return None;
+		}
+	};
+	let mut string = String::new();
+	match file.read_to_string(&mut string) {
+		Ok(bytes) => {
+			trace!("Read {} bytes from file", bytes);
+		}
+		Err(err) => {
+			error!("Unable to read file: {:?}", err);
+			return None;
+		}
+	}
+	Some(string)
+}
+
+pub struct Chapter {
+	content: String,
+	parents: Vec<String>,
+}
+
+impl Chapter {
+	fn new() -> Chapter {
+		Chapter {
+			content: String::new(),
+			parents: vec!(),
+		}
+	}
+}
+
+impl Default for Chapter {
+	fn default() -> Chapter {
+		Chapter::new()
+	}
+}
+
+
