@@ -10,35 +10,13 @@ extern crate sfml;
 extern crate time;
 extern crate toml;
 
+mod build_tree;
 mod float_order;
 mod fps;
 mod handle_events;
 mod setup_window;
 
 use sfml::graphics::{RenderTarget, Color};
-use std::io::Read;
-
-fn file_to_string(filename: &std::path::PathBuf) -> Option<String> {
-	let file = std::fs::File::open(filename);
-	let mut file = match file {
-		Ok(file) => file,
-		Err(err) => {
-			error!("Unable to open file: {:?}", err);
-			return None;
-		}
-	};
-	let mut string = String::new();
-	match file.read_to_string(&mut string) {
-		Ok(bytes) => {
-			trace!("Read {} bytes from file", bytes);
-		}
-		Err(err) => {
-			error!("Unable to read file: {:?}", err);
-			return None;
-		}
-	}
-	Some(string)
-}
 
 fn main() {
 	match env_logger::init() {
@@ -49,116 +27,10 @@ fn main() {
 		}
 	}
 
-	use std::rc::Rc;
-	struct Chapter {
-		title: String,
-		content: String,
-		parents: Vec<Rc<Chapter>>
-	}
-
-	impl Chapter {
-		fn new() -> Chapter {
-			Chapter {
-				title: String::new(),
-				content: String::new(),
-				parents: vec!()
-			}
-		}
-	}
-
-	fn get_str_from_table(table: &toml::Value, path: &str, missing: String, wrong: String) -> String {
-		let title = table.lookup(path);
-		match title {
-			Some(title) => {
-				match title {
-					&toml::Value::String(ref title) => title.clone(),
-					_ => {
-						warn!("{}", wrong);
-						wrong
-					}
-				}
-			}
-			None => {
-				warn!("{}", missing);
-				missing
-			}
-		}
-	}
-
-	fn get_vec_str_from_table(table: &toml::Value, path: &str, missing: String, wrong: String) -> Vec<toml::Value> {
-		let element = table.lookup(path);
-		match element {
-			Some(element) => {
-				match element{
-					&toml::Value::Array(ref element) => element.clone(),
-					_ => {
-						warn!("{}", wrong);
-						vec!(toml::Value::String(wrong))
-					}
-				}
-			}
-			None => {
-				warn!("{}", missing);
-				vec!(toml::Value::String(missing))
-			}
-		}
-	}
-
-	match std::fs::read_dir("tree") {
-		Ok(read) => {
-			for file in read {
-				match file {
-					Ok(entry) => {
-						trace!("{:?}", entry.path());
-						if let Some(string) = file_to_string(&entry.path()) {
-							let mut parser = toml::Parser::new(&string);
-							match parser.parse() {
-								Some(table) => {
-									trace!("Parsed a table");
-									let table: toml::Value = toml::Value::Table(table);
-									let mut chapter = Chapter::new();
-
-									get_str_from_table(&table, "title",
-										format!("MISSING TITLE: {:?}", entry.path()),
-										format!("WRONG TITLE TYPE: {:?}", entry.path()));
-									get_str_from_table(&table, "content",
-										format!("MISSING CONTENT: {:?}", entry.path()),
-										format!("WRONG CONTENT TYPE: {:?}", entry.path()));
-									get_vec_str_from_table(&table, "parents",
-										format!("MISSING PARENTS: {:?}", entry.path()),
-										format!("WRONG PARENTS TYPE: {:?}", entry.path()));
-
-								}
-								None => {
-									error!("Unable to parse the toml file {:?}", entry.path());
-									for error in &parser.errors {
-										let (line, col) = parser.to_linecol(error.lo);
-										error!("Error on line {}, column {}: {}",
-											line, col,
-											error.desc);
-									}
-								}
-							}
-						} else {
-							error!("Could not get the file into a string");
-						}
-					}
-					Err(err) => {
-						error!("Could not get an entry: {:?}", err);
-					}
-				}
-			}
-		}
-		Err(err) => {
-			error!("Could not read tree directory: {:?}", err);
-			error!("No point in continuing, aborting");
-			std::process::exit(1);
-		}
-	}
-
 	let (mut window, mut view) = setup_window::setup();
 	let mut fps = fps::Fps::new();
 
+	build_tree::build_bubble_tree();
 	trace!("Created a 1-DTree containing: {} elements", 1);
 
 	while window.is_open() {
