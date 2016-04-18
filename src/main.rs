@@ -45,9 +45,28 @@ fn main() {
 		Ok(()) => {}
 		Err(_) => {
 			println!("Error: Logger was already started, aborting process");
-			return;
+			std::process::exit(1);
 		}
 	}
+
+	use std::rc::Rc;
+	struct Chapter {
+		title: String,
+		content: String,
+		parents: Vec<Rc<Chapter>>
+	}
+
+	impl Chapter {
+		fn new() -> Chapter {
+			Chapter {
+				title: String::new(),
+				content: String::new(),
+				parents: vec!()
+			}
+		}
+	}
+
+	// let chapters = vec!();
 
 	match std::fs::read_dir("tree") {
 		Ok(read) => {
@@ -58,8 +77,30 @@ fn main() {
 						if let Some(string) = file_to_string(&entry.path()) {
 							let mut parser = toml::Parser::new(&string);
 							match parser.parse() {
-								Some(_) => {
+								Some(table) => {
 									trace!("Parsed a table");
+									let table: toml::Value = toml::Value::Table(table);
+									let mut chapter = Chapter::new();
+									let title = table.lookup("title");
+									// get_title(&table);
+									// get_content(&table);
+									// get_parents(&table);
+									let title = match title {
+										Some(title) => {
+											match title {
+												&toml::Value::String(ref title) => title.clone(),
+												_ => {
+													warn!("Wrong title type: {:?}", entry.path());
+													String::from(format!("WRONG TITLE TYPE: {:?}", entry.path()))
+												}
+											}
+										}
+										None => {
+											warn!("Missing title: {:?}", entry.path());
+											String::from(format!("MISSING TITLE: {:?}", entry.path()))
+										}
+									};
+									// chapters.push(Rc::new(v));
 								}
 								None => {
 									error!("Unable to parse the toml file {:?}", entry.path());
