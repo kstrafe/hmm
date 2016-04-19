@@ -31,6 +31,7 @@ fn main() {
 	let mut fps = fps::Fps::new();
 
 	let tree = build_tree::build_bubble_tree();
+	let tree = build_tree::build_live_tree(tree);
 	trace!("Created a tree containing {} chapters", tree.len());
 
 	while window.is_open() {

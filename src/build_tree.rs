@@ -1,8 +1,10 @@
 use std;
 use std::io::Read;
+use std::rc::Rc;
 use toml;
 
 pub type ChapterTree = std::collections::BTreeMap<String, Chapter>;
+pub type LiveTree = Vec<Rc<LiveChapter>>;
 
 pub fn build_bubble_tree() -> ChapterTree {
 	let mut chapters = ChapterTree::new();
@@ -78,6 +80,34 @@ fn file_to_string(filename: &std::path::PathBuf) -> Option<String> {
 		}
 	}
 	Some(string)
+}
+
+pub fn build_live_tree(mut tree: ChapterTree) -> LiveTree {
+	let mut livetree = LiveTree::new();
+	for (key, value) in tree.iter() {
+
+		let mut chapter = Rc::new(LiveChapter {
+			title: key.clone(),
+			content: value.content.clone(),
+			parents: vec![]
+		});
+
+		// findAllParents
+		for parent in value.parents.iter() {
+			if let Some(parent_obj) = tree.get(parent) {
+				trace!("Found parent {} for {}", parent, key);
+			} else {
+				error!("Unable to find parent {} for {}", parent, key);
+			}
+		}
+	}
+	livetree
+}
+
+pub struct LiveChapter {
+	title: String,
+	content: String,
+	parents: Vec<Rc<LiveChapter>>
 }
 
 pub struct Chapter {
