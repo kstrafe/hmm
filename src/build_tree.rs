@@ -5,43 +5,6 @@ use toml;
 pub type ChapterTree = std::collections::BTreeMap<String, Chapter>;
 
 pub fn build_bubble_tree() -> ChapterTree {
-	fn get_str_from_table(table: &mut toml::Table, path: &str, missing: String, wrong: String) -> String {
-		if let Some(string) = table.remove(path) {
-			if let toml::Value::String(string) = string {
-				string
-			} else {
-				warn!("{}", wrong);
-				wrong
-			}
-		} else {
-			warn!("{}", missing);
-			missing
-		}
-	}
-
-	fn get_vec_str_from_table(table: &mut toml::Table, path: &str, missing: String, wrong: String) -> Vec<String> {
-		if let Some(mut array) = table.remove(path) {
-			if let toml::Value::Array(ref mut array) = array {
-				let mut vector = vec![];
-				vector.reserve_exact(array.len());
-				while let Some(element) = array.pop() {
-					if let toml::Value::String(string) = element {
-						vector.push(string);
-					} else {
-						error!("Could not convert to String, never expected. Internal TOML error or other tinkering going on");
-					}
-				}
-				vector
-			} else {
-				warn!("{}", wrong);
-				vec![wrong]
-			}
-		} else {
-			warn!("{}", missing);
-			vec![missing]
-		}
-	}
-
 	let mut chapters = ChapterTree::new();
 	match std::fs::read_dir("tree") {
 		Ok(read) => {
@@ -63,7 +26,6 @@ pub fn build_bubble_tree() -> ChapterTree {
 									let parents = get_vec_str_from_table(table, "parents",
 										format!("MISSING PARENTS: {:?}", entry.path()),
 										format!("WRONG PARENTS TYPE: {:?}", entry.path()));
-
 									chapters.insert(title, Chapter {
 										content: content,
 										parents: parents,
@@ -138,4 +100,41 @@ impl Default for Chapter {
 	}
 }
 
+fn get_str_from_table(table: &mut toml::Table, path: &str, missing: String,
+	wrong: String) -> String {
+	if let Some(string) = table.remove(path) {
+		if let toml::Value::String(string) = string {
+			string
+		} else {
+			warn!("{}", wrong);
+			wrong
+		}
+	} else {
+		warn!("{}", missing);
+		missing
+	}
+}
 
+fn get_vec_str_from_table(table: &mut toml::Table, path: &str, missing: String,
+	wrong: String) -> Vec<String> {
+	if let Some(mut array) = table.remove(path) {
+		if let toml::Value::Array(ref mut array) = array {
+			let mut vector = vec![];
+			vector.reserve_exact(array.len());
+			while let Some(element) = array.pop() {
+				if let toml::Value::String(string) = element {
+					vector.push(string);
+				} else {
+					error!("Could not convert to String, never expected. Internal TOML error or other tinkering going on");
+				}
+			}
+			vector
+		} else {
+			warn!("{}", wrong);
+			vec![wrong]
+		}
+	} else {
+		warn!("{}", missing);
+		vec![missing]
+	}
+}
