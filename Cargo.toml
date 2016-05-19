@@ -4,7 +4,8 @@ version = "0.1.0"
 authors = ["Bourgond Aries <macocio@gmail.com>"]
 
 [dependencies]
-clippy = "0.0.58"
+acon = "0.5.0"
+clippy = { version = "0.0.67", optional = true }
 dotenv = "0.8.0"
 dotenv_macros = "0.8.0"
 env_logger = "0.3.3"
