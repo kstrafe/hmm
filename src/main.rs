@@ -1,6 +1,7 @@
-#![feature(plugin)]
-#![plugin(clippy, dotenv_macros)]
-extern crate dotenv;
+#![cfg_attr(feature="clippy", feature(plugin))]
+#![cfg_attr(feature="clippy", plugin(clippy))]
+#![cfg_attr(feature="clippy", allow(items_after_statements))]
+extern crate acon;
 extern crate env_logger;
 #[macro_use]
 extern crate log;
@@ -15,6 +16,7 @@ mod float_order;
 mod fps;
 mod handle_events;
 mod setup_window;
+
 
 use sfml::graphics::{RenderTarget, Color};
 
