@@ -4,7 +4,7 @@ var ctx = canvas.getContext('2d');
 canvasHeight = 720;
 canvasWidth = 1280;
 
-function renderButton(x, y, r, text, highlighted=0) {
+function renderButton(x, y, r, text, highlighted) {
 	ctx.beginPath();
 	ctx.arc(x, y, r, 0, 2 * Math.PI);
 	var p = ctx.getImageData(x, y, 1, 1).data; 
@@ -16,7 +16,8 @@ function renderButton(x, y, r, text, highlighted=0) {
   if (highlighted) {
     ctx.shadowBlur = 10;
     ctx.shadowColor = '#6EB80D';
-
+  } else {
+    ctx.shadowBlur = 0;
   }
 	
 	ctx.stroke();
@@ -103,7 +104,7 @@ canvas.addEventListener('mousemove', function(evt) {
   var mousePos = getMousePos(canvas, evt);
   for (var i=0; i < circles.length; i++) {
     rMouseCenter = Math.pow((mousePos.x-circles[i].x),2) + Math.pow((mousePos.y-circles[i].y),2);
-    console.log(rMouseCenter)
+    console.log(rMouseCenter, Math.pow(circles[i].r,2))
     if (rMouseCenter < Math.pow(circles[i].r,2)) {
       circles[i].hl = true;
       renderCanvas(circles);
