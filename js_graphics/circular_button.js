@@ -14,20 +14,21 @@ function renderButton(x, y, r, text, highlighted) {
   //var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
 	//ctx.fillStyle = hex;
 	//ctx.fill();
-	ctx.lineWidth = 3;
-	ctx.strokeStyle = '#69B00C';
+	// ctx.lineWidth = 3;
+	
   if (highlighted) {
     ctx.lineWidth = 4;
     ctx.shadowBlur = 15;
-    ctx.shadowColor = '#6EB80D';
+    ctx.shadowColor = '#6ED80D';
+    ctx.strokeStyle = '#69B00C';
   } else {
     ctx.shadowBlur = 0;
     ctx.lineWidth = 3;
+    ctx.strokeStyle = '#69B00C';
   }
 	ctx.stroke();
 
   
-
 	ctx.font = "18px Calibri";
 	ctx.fillStyle = '#FFFFFF';
 	wrapText(ctx, text, x-r+2*ctx.lineWidth, y, 2*r, 15)
@@ -71,6 +72,8 @@ function renderCanvas(circles) {
   
   //renderTestLine();
   drawLine(circles[0], circles[1])
+  drawLine(circles[0], circles[2])
+
   for (var i=0; i < circles.length; i++) {
     renderButton(circles[i].x, circles[i].y, circles[i].r, circles[i].text, circles[i].hl);
   }
@@ -87,37 +90,40 @@ function renderTestLine() {
 }
 
 function drawLine(c1, c2) {
-  a = Math.atan2(c2.y-c1.y, c2.x-c1.x);
+  dx = c2.x-c1.x
+  dy = c2.y-c1.y
+  
+  a = Math.atan2(dy, dx);
 
-  x0 = c1.x + c1.r*Math.cos(a + 0.5);
-  y0 = c1.y + c1.r*Math.sin(a + 0.5);
+  x0 = c1.x + c1.r*Math.cos(a + 0.5) + 5*Math.sign(dx);
+  y0 = c1.y + c1.r*Math.sin(a + 0.5) + 5*Math.sign(dy);
 
   x1 = c1.x + 2*c1.r*Math.cos(a + 0.5);
   y1 = c1.y + 2*c1.r*Math.sin(a + 0.5);
 
-
-
   a = a + Math.PI;
 
-  x2 = c2.x + 2*c2.r*Math.cos(a + 0.5);
-  y2 = c2.y + 2*c2.r*Math.sin(a + 0.5);
+  x2 = c2.x + 2*c2.r*Math.cos(a - 0.5);
+  y2 = c2.y + 2*c2.r*Math.sin(a - 0.5);
 
-  x3 = c2.x + c2.r*Math.cos(a + 0.5);
-  y3 = c2.y + c2.r*Math.sin(a + 0.5);
+  x3 = c2.x + c2.r*Math.cos(a - 0.5) - 5*Math.sign(dx);
+  y3 = c2.y + c2.r*Math.sin(a - 0.5) - 5*Math.sign(dy);
 
   ctx.beginPath();
   ctx.moveTo(x0, y0);
   ctx.bezierCurveTo(x1,y1,x2,y2,x3,y3);
   ctx.lineWidth = 2;
   ctx.shadowBlur = 2;
-  ctx.strokeStyle = '#6EB80D';
+  ctx.strokeStyle = '#4E8800';
   ctx.lineCap = 'round';
   ctx.stroke();
 }
 
 var circle1 = {x:canvasWidth/2, y:canvasHeight/2 , r:50, text:'Natural numbers', hl:false}
-var circle2 = {x:canvasWidth/2 + 300, y:canvasHeight/2+ 200, r:40, text:'Complex numbers', hl:false}
-var circles = [circle1, circle2];
+var circle2 = {x:canvasWidth/2 + 300, y:canvasHeight/2 + 200, r:40, text:'Complex numbers', hl:false}
+var circle3 = {x:canvasWidth/2 - 100, y:canvasHeight/2 - 200, r:45, text:'Irrational numbers', hl:false}
+
+var circles = [circle1, circle2, circle3];
 
 renderCanvas(circles)
 //console.log();
