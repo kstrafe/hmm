@@ -10,11 +10,6 @@ canvasWidth = 1280;
 function renderButton(x, y, r, text, highlighted) {
 	ctx.beginPath();
 	ctx.arc(x, y, r, 0, 2 * Math.PI);
-	//var p = ctx.getImageData(x, y, 1, 1).data; 
-  //var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
-	//ctx.fillStyle = hex;
-	//ctx.fill();
-	// ctx.lineWidth = 3;
 	
   if (highlighted) {
     ctx.lineWidth = 4;
@@ -28,33 +23,54 @@ function renderButton(x, y, r, text, highlighted) {
   }
 	ctx.stroke();
 
-  
-	ctx.font = "18px Calibri";
-	ctx.fillStyle = '#FFFFFF';
-	wrapText(ctx, text, x-r+2*ctx.lineWidth, y, 2*r, 15)
-	//ctx.fillText(text, x-(text.length/2)*5, y);
+	wrapText(ctx, text, x, y, r, highlighted)
 }
 
-function wrapText(context, text, x, y, maxWidth, lineHeight) {
-        var words = text.split(' ');
-        var line = '';
+//function wrapText(context, text, x, y, maxWidth, lineHeight) {
+function wrapText(context, text, x, y, r, hl) {
+  if (hl) {
+    context.shadowBlur = 2.5;
+    context.shadowColor = '#FFFFFF';
+  } else {
+    context.shadowBlur = 0;
+    context.shadowColor = '#6ED80D';
+  }
+  var AVG_CHAR_SIZE = 0.4586; // Calibri 1px, unit: [px/(ch 1px)]
+  //var maxWidth = 0.9*2*r;
+  ctx.fillStyle = '#DDDDDD';
+  ctx.textAlign="center";
+  
+  var words = text.split(' ');
 
-        for(var n = 0; n < words.length; n++) {
+  if (words.length == 1) {
+    var fontSize = (0.85*2*r)/(AVG_CHAR_SIZE*words[0].length);
+    y = y + fontSize/3;
+    
+  } else if (words.length == 2) {
+    var maxLen = Math.max(words[0].length, words[1].length)
+    var fontSize = (0.75*2*r)/(AVG_CHAR_SIZE*maxLen);
+    y = y - fontSize*0.1;
 
-          var testLine = line + words[n] + ' ';
-          var metrics = context.measureText(testLine);
-          var testWidth = metrics.width;
-          if (testWidth > maxWidth && n > 0) {
-            context.fillText(line, x, y);
-            line = words[n] + ' ';
-            y += lineHeight;
-          }
-          else {
-            line = testLine;
-          }
-        }
-        context.fillText(line, x, y);
-      }
+  } else if (words.length == 3) {
+    var maxLen = Math.max(words[0].length, words[1].length, words[2].length)
+    var fontSize = (0.6*2*r)/(AVG_CHAR_SIZE*maxLen);
+    y = y - fontSize/2;
+
+  } else {
+    words = [text];
+    var fontSize = (0.85*2*r)/(AVG_CHAR_SIZE*words[0].length);
+    y = y + fontSize/3;
+  }
+  //totlen = avgCharSize*text.length*fontSize
+  //console.log(fontSize)
+  var lineHeight = fontSize;
+  ctx.font = fontSize + "px Calibri";
+
+  for(var n = 0; n < words.length; n++) {
+      context.fillText(words[n], x, y);
+      y += lineHeight/1.25;
+    }
+}
 
 function rgbToHex(r, g, b) {
     if (r > 255 || g > 255 || b > 255)
@@ -72,7 +88,7 @@ function renderCanvas(circles) {
   
   //renderTestLine();
   drawLine(circles[0], circles[1])
-  drawLine(circles[0], circles[2])
+  //drawLine(circles[0], circles[2])
 
   for (var i=0; i < circles.length; i++) {
     renderButton(circles[i].x, circles[i].y, circles[i].r, circles[i].text, circles[i].hl);
@@ -119,11 +135,14 @@ function drawLine(c1, c2) {
   ctx.stroke();
 }
 
+var oneonetwo = {x:canvasWidth/2, y:canvasHeight/2 , r:100, text:'1 + 1 = 2', hl:false}
+var aksiom = {x:canvasWidth/2 + 600, y:canvasHeight/2 - 600 , r:60, text:'Axiom', hl:false}
 var circle1 = {x:canvasWidth/2, y:canvasHeight/2 , r:50, text:'Natural numbers', hl:false}
 var circle2 = {x:canvasWidth/2 + 300, y:canvasHeight/2 + 200, r:40, text:'Complex numbers', hl:false}
 var circle3 = {x:canvasWidth/2 - 100, y:canvasHeight/2 - 200, r:45, text:'Irrational numbers', hl:false}
 
-var circles = [circle1, circle2, circle3];
+//var circles = [circle1, circle2, circle3];
+var circles = [oneonetwo, aksiom];
 
 renderCanvas(circles)
 //console.log();
