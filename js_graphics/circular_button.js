@@ -93,7 +93,7 @@ function renderCanvas(xOffset, yOffset, circles) {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   
   //renderTestLine();
-  drawLine(ctx, circles[0], circles[1])
+  drawLine(ctx, xOffset, yOffset, circles[0], circles[1])
   //drawLine(circles[0], circles[2])
 
   for (var i=0; i < circles.length; i++) {
@@ -111,25 +111,29 @@ function renderTestLine() {
   ctx.stroke();
 }
 
-function drawLine(context, c1, c2) {
-  var dx = c2.x-c1.x
-  var dy = c2.y-c1.y
+function drawLine(context, xOffset, yOffset, c1, c2) {
+  var c1x = c1.x - xOffset;
+  var c1y = c1.y - yOffset;
+  var c2x = c2.x - xOffset;
+  var c2y = c2.y - yOffset;
+  var dx = c2x-(c1.x)
+  var dy = (c2y)-(c1y)
   
   a = Math.atan2(dy, dx);
 
-  x0 = c1.x + c1.r*Math.cos(a + 0.5) + 5*Math.sign(dx);
-  y0 = c1.y + c1.r*Math.sin(a + 0.5) + 5*Math.sign(dy);
+  x0 = c1x + c1.r*Math.cos(a + 0.5) + 5*Math.sign(dx);
+  y0 = c1y + c1.r*Math.sin(a + 0.5) + 5*Math.sign(dy);
 
-  x1 = c1.x + 2*c1.r*Math.cos(a + 0.5);
-  y1 = c1.y + 2*c1.r*Math.sin(a + 0.5);
+  x1 = c1x + 2*c1.r*Math.cos(a + 0.5);
+  y1 = c1y + 2*c1.r*Math.sin(a + 0.5);
 
   a = a + Math.PI;
 
-  x2 = c2.x + 2*c2.r*Math.cos(a - 0.5);
-  y2 = c2.y + 2*c2.r*Math.sin(a - 0.5);
+  x2 = c2x + 2*c2.r*Math.cos(a - 0.5);
+  y2 = c2y + 2*c2.r*Math.sin(a - 0.5);
 
-  x3 = c2.x + c2.r*Math.cos(a - 0.5) - 5*Math.sign(dx);
-  y3 = c2.y + c2.r*Math.sin(a - 0.5) - 5*Math.sign(dy);
+  x3 = c2x + c2.r*Math.cos(a - 0.5) - 5*Math.sign(dx);
+  y3 = c2y + c2.r*Math.sin(a - 0.5) - 5*Math.sign(dy);
 
   context.beginPath();
   context.moveTo(x0, y0);
