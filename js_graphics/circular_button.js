@@ -155,40 +155,56 @@ function getMousePos(canvas, evt) {
   };
 }
 
+function hitTest(mousePos, circle) {
+  
+  rMouseCenter = (mousePos.x-circle.x+canvasTopLeft.x)*(mousePos.x-circle.x+canvasTopLeft.x) +
+   (mousePos.y-circle.y+canvasTopLeft.y)*(mousePos.y-circle.y+canvasTopLeft.y);
+
+  if (rMouseCenter < (circle.r)*(circle.r)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 function mouseHoverListener(evt) {
   //
   var mousePos = getMousePos(canvas, evt);
   for (var i=0; i < circles.length; i++) {
-    rMouseCenter = (mousePos.x-circles[i].x+canvasTopLeft.x)*(mousePos.x-circles[i].x+canvasTopLeft.x) + (mousePos.y-circles[i].y+canvasTopLeft.y)*(mousePos.y-circles[i].y+canvasTopLeft.y);
-    //console.log(rMouseCenter, Math.pow(circles[i].r,2))
-    if (rMouseCenter < (circles[i].r)*(circles[i].r)) {
+    if (hitTest(mousePos, circles[i])) {
       if (circles[i].hl == false) {
         btnHov.play();
         circles[i].hl = true;
-      }
+      } 
     } else {
-      circles[i].hl = false;  
-    }
-    renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles)
-    
+        circles[i].hl = false;  
+      }
   }
+
+  renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles);    
 }
 
 function mouseDownListener(evt) {
+  var onCircle = false;
   canvas.removeEventListener('mousemove', mouseHoverListener , false);
   window.addEventListener("mouseup", mouseUpListener, false);
 
   mouseOnClick = getMousePos(canvas, evt);
 
-  //Check whether on circle or no
-
-  //if not on circle:
-  canvas.addEventListener('mousemove', mouseMoveListener , false);
-
-  //end not on circle
+  for (var i=0; i < circles.length; i++) {
+    if (hitTest(mouseOnClick, circles[i])) {
+      onCircle = true;
+    }
+  }
+  if (onCircle) {
+    window.removeEventListener("mouseup", mouseUpListener, false);
+    //SHOW INFO TEXT
+    canvas.addEventListener('mousemove', mouseHoverListener , false);
+  } else {
+    canvas.addEventListener('mousemove', mouseMoveListener , false);   
+  }
 }
-
 function mouseMoveListener(evt) {
   var mousePos = getMousePos(canvas, evt);
   var dx = mouseOnClick.x - mousePos.x;
@@ -217,8 +233,8 @@ function init() {
   var circle2 = {x:canvas.width/2 + 300, y:canvas.height/2 + 200, r:40, text:'Complex numbers', hl:false}
   var circle3 = {x:canvas.width/2 - 100, y:canvas.height/2 - 200, r:45, text:'Irrational numbers', hl:false}
 
-  circles = [circle1, circle2, circle3];
-  //var circles = [oneonetwo, aksiom];
+  //circles = [circle1, circle2, circle3];
+  circles = [oneonetwo, aksiom];
 
   renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles)
   canvas.addEventListener('mousemove', mouseHoverListener , false);
