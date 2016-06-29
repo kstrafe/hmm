@@ -156,7 +156,7 @@ function mouseHoverListener(evt) {
   //
   var mousePos = getMousePos(canvas, evt);
   for (var i=0; i < circles.length; i++) {
-    rMouseCenter = (mousePos.x-circles[i].x)*(mousePos.x-circles[i].x) + (mousePos.y-circles[i].y)*(mousePos.y-circles[i].y);
+    rMouseCenter = (mousePos.x-circles[i].x+canvasTopLeft.x)*(mousePos.x-circles[i].x+canvasTopLeft.x) + (mousePos.y-circles[i].y+canvasTopLeft.y)*(mousePos.y-circles[i].y+canvasTopLeft.y);
     //console.log(rMouseCenter, Math.pow(circles[i].r,2))
     if (rMouseCenter < (circles[i].r)*(circles[i].r)) {
       if (circles[i].hl == false) {
