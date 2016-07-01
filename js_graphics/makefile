@@ -1,4 +1,4 @@
-js_files = circular_button.js Floaty.js
+js_files = *.js
 all:
 	js-beautify -r -j $(js_files)
 	$(MAKE) lint

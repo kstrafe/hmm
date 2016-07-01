@@ -11,8 +11,8 @@ Floaty.prototype.draw = function (context) {
     context.save();
 
     context.beginPath();
-    context.lineWidth = 3;
-    context.shadowBlur = 30;
+    context.lineWidth = 2;
+    context.shadowBlur = 20;
     context.shadowColor = '#8E8800';
     context.strokeStyle = '#8E8800';
 
@@ -25,4 +25,8 @@ Floaty.prototype.draw = function (context) {
 Floaty.prototype.move = function () {
     this.y -= 0.3;
     this.angle += 0.01;
+};
+
+Floaty.prototype.height = function () {
+    return this.y;
 };

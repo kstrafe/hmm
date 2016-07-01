@@ -3,8 +3,10 @@
 /*global window*/
 
 /*global Floaty*/
+/*global Floatys*/
 "use strict";
 var floaty = new Floaty(0, 50, 10);
+var floaties = new Floatys();
 
 var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
     mouseOnClick = null;
@@ -16,7 +18,6 @@ function onResize() {
     ctx.canvas.width = document.documentElement.clientWidth;
     ctx.canvas.height = document.documentElement.clientHeight;
 }
-console.log(ctx);
 
 var canvasPosition = {
     x: 0,
@@ -25,14 +26,12 @@ var canvasPosition = {
 
 onResize();
 
-var btnHov = new Audio("Audio/button_hov.mp3"); // buffers automatically when created
+var btnHov = new Audio("Audio/button_hov2.mp3"); // buffers automatically when created
 
 var canvasTopLeft = {
     x: 0,
     y: 0
 };
-
-var canvasTopLeftTemp = canvasTopLeft;
 
 var infoBox = {
     show: false,
@@ -207,7 +206,8 @@ function drawInfoBox(context, infoText) {
 }
 
 function updateEntities() {
-    floaty.move();
+    // floaty.move();
+    floaties.update(1080, 0, 0, 1080);
 }
 
 function renderCanvas(circles) {
@@ -227,7 +227,8 @@ function renderCanvas(circles) {
     for (i = 0; i < circles.length; i += 1) {
         renderButton(ctx, circles[i].x, circles[i].y, circles[i].r, circles[i].name, circles[i].hl);
     }
-    floaty.draw(ctx);
+    // floaty.draw(ctx);
+    floaties.draw(ctx);
     ctx.restore();
 
     if (infoBox.show) {
