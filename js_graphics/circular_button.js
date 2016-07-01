@@ -17,6 +17,8 @@ function onResize() {
     ctx.canvas.height = document.documentElement.clientHeight;
 }
 
+var canvasPosition = { x: 0, y: 0 };
+
 onResize();
 
 var btnHov = new Audio("Audio/button_hov.mp3"); // buffers automatically when created
@@ -200,8 +202,14 @@ function drawInfoBox(context, infoText) {
 
 }
 
-function renderCanvas(xOffset, yOffset, circles) {
-    var i = null;
+function updateEntities() {
+    floaty.move();
+}
+
+function renderCanvas(circles) {
+    var i = null,
+        xOffset = canvasTopLeft.x + canvasPosition.x,
+        yOffset = canvasTopLeft.y + canvasPosition.y;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -216,7 +224,6 @@ function renderCanvas(xOffset, yOffset, circles) {
         renderButton(ctx, circles[i].x, circles[i].y, circles[i].r, circles[i].name, circles[i].hl);
     }
     floaty.draw(ctx);
-    floaty.move();
     ctx.restore();
 
     if (infoBox.show) {
@@ -256,15 +263,17 @@ function mouseHoverListener(evt) {
         }
     }
 
-    renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles);
+    renderCanvas(circles);
 }
 
 function mouseMoveListener(evt) {
     var mousePos = getMousePos(canvas, evt),
         dx = mouseOnClick.x - mousePos.x,
         dy = mouseOnClick.y - mousePos.y;
+    canvasPosition.x = dx;
+    canvasPosition.y = dy;
 
-    renderCanvas(canvasTopLeft.x + dx, canvasTopLeft.y + dy, circles);
+    renderCanvas(circles);
 }
 
 function mouseUpListener(evt) {
@@ -276,7 +285,9 @@ function mouseUpListener(evt) {
     canvasTopLeft.x += mouseOnClick.x - mouseOnUp.x;
     canvasTopLeft.y += mouseOnClick.y - mouseOnUp.y;
 
-    renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles);
+    canvasPosition = { x: 0, y: 0 };
+
+    renderCanvas(circles);
 }
 
 function mouseDownListener(evt) {
@@ -304,7 +315,7 @@ function mouseDownListener(evt) {
         canvas.addEventListener('mousemove', mouseMoveListener, false);
     }
 
-    renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles);
+    renderCanvas(circles);
 }
 
 function init() {
@@ -358,10 +369,11 @@ function init() {
     //circles = [circle1, circle2, circle3];
     circles = [oneonetwo, aksiom];
 
-    renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles);
+    renderCanvas(circles);
     canvas.addEventListener('mousemove', mouseHoverListener, false);
     canvas.addEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("resize", onResize, false);
+    setInterval(function () { updateEntities(); renderCanvas(circles); }, 30);
 }
 
 init();
