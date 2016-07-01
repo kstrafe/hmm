@@ -82,22 +82,6 @@ function wrapText(context, name, x, y, r, hl) {
     context.restore();
 }
 
-function renderFloaty(context, x, y, r) {
-    context.save();
-
-    context.beginPath();
-    context.lineWidth = 3;
-    context.shadowBlur = 30;
-    context.shadowColor = '#8E8800';
-    context.strokeStyle = '#8E8800';
-
-    context.arc(x, y, r, 0, 2 * Math.PI);
-
-    context.stroke();
-    context.restore();
-}
-
-
 function renderButton(context, x, y, r, name, highlighted) {
     context.save();
 
@@ -207,7 +191,6 @@ function drawInfoBox(context, infoText) {
     writeToBox(context, infoText);
 
 }
-
 
 function renderCanvas(xOffset, yOffset, circles) {
     var i = null;
