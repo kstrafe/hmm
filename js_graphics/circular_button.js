@@ -16,12 +16,16 @@ function onResize() {
     ctx.canvas.width = document.documentElement.clientWidth;
     ctx.canvas.height = document.documentElement.clientHeight;
 }
+console.log(ctx);
 
-var canvasPosition = { x: 0, y: 0 };
+var canvasPosition = {
+    x: 0,
+    y: 0
+};
 
 onResize();
 
-var btnHov = new Audio("Audio/button_hov2.mp3"); // buffers automatically when created
+var btnHov = new Audio("Audio/button_hov.mp3"); // buffers automatically when created
 
 var canvasTopLeft = {
     x: 0,
@@ -266,6 +270,12 @@ function mouseHoverListener(evt) {
     renderCanvas(circles);
 }
 
+function zoom() {
+    ctx.clearRect(0, 0, 100, 100);
+    ctx.translate(100, 100);
+    ctx.scale(0.9, 0.9);
+}
+
 function mouseMoveListener(evt) {
     var mousePos = getMousePos(canvas, evt),
         dx = mouseOnClick.x - mousePos.x,
@@ -285,7 +295,10 @@ function mouseUpListener(evt) {
     canvasTopLeft.x += mouseOnClick.x - mouseOnUp.x;
     canvasTopLeft.y += mouseOnClick.y - mouseOnUp.y;
 
-    canvasPosition = { x: 0, y: 0 };
+    canvasPosition = {
+        x: 0,
+        y: 0
+    };
 
     renderCanvas(circles);
 }
@@ -373,7 +386,11 @@ function init() {
     canvas.addEventListener('mousemove', mouseHoverListener, false);
     canvas.addEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("resize", onResize, false);
-    setInterval(function () { updateEntities(); renderCanvas(circles); }, 30);
+    canvas.addEventListener("mousewheel", zoom, false);
+    setInterval(function () {
+        updateEntities();
+        renderCanvas(circles);
+    }, 30);
 }
 
 init();
