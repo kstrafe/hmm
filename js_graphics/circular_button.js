@@ -1,33 +1,9 @@
 /*global Audio*/
 /*global document*/
 /*global window*/
+
+/*global Floaty*/
 "use strict";
-
-function Floaty(x, y, r) {
-    this.x = x;
-    this.y = y;
-    this.r = r;
-}
-
-Floaty.prototype.draw = function (context) {
-    context.save();
-
-    context.beginPath();
-    context.lineWidth = 3;
-    context.shadowBlur = 30;
-    context.shadowColor = '#8E8800';
-    context.strokeStyle = '#8E8800';
-
-    context.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
-
-    context.stroke();
-    context.restore();
-};
-
-Floaty.prototype.move = function () {
-    this.y -= 0.1;
-};
-
 var floaty = new Floaty(0, 50, 10);
 
 var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
@@ -105,6 +81,22 @@ function wrapText(context, name, x, y, r, hl) {
 
     context.restore();
 }
+
+function renderFloaty(context, x, y, r) {
+    context.save();
+
+    context.beginPath();
+    context.lineWidth = 3;
+    context.shadowBlur = 30;
+    context.shadowColor = '#8E8800';
+    context.strokeStyle = '#8E8800';
+
+    context.arc(x, y, r, 0, 2 * Math.PI);
+
+    context.stroke();
+    context.restore();
+}
+
 
 function renderButton(context, x, y, r, name, highlighted) {
     context.save();
