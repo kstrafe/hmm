@@ -1,3 +1,5 @@
+var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3');
+audio.play();
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
