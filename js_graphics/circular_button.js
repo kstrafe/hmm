@@ -206,11 +206,11 @@ function renderCanvas(xOffset, yOffset, circles) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     renderBackground(ctx);
-
-    drawLine(ctx, xOffset, yOffset, circles[0], circles[1]);
-    //drawLine(circles[0], circles[2])
     ctx.save();
     ctx.translate(-xOffset, -yOffset);
+
+    //drawLine(circles[0], circles[2])
+    drawLine(ctx, 0, 0, circles[0], circles[1]);
 
     for (i = 0; i < circles.length; i += 1) {
         renderButton(ctx, circles[i].x, circles[i].y, circles[i].r, circles[i].name, circles[i].hl);
