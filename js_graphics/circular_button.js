@@ -21,7 +21,7 @@ var canvasPosition = { x: 0, y: 0 };
 
 onResize();
 
-var btnHov = new Audio("Audio/button_hov.mp3"); // buffers automatically when created
+var btnHov = new Audio("Audio/button_hov2.mp3"); // buffers automatically when created
 
 var canvasTopLeft = {
     x: 0,
