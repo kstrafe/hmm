@@ -12,6 +12,13 @@ audio.play();
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
+function onResize() {
+    ctx.canvas.width = document.documentElement.clientWidth;
+    ctx.canvas.height = document.documentElement.clientHeight;
+}
+
+onResize();
+
 var btnHov = new Audio("Audio/button_hov.mp3"); // buffers automatically when created
 
 var canvasTopLeft = {
@@ -25,6 +32,7 @@ var infoBox = {
     show: false,
     text: ''
 };
+
 
 var circles;
 
@@ -205,6 +213,8 @@ function renderCanvas(xOffset, yOffset, circles) {
     for (i = 0; i < circles.length; i += 1) {
         renderButton(ctx, circles[i].x - xOffset, circles[i].y - yOffset, circles[i].r, circles[i].name, circles[i].hl);
     }
+    floaty.draw(ctx);
+    floaty.move();
 
     if (infoBox.show) {
         drawInfoBox(ctx, infoBox.text);
@@ -348,6 +358,7 @@ function init() {
     renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles);
     canvas.addEventListener('mousemove', mouseHoverListener, false);
     canvas.addEventListener("mousedown", mouseDownListener, false);
+    window.addEventListener("resize", onResize, false);
 }
 
 init();
