@@ -22,7 +22,5 @@ Floaty.prototype.draw = function (context) {
 };
 
 Floaty.prototype.move = function () {
-    this.y -= 0.1;
+    this.y -= 0.3;
 };
-
-
