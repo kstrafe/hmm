@@ -7,14 +7,23 @@ var canvasTopLeft = {x:0, y:0};
 
 var canvasTopLeftTemp = canvasTopLeft;
 
+var infoBox = {show:false, text:'' };
+
 var circles;
 
 init();
 
 
 
-function renderButton(context, x, y, r, text, highlighted) {
+function renderButton(context, x, y, r, name, highlighted) {
+  context.save();
+
 	context.beginPath();
+  context.lineWidth = 3;
+  context.shadowBlur = 10;
+  context.shadowColor = '#4E8800';
+  context.strokeStyle = '#4E8800';
+
 	context.arc(x, y, r, 0, 2 * Math.PI);
 	
   if (highlighted) {
@@ -22,31 +31,31 @@ function renderButton(context, x, y, r, text, highlighted) {
     context.shadowBlur = 15;
     context.shadowColor = '#6ED80D';
     context.strokeStyle = '#69B00C';
-  } else {
-    context.shadowBlur = 0;
-    context.lineWidth = 3;
-    context.strokeStyle = '#69B00C';
-  }
-	context.stroke();
+  } 
 
-	wrapText(context, text, x, y, r, highlighted)
+	context.stroke();
+  context.restore();
+
+	wrapText(context, name, x, y, r, highlighted)
+
+  
 }
 
-//function wrapText(context, text, x, y, maxWidth, lineHeight) {
-function wrapText(context, text, x, y, r, hl) {
+//function wrapText(context, name, x, y, maxWidth, lineHeight) {
+function wrapText(context, name, x, y, r, hl) {
+  context.save();
   if (hl) {
     context.shadowBlur = 2.5;
     context.shadowColor = '#FFFFFF';
-  } else {
-    context.shadowBlur = 0;
-    context.shadowColor = '#6ED80D';
   }
+
   var AVG_CHAR_SIZE = 0.4586; // Calibri 1px, unit: [px/(ch 1px)]
   //var maxWidth = 0.9*2*r;
+  //console.log(context.fillStyle)
   context.fillStyle = '#DDDDDD';
   context.textAlign="center";
   
-  var words = text.split(' ');
+  var words = name.split(' ');
 
   if (words.length == 1) {
     var fontSize = (0.85*2*r)/(AVG_CHAR_SIZE*words[0].length);
@@ -63,11 +72,11 @@ function wrapText(context, text, x, y, r, hl) {
     y = y - fontSize/2;
 
   } else {
-    words = [text];
+    words = [name];
     var fontSize = (0.85*2*r)/(AVG_CHAR_SIZE*words[0].length);
     y = y + fontSize/3;
   }
-  //totlen = avgCharSize*text.length*fontSize
+  //totlen = avgCharSize*name.length*fontSize
   //console.log(fontSize)
   var lineHeight = fontSize;
   context.font = fontSize + "px Calibri";
@@ -76,6 +85,8 @@ function wrapText(context, text, x, y, r, hl) {
       context.fillText(words[n], x, y);
       y += lineHeight/1.25;
     }
+
+  context.restore();
 }
 
 function rgbToHex(r, g, b) {
@@ -86,32 +97,35 @@ function rgbToHex(r, g, b) {
 
 function renderCanvas(xOffset, yOffset, circles) {
   ctx.clearRect(0,0, canvas.width, canvas.height);
-  gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 5, canvas.width/2, canvas.height/2, 300);
-  gradient.addColorStop(0, '#000028');
-  gradient.addColorStop(1, '#080808');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
   
-  //renderTestLine();
+  renderBackground(ctx);
+
   drawLine(ctx, xOffset, yOffset, circles[0], circles[1])
   //drawLine(circles[0], circles[2])
 
   for (var i=0; i < circles.length; i++) {
-    renderButton(ctx, circles[i].x - xOffset, circles[i].y - yOffset, circles[i].r, circles[i].text, circles[i].hl);
+    renderButton(ctx, circles[i].x - xOffset, circles[i].y - yOffset, circles[i].r, circles[i].name, circles[i].hl);
+  }
+
+  if (infoBox.show) {
+    drawInfoBox(ctx, infoBox.text)
   }
 }
 
-
-function renderTestLine() {
-  ctx.beginPath();
-  ctx.moveTo(canvas.width/2, canvas.height/2);
-  ctx.quadraticCurveTo(canvas.height/2 + 50,canvas.height/2 + 50,canvas.width/2 + 300,canvas.height/2+ 200);
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = '#6EB80D';
-  ctx.stroke();
+function renderBackground(context) {
+  context.save();
+  gradient = context.createRadialGradient(canvas.width/2, canvas.height/2, 5, canvas.width/2, canvas.height/2, 300);
+  gradient.addColorStop(0, '#000028');
+  gradient.addColorStop(1, '#080808');
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.restore();
 }
 
+
 function drawLine(context, xOffset, yOffset, c1, c2) {
+
+  context.save();
   var c1x = c1.x - xOffset;
   var c1y = c1.y - yOffset;
   var c2x = c2.x - xOffset;
@@ -139,12 +153,39 @@ function drawLine(context, xOffset, yOffset, c1, c2) {
   context.moveTo(x0, y0);
   context.bezierCurveTo(x1,y1,x2,y2,x3,y3);
   context.lineWidth = 2;
-  context.shadowBlur = 2;
+  context.shadowBlur = 2.5;
+  context.shadowColor = '#4E8800';
   context.strokeStyle = '#4E8800';
   context.lineCap = 'round';
   context.stroke();
+
+  context.restore();
+}
+function drawInfoBox(context, infoText) {
+  context.save();
+  context.beginPath();
+  context.lineWidth = 1;
+  context.strokeStyle = '#DDDDDD';
+  context.shadowColor = '#000028';
+  context.globalAlpha = 0.4;
+  context.fillStyle = '#DDDDDD';
+  context.fillRect(canvas.width/2 + 50, 50, canvas.width/2 - 100, canvas.height - 100);
+  context.stroke();
+
+  context.restore();
+
+  writeToBox(context, infoText);
+  
 }
 
+function writeToBox(context, infoText) {
+  context.save();
+  context.fillStyle = '#FFFFFF';
+  context.textAlign = "center";
+  context.font = '30px Calibri';
+  context.fillText(infoText, 3/4*canvas.width , 100);
+  context.restore();
+}
 
 function getMousePos(canvas, evt) {
   var rect = canvas.getBoundingClientRect();
@@ -194,17 +235,24 @@ function mouseDownListener(evt) {
 
   for (var i=0; i < circles.length; i++) {
     if (hitTest(mouseOnClick, circles[i])) {
+      infoBox.text = circles[i].facts;
       onCircle = true;
+      break;
     }
   }
   if (onCircle) {
-    window.removeEventListener("mouseup", mouseUpListener, false);
-    //SHOW INFO TEXT
-    canvas.addEventListener('mousemove', mouseHoverListener , false);
+      window.removeEventListener("mouseup", mouseUpListener, false);
+      //drawInfoBox(ctx, circles[i].facts);
+      infoBox.show = true;
+      canvas.addEventListener('mousemove', mouseHoverListener , false);
   } else {
+    infoBox.show = false;
     canvas.addEventListener('mousemove', mouseMoveListener , false);   
   }
+
+  renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles)
 }
+
 function mouseMoveListener(evt) {
   var mousePos = getMousePos(canvas, evt);
   var dx = mouseOnClick.x - mousePos.x;
@@ -223,15 +271,18 @@ function mouseUpListener(evt) {
   canvasTopLeft.y += mouseOnClick.y - mouseOnUp.y;
 
   renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles)
+}
+
+function zoom(evt) {
 
 }
 
 function init() {
-  var oneonetwo = {x:canvas.width/2, y:canvas.height/2 , r:100, text:'1 + 1 = 2', hl:false}
-  var aksiom = {x:canvas.width/2 + 600, y:canvas.height/2 - 600 , r:60, text:'Axiom', hl:false}
-  var circle1 = {x:canvas.width/2, y:canvas.height/2 , r:50, text:'Natural numbers', hl:false}
-  var circle2 = {x:canvas.width/2 + 300, y:canvas.height/2 + 200, r:40, text:'Complex numbers', hl:false}
-  var circle3 = {x:canvas.width/2 - 100, y:canvas.height/2 - 200, r:45, text:'Irrational numbers', hl:false}
+  var oneonetwo = {x:canvas.width/2, y:canvas.height/2 , r:100, name:'1 + 1 = 2', facts:'Nothing here yet1' , hl:false}
+  var aksiom = {x:canvas.width/2 + 600, y:canvas.height/2 - 600 , r:60, name:'Axiom', facts:'Nothing here yet2' , hl:false}
+  var circle1 = {x:canvas.width/2, y:canvas.height/2 , r:50, name:'Natural numbers', facts:'Nothing here yet' , hl:false}
+  var circle2 = {x:canvas.width/2 + 300, y:canvas.height/2 + 200, r:40, name:'Complex numbers', facts:'Nothing here yet' , hl:false}
+  var circle3 = {x:canvas.width/2 - 100, y:canvas.height/2 - 200, r:45, name:'Irrational numbers', facts:'Nothing here yet' , hl:false}
 
   //circles = [circle1, circle2, circle3];
   circles = [oneonetwo, aksiom];
