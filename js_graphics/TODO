@@ -1,0 +1,8 @@
+Bubble + Bubbles klasse
+Lyd klasse (håndterer slutten av sangen) + ajax lyd loading fra remote (vi kan ikke laste alle sanger samtidig fordi det tar for mye tid)
+Zoom funksjonalitet (tricky?)
+Random Floaty spawning
+Smoother borders på info box
+Info box klasse
+Curve klasse (for tilkoblinger mellom Boble)
+Lyd av/på knapp (bg og sfx) (ALL/BGM/SFX/NONE)
