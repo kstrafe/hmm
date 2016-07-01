@@ -209,12 +209,15 @@ function renderCanvas(xOffset, yOffset, circles) {
 
     drawLine(ctx, xOffset, yOffset, circles[0], circles[1]);
     //drawLine(circles[0], circles[2])
+    ctx.save();
+    ctx.translate(-xOffset, -yOffset);
 
     for (i = 0; i < circles.length; i += 1) {
-        renderButton(ctx, circles[i].x - xOffset, circles[i].y - yOffset, circles[i].r, circles[i].name, circles[i].hl);
+        renderButton(ctx, circles[i].x, circles[i].y, circles[i].r, circles[i].name, circles[i].hl);
     }
     floaty.draw(ctx);
     floaty.move();
+    ctx.restore();
 
     if (infoBox.show) {
         drawInfoBox(ctx, infoBox.text);
