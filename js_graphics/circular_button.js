@@ -27,20 +27,20 @@ function renderButton(context, x, y, r, name, highlighted) {
   context.strokeStyle = '#4E8800';
 
 	context.arc(x, y, r, 0, 2 * Math.PI);
-	
+
   if (highlighted) {
     context.lineWidth = 4;
     context.shadowBlur = 15;
     context.shadowColor = '#6ED80D';
     context.strokeStyle = '#69B00C';
-  } 
+  }
 
 	context.stroke();
   context.restore();
 
 	wrapText(context, name, x, y, r, highlighted)
 
-  
+
 }
 
 //function wrapText(context, name, x, y, maxWidth, lineHeight) {
@@ -56,13 +56,13 @@ function wrapText(context, name, x, y, r, hl) {
   //console.log(context.fillStyle)
   context.fillStyle = '#DDDDDD';
   context.textAlign="center";
-  
+
   var words = name.split(' ');
 
   if (words.length == 1) {
     var fontSize = (0.85*2*r)/(AVG_CHAR_SIZE*words[0].length);
     y = y + fontSize/3;
-    
+
   } else if (words.length == 2) {
     var maxLen = Math.max(words[0].length, words[1].length)
     var fontSize = (0.75*2*r)/(AVG_CHAR_SIZE*maxLen);
@@ -99,7 +99,7 @@ function rgbToHex(r, g, b) {
 
 function renderCanvas(xOffset, yOffset, circles) {
   ctx.clearRect(0,0, canvas.width, canvas.height);
-  
+
   renderBackground(ctx);
 
   drawLine(ctx, xOffset, yOffset, circles[0], circles[1])
@@ -134,7 +134,7 @@ function drawLine(context, xOffset, yOffset, c1, c2) {
   var c2y = c2.y - yOffset;
   var dx = c2x-(c1.x)
   var dy = (c2y)-(c1y)
-  
+
   a = Math.atan2(dy, dx);
 
   x0 = c1x + c1.r*Math.cos(a + 0.5) + 5*Math.sign(dx);
@@ -177,7 +177,7 @@ function drawInfoBox(context, infoText) {
   context.restore();
 
   writeToBox(context, infoText);
-  
+
 }
 
 function writeToBox(context, infoText) {
@@ -199,7 +199,7 @@ function getMousePos(canvas, evt) {
 }
 
 function hitTest(mousePos, circle) {
-  
+
   rMouseCenter = (mousePos.x-circle.x+canvasTopLeft.x)*(mousePos.x-circle.x+canvasTopLeft.x) +
    (mousePos.y-circle.y+canvasTopLeft.y)*(mousePos.y-circle.y+canvasTopLeft.y);
 
@@ -219,13 +219,13 @@ function mouseHoverListener(evt) {
       if (circles[i].hl == false) {
         btnHov.play();
         circles[i].hl = true;
-      } 
+      }
     } else {
-        circles[i].hl = false;  
+        circles[i].hl = false;
       }
   }
 
-  renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles);    
+  renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles);
 }
 
 function mouseDownListener(evt) {
@@ -249,7 +249,7 @@ function mouseDownListener(evt) {
       canvas.addEventListener('mousemove', mouseHoverListener , false);
   } else {
     infoBox.show = false;
-    canvas.addEventListener('mousemove', mouseMoveListener , false);   
+    canvas.addEventListener('mousemove', mouseMoveListener , false);
   }
 
   renderCanvas(canvasTopLeft.x, canvasTopLeft.y, circles)
@@ -267,7 +267,7 @@ function mouseUpListener(evt) {
   canvas.removeEventListener('mousemove', mouseMoveListener , false);
   window.removeEventListener("mouseup", mouseUpListener, false);
   canvas.addEventListener('mousemove', mouseHoverListener , false);
- 
+
   var mouseOnUp = getMousePos(canvas, evt);
   canvasTopLeft.x += mouseOnClick.x - mouseOnUp.x;
   canvasTopLeft.y += mouseOnClick.y - mouseOnUp.y;
