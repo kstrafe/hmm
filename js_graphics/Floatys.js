@@ -27,7 +27,6 @@ Floatys.prototype.update = function (low, high, left, width) {
         height = this.floatys[i].height();
         if (height < high - extra) {
             this.floatys.splice(i, i);
-            i -= 1;
         }
     }
 
