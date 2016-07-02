@@ -213,9 +213,7 @@ function renderCanvas(circles) {
     ctx.restore();
 
     if (infoBox.show) {
-      
-      factBox.draw(ctx);
-      //drawInfoBox(ctx, infoBox.text);
+        factBox.draw(ctx);
     }
 }
 

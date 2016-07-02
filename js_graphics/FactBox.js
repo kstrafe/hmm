@@ -1,24 +1,23 @@
 "use strict";
 
-function FactBox(title, text, image = null) {
-	this.title = title;
+function FactBox(title, text, image) {
+    this.title = title;
     this.text = text;
     this.image = image;
 }
 
 FactBox.prototype.draw = function (context) {
-
-	var cornerRadius = 25;
-	var upLeft = {
-		x:context.canvas.width / 2 + 50 ,
-		y:50
-	};
-	var downRight = {
-		x:context.canvas.width - 50,
-		y:context.canvas.height - 100
-	};
-	console.log(upLeft);
-	console.log(downRight);
+    var cornerRadius = 25,
+        upLeft = {
+            x: context.canvas.width / 2 + 50,
+            y: 50
+        },
+        downRight = {
+            x: context.canvas.width - 50,
+            y: context.canvas.height - 100
+        };
+    console.log(upLeft);
+    console.log(downRight);
 
     context.save();
 
@@ -31,18 +30,18 @@ FactBox.prototype.draw = function (context) {
 
     context.beginPath();
     context.moveTo(upLeft.x + cornerRadius, upLeft.y);
-	context.lineTo(downRight.x - cornerRadius, upLeft.y);
-	context.quadraticCurveTo(downRight.x, upLeft.y, downRight.x, upLeft.y + cornerRadius);
-	context.lineTo(downRight.x, downRight.y-cornerRadius);
-	context.quadraticCurveTo(downRight.x, downRight.y, downRight.x - cornerRadius, downRight.y);
-	context.lineTo(upLeft.x + cornerRadius, downRight.y);
-	context.quadraticCurveTo(upLeft.x, downRight.y, upLeft.x, downRight.y-cornerRadius);
-	context.lineTo(upLeft.x, upLeft.y + cornerRadius);
-	context.quadraticCurveTo(upLeft.x, upLeft.y, upLeft.x + cornerRadius, upLeft.y);
+    context.lineTo(downRight.x - cornerRadius, upLeft.y);
+    context.quadraticCurveTo(downRight.x, upLeft.y, downRight.x, upLeft.y + cornerRadius);
+    context.lineTo(downRight.x, downRight.y - cornerRadius);
+    context.quadraticCurveTo(downRight.x, downRight.y, downRight.x - cornerRadius, downRight.y);
+    context.lineTo(upLeft.x + cornerRadius, downRight.y);
+    context.quadraticCurveTo(upLeft.x, downRight.y, upLeft.x, downRight.y - cornerRadius);
+    context.lineTo(upLeft.x, upLeft.y + cornerRadius);
+    context.quadraticCurveTo(upLeft.x, upLeft.y, upLeft.x + cornerRadius, upLeft.y);
 
-	context.closePath();
-	context.fill();
-	context.stroke();
+    context.closePath();
+    context.fill();
+    context.stroke();
     context.restore();
 
     //Draw title
@@ -54,12 +53,10 @@ FactBox.prototype.draw = function (context) {
     context.restore();
 
     //Draw text
-	context.fillStyle = '#FFFFFF';
+    context.fillStyle = '#FFFFFF';
     context.textAlign = "center";
     context.font = '20px Calibri';
     context.fillText(this.text, 3 / 4 * context.canvas.width, 125);
 
     context.restore();
-
-
-}
+};
