@@ -1,18 +1,18 @@
 IDEA: Floaties start spawning in field of view
 
-Use a gradient texture instead of the heavy fillrect
 Zoom functionality (tricky?)
 Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 Picture/Sprite rendering inside the infoboxes
 Clickable hyperlinks
 Hyperlinks activating links to different bubbles
 Music class for queing and loading after finishing
-Add dev-key for showing various stats, most importantly current position
 Use a single JS file for storing all bubbles and curves - this makes it easy for anyone to add something
 
+KEVIN: Add dev-key for showing various stats, most importantly current position
 OLE: Bubble + Bubbles klasse
 PARTIALLY DONE: OLE: Info box klasse
 
+DONE: KEVIN: Use a gradient texture instead of the heavy fillrect
 DONE: KEVIN: Center the old position after an onResize event
 DONE: KEVIN: Different radii floaties
 DONE: OLE/KEVIN: Curve class (the curves connecting bubbles)
