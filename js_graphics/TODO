@@ -6,8 +6,8 @@ Picture/Sprite rendering inside the infoboxes
 Clickable hyperlinks
 Hyperlinks activating links to different bubbles
 Music class for queing and loading after finishing
-Use a single JS file for storing all bubbles and curves - this makes it easy for anyone to add something
 
+KEVIN: Use a single JS file for storing all bubbles and curves - this makes it easy for anyone to add something
 OLE: Bubble + Bubbles klasse
 PARTIALLY DONE: OLE: Info box klasse
 
