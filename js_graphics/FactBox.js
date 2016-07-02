@@ -57,28 +57,32 @@ FactBox.prototype.draw = function (context) {
     context.fillStyle = '#000000';
     context.textAlign = "left";
     context.font = '20px Calibri';
-    this.wrapText(context, this.text, 3 / 4 * context.canvas.width - (downRight.x - upLeft.x - 25) / 2, 125, downRight.x - upLeft.x - 25, 25)
+    this.wrapText(context, this.text, 3 / 4 * context.canvas.width - (downRight.x - upLeft.x - 25) / 2, 125, downRight.x - upLeft.x - 25, 25);
     //context.fillText(this.text, 3 / 4 * context.canvas.width, 125);
 
     context.restore();
 };
 
 FactBox.prototype.wrapText = function (context, text, x, y, maxWidth, lineHeight) {
-        var words = text.split(' ');
-        var line = '';
+    var words = text.split(' '),
+        line = '',
+        n,
+        testLine,
+        metrics,
+        testWidth;
 
-        for(var n = 0; n < words.length; n++) {
-          var testLine = line + words[n] + ' ';
-          var metrics = context.measureText(testLine);
-          var testWidth = metrics.width;
-          if (testWidth > maxWidth && n > 0) {
+    for (n = 0; n < words.length; n += 1) {
+        testLine = line + words[n] + ' ';
+        metrics = context.measureText(testLine);
+        testWidth = metrics.width;
+        if (testWidth > maxWidth && n > 0) {
             context.fillText(line, x, y);
             line = words[n] + ' ';
             y += lineHeight;
-          }
-          else {
+        } else {
             line = testLine;
-          }
         }
-        context.fillText(line, x, y);
-      }
+    }
+
+    context.fillText(line, x, y);
+};

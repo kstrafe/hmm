@@ -404,7 +404,7 @@ function init() {
     window.addEventListener("resize", onResize, false);
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
-    canvas.addEventListener("mousewheel", zoom, false);
+    //canvas.addEventListener("mousewheel", zoom, false);
     setInterval(function () {
         updateEntities();
         addSpeeds();

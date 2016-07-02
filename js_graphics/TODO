@@ -1,4 +1,4 @@
-Bubble + Bubbles klasse
+OLE: Bubble + Bubbles klasse
 Zoom funksjonalitet (tricky?)
 Smoother borders på info box
 Curve klasse (for tilkoblinger mellom Boble)
@@ -7,7 +7,7 @@ Bilde tegning
 Clickable hyperlinks
 Hyperlinks activating links to different bubbles
 
-OLE: Info box klasse
+PRATIALLY DONE: OLE: Info box klasse
 KEVIN: Context class for managing global context transformation state
 
 HOLD: KEVIN: Lyd klasse (håndterer slutten av sangen) + ajax lyd loading fra remote (vi kan ikke laste alle sanger samtidig fordi det tar for mye tid)
