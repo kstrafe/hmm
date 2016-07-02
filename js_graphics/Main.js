@@ -32,7 +32,7 @@ function renderEverything() {
 
 function updateEverything() {
     context.applySpeed();
-    floaties.update(1080, 0, 0, 1080);
+    floaties.update(context.low(), context.high(), context.left(), context.width());
 }
 
 function mouseHoverListener(evt) {

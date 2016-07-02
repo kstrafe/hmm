@@ -81,6 +81,22 @@ Context.prototype.addOffset = function (dx, dy) {
     this.yOffset += dy;
 };
 
+Context.prototype.left = function () {
+    return this.xOffset;
+};
+
+Context.prototype.width = function () {
+    return this.canvas.width;
+};
+
+Context.prototype.low = function () {
+    return this.yOffset + this.canvas.height;
+};
+
+Context.prototype.high = function () {
+    return this.yOffset;
+};
+
 Context.prototype.onResize = function () {
     this.canvas.width = document.documentElement.clientWidth;
     this.canvas.height = document.documentElement.clientHeight;
