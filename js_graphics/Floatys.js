@@ -1,3 +1,4 @@
+/*global Colors*/
 /*global Floaty*/
 "use strict";
 
@@ -17,7 +18,8 @@ Floatys.prototype.draw = function (context) {
 Floatys.prototype.update = function (low, high, left, width) {
     var i = null,
         height = null,
-        extra = 1000;
+        extra = 1000,
+        floaty = null;
 
     if (high > low) {
         console.log("Incorrect low/high given. 'high' must be less than 'low'. 'high' represents the top y coordinate, 'low' the bottom coordinate of the screen.");
@@ -32,7 +34,10 @@ Floatys.prototype.update = function (low, high, left, width) {
 
     if (this.current === this.max) {
         if (this.floatys.length < 100) {
-            this.floatys.push(new Floaty(left + Math.random() * width, low, 10));
+            floaty = new Floaty(left + Math.random() * width, low, 10);
+            floaty.setColor((new Colors()).random());
+            this.floatys.push(floaty);
+
         }
         this.current = 0;
     } else {

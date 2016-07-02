@@ -2,6 +2,7 @@
 /*global document*/
 /*global window*/
 
+/*global Colors*/
 /*global Context*/
 /*global Floaty*/
 /*global Floatys*/

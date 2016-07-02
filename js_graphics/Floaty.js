@@ -5,7 +5,12 @@ function Floaty(x, y, r) {
     this.y = y;
     this.r = r;
     this.angle = 0;
+    this.color = '#8E8800';
 }
+
+Floaty.prototype.setColor = function (color) {
+    this.color = color;
+};
 
 Floaty.prototype.draw = function (context) {
     context.save();
@@ -13,8 +18,8 @@ Floaty.prototype.draw = function (context) {
     context.beginPath();
     context.lineWidth = 2;
     context.shadowBlur = 20;
-    context.shadowColor = '#8E8800';
-    context.strokeStyle = '#8E8800';
+    context.shadowColor = this.color;
+    context.strokeStyle = this.color;
 
     context.arc(this.x + Math.sin(this.angle) * 30, this.y, this.r, 0, 2 * Math.PI);
 
