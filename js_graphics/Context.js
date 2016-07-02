@@ -18,6 +18,13 @@ function Context(canvas) {
     };
 }
 
+Context.prototype.centerOn = function (x, y) {
+    var width = this.canvas.width,
+        height = this.canvas.height;
+    this.xOffset = x - width / 2;
+    this.yOffset = y - height / 2;
+};
+
 Context.prototype.applySpeed = function () {
     this.xOffset += this.offsetSpeed.x;
     this.yOffset += this.offsetSpeed.y;

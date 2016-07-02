@@ -19,8 +19,7 @@ var floaties = new Floatys();
 var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
 var curves = new Curves();
-curves.append(new Curve(context.canvas.width / 2, context.canvas.height / 2,
-    100, context.canvas.width / 2, context.canvas.height / 2, 100));
+curves.append(new Curve(0, 0, 100, 0, 0, 100));
 
 var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3');
 audio.play();
@@ -121,14 +120,15 @@ function keyboardUp(key) {
 
 function main() {
     var oneonetwoFacts = "The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).",
-        oneonetwo = new Bubble(context.canvas.width / 2, context.canvas.height / 2, 100, '1 + 1 = 2', oneonetwoFacts, false),
+        oneonetwo = new Bubble(0, 0, 100, '1 + 1 = 2', oneonetwoFacts, false),
         axiomFacts = 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
-        axiom = new Bubble(context.canvas.width / 2 + 600, context.canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false);
+        axiom = new Bubble(600, -600, 60, 'Axiom', axiomFacts, false);
 
     bubbles.add(oneonetwo);
     bubbles.add(axiom);
 
     context.onResize();
+    context.centerOn(0, 0);
     context.canvas.addEventListener('mousemove', mouseHoverListener, false);
     context.canvas.addEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("resize", context.onResize, false);
