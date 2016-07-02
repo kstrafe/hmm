@@ -41,9 +41,13 @@ Bubbles.prototype.click = function (mousePos, offset) {
     var i = null;
     for (i = 0; i < this.length(); i += 1) {
         if (this.getBubble(i).hitTest(mousePos, offset)) {
-            // info = this.getBubble(i).getNameAndFacts();
-            // factBox = new FactBox(info.name, info.facts);
-            return true;
+            return {
+                hit: true,
+                facts: this.getBubble(i).getNameAndFacts()
+            };
         }
     }
+    return {
+        hit: false
+    };
 };

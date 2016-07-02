@@ -4,10 +4,23 @@ function FactBox(title, text, image) {
     this.title = title;
     this.text = text;
     this.image = image;
-
+    this.active = false;
 }
 
+FactBox.prototype.show = function (titleAndText) {
+    this.title = titleAndText.name;
+    this.text = titleAndText.facts;
+    this.active = true;
+};
+
+FactBox.prototype.hide = function () {
+    this.active = false;
+};
+
 FactBox.prototype.draw = function (context) {
+    if (this.active === false) {
+        return;
+    }
     var cornerRadius = 25,
         upLeft = {
             x: context.canvas.width / 2 + 50,

@@ -19,7 +19,8 @@ var floaties = new Floatys();
 var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
 var curves = new Curves();
-curves.append(new Curve(context.canvas.width / 2, context.canvas.height / 2, 100, context.canvas.width / 2, context.canvas.height / 2, 100));
+curves.append(new Curve(context.canvas.width / 2, context.canvas.height / 2,
+    100, context.canvas.width / 2, context.canvas.height / 2, 100));
 
 var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3');
 audio.play();
@@ -28,6 +29,7 @@ var sfx = new Sfx();
 function renderEverything() {
     context.renderBG();
     context.draw([floaties, bubbles, curves]);
+    context.drawAbsolute(factBox);
 }
 
 function updateEverything() {
@@ -78,11 +80,13 @@ function mouseDownListener(evt) {
     context.mouseDown = mousePos;
     onCircle = bubbles.click(mousePos, context.getOffset());
 
-    if (onCircle) {
+    if (onCircle.hit) {
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
+        factBox.show(onCircle.facts);
     } else {
         context.canvas.addEventListener('mousemove', mouseMoveListener, false);
+        factBox.hide();
     }
 }
 
