@@ -11,7 +11,11 @@
 "use strict";
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
+<<<<<<< HEAD
 var factBox = null; //new FactBox('test', 'text');
+=======
+var factBox = new FactBox('Definitions', 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).');
+>>>>>>> 28678438ac7be8bb870a38854ae785d39820aae9
 
 var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
     mouseOnClick = null;
