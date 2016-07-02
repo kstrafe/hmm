@@ -121,7 +121,7 @@ Context.prototype.renderBG = function () {
     gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 5, canvas.width / 2, canvas.height / 2, 300);
     gradient.addColorStop(0, '#000028');
     gradient.addColorStop(1, '#080808');
-    context.fillStyle = gradient;
+    context.fillStyle = "#000000";
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.restore();
 };

@@ -1,5 +1,6 @@
 IDEA: Floaties start spawning in field of view
 
+Use a gradient texture instead of the heavy fillrect
 Zoom functionality (tricky?)
 Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 Picture/Sprite rendering inside the infoboxes
