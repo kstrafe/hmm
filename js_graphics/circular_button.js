@@ -2,9 +2,12 @@
 /*global document*/
 /*global window*/
 
+/*global Context*/
 /*global Floaty*/
 /*global Floatys*/
+/*global Sfx*/
 "use strict";
+var context = new Context(document.getElementById('canvas'));
 var floaty = new Floaty(0, 50, 10);
 var floaties = new Floatys();
 
@@ -13,6 +16,7 @@ var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
 audio.play();
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
+var sfx = new Sfx();
 
 function onResize() {
     ctx.canvas.width = document.documentElement.clientWidth;
@@ -25,9 +29,6 @@ var canvasPosition = {
 };
 
 onResize();
-
-var btnHov = new Audio("Audio/button_hov2.mp3"); // buffers automatically when created
-btnHov.volume = 0.4;
 
 var canvasTopLeft = {
     x: 0,
@@ -266,7 +267,7 @@ function mouseHoverListener(evt) {
     for (i = 0; i < circles.length; i += 1) {
         if (hitTest(mousePos, circles[i])) {
             if (circles[i].hl === false) {
-                btnHov.play();
+                sfx.hover();
                 circles[i].hl = true;
             }
         } else {
