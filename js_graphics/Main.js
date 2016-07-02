@@ -22,8 +22,9 @@ audio.play();
 var sfx = new Sfx();
 
 var mouseOnClick = null;
-var circles;
+//var circles;
 
+/*
 function drawLine(context, xOffset, yOffset, c1, c2) {
 
     var c1x = c1.x - xOffset,
@@ -72,6 +73,7 @@ function drawLine(context, xOffset, yOffset, c1, c2) {
 
     context.restore();
 }
+*/
 
 function renderEverything() {
     context.renderBG();
@@ -230,7 +232,7 @@ function init() {
     */
 
     //circles = [circle1, circle2, circle3];
-    circles = [oneonetwo_old, aksiom_old];
+    //circles = [oneonetwo_old, aksiom_old];
     //console.log(circle)
 
     context.onResize();
