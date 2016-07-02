@@ -2,14 +2,14 @@
 /*global document*/
 /*global window*/
 
+/*global Bubble*/
+/*global Bubbles*/
 /*global Colors*/
 /*global Context*/
+/*global FactBox*/
 /*global Floaty*/
 /*global Floatys*/
 /*global Sfx*/
-/*global FactBox*/
-/*global Bubble*/
-/*global Bubbles*/
 
 "use strict";
 var context = new Context(document.getElementById('canvas'));
@@ -17,51 +17,12 @@ var floaties = new Floatys();
 var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
 
-var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3'),
-    mouseOnClick = null;
+var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3');
 audio.play();
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
 var sfx = new Sfx();
 
-function onResize() {
-    ctx.canvas.width = document.documentElement.clientWidth;
-    ctx.canvas.height = document.documentElement.clientHeight;
-}
-
-var canvasPosition = {
-    x: 0,
-    y: 0
-};
-
-onResize();
-
-var canvasTopLeft = {
-    x: 0,
-    y: 0
-};
-
-var canvasSpeed = {
-    x: 0,
-    y: 0
-};
-
-var infoBox = {
-    show: false
-};
-
+var mouseOnClick = null;
 var circles;
-
-function renderBackground(context) {
-    var gradient = null;
-    context.save();
-    gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 5, canvas.width / 2, canvas.height / 2, 300);
-    gradient.addColorStop(0, '#000028');
-    gradient.addColorStop(1, '#080808');
-    context.fillStyle = gradient;
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.restore();
-}
 
 function drawLine(context, xOffset, yOffset, c1, c2) {
 
@@ -112,38 +73,16 @@ function drawLine(context, xOffset, yOffset, c1, c2) {
     context.restore();
 }
 
+function renderEverything() {
+    context.renderBG();
+}
+
 function updateEntities() {
     floaties.update(1080, 0, 0, 1080);
 }
 
-function renderCanvas(bubbles) {
-    var xOffset = canvasTopLeft.x + canvasPosition.x,
-        yOffset = canvasTopLeft.y + canvasPosition.y;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    renderBackground(ctx);
-    ctx.save();
-    ctx.translate(-xOffset, -yOffset);
-
-    //drawLine(circles[0], circles[2])
-    //console.log(circles)
-    //drawLine(ctx, 0, 0, circles[0], circles[1]);
-    //console.log(bubbles);
-    //throw error;
-    bubbles.drawAll(ctx);
-
-    floaties.draw(ctx);
-    ctx.restore();
-
-    if (infoBox.show) {
-        factBox.draw(ctx);
-    }
-}
-
 function getMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
-    //console.log(rect)
     return {
         x: (evt.clientX - rect.left) * (canvas.width / rect.width),
         y: (evt.clientY - rect.top) * (canvas.height / rect.height)
@@ -152,6 +91,7 @@ function getMousePos(canvas, evt) {
 
 
 function mouseHoverListener(evt) {
+    return;
     var mousePos = getMousePos(canvas, evt),
         i = null;
 
@@ -187,6 +127,7 @@ function mouseMoveListener(evt) {
 }
 
 function mouseUpListener(evt) {
+    return;
     canvas.removeEventListener('mousemove', mouseMoveListener, false);
     window.removeEventListener("mouseup", mouseUpListener, false);
     canvas.addEventListener('mousemove', mouseHoverListener, false);
@@ -204,6 +145,7 @@ function mouseUpListener(evt) {
 }
 
 function mouseDownListener(evt) {
+    return;
     var onCircle = false,
         i = null,
         info = null;
@@ -255,16 +197,16 @@ function setCanvasSpeed(key, speed) {
 }
 
 function keyboardDown(key) {
-    setCanvasSpeed(key, 20);
+    // setCanvasSpeed(key, 20);
 }
 
 function keyboardUp(key) {
-    setCanvasSpeed(key, 0);
+    // setCanvasSpeed(key, 0);
 }
 
 function addSpeeds() {
-    canvasTopLeft.x += canvasSpeed.x;
-    canvasTopLeft.y += canvasSpeed.y;
+    // canvasTopLeft.x += canvasSpeed.x;
+    // canvasTopLeft.y += canvasSpeed.y;
 }
 
 function init() {
@@ -329,14 +271,14 @@ function init() {
     //renderCanvas(bubbles);
     canvas.addEventListener('mousemove', mouseHoverListener, false);
     canvas.addEventListener("mousedown", mouseDownListener, false);
-    window.addEventListener("resize", onResize, false);
+    window.addEventListener("resize", context.onResize, false);
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
     //canvas.addEventListener("mousewheel", zoom, false);
     setInterval(function () {
         updateEntities();
         addSpeeds();
-        renderCanvas(bubbles);
+        renderEverything();
     }, 30);
 }
 
