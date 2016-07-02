@@ -5,6 +5,8 @@ function Context(canvas) {
     this.context = canvas.getContext('2d');
     this.xOffset = 0;
     this.yOffset = 0;
+    this.tmpxOffset = 0;
+    this.tmpyOffset = 0;
 }
 
 Context.prototype.drawAbsolute = function (drawable) {
@@ -18,7 +20,7 @@ Context.prototype.clear = function () {
 Context.prototype.draw = function (drawables) {
     var i = null;
     this.context.save();
-    this.context.translate(-this.xOffset, -this.yOffset);
+    this.context.translate(-this.xOffset - this.tmpxOffset, -this.yOffset - this.tmpyOffset);
     for (i = 0; i < drawables.length; i += 1) {
         this.drawAbsolute(drawables[i]);
     }
@@ -26,8 +28,8 @@ Context.prototype.draw = function (drawables) {
 };
 
 Context.prototype.offsetTemporary = function (x, y) {
-    this.xOffset = x;
-    this.yOffset = y;
+    this.tmpxOffset = x;
+    this.tmpyOffset = y;
 };
 
 Context.prototype.getOffset = function () {
@@ -35,6 +37,12 @@ Context.prototype.getOffset = function () {
         x: this.xOffset,
         y: this.yOffset
     };
+}
+
+Context.prototype.addOffset = function (dx, dy) {
+    this.offsetTemporary(0, 0);
+    this.xOffset += dx;
+    this.yOffset += dy;
 }
 
 Context.prototype.onResize = function () {

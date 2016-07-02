@@ -118,32 +118,20 @@ function mouseMoveListener(evt) {
     var mousePos = getMousePos(canvas, evt),
         dx = mouseOnClick.x - mousePos.x,
         dy = mouseOnClick.y - mousePos.y;
-    canvasPosition.x = dx;
-    canvasPosition.y = dy;
-
-    renderCanvas(bubbles);
+    context.offsetTemporary(dx, dy);
 }
 
 function mouseUpListener(evt) {
-    return;
     canvas.removeEventListener('mousemove', mouseMoveListener, false);
     window.removeEventListener("mouseup", mouseUpListener, false);
     canvas.addEventListener('mousemove', mouseHoverListener, false);
 
     var mouseOnUp = getMousePos(canvas, evt);
-    canvasTopLeft.x += mouseOnClick.x - mouseOnUp.x;
-    canvasTopLeft.y += mouseOnClick.y - mouseOnUp.y;
+    context.addOffset(mouseOnClick.x - mouseOnUp.x, mouseOnClick.y - mouseOnUp.y);
 
-    canvasPosition = {
-        x: 0,
-        y: 0
-    };
-
-    renderCanvas(bubbles);
 }
 
 function mouseDownListener(evt) {
-    return;
     var onCircle = false,
         i = null,
         info = null;
@@ -153,7 +141,7 @@ function mouseDownListener(evt) {
     mouseOnClick = getMousePos(canvas, evt);
 
     for (i = 0; i < bubbles.length(); i += 1) {
-        if (bubbles.getBubble(i).hitTest(mouseOnClick, canvasTopLeft)) {
+        if (bubbles.getBubble(i).hitTest(mouseOnClick, context.getOffset())) {
             info = bubbles.getBubble(i).getNameAndFacts();
             factBox = new FactBox(info.name, info.facts);
             onCircle = true;
@@ -162,14 +150,10 @@ function mouseDownListener(evt) {
     }
     if (onCircle) {
         window.removeEventListener("mouseup", mouseUpListener, false);
-        infoBox.show = true;
         canvas.addEventListener('mousemove', mouseHoverListener, false);
     } else {
-        infoBox.show = false;
         canvas.addEventListener('mousemove', mouseMoveListener, false);
     }
-
-    renderCanvas(bubbles);
 }
 
 function setCanvasSpeed(key, speed) {
@@ -266,7 +250,6 @@ function init() {
     circles = [oneonetwo_old, aksiom_old];
     //console.log(circle)
 
-    //renderCanvas(bubbles);
     context.onResize();
     canvas.addEventListener('mousemove', mouseHoverListener, false);
     canvas.addEventListener("mousedown", mouseDownListener, false);
