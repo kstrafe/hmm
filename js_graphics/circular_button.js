@@ -75,6 +75,7 @@ function drawLine(context, xOffset, yOffset, c1, c2) {
 
 function renderEverything() {
     context.renderBG();
+    context.draw([bubbles]);
 }
 
 function updateEntities() {
@@ -269,6 +270,7 @@ function init() {
     //console.log(circle)
 
     //renderCanvas(bubbles);
+    context.onResize();
     canvas.addEventListener('mousemove', mouseHoverListener, false);
     canvas.addEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("resize", context.onResize, false);

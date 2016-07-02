@@ -4,7 +4,7 @@ function Bubbles() {
     this.bubbles = [];
 }
 
-Bubbles.prototype.drawAll = function (context) {
+Bubbles.prototype.draw = function (context) {
     var i = null;
     for (i = 0; i < this.bubbles.length; i += 1) {
         this.bubbles[i].draw(context);
