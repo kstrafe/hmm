@@ -86,11 +86,6 @@ var all_bubbles = {
             end: "equality"
         },
 
-        eq_to_sym: {
-            begin: "equality",
-            end: "equality_symmetry"
-        },
-
         axiom_to_arith: {
             begin: "axioms",
             end: "arithmetic"
