@@ -4,8 +4,9 @@
 
 function Floatys() {
     this.floatys = [];
-    this.max = 30;
-    this.current = 0;
+    this.max = 700;
+    this.current = 600;
+    this.max_floaty = 5;
 }
 
 Floatys.prototype.draw = function (context) {
@@ -18,7 +19,7 @@ Floatys.prototype.draw = function (context) {
 Floatys.prototype.update = function (low, high, left, width) {
     var i = null,
         height = null,
-        extra = 1000,
+        extra = 4000,
         floaty = null;
 
     if (high > low) {
@@ -33,8 +34,12 @@ Floatys.prototype.update = function (low, high, left, width) {
     }
 
     if (this.current === this.max) {
-        if (this.floatys.length < 100) {
-            floaty = new Floaty(left + Math.random() * width, low, 10);
+        if (this.floatys.length < this.max_floaty) {
+            if (Math.random() >= 0.5) {
+                floaty = new Floaty(left + Math.random() * width, low, 10);
+            } else {
+                floaty = new Floaty(left + Math.random() * width, high, 10);
+            }
             floaty.setColor((new Colors()).random());
             this.floatys.push(floaty);
 
