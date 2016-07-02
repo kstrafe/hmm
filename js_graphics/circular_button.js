@@ -11,11 +11,7 @@
 "use strict";
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
-<<<<<<< HEAD
-var factBox = null; //new FactBox('test', 'text');
-=======
-var factBox = new FactBox('Definitions', 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).');
->>>>>>> 28678438ac7be8bb870a38854ae785d39820aae9
+var factBox = new FactBox('Definitions', '');
 
 var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
     mouseOnClick = null;
@@ -299,7 +295,6 @@ function mouseDownListener(evt) {
     for (i = 0; i < circles.length; i += 1) {
         if (hitTest(mouseOnClick, circles[i])) {
             factBox = new FactBox(circles[i].name, circles[i].facts)
-            //infoBox.text = ;
             onCircle = true;
             break;
         }
@@ -357,7 +352,7 @@ function init() {
             y: canvas.height / 2,
             r: 100,
             name: '1 + 1 = 2',
-            facts: 'Nothing here yet1',
+            facts: 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).',
             hl: false
         },
 
