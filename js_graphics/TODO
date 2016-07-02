@@ -1,15 +1,25 @@
-IDEA: Floaties start spawning in field of view
+IDEAS: 
+Floaties start spawning in field of view (and dissapears out of view)
+Education mode: Answer question to unlock new bubbles about more challenging things
+Help meny button; describe keyboard shortcuts
 
+	LONG(ER) TERM:
+		Short cut to places around the canvas
+
+
+TODO:
 Zoom functionality (tricky?)
 Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 Picture/Sprite rendering inside the infoboxes
-Clickable hyperlinks
+Clickable hyperlinks in info box
 Hyperlinks activating links to different bubbles
 Music class for queing and loading after finishing
 
-OLE: Bubble + Bubbles klasse
+
+FINNISHED:
 PARTIALLY DONE: OLE: Info box klasse
 
+DONE:OLE: Bubble + Bubbles klasse
 DONE: KEVIN: Use a single JS file for storing all bubbles and curves - this makes it easy for anyone to add something
 DONE: KEVIN: Add dev-key for showing various stats, most importantly current position
 DONE: KEVIN: Use a gradient texture instead of the heavy fillrect

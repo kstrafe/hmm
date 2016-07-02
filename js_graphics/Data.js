@@ -17,6 +17,14 @@ var all_bubbles = {
             facts: "A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments"
         },
 
+        oneplusone: {
+            x: 825,
+            y: -650,
+            r: 45,
+            title: "1 + 1 = 2",
+            facts: "Considered by many as the most elementary equation. In order to prove this equation we need to have laid down a number of axioms. Peano axioms is examples. Others might looks at this as a definition in itself."
+        },
+
         arithmetic: {
             x: -600,
             y: -950,
@@ -78,9 +86,19 @@ var all_bubbles = {
             end: "equality"
         },
 
+        eq_to_sym: {
+            begin: "equality",
+            end: "equality_symmetry"
+        },
+
         axiom_to_arith: {
             begin: "axioms",
             end: "arithmetic"
+        },
+
+        axiom_to_oneplusone: {
+            begin: "axioms",
+            end: "oneplusone"
         },
 
         arith_to_add: {
