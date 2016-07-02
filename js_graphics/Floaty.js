@@ -32,6 +32,10 @@ Floaty.prototype.move = function () {
     this.angle += 0.01;
 };
 
-Floaty.prototype.height = function () {
+Floaty.prototype.yPos = function () {
     return this.y;
+};
+
+Floaty.prototype.xPos = function () {
+    return this.x;
 };

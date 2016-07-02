@@ -4,8 +4,8 @@
 
 function Floatys() {
     this.floatys = [];
-    this.max = 70;
-    this.current = 50;
+    this.max = 0;
+    this.current = 0;
     this.max_floaty = 200;
     this.radii_start = 3;
     this.radii_diff = 47;
@@ -20,31 +20,24 @@ Floatys.prototype.draw = function (context) {
 
 Floatys.prototype.update = function (low, high, left, width) {
     var i = null,
-        height = null,
-        extra = 2000,
+        x = null,
+        y = null,
+        extra = 8000,
         floaty = null,
-        right = left + width,
-        bottom = low,
-        toppom = high,
-        toppom_height = null,
-        bottom_height = null,
-        radius = null;
+        radius = null,
+        x_left = left,
+        x_right = left + width,
+        y_top = high,
+        y_bottom = low;
 
     if (high > low) {
         console.log("Incorrect low/high given. 'high' must be less than 'low'. 'high' represents the top y coordinate, 'low' the bottom coordinate of the screen.");
     }
 
-    high -= extra;
-    low += extra;
-    left -= extra;
-    right += extra;
-    width = right - left;
-    bottom_height = low - bottom;
-    toppom_height = toppom - high;
-
     for (i = 0; i < this.floatys.length; i += 1) {
-        height = this.floatys[i].height();
-        if (height < high - extra || height > low + extra) {
+        x = this.floatys[i].xPos();
+        y = this.floatys[i].yPos();
+        if (x < x_left - extra || x > (x_right + extra) || y > (y_bottom + extra) || y < (y_top - extra)) {
             this.floatys.splice(i, 1);
         }
     }
@@ -54,9 +47,9 @@ Floatys.prototype.update = function (low, high, left, width) {
     if (this.current >= this.max) {
         if (this.floatys.length < this.max_floaty) {
             if (Math.random() >= 0.5) {
-                floaty = new Floaty(left + Math.random() * width, low - Math.random() * bottom_height, radius);
+                floaty = new Floaty(x_left - extra + Math.random() * ((x_right + extra) - (x_left - extra)), y_bottom + Math.random() * extra, radius);
             } else {
-                floaty = new Floaty(left + Math.random() * width, high + Math.random() * toppom_height, radius);
+                floaty = new Floaty(x_left - extra + Math.random() * ((x_right + extra) - (x_left - extra)), y_top - Math.random() * extra, radius);
             }
             floaty.setColor((new Colors()).random());
             this.floatys.push(floaty);
