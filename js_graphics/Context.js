@@ -8,6 +8,7 @@ function Context(canvas) {
     this.yOffset = 0;
     this.tmpxOffset = 0;
     this.tmpyOffset = 0;
+    this.blueGradient = null;
     this.offsetSpeed = {
         x: 0,
         y: 0
@@ -16,6 +17,7 @@ function Context(canvas) {
         x: 0,
         y: 0
     };
+    this.cacheGradient();
 }
 
 Context.prototype.centerOn = function (x, y) {
@@ -111,19 +113,31 @@ Context.prototype.onResize = function () {
     this.canvas.width = document.documentElement.clientWidth;
     this.canvas.height = document.documentElement.clientHeight;
     this.centerOn(center.x, center.y);
+    this.cacheGradient();
 };
 
-Context.prototype.renderBG = function () {
-    var gradient = null,
-        context = this.context,
-        canvas = this.canvas;
-    context.save();
+Context.prototype.cacheGradient = function () {
+    var canvas = document.createElement('canvas'),
+        context = null,
+        gradient = null;
+
+    context = canvas.getContext('2d');
+
+    canvas.width = this.canvas.width;
+    canvas.height = this.canvas.height;
+
     gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 5, canvas.width / 2, canvas.height / 2, 300);
     gradient.addColorStop(0, '#000028');
     gradient.addColorStop(1, '#080808');
-    context.fillStyle = "#000000";
+
+    context.fillStyle = gradient;
     context.fillRect(0, 0, canvas.width, canvas.height);
-    context.restore();
+    this.blueGradient = canvas;
+};
+
+Context.prototype.renderBG = function () {
+    var context = this.context;
+    context.drawImage(this.blueGradient, 0, 0);
 };
 
 Context.prototype.mousePos = function (evt) {
