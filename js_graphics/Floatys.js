@@ -4,8 +4,8 @@
 
 function Floatys() {
     this.floatys = [];
-    this.max = 30;
-    this.current = 20;
+    this.max = 70;
+    this.current = 50;
     this.max_floaty = 200;
 }
 
