@@ -1,6 +1,5 @@
 IDEA: Floaties start spawning in field of view
 
-Center the old position after an onResize event
 Zoom functionality (tricky?)
 Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 Picture/Sprite rendering inside the infoboxes
@@ -10,6 +9,7 @@ Music class for queing and loading after finishing
 Add dev-key for showing various stats, most importantly current position
 Use a single JS file for storing all bubbles and curves - this makes it easy for anyone to add something
 
+KEVIN: Center the old position after an onResize event
 OLE: Bubble + Bubbles klasse
 PARTIALLY DONE: OLE: Info box klasse
 
