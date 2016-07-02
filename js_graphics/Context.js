@@ -6,6 +6,7 @@ function Context(canvas) {
     this.devMode = false;
     this.context = canvas.getContext('2d');
     this.xOffset = 0;
+    this.scaleFactor = 1;
     this.yOffset = 0;
     this.tmpxOffset = 0;
     this.tmpyOffset = 0;
@@ -20,6 +21,10 @@ function Context(canvas) {
     };
     this.cacheGradient();
 }
+
+Context.prototype.zoom = function (factor) {
+    this.scaleFactor *= factor;
+};
 
 Context.prototype.centerOn = function (x, y) {
     var width = this.canvas.width,
@@ -62,6 +67,7 @@ Context.prototype.draw = function (drawables) {
     var i = null;
     this.context.save();
     this.context.translate(-this.xOffset - this.tmpxOffset, -this.yOffset - this.tmpyOffset);
+    this.context.scale(this.scaleFactor, this.scaleFactor);
     for (i = 0; i < drawables.length; i += 1) {
         this.drawAbsolute(drawables[i]);
     }

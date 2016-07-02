@@ -42,13 +42,13 @@ function mouseHoverListener(evt) {
     bubbles.hover(mousePos, sfx, context.getOffset());
 }
 
-/*
-function zoom() {
-    ctx.clearRect(0, 0, 100, 100);
-    ctx.translate(100, 100);
-    ctx.scale(0.9, 0.9);
+function zoom(evt) {
+    if (evt.deltaY > 0) {
+        context.zoom(0.5);
+    } else if (evt.deltaY < 0) {
+        context.zoom(2);
+    }
 }
-*/
 
 function mouseMoveListener(evt) {
     var mousePos = context.mousePos(evt),
@@ -155,7 +155,7 @@ function main() {
     }, false);
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
-    // canvas.addEventListener("mousewheel", zoom, false);
+    context.canvas.addEventListener("mousewheel", zoom, false);
     setInterval(function () {
         updateEverything();
         renderEverything();
