@@ -1,18 +1,19 @@
+IDEA: Floaties start spawning in field of view
+
 Center the old position after an onResize event
-Zoom funksjonalitet (tricky?)
-Curve klasse (for tilkoblinger mellom Boble)
-Lyd av/på knapp (bg og sfx) (ALL/BGM/SFX/NONE)
-Bilde tegning
+Zoom functionality (tricky?)
+Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
+Picture/Sprite rendering inside the infoboxes
 Clickable hyperlinks
 Hyperlinks activating links to different bubbles
-different radii floaties, floaties start spawning i field of view, allways drawn behind Bubbles
+Music class for queing and loading after finishing
 
+KEVIN: Different radii floaties
 OLE: Bubble + Bubbles klasse
-PRATIALLY DONE: OLE: Info box klasse
+PARTIALLY DONE: OLE: Info box klasse
 
-HOLD: KEVIN: Lyd klasse (håndterer slutten av sangen) + ajax lyd loading fra remote (vi kan ikke laste alle sanger samtidig fordi det tar for mye tid)
-
+DONE: OLE/KEVIN: Curve class (the curves connecting bubbles)
 DONE: KEVIN: Context class for managing global context transformation state
 DONE: OLE: Smoother borders på info box
-DONE: KEVIN: Random Floaty spawning
+DONE: KEVIN: Random Floaty spawning + drawin behind bubbles
 DONE: KEVIN: Arrow/vim -key scrolling

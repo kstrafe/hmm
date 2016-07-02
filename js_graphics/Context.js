@@ -69,7 +69,6 @@ Context.prototype.getOffset = function () {
 };
 
 Context.prototype.addOffset = function (dx, dy) {
-    console.log("AddOffset: dx, dy", dx, dy);
     this.offsetTemporary(0, 0);
     this.xOffset += dx;
     this.yOffset += dy;

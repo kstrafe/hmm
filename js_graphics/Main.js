@@ -27,7 +27,7 @@ var sfx = new Sfx();
 
 function renderEverything() {
     context.renderBG();
-    context.draw([bubbles, floaties, curves]);
+    context.draw([floaties, bubbles, curves]);
 }
 
 function updateEverything() {
