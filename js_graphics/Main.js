@@ -76,6 +76,7 @@ function renderEverything() {
 }
 
 function updateEverything() {
+    context.applySpeed();
     floaties.update(1080, 0, 0, 1080);
 }
 
@@ -130,116 +131,55 @@ function mouseDownListener(evt) {
     }
 }
 
-/*
 function setCanvasSpeed(key, speed) {
-    console.log(key.which, speed);
     switch (key.which) {
     case 72:
     case 37:
-        canvasSpeed.x = -speed;
+        context.setSpeedX(-speed);
         break;
     case 75:
     case 38:
-        canvasSpeed.y = -speed;
+        context.setSpeedY(-speed);
         break;
     case 76:
     case 39:
-        canvasSpeed.x = speed;
+        context.setSpeedX(speed);
         break;
     case 74:
     case 40:
-        canvasSpeed.y = speed;
+        context.setSpeedY(speed);
         break;
     }
 }
-*/
 
-/*
 function keyboardDown(key) {
-    // setCanvasSpeed(key, 20);
+    setCanvasSpeed(key, 20);
 }
 
 function keyboardUp(key) {
-    // setCanvasSpeed(key, 0);
+    setCanvasSpeed(key, 0);
 }
-*/
 
-/*
-function addSpeeds() {
-    // canvasTopLeft.x += canvasSpeed.x;
-    // canvasTopLeft.y += canvasSpeed.y;
-}
-*/
-
-function init() {
+function main() {
     var oneonetwoFacts = "The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).",
         oneonetwo = new Bubble(context.canvas.width / 2, context.canvas.height / 2, 100, '1 + 1 = 2', oneonetwoFacts, false),
         axiomFacts = 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
         axiom = new Bubble(context.canvas.width / 2 + 600, context.canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false);
-    /*
-        oneonetwo_old = {
-            x: context.canvas.width / 2,
-            y: context.canvas.height / 2,
-            r: 100,
-            name: '1 + 1 = 2',
-            facts: 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).',
-            hl: false
-        },
-
-        aksiom_old = {
-            x: context.canvas.width / 2 + 600,
-            y: context.canvas.height / 2 - 600,
-            r: 60,
-            name: 'Axiom',
-            facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
-            hl: false
-        };
-    */
 
     bubbles.add(oneonetwo);
     bubbles.add(axiom);
-
-    /*
-            circle1 = {
-                x: canvas.width / 2,
-                y: canvas.height / 2,
-                r: 50,
-                name: 'Natural numbers',
-                facts: 'Nothing here yet',
-                hl: false
-            },
-
-            circle2 = {
-                x: canvas.width / 2 + 300,
-                y: canvas.height / 2 + 200,
-                r: 40,
-                name: 'Complex numbers',
-                facts: 'Nothing here yet',
-                hl: false
-            },
-
-            circle3 = {
-                x: canvas.width / 2 - 100,
-                y: canvas.height / 2 - 200,
-                r: 45,
-                name: 'Irrational numbers',
-                facts: 'Nothing here yet',
-                hl: false
-            };
-    */
 
     context.onResize();
     context.canvas.addEventListener('mousemove', mouseHoverListener, false);
     context.canvas.addEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("resize", context.onResize, false);
-    // document.addEventListener("keydown", keyboardDown, false);
-    // document.addEventListener("keyup", keyboardUp, false);
-    //canvas.addEventListener("mousewheel", zoom, false);
+    document.addEventListener("keydown", keyboardDown, false);
+    document.addEventListener("keyup", keyboardUp, false);
+    // canvas.addEventListener("mousewheel", zoom, false);
     setInterval(function () {
         updateEverything();
-        // addSpeeds();
         renderEverything();
     }, 30);
 }
 
-init();
+main();
