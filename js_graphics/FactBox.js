@@ -4,6 +4,7 @@ function FactBox(title, text, image) {
     this.title = title;
     this.text = text;
     this.image = image;
+
 }
 
 FactBox.prototype.draw = function (context) {
@@ -53,10 +54,31 @@ FactBox.prototype.draw = function (context) {
     context.restore();
 
     //Draw text
-    context.fillStyle = '#FFFFFF';
-    context.textAlign = "center";
+    context.fillStyle = '#000000';
+    context.textAlign = "left";
     context.font = '20px Calibri';
-    context.fillText(this.text, 3 / 4 * context.canvas.width, 125);
+    this.wrapText(context, this.text, 3 / 4 * context.canvas.width - (downRight.x - upLeft.x - 25) / 2, 125, downRight.x - upLeft.x - 25, 25)
+    //context.fillText(this.text, 3 / 4 * context.canvas.width, 125);
 
     context.restore();
 };
+
+FactBox.prototype.wrapText = function (context, text, x, y, maxWidth, lineHeight) {
+        var words = text.split(' ');
+        var line = '';
+
+        for(var n = 0; n < words.length; n++) {
+          var testLine = line + words[n] + ' ';
+          var metrics = context.measureText(testLine);
+          var testWidth = metrics.width;
+          if (testWidth > maxWidth && n > 0) {
+            context.fillText(line, x, y);
+            line = words[n] + ' ';
+            y += lineHeight;
+          }
+          else {
+            line = testLine;
+          }
+        }
+        context.fillText(line, x, y);
+      }

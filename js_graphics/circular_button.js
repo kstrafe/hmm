@@ -12,7 +12,7 @@
 "use strict";
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
-var factBox = new FactBox('Definitions', 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).');
+var factBox = new FactBox('Definitions', '');
 
 var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
     mouseOnClick = null;
@@ -44,8 +44,7 @@ var canvasSpeed = {
 };
 
 var infoBox = {
-    show: false,
-    text: ''
+    show: false
 };
 
 
@@ -296,7 +295,7 @@ function mouseDownListener(evt) {
 
     for (i = 0; i < circles.length; i += 1) {
         if (hitTest(mouseOnClick, circles[i])) {
-            infoBox.text = circles[i].facts;
+            factBox = new FactBox(circles[i].name, circles[i].facts)
             onCircle = true;
             break;
         }
@@ -354,7 +353,7 @@ function init() {
             y: canvas.height / 2,
             r: 100,
             name: '1 + 1 = 2',
-            facts: 'Nothing here yet1',
+            facts: 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).',
             hl: false
         },
 
@@ -363,7 +362,7 @@ function init() {
             y: canvas.height / 2 - 600,
             r: 60,
             name: 'Axiom',
-            facts: 'Nothing here yet2',
+            facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
             hl: false
         };
 
