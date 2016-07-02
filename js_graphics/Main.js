@@ -21,9 +21,6 @@ var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3');
 audio.play();
 var sfx = new Sfx();
 
-var mouseOnClick = null;
-var circles;
-
 function drawLine(context, xOffset, yOffset, c1, c2) {
 
     var c1x = c1.x - xOffset,
@@ -178,7 +175,8 @@ function init() {
     var oneonetwoFacts = "The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).",
         oneonetwo = new Bubble(context.canvas.width / 2, context.canvas.height / 2, 100, '1 + 1 = 2', oneonetwoFacts, false),
         axiomFacts = 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
-        axiom = new Bubble(context.canvas.width / 2 + 600, context.canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false),
+        axiom = new Bubble(context.canvas.width / 2 + 600, context.canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false);
+    /*
         oneonetwo_old = {
             x: context.canvas.width / 2,
             y: context.canvas.height / 2,
@@ -196,6 +194,7 @@ function init() {
             facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
             hl: false
         };
+    */
 
     bubbles.add(oneonetwo);
     bubbles.add(axiom);
@@ -228,10 +227,6 @@ function init() {
                 hl: false
             };
     */
-
-    //circles = [circle1, circle2, circle3];
-    circles = [oneonetwo_old, aksiom_old];
-    //console.log(circle)
 
     context.onResize();
     context.canvas.addEventListener('mousemove', mouseHoverListener, false);
