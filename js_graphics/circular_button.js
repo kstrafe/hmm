@@ -6,9 +6,12 @@
 /*global Floaty*/
 /*global Floatys*/
 /*global Sfx*/
+/*global FactBox*/
+
 "use strict";
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
+var factBox = new FactBox('test', 'text');
 
 var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
     mouseOnClick = null;
@@ -185,32 +188,6 @@ function drawLine(context, xOffset, yOffset, c1, c2) {
     context.restore();
 }
 
-function writeToBox(context, infoText) {
-    context.save();
-    context.fillStyle = '#FFFFFF';
-    context.textAlign = "center";
-    context.font = '30px Calibri';
-    context.fillText(infoText, 3 / 4 * canvas.width, 100);
-    context.restore();
-}
-
-function drawInfoBox(context, infoText) {
-    context.save();
-    context.beginPath();
-    context.lineWidth = 1;
-    context.strokeStyle = '#DDDDDD';
-    context.shadowColor = '#000028';
-    context.globalAlpha = 0.4;
-    context.fillStyle = '#DDDDDD';
-    context.fillRect(canvas.width / 2 + 50, 50, canvas.width / 2 - 100, canvas.height - 100);
-    context.stroke();
-
-    context.restore();
-
-    writeToBox(context, infoText);
-
-}
-
 function updateEntities() {
     floaties.update(1080, 0, 0, 1080);
 }
@@ -236,7 +213,9 @@ function renderCanvas(circles) {
     ctx.restore();
 
     if (infoBox.show) {
-        drawInfoBox(ctx, infoBox.text);
+      
+      factBox.draw(ctx);
+      //drawInfoBox(ctx, infoBox.text);
     }
 }
 
@@ -325,7 +304,6 @@ function mouseDownListener(evt) {
     }
     if (onCircle) {
         window.removeEventListener("mouseup", mouseUpListener, false);
-        //drawInfoBox(ctx, circles[i].facts);
         infoBox.show = true;
         canvas.addEventListener('mousemove', mouseHoverListener, false);
     } else {
