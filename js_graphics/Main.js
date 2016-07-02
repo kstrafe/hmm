@@ -6,6 +6,7 @@
 /*global Bubbles*/
 /*global Colors*/
 /*global Context*/
+/*global Curve*/
 /*global Curves*/
 /*global FactBox*/
 /*global Floaty*/
@@ -17,7 +18,8 @@ var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
 var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
-var curves = new Curves(context.canvas.width / 2, context.canvas.height / 2, 100, context.canvas.width / 2, context.canvas.height / 2, 100);
+var curves = new Curves();
+curves.append(new Curve(context.canvas.width / 2, context.canvas.height / 2, 100, context.canvas.width / 2, context.canvas.height / 2, 100));
 
 var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3');
 audio.play();
