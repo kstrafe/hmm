@@ -25,6 +25,15 @@ Context.prototype.centerOn = function (x, y) {
     this.yOffset = y - height / 2;
 };
 
+Context.prototype.getCenterOn = function () {
+    var width = this.canvas.width,
+        height = this.canvas.height;
+    return {
+        x: this.xOffset + width / 2,
+        y: this.yOffset + height / 2
+    };
+};
+
 Context.prototype.applySpeed = function () {
     this.xOffset += this.offsetSpeed.x;
     this.yOffset += this.offsetSpeed.y;
@@ -98,8 +107,10 @@ Context.prototype.high = function () {
 };
 
 Context.prototype.onResize = function () {
+    var center = this.getCenterOn();
     this.canvas.width = document.documentElement.clientWidth;
     this.canvas.height = document.documentElement.clientHeight;
+    this.centerOn(center.x, center.y);
 };
 
 Context.prototype.renderBG = function () {

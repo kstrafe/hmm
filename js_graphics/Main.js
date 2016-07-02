@@ -133,7 +133,7 @@ function main() {
     context.centerOn(0, 0);
     context.canvas.addEventListener('mousemove', mouseHoverListener, false);
     context.canvas.addEventListener("mousedown", mouseDownListener, false);
-    window.addEventListener("resize", context.onResize, false);
+    window.addEventListener("resize", function () { context.onResize(); }, false);
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
     // canvas.addEventListener("mousewheel", zoom, false);
