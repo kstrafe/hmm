@@ -15,8 +15,8 @@ Bubbles.prototype.add = function (bubble) {
     this.bubbles.push(bubble);
 };
 
-Bubbles.prototype.getBubbles = function () {
-    return this.bubbles;
+Bubbles.prototype.getBubble = function (index) {
+    return this.bubbles[index];
 };
 
 Bubbles.prototype.length = function () {

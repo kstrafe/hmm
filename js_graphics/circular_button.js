@@ -150,13 +150,6 @@ function getMousePos(canvas, evt) {
     };
 }
 
-function hitTest(mousePos, bubble) {
-    var coord = bubble.getXY(),
-        rMouseCenter = (mousePos.x - coord.x + canvasTopLeft.x) * (mousePos.x - coord.x + canvasTopLeft.x) + (mousePos.y - coord.y + canvasTopLeft.y) * (mousePos.y - coord.y + canvasTopLeft.y);
-
-    //console.log(rMouseCenter < (bubble.getR()) * (bubble.getR()));
-    return rMouseCenter < (bubble.getR()) * (bubble.getR());
-}
 
 function mouseHoverListener(evt) {
     var mousePos = getMousePos(canvas, evt),
@@ -164,13 +157,13 @@ function mouseHoverListener(evt) {
 
     for (i = 0; i < bubbles.length(); i += 1) {
 
-        if (hitTest(mousePos, bubbles.bubbles[i])) {
-            if (bubbles.bubbles[i].getHL() === false) {
+        if (bubbles.getBubble(i).hitTest(mousePos, canvasTopLeft)) {
+            if (bubbles.getBubble(i).getHL() === false) {
                 sfx.hover();
-                bubbles.bubbles[i].setHighlighting(true);
+                bubbles.getBubble(i).setHighlighting(true);
             }
         } else {
-            bubbles.bubbles[i].setHighlighting(false);
+            bubbles.getBubble(i).setHighlighting(false);
         }
     }
 
@@ -220,8 +213,8 @@ function mouseDownListener(evt) {
     mouseOnClick = getMousePos(canvas, evt);
 
     for (i = 0; i < bubbles.length(); i += 1) {
-        if (hitTest(mouseOnClick, bubbles.bubbles[i])) {
-            info = bubbles.bubbles[i].getNameAndFacts();
+        if (bubbles.getBubble(i).hitTest(mouseOnClick, canvasTopLeft)) {
+            info = bubbles.getBubble(i).getNameAndFacts();
             factBox = new FactBox(info.name, info.facts);
             onCircle = true;
             break;

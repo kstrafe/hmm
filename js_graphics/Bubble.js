@@ -20,9 +20,11 @@ Bubble.prototype.getXY = function () {
 Bubble.prototype.getR = function () {
     return this.r;
 };
+
 Bubble.prototype.getHL = function () {
     return this.highlighted;
 };
+
 Bubble.prototype.draw = function (context) {
     context.save();
 
@@ -58,7 +60,7 @@ Bubble.prototype.getNameAndFacts = function () {
     };
 };
 
-Bubble.prototype.fitTextInBubble = function wrapText(context, name, x, y, r, hl) {
+Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
     var AVG_CHAR_SIZE = 0.4586, // Calibri 1px, unit: [px/(ch 1px)]
         words = name.split(' '),
         fontSize = null,
@@ -109,4 +111,11 @@ Bubble.prototype.fitTextInBubble = function wrapText(context, name, x, y, r, hl)
     }
 
     context.restore();
+};
+
+Bubble.prototype.hitTest = function (mousePos, canvasTopLeft) {
+    var coord = this.getXY(),
+        rMouseCenter = (mousePos.x - coord.x + canvasTopLeft.x) * (mousePos.x - coord.x + canvasTopLeft.x) + (mousePos.y - coord.y + canvasTopLeft.y) * (mousePos.y - coord.y + canvasTopLeft.y);
+
+    return rMouseCenter < (this.getR()) * (this.getR());
 };
