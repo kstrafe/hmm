@@ -1,3 +1,6 @@
+BUGS:
+Zooming out doesn't transform the mouse coordinates correctly, you can't click on Bubbles
+
 IDEAS:
 Floaties start spawning in field of view (and dissapears out of view)
 Education mode: Answer question to unlock new bubbles about more challenging things
