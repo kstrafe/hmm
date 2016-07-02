@@ -19,7 +19,6 @@ var floaties = new Floatys();
 var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
 var curves = new Curves();
-curves.append(new Curve(0, 0, 100, 0, 0, 100));
 
 var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3');
 audio.play();
@@ -126,6 +125,9 @@ function main() {
 
     bubbles.add(oneonetwo);
     bubbles.add(axiom);
+
+    curves.append(new Curve(0, 0, 100, 0, 0, 100));
+    curves.append(new Curve(0, 0, 100, 600, -640, 100));
 
     context.onResize();
     context.centerOn(0, 0);
