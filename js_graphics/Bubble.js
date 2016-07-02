@@ -114,8 +114,8 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
 };
 
 Bubble.prototype.hitTest = function (mousePos, canvasTopLeft) {
-    var coord = this.getXY();
-    var rMouseCenter = (mousePos.x - coord.x + canvasTopLeft.x) * (mousePos.x - coord.x + canvasTopLeft.x) + (mousePos.y - coord.y + canvasTopLeft.y) * (mousePos.y - coord.y + canvasTopLeft.y);
+    var coord = this.getXY(),
+        rMouseCenter = (mousePos.x - coord.x + canvasTopLeft.x) * (mousePos.x - coord.x + canvasTopLeft.x) + (mousePos.y - coord.y + canvasTopLeft.y) * (mousePos.y - coord.y + canvasTopLeft.y);
 
     return rMouseCenter < (this.getR()) * (this.getR());
 };

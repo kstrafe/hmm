@@ -23,10 +23,10 @@ Bubbles.prototype.length = function () {
     return this.bubbles.length;
 };
 
-Bubbles.prototype.hover = function (mousePos, sfx) {
+Bubbles.prototype.hover = function (mousePos, sfx, offset) {
     var i = null;
-    for (i = 0; i < bubbles.length(); i += 1) {
-        if (this.getBubble(i).hitTest(mousePos, context.getOffset())) {
+    for (i = 0; i < this.length(); i += 1) {
+        if (this.getBubble(i).hitTest(mousePos, offset)) {
             if (this.getBubble(i).getHL() === false) {
                 sfx.hover();
                 this.getBubble(i).setHighlighting(true);

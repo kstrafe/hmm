@@ -84,14 +84,16 @@ function updateEverything() {
 
 function mouseHoverListener(evt) {
     var mousePos = context.mousePos(evt);
-    bubbles.hover(mousePos, sfx);
+    bubbles.hover(mousePos, sfx, context.getOffset());
 }
 
+/*
 function zoom() {
     ctx.clearRect(0, 0, 100, 100);
     ctx.translate(100, 100);
     ctx.scale(0.9, 0.9);
 }
+*/
 
 function mouseMoveListener(evt) {
     var mousePos = context.mousePos(evt),
@@ -102,9 +104,9 @@ function mouseMoveListener(evt) {
 }
 
 function mouseUpListener(evt) {
-    canvas.removeEventListener('mousemove', mouseMoveListener, false);
+    context.canvas.removeEventListener('mousemove', mouseMoveListener, false);
     window.removeEventListener("mouseup", mouseUpListener, false);
-    canvas.addEventListener('mousemove', mouseHoverListener, false);
+    context.canvas.addEventListener('mousemove', mouseHoverListener, false);
 
     var mouseOnUp = context.mousePos(evt),
         mouseOnDown = context.mouseDown;
@@ -114,8 +116,6 @@ function mouseUpListener(evt) {
 
 function mouseDownListener(evt) {
     var onCircle = false,
-        i = null,
-        info = null,
         mousePos = null;
 
     context.canvas.removeEventListener('mousemove', mouseHoverListener, false);
@@ -133,6 +133,7 @@ function mouseDownListener(evt) {
     }
 }
 
+/*
 function setCanvasSpeed(key, speed) {
     console.log(key.which, speed);
     switch (key.which) {
@@ -154,7 +155,9 @@ function setCanvasSpeed(key, speed) {
         break;
     }
 }
+*/
 
+/*
 function keyboardDown(key) {
     // setCanvasSpeed(key, 20);
 }
@@ -162,20 +165,23 @@ function keyboardDown(key) {
 function keyboardUp(key) {
     // setCanvasSpeed(key, 0);
 }
+*/
 
+/*
 function addSpeeds() {
     // canvasTopLeft.x += canvasSpeed.x;
     // canvasTopLeft.y += canvasSpeed.y;
 }
+*/
 
 function init() {
     var oneonetwoFacts = "The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).",
-        oneonetwo = new Bubble(canvas.width / 2, canvas.height / 2, 100, '1 + 1 = 2', oneonetwoFacts, false),
+        oneonetwo = new Bubble(context.canvas.width / 2, context.canvas.height / 2, 100, '1 + 1 = 2', oneonetwoFacts, false),
         axiomFacts = 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
-        axiom = new Bubble(canvas.width / 2 + 600, canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false),
+        axiom = new Bubble(context.canvas.width / 2 + 600, context.canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false),
         oneonetwo_old = {
-            x: canvas.width / 2,
-            y: canvas.height / 2,
+            x: context.canvas.width / 2,
+            y: context.canvas.height / 2,
             r: 100,
             name: '1 + 1 = 2',
             facts: 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).',
@@ -183,8 +189,8 @@ function init() {
         },
 
         aksiom_old = {
-            x: canvas.width / 2 + 600,
-            y: canvas.height / 2 - 600,
+            x: context.canvas.width / 2 + 600,
+            y: context.canvas.height / 2 - 600,
             r: 60,
             name: 'Axiom',
             facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
@@ -228,15 +234,15 @@ function init() {
     //console.log(circle)
 
     context.onResize();
-    canvas.addEventListener('mousemove', mouseHoverListener, false);
-    canvas.addEventListener("mousedown", mouseDownListener, false);
+    context.canvas.addEventListener('mousemove', mouseHoverListener, false);
+    context.canvas.addEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("resize", context.onResize, false);
-    document.addEventListener("keydown", keyboardDown, false);
-    document.addEventListener("keyup", keyboardUp, false);
+    // document.addEventListener("keydown", keyboardDown, false);
+    // document.addEventListener("keyup", keyboardUp, false);
     //canvas.addEventListener("mousewheel", zoom, false);
     setInterval(function () {
         updateEverything();
-        addSpeeds();
+        // addSpeeds();
         renderEverything();
     }, 30);
 }

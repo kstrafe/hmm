@@ -1,3 +1,4 @@
+/*global document*/
 "use strict";
 
 function Context(canvas) {
@@ -7,7 +8,10 @@ function Context(canvas) {
     this.yOffset = 0;
     this.tmpxOffset = 0;
     this.tmpyOffset = 0;
-    this.mouseDown = { x: 0, y: 0 };
+    this.mouseDown = {
+        x: 0,
+        y: 0
+    };
 }
 
 Context.prototype.drawAbsolute = function (drawable) {
@@ -45,14 +49,14 @@ Context.prototype.getOffset = function () {
         x: this.xOffset,
         y: this.yOffset
     };
-}
+};
 
 Context.prototype.addOffset = function (dx, dy) {
     console.log("AddOffset: dx, dy", dx, dy);
     this.offsetTemporary(0, 0);
     this.xOffset += dx;
     this.yOffset += dy;
-}
+};
 
 Context.prototype.onResize = function () {
     this.canvas.width = document.documentElement.clientWidth;
