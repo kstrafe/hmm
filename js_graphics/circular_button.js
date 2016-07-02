@@ -84,7 +84,7 @@ function updateEverything() {
 
 function mouseHoverListener(evt) {
     var mousePos = context.mousePos(evt);
-    bubbles.hover(mousePos);
+    bubbles.hover(mousePos, sfx);
 }
 
 function zoom() {
@@ -95,8 +95,9 @@ function zoom() {
 
 function mouseMoveListener(evt) {
     var mousePos = context.mousePos(evt),
-        dx = mouseOnClick.x - mousePos.x,
-        dy = mouseOnClick.y - mousePos.y;
+        offtmp = context.mouseDown,
+        dx = offtmp.x - mousePos.x,
+        dy = offtmp.y - mousePos.y;
     context.offsetTemporary(dx, dy);
 }
 
@@ -105,33 +106,30 @@ function mouseUpListener(evt) {
     window.removeEventListener("mouseup", mouseUpListener, false);
     canvas.addEventListener('mousemove', mouseHoverListener, false);
 
-    var mouseOnUp = context.mousePos(evt);
-    context.addOffset(mouseOnClick.x - mouseOnUp.x, mouseOnClick.y - mouseOnUp.y);
+    var mouseOnUp = context.mousePos(evt),
+        mouseOnDown = context.mouseDown;
 
+    context.addOffset(mouseOnDown.x - mouseOnUp.x, mouseOnDown.y - mouseOnUp.y);
 }
 
 function mouseDownListener(evt) {
     var onCircle = false,
         i = null,
-        info = null;
-    canvas.removeEventListener('mousemove', mouseHoverListener, false);
+        info = null,
+        mousePos = null;
+
+    context.canvas.removeEventListener('mousemove', mouseHoverListener, false);
     window.addEventListener("mouseup", mouseUpListener, false);
 
-    mouseOnClick = context.mousePos(evt);
+    mousePos = context.mousePos(evt);
+    context.mouseDown = mousePos;
+    onCircle = bubbles.click(mousePos, context.getOffset());
 
-    for (i = 0; i < bubbles.length(); i += 1) {
-        if (bubbles.getBubble(i).hitTest(mouseOnClick, context.getOffset())) {
-            info = bubbles.getBubble(i).getNameAndFacts();
-            factBox = new FactBox(info.name, info.facts);
-            onCircle = true;
-            break;
-        }
-    }
     if (onCircle) {
         window.removeEventListener("mouseup", mouseUpListener, false);
-        canvas.addEventListener('mousemove', mouseHoverListener, false);
+        context.canvas.addEventListener('mousemove', mouseHoverListener, false);
     } else {
-        canvas.addEventListener('mousemove', mouseMoveListener, false);
+        context.canvas.addEventListener('mousemove', mouseMoveListener, false);
     }
 }
 

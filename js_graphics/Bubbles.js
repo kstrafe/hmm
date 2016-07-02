@@ -23,16 +23,27 @@ Bubbles.prototype.length = function () {
     return this.bubbles.length;
 };
 
-Bubbles.prototype.hover = function (mousePos) {
+Bubbles.prototype.hover = function (mousePos, sfx) {
     var i = null;
     for (i = 0; i < bubbles.length(); i += 1) {
         if (this.getBubble(i).hitTest(mousePos, context.getOffset())) {
             if (this.getBubble(i).getHL() === false) {
-                // sfx.hover();
+                sfx.hover();
                 this.getBubble(i).setHighlighting(true);
             }
         } else {
             this.getBubble(i).setHighlighting(false);
+        }
+    }
+};
+
+Bubbles.prototype.click = function (mousePos, offset) {
+    var i = null;
+    for (i = 0; i < this.length(); i += 1) {
+        if (this.getBubble(i).hitTest(mousePos, offset)) {
+            // info = this.getBubble(i).getNameAndFacts();
+            // factBox = new FactBox(info.name, info.facts);
+            return true;
         }
     }
 };

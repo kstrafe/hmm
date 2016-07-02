@@ -7,6 +7,7 @@ function Context(canvas) {
     this.yOffset = 0;
     this.tmpxOffset = 0;
     this.tmpyOffset = 0;
+    this.mouseDown = { x: 0, y: 0 };
 }
 
 Context.prototype.drawAbsolute = function (drawable) {
@@ -32,6 +33,13 @@ Context.prototype.offsetTemporary = function (x, y) {
     this.tmpyOffset = y;
 };
 
+Context.prototype.getTempOffset = function () {
+    return {
+        x: this.tmpxOffset,
+        y: this.tmpyOffset
+    };
+};
+
 Context.prototype.getOffset = function () {
     return {
         x: this.xOffset,
@@ -40,6 +48,7 @@ Context.prototype.getOffset = function () {
 }
 
 Context.prototype.addOffset = function (dx, dy) {
+    console.log("AddOffset: dx, dy", dx, dy);
     this.offsetTemporary(0, 0);
     this.xOffset += dx;
     this.yOffset += dy;
@@ -66,7 +75,7 @@ Context.prototype.renderBG = function () {
 Context.prototype.mousePos = function (evt) {
     var rect = this.canvas.getBoundingClientRect();
     return {
-        x: (evt.clientX - rect.left) * (canvas.width / rect.width),
-        y: (evt.clientY - rect.top) * (canvas.height / rect.height)
+        x: (evt.clientX - rect.left) * (this.canvas.width / rect.width),
+        y: (evt.clientY - rect.top) * (this.canvas.height / rect.height)
     };
 };
