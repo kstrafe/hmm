@@ -2,6 +2,8 @@
 /*global document*/
 /*global window*/
 
+/*global all_bubbles*/
+/*global all_curves*/
 /*global Bubble*/
 /*global Bubbles*/
 /*global Colors*/
@@ -122,16 +124,27 @@ function keyboardUp(key) {
 }
 
 function main() {
-    var oneonetwoFacts = "The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).",
-        oneonetwo = new Bubble(0, 0, 100, '1 + 1 = 2', oneonetwoFacts, false),
-        axiomFacts = 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
-        axiom = new Bubble(600, -600, 60, 'Axiom', axiomFacts, false);
+    var i = null,
+        b = null,
+        begin = null,
+        end = null;
+    for (i in all_bubbles) {
+        if (all_bubbles.hasOwnProperty(i)) {
+            b = all_bubbles[i];
+            b = new Bubble(b.x, b.y, b.r, b.title, b.facts);
+            bubbles.add(b);
+        }
+    }
 
-    bubbles.add(oneonetwo);
-    bubbles.add(axiom);
-
-    curves.append(new Curve(0, 0, 100, 0, 0, 100));
-    curves.append(new Curve(0, 0, 100, 600, -640, 100));
+    for (i in all_curves) {
+        if (all_curves.hasOwnProperty(i)) {
+            b = all_curves[i];
+            begin = all_bubbles[b.begin];
+            end = all_bubbles[b.end];
+            b = new Curve(begin.x, begin.y, begin.r, end.x, end.y, end.r);
+            curves.append(b);
+        }
+    }
 
     context.onResize();
     context.centerOn(0, 0);
