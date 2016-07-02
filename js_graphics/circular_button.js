@@ -8,6 +8,8 @@
 /*global Floatys*/
 /*global Sfx*/
 /*global FactBox*/
+/*global Bubble*/
+/*global Bubbles*/
 
 "use strict";
 var context = new Context(document.getElementById('canvas'));
@@ -52,6 +54,7 @@ var circles;
 
 
 //function wrapText(context, name, x, y, maxWidth, lineHeight) {
+/*
 function wrapText(context, name, x, y, r, hl) {
     var AVG_CHAR_SIZE = 0.4586, // Calibri 1px, unit: [px/(ch 1px)]
         words = name.split(' '),
@@ -103,7 +106,9 @@ function wrapText(context, name, x, y, r, hl) {
 
     context.restore();
 }
+*/
 
+/*
 function renderButton(context, x, y, r, name, highlighted) {
     context.save();
 
@@ -127,6 +132,7 @@ function renderButton(context, x, y, r, name, highlighted) {
 
     wrapText(context, name, x, y, r, highlighted);
 }
+*/
 
 function renderBackground(context) {
     var gradient = null;
@@ -206,9 +212,13 @@ function renderCanvas(circles) {
     //drawLine(circles[0], circles[2])
     drawLine(ctx, 0, 0, circles[0], circles[1]);
 
+    bubbles.draw(ctx);
+
+    /*
     for (i = 0; i < circles.length; i += 1) {
         renderButton(ctx, circles[i].x, circles[i].y, circles[i].r, circles[i].name, circles[i].hl);
-    }
+    } */
+
     floaties.draw(ctx);
     ctx.restore();
 
@@ -348,6 +358,19 @@ function addSpeeds() {
 }
 
 function init() {
+  var oneonetwoFacts = "The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).",
+    oneonetwo = new Bubble(canvas.width / 2, canvas.height / 2, 100, '1 + 1 = 2', oneonetwoFacts, false),
+    axiomFacts = 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
+    axiom = new Bubble(canvas.width / 2 + 600, canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false),
+    bubbles = new Bubbles();
+
+  bubbles.add(oneonetwo),
+  bubbles.add(axiom);
+
+
+
+
+  /*
     var oneonetwo = {
             x: canvas.width / 2,
             y: canvas.height / 2,
@@ -365,7 +388,7 @@ function init() {
             facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
             hl: false
         };
-
+    */
     /*
             circle1 = {
                 x: canvas.width / 2,
