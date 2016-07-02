@@ -8,7 +8,6 @@
 /*global Sfx*/
 "use strict";
 var context = new Context(document.getElementById('canvas'));
-var floaty = new Floaty(0, 50, 10);
 var floaties = new Floatys();
 
 var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
@@ -213,7 +212,6 @@ function drawInfoBox(context, infoText) {
 }
 
 function updateEntities() {
-    // floaty.move();
     floaties.update(1080, 0, 0, 1080);
 }
 
@@ -234,7 +232,6 @@ function renderCanvas(circles) {
     for (i = 0; i < circles.length; i += 1) {
         renderButton(ctx, circles[i].x, circles[i].y, circles[i].r, circles[i].name, circles[i].hl);
     }
-    // floaty.draw(ctx);
     floaties.draw(ctx);
     ctx.restore();
 
