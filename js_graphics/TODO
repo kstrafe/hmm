@@ -1,5 +1,4 @@
 Bubble + Bubbles klasse
-Lyd klasse (håndterer slutten av sangen) + ajax lyd loading fra remote (vi kan ikke laste alle sanger samtidig fordi det tar for mye tid)
 Zoom funksjonalitet (tricky?)
 Smoother borders på info box
 Info box klasse
@@ -9,5 +8,6 @@ Bilde tegning
 Clickable hyperlinks
 Hyperlinks activating links to different bubbles
 
+KEVIN: Lyd klasse (håndterer slutten av sangen) + ajax lyd loading fra remote (vi kan ikke laste alle sanger samtidig fordi det tar for mye tid)
 DONE: KEVIN: Random Floaty spawning
 DONE: KEVIN: Arrow/vim -key scrolling
