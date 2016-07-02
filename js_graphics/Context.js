@@ -3,6 +3,7 @@
 
 function Context(canvas) {
     this.canvas = canvas;
+    this.devMode = false;
     this.context = canvas.getContext('2d');
     this.xOffset = 0;
     this.yOffset = 0;
@@ -138,6 +139,21 @@ Context.prototype.cacheGradient = function () {
 Context.prototype.renderBG = function () {
     var context = this.context;
     context.drawImage(this.blueGradient, 0, 0);
+    this.drawDevMode();
+};
+
+Context.prototype.flipDevMode = function () {
+    this.devMode = !this.devMode;
+};
+
+Context.prototype.drawDevMode = function () {
+    var ctx = this.context;
+    if (this.devMode) {
+        ctx.fillStyle = "#FF0000";
+        ctx.textAlign = "left";
+        ctx.font = '30px Calibri';
+        ctx.fillText('x: ' + this.xOffset + ' y: ' + this.yOffset, 0, this.canvas.height);
+    }
 };
 
 Context.prototype.mousePos = function (evt) {

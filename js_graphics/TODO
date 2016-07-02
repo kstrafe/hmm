@@ -8,10 +8,10 @@ Hyperlinks activating links to different bubbles
 Music class for queing and loading after finishing
 Use a single JS file for storing all bubbles and curves - this makes it easy for anyone to add something
 
-KEVIN: Add dev-key for showing various stats, most importantly current position
 OLE: Bubble + Bubbles klasse
 PARTIALLY DONE: OLE: Info box klasse
 
+DONE: KEVIN: Add dev-key for showing various stats, most importantly current position
 DONE: KEVIN: Use a gradient texture instead of the heavy fillrect
 DONE: KEVIN: Center the old position after an onResize event
 DONE: KEVIN: Different radii floaties

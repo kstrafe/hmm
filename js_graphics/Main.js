@@ -110,7 +110,11 @@ function setCanvasSpeed(key, speed) {
 }
 
 function keyboardDown(key) {
-    setCanvasSpeed(key, 20);
+    if (key.which === 68) {
+        context.flipDevMode();
+    } else {
+        setCanvasSpeed(key, 20);
+    }
 }
 
 function keyboardUp(key) {
