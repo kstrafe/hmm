@@ -34,6 +34,11 @@ var canvasTopLeft = {
     y: 0
 };
 
+var canvasSpeed = {
+    x: 0,
+    y: 0
+};
+
 var infoBox = {
     show: false,
     text: ''
@@ -333,6 +338,46 @@ function mouseDownListener(evt) {
     renderCanvas(circles);
 }
 
+function keyboardDown(key) {
+    var scrollSpeed = 20;
+    switch (key.which) {
+    case 37:
+        canvasSpeed.x = -scrollSpeed;
+        break;
+    case 38:
+        canvasSpeed.y = -scrollSpeed;
+        break;
+    case 39:
+        canvasSpeed.x = scrollSpeed;
+        break;
+    case 40:
+        canvasSpeed.y = scrollSpeed;
+        break;
+    }
+}
+
+function keyboardUp(key) {
+    switch (key.which) {
+    case 37:
+        canvasSpeed.x = 0;
+        break;
+    case 38:
+        canvasSpeed.y = 0;
+        break;
+    case 39:
+        canvasSpeed.x = 0;
+        break;
+    case 40:
+        canvasSpeed.y = 0;
+        break;
+    }
+}
+
+function addSpeeds() {
+    canvasTopLeft.x += canvasSpeed.x;
+    canvasTopLeft.y += canvasSpeed.y;
+}
+
 function init() {
     var oneonetwo = {
             x: canvas.width / 2,
@@ -388,9 +433,12 @@ function init() {
     canvas.addEventListener('mousemove', mouseHoverListener, false);
     canvas.addEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("resize", onResize, false);
+    document.addEventListener("keydown", keyboardDown, false);
+    document.addEventListener("keyup", keyboardUp, false);
     canvas.addEventListener("mousewheel", zoom, false);
     setInterval(function () {
         updateEntities();
+        addSpeeds();
         renderCanvas(circles);
     }, 30);
 }
