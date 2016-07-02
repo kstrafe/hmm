@@ -44,7 +44,7 @@ Floatys.prototype.update = function (low, high, left, width) {
 
     for (i = 0; i < this.floatys.length; i += 1) {
         height = this.floatys[i].height();
-        if (height < high - extra) {
+        if (height < high - extra || height > low + extra) {
             this.floatys.splice(i, 1);
         }
     }
