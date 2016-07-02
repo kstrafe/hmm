@@ -11,8 +11,8 @@ Bubbles.prototype.drawAll = function (context) {
     }
 };
 
-Bubbles.prototype.add = function (Bubble) {
-    this.bubbles.push(Bubble);
+Bubbles.prototype.add = function (bubble) {
+    this.bubbles.push(bubble);
 };
 
 Bubbles.prototype.getBubbles = function () {

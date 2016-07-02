@@ -117,8 +117,7 @@ function updateEntities() {
 }
 
 function renderCanvas(bubbles) {
-    var i = null,
-        xOffset = canvasTopLeft.x + canvasPosition.x,
+    var xOffset = canvasTopLeft.x + canvasPosition.x,
         yOffset = canvasTopLeft.y + canvasPosition.y;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -152,9 +151,8 @@ function getMousePos(canvas, evt) {
 }
 
 function hitTest(mousePos, bubble) {
-    var coord = bubble.getXY();
-    var rMouseCenter = (mousePos.x - coord.x + canvasTopLeft.x) * (mousePos.x - coord.x + canvasTopLeft.x) +
-        (mousePos.y - coord.y + canvasTopLeft.y) * (mousePos.y - coord.y + canvasTopLeft.y);
+    var coord = bubble.getXY(),
+        rMouseCenter = (mousePos.x - coord.x + canvasTopLeft.x) * (mousePos.x - coord.x + canvasTopLeft.x) + (mousePos.y - coord.y + canvasTopLeft.y) * (mousePos.y - coord.y + canvasTopLeft.y);
 
     //console.log(rMouseCenter < (bubble.getR()) * (bubble.getR()));
     return rMouseCenter < (bubble.getR()) * (bubble.getR());
@@ -224,7 +222,7 @@ function mouseDownListener(evt) {
     for (i = 0; i < bubbles.length(); i += 1) {
         if (hitTest(mouseOnClick, bubbles.bubbles[i])) {
             info = bubbles.bubbles[i].getNameAndFacts();
-            factBox = new FactBox(info.name, info.facts)
+            factBox = new FactBox(info.name, info.facts);
             onCircle = true;
             break;
         }
@@ -277,34 +275,31 @@ function addSpeeds() {
 }
 
 function init() {
-  var oneonetwoFacts = "The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).",
-    oneonetwo = new Bubble(canvas.width / 2, canvas.height / 2, 100, '1 + 1 = 2', oneonetwoFacts, false),
-    axiomFacts = 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
-    axiom = new Bubble(canvas.width / 2 + 600, canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false);
-    
+    var oneonetwoFacts = "The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).",
+        oneonetwo = new Bubble(canvas.width / 2, canvas.height / 2, 100, '1 + 1 = 2', oneonetwoFacts, false),
+        axiomFacts = 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
+        axiom = new Bubble(canvas.width / 2 + 600, canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false),
+        oneonetwo_old = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            r: 100,
+            name: '1 + 1 = 2',
+            facts: 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).',
+            hl: false
+        },
 
-  bubbles.add(oneonetwo),
-  bubbles.add(axiom);
+        aksiom_old = {
+            x: canvas.width / 2 + 600,
+            y: canvas.height / 2 - 600,
+            r: 60,
+            name: 'Axiom',
+            facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
+            hl: false
+        };
 
+    bubbles.add(oneonetwo);
+    bubbles.add(axiom);
 
-  var oneonetwo_old = {
-          x: canvas.width / 2,
-          y: canvas.height / 2,
-          r: 100,
-          name: '1 + 1 = 2',
-          facts: 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).',
-          hl: false
-      },
-
-      aksiom_old = {
-          x: canvas.width / 2 + 600,
-          y: canvas.height / 2 - 600,
-          r: 60,
-          name: 'Axiom',
-          facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
-          hl: false
-      };
-  
     /*
             circle1 = {
                 x: canvas.width / 2,
