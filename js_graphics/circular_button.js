@@ -83,20 +83,8 @@ function updateEverything() {
 }
 
 function mouseHoverListener(evt) {
-    var mousePos = context.mousePos(evt),
-        i = null;
-
-    for (i = 0; i < bubbles.length(); i += 1) {
-
-        if (bubbles.getBubble(i).hitTest(mousePos, context.getOffset())) {
-            if (bubbles.getBubble(i).getHL() === false) {
-                sfx.hover();
-                bubbles.getBubble(i).setHighlighting(true);
-            }
-        } else {
-            bubbles.getBubble(i).setHighlighting(false);
-        }
-    }
+    var mousePos = context.mousePos(evt);
+    bubbles.hover(mousePos);
 }
 
 function zoom() {
