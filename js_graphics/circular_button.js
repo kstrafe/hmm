@@ -338,39 +338,34 @@ function mouseDownListener(evt) {
     renderCanvas(circles);
 }
 
-function keyboardDown(key) {
-    var scrollSpeed = 20;
+function setCanvasSpeed(key, speed) {
+    console.log(key.which, speed);
     switch (key.which) {
+    case 72:
     case 37:
-        canvasSpeed.x = -scrollSpeed;
+        canvasSpeed.x = -speed;
         break;
+    case 75:
     case 38:
-        canvasSpeed.y = -scrollSpeed;
+        canvasSpeed.y = -speed;
         break;
+    case 76:
     case 39:
-        canvasSpeed.x = scrollSpeed;
+        canvasSpeed.x = speed;
         break;
+    case 74:
     case 40:
-        canvasSpeed.y = scrollSpeed;
+        canvasSpeed.y = speed;
         break;
     }
 }
 
+function keyboardDown(key) {
+    setCanvasSpeed(key, 20);
+}
+
 function keyboardUp(key) {
-    switch (key.which) {
-    case 37:
-        canvasSpeed.x = 0;
-        break;
-    case 38:
-        canvasSpeed.y = 0;
-        break;
-    case 39:
-        canvasSpeed.x = 0;
-        break;
-    case 40:
-        canvasSpeed.y = 0;
-        break;
-    }
+    setCanvasSpeed(key, 0);
 }
 
 function addSpeeds() {
