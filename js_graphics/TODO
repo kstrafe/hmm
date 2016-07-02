@@ -8,10 +8,10 @@ Clickable hyperlinks
 Hyperlinks activating links to different bubbles
 Music class for queing and loading after finishing
 
-KEVIN: Different radii floaties
 OLE: Bubble + Bubbles klasse
 PARTIALLY DONE: OLE: Info box klasse
 
+DONE: KEVIN: Different radii floaties
 DONE: OLE/KEVIN: Curve class (the curves connecting bubbles)
 DONE: KEVIN: Context class for managing global context transformation state
 DONE: OLE: Smoother borders på info box

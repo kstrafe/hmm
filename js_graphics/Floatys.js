@@ -7,6 +7,8 @@ function Floatys() {
     this.max = 70;
     this.current = 50;
     this.max_floaty = 200;
+    this.radii_start = 3;
+    this.radii_diff = 47;
 }
 
 Floatys.prototype.draw = function (context) {
@@ -25,7 +27,8 @@ Floatys.prototype.update = function (low, high, left, width) {
         bottom = low,
         toppom = high,
         toppom_height = null,
-        bottom_height = null;
+        bottom_height = null,
+        radius = null;
 
     if (high > low) {
         console.log("Incorrect low/high given. 'high' must be less than 'low'. 'high' represents the top y coordinate, 'low' the bottom coordinate of the screen.");
@@ -46,12 +49,14 @@ Floatys.prototype.update = function (low, high, left, width) {
         }
     }
 
+    radius = this.radii_start + Math.random() * this.radii_diff;
+
     if (this.current >= this.max) {
         if (this.floatys.length < this.max_floaty) {
             if (Math.random() >= 0.5) {
-                floaty = new Floaty(left + Math.random() * width, low - Math.random() * bottom_height, 10);
+                floaty = new Floaty(left + Math.random() * width, low - Math.random() * bottom_height, radius);
             } else {
-                floaty = new Floaty(left + Math.random() * width, high + Math.random() * toppom_height, 10);
+                floaty = new Floaty(left + Math.random() * width, high + Math.random() * toppom_height, radius);
             }
             floaty.setColor((new Colors()).random());
             this.floatys.push(floaty);
