@@ -30,6 +30,13 @@ Context.prototype.offsetTemporary = function (x, y) {
     this.yOffset = y;
 };
 
+Context.prototype.getOffset = function () {
+    return {
+        x: this.xOffset,
+        y: this.yOffset
+    };
+}
+
 Context.prototype.onResize = function () {
     this.canvas.width = document.documentElement.clientWidth;
     this.canvas.height = document.documentElement.clientHeight;

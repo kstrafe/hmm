@@ -75,10 +75,10 @@ function drawLine(context, xOffset, yOffset, c1, c2) {
 
 function renderEverything() {
     context.renderBG();
-    context.draw([bubbles]);
+    context.draw([bubbles, floaties]);
 }
 
-function updateEntities() {
+function updateEverything() {
     floaties.update(1080, 0, 0, 1080);
 }
 
@@ -92,13 +92,12 @@ function getMousePos(canvas, evt) {
 
 
 function mouseHoverListener(evt) {
-    return;
     var mousePos = getMousePos(canvas, evt),
         i = null;
 
     for (i = 0; i < bubbles.length(); i += 1) {
 
-        if (bubbles.getBubble(i).hitTest(mousePos, canvasTopLeft)) {
+        if (bubbles.getBubble(i).hitTest(mousePos, context.getOffset())) {
             if (bubbles.getBubble(i).getHL() === false) {
                 sfx.hover();
                 bubbles.getBubble(i).setHighlighting(true);
@@ -107,8 +106,6 @@ function mouseHoverListener(evt) {
             bubbles.getBubble(i).setHighlighting(false);
         }
     }
-
-    renderCanvas(bubbles);
 }
 
 function zoom() {
@@ -278,7 +275,7 @@ function init() {
     document.addEventListener("keyup", keyboardUp, false);
     //canvas.addEventListener("mousewheel", zoom, false);
     setInterval(function () {
-        updateEntities();
+        updateEverything();
         addSpeeds();
         renderEverything();
     }, 30);
