@@ -14,7 +14,7 @@ var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
 var factBox = new FactBox('Definitions', '');
 
-var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
+var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3'),
     mouseOnClick = null;
 audio.play();
 var canvas = document.getElementById('canvas');

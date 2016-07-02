@@ -4,9 +4,9 @@
 
 function Floatys() {
     this.floatys = [];
-    this.max = 700;
-    this.current = 600;
-    this.max_floaty = 5;
+    this.max = 300;
+    this.current = 200;
+    this.max_floaty = 20;
 }
 
 Floatys.prototype.draw = function (context) {
@@ -29,11 +29,11 @@ Floatys.prototype.update = function (low, high, left, width) {
     for (i = 0; i < this.floatys.length; i += 1) {
         height = this.floatys[i].height();
         if (height < high - extra) {
-            this.floatys.splice(i, i);
+            this.floatys.splice(i, 1);
         }
     }
 
-    if (this.current === this.max) {
+    if (this.current >= this.max) {
         if (this.floatys.length < this.max_floaty) {
             if (Math.random() >= 0.5) {
                 floaty = new Floaty(left + Math.random() * width, low, 10);
