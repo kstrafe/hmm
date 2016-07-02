@@ -6,6 +6,7 @@
 /*global Bubbles*/
 /*global Colors*/
 /*global Context*/
+/*global Curves*/
 /*global FactBox*/
 /*global Floaty*/
 /*global Floatys*/
@@ -16,69 +17,15 @@ var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
 var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
+var curves = new Curves(context.canvas.width / 2, context.canvas.height / 2, 100, context.canvas.width / 2, context.canvas.height / 2, 100);
 
 var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3');
 audio.play();
 var sfx = new Sfx();
 
-
-var mouseOnClick = null;
-//var circles;
-
-/*
-function drawLine(context, xOffset, yOffset, c1, c2) {
-
-    var c1x = c1.x - xOffset,
-        c1y = c1.y - yOffset,
-        c2x = c2.x - xOffset,
-        c2y = c2.y - yOffset,
-        dx = c2x - c1.x,
-        dy = c2y - c1y,
-        a = null,
-        x0 = null,
-        y0 = null,
-        x1 = null,
-        y1 = null,
-        x2 = null,
-        y2 = null,
-        x3 = null,
-        y3 = null;
-
-    context.save();
-
-    a = Math.atan2(dy, dx);
-
-    x0 = c1x + c1.r * Math.cos(a + 0.5) + 5 * Math.sign(dx);
-    y0 = c1y + c1.r * Math.sin(a + 0.5) + 5 * Math.sign(dy);
-
-    x1 = c1x + 2 * c1.r * Math.cos(a + 0.5);
-    y1 = c1y + 2 * c1.r * Math.sin(a + 0.5);
-
-    a = a + Math.PI;
-
-    x2 = c2x + 2 * c2.r * Math.cos(a - 0.5);
-    y2 = c2y + 2 * c2.r * Math.sin(a - 0.5);
-
-    x3 = c2x + c2.r * Math.cos(a - 0.5) - 5 * Math.sign(dx);
-    y3 = c2y + c2.r * Math.sin(a - 0.5) - 5 * Math.sign(dy);
-
-    context.beginPath();
-    context.moveTo(x0, y0);
-    context.bezierCurveTo(x1, y1, x2, y2, x3, y3);
-    context.lineWidth = 2;
-    context.shadowBlur = 2.5;
-    context.shadowColor = '#4E8800';
-    context.strokeStyle = '#4E8800';
-    context.lineCap = 'round';
-    context.stroke();
-
-    context.restore();
-}
-*/
-
 function renderEverything() {
     context.renderBG();
-    context.draw([bubbles, floaties]);
+    context.draw([bubbles, floaties, curves]);
 }
 
 function updateEverything() {
@@ -174,39 +121,6 @@ function main() {
 
     bubbles.add(oneonetwo);
     bubbles.add(axiom);
-
-    /*
-            circle1 = {
-                x: canvas.width / 2,
-                y: canvas.height / 2,
-                r: 50,
-                name: 'Natural numbers',
-                facts: 'Nothing here yet',
-                hl: false
-            },
-
-            circle2 = {
-                x: canvas.width / 2 + 300,
-                y: canvas.height / 2 + 200,
-                r: 40,
-                name: 'Complex numbers',
-                facts: 'Nothing here yet',
-                hl: false
-            },
-
-            circle3 = {
-                x: canvas.width / 2 - 100,
-                y: canvas.height / 2 - 200,
-                r: 45,
-                name: 'Irrational numbers',
-                facts: 'Nothing here yet',
-                hl: false
-            };
-    */
-
-    //circles = [circle1, circle2, circle3];
-    //circles = [oneonetwo_old, aksiom_old];
-    //console.log(circle)
 
     context.onResize();
     context.canvas.addEventListener('mousemove', mouseHoverListener, false);

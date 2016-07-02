@@ -1,17 +1,17 @@
-OLE: Bubble + Bubbles klasse
 Zoom funksjonalitet (tricky?)
-DONE: OLE: Smoother borders på info box
 Curve klasse (for tilkoblinger mellom Boble)
 Lyd av/på knapp (bg og sfx) (ALL/BGM/SFX/NONE)
 Bilde tegning
 Clickable hyperlinks
 Hyperlinks activating links to different bubbles
 
+OLE: Bubble + Bubbles klasse
 PRATIALLY DONE: OLE: Info box klasse
 KEVIN: Context class for managing global context transformation state
 
 HOLD: KEVIN: Lyd klasse (håndterer slutten av sangen) + ajax lyd loading fra remote (vi kan ikke laste alle sanger samtidig fordi det tar for mye tid)
 
+DONE: OLE: Smoother borders på info box
 DONE: KEVIN: Random Floaty spawning
 	New feature ideas: different radii floaties, floaties start spawning i field of view, allways drawn behind Bubbles
 DONE: KEVIN: Arrow/vim -key scrolling
