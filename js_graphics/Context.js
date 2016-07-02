@@ -8,11 +8,28 @@ function Context(canvas) {
     this.yOffset = 0;
     this.tmpxOffset = 0;
     this.tmpyOffset = 0;
+    this.offsetSpeed = {
+        x: 0,
+        y: 0
+    };
     this.mouseDown = {
         x: 0,
         y: 0
     };
 }
+
+Context.prototype.applySpeed = function () {
+    this.xOffset += this.offsetSpeed.x;
+    this.yOffset += this.offsetSpeed.y;
+};
+
+Context.prototype.setSpeedX = function (speed) {
+    this.offsetSpeed.x = speed;
+};
+
+Context.prototype.setSpeedY = function (speed) {
+    this.offsetSpeed.y = speed;
+};
 
 Context.prototype.drawAbsolute = function (drawable) {
     drawable.draw(this.context);
