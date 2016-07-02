@@ -1,17 +1,30 @@
-"use strict"
+"use strict";
 
 function Bubble(x, y, r, name, facts, highlighted) {
-	this.x = x;
-	this.y = y;
-	this.r = r;
-	this.name = name;
-	this.facts = facts;
-	this.highlighted = highlighted;
-	this.color = '#4E8800';
+    this.x = x;
+    this.y = y;
+    this.r = r;
+    this.name = name;
+    this.facts = facts;
+    this.highlighted = highlighted;
+    this.color = '#4E8800';
+}
+
+Bubble.prototype.getXY = function () {
+    return {
+        x: this.x,
+        y: this.y
+    };
 };
 
+Bubble.prototype.getR = function () {
+    return this.r;
+};
+Bubble.prototype.getHL = function () {
+    return this.highlighted;
+};
 Bubble.prototype.draw = function (context) {
-	context.save();
+    context.save();
 
     context.beginPath();
     context.lineWidth = 3;
@@ -19,9 +32,9 @@ Bubble.prototype.draw = function (context) {
     context.shadowColor = this.color;
     context.strokeStyle = this.color;
 
-    context.arc(x, y, r, 0, 2 * Math.PI);
+    context.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
 
-    if (highlighted) {
+    if (this.highlighted) {
         context.lineWidth = 4;
         context.shadowBlur = 15;
         context.shadowColor = '#6ED80D';
@@ -31,7 +44,18 @@ Bubble.prototype.draw = function (context) {
     context.stroke();
     context.restore();
 
-    this.fitTextInBubble(context, name, x, y, r, highlighted);
+    this.fitTextInBubble(context, this.name, this.x, this.y, this.r, this.highlighted);
+};
+
+Bubble.prototype.setHighlighting = function (bool) {
+    this.highlighted = bool;
+};
+
+Bubble.prototype.getNameAndFacts = function () {
+    return {
+        name: this.name,
+        facts: this.facts
+    };
 };
 
 Bubble.prototype.fitTextInBubble = function wrapText(context, name, x, y, r, hl) {
@@ -85,4 +109,4 @@ Bubble.prototype.fitTextInBubble = function wrapText(context, name, x, y, r, hl)
     }
 
     context.restore();
-}
+};

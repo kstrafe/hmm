@@ -17,8 +17,8 @@ FactBox.prototype.draw = function (context) {
             x: context.canvas.width - 50,
             y: context.canvas.height - 100
         };
-    console.log(upLeft);
-    console.log(downRight);
+    //console.log(upLeft);
+    //console.log(downRight);
 
     context.save();
 

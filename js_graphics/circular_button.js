@@ -14,7 +14,8 @@
 "use strict";
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
-var factBox = new FactBox('Definitions', '');
+var factBox = new FactBox('', '');
+var bubbles = new Bubbles();
 
 var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3'),
     mouseOnClick = null;
@@ -49,90 +50,7 @@ var infoBox = {
     show: false
 };
 
-
 var circles;
-
-
-//function wrapText(context, name, x, y, maxWidth, lineHeight) {
-/*
-function wrapText(context, name, x, y, r, hl) {
-    var AVG_CHAR_SIZE = 0.4586, // Calibri 1px, unit: [px/(ch 1px)]
-        words = name.split(' '),
-        fontSize = null,
-        maxLen = null,
-        lineHeight = null,
-        n = null;
-
-    context.save();
-    if (hl) {
-        context.shadowBlur = 2.5;
-        context.shadowColor = '#FFFFFF';
-    }
-
-    //var maxWidth = 0.9*2*r;
-    //console.log(context.fillStyle)
-    context.fillStyle = '#DDDDDD';
-    context.textAlign = "center";
-
-
-    if (words.length === 1) {
-        fontSize = (0.85 * 2 * r) / (AVG_CHAR_SIZE * words[0].length);
-        y = y + fontSize / 3;
-
-    } else if (words.length === 2) {
-        maxLen = Math.max(words[0].length, words[1].length);
-        fontSize = (0.75 * 2 * r) / (AVG_CHAR_SIZE * maxLen);
-        y = y - fontSize * 0.1;
-
-    } else if (words.length === 3) {
-        maxLen = Math.max(words[0].length, words[1].length, words[2].length);
-        fontSize = (0.6 * 2 * r) / (AVG_CHAR_SIZE * maxLen);
-        y = y - fontSize / 2;
-
-    } else {
-        words = [name];
-        fontSize = (0.85 * 2 * r) / (AVG_CHAR_SIZE * words[0].length);
-        y = y + fontSize / 3;
-    }
-    //totlen = avgCharSize*name.length*fontSize
-    //console.log(fontSize)
-    lineHeight = fontSize;
-    context.font = fontSize + "px Calibri";
-
-    for (n = 0; n < words.length; n += 1) {
-        context.fillText(words[n], x, y);
-        y += lineHeight / 1.25;
-    }
-
-    context.restore();
-}
-*/
-
-/*
-function renderButton(context, x, y, r, name, highlighted) {
-    context.save();
-
-    context.beginPath();
-    context.lineWidth = 3;
-    context.shadowBlur = 10;
-    context.shadowColor = '#4E8800';
-    context.strokeStyle = '#4E8800';
-
-    context.arc(x, y, r, 0, 2 * Math.PI);
-
-    if (highlighted) {
-        context.lineWidth = 4;
-        context.shadowBlur = 15;
-        context.shadowColor = '#6ED80D';
-        context.strokeStyle = '#69B00C';
-    }
-
-    context.stroke();
-    context.restore();
-
-    wrapText(context, name, x, y, r, highlighted);
-}
-*/
 
 function renderBackground(context) {
     var gradient = null;
@@ -198,7 +116,7 @@ function updateEntities() {
     floaties.update(1080, 0, 0, 1080);
 }
 
-function renderCanvas(circles) {
+function renderCanvas(bubbles) {
     var i = null,
         xOffset = canvasTopLeft.x + canvasPosition.x,
         yOffset = canvasTopLeft.y + canvasPosition.y;
@@ -210,14 +128,11 @@ function renderCanvas(circles) {
     ctx.translate(-xOffset, -yOffset);
 
     //drawLine(circles[0], circles[2])
-    drawLine(ctx, 0, 0, circles[0], circles[1]);
-
-    bubbles.draw(ctx);
-
-    /*
-    for (i = 0; i < circles.length; i += 1) {
-        renderButton(ctx, circles[i].x, circles[i].y, circles[i].r, circles[i].name, circles[i].hl);
-    } */
+    //console.log(circles)
+    //drawLine(ctx, 0, 0, circles[0], circles[1]);
+    //console.log(bubbles);
+    //throw error;
+    bubbles.drawAll(ctx);
 
     floaties.draw(ctx);
     ctx.restore();
@@ -236,30 +151,32 @@ function getMousePos(canvas, evt) {
     };
 }
 
-function hitTest(mousePos, circle) {
+function hitTest(mousePos, bubble) {
+    var coord = bubble.getXY();
+    var rMouseCenter = (mousePos.x - coord.x + canvasTopLeft.x) * (mousePos.x - coord.x + canvasTopLeft.x) +
+        (mousePos.y - coord.y + canvasTopLeft.y) * (mousePos.y - coord.y + canvasTopLeft.y);
 
-    var rMouseCenter = (mousePos.x - circle.x + canvasTopLeft.x) * (mousePos.x - circle.x + canvasTopLeft.x) +
-        (mousePos.y - circle.y + canvasTopLeft.y) * (mousePos.y - circle.y + canvasTopLeft.y);
-
-    return rMouseCenter < (circle.r) * (circle.r);
+    //console.log(rMouseCenter < (bubble.getR()) * (bubble.getR()));
+    return rMouseCenter < (bubble.getR()) * (bubble.getR());
 }
-
 
 function mouseHoverListener(evt) {
     var mousePos = getMousePos(canvas, evt),
         i = null;
-    for (i = 0; i < circles.length; i += 1) {
-        if (hitTest(mousePos, circles[i])) {
-            if (circles[i].hl === false) {
+
+    for (i = 0; i < bubbles.length(); i += 1) {
+
+        if (hitTest(mousePos, bubbles.bubbles[i])) {
+            if (bubbles.bubbles[i].getHL() === false) {
                 sfx.hover();
-                circles[i].hl = true;
+                bubbles.bubbles[i].setHighlighting(true);
             }
         } else {
-            circles[i].hl = false;
+            bubbles.bubbles[i].setHighlighting(false);
         }
     }
 
-    renderCanvas(circles);
+    renderCanvas(bubbles);
 }
 
 function zoom() {
@@ -275,7 +192,7 @@ function mouseMoveListener(evt) {
     canvasPosition.x = dx;
     canvasPosition.y = dy;
 
-    renderCanvas(circles);
+    renderCanvas(bubbles);
 }
 
 function mouseUpListener(evt) {
@@ -292,20 +209,22 @@ function mouseUpListener(evt) {
         y: 0
     };
 
-    renderCanvas(circles);
+    renderCanvas(bubbles);
 }
 
 function mouseDownListener(evt) {
     var onCircle = false,
-        i = null;
+        i = null,
+        info = null;
     canvas.removeEventListener('mousemove', mouseHoverListener, false);
     window.addEventListener("mouseup", mouseUpListener, false);
 
     mouseOnClick = getMousePos(canvas, evt);
 
-    for (i = 0; i < circles.length; i += 1) {
-        if (hitTest(mouseOnClick, circles[i])) {
-            factBox = new FactBox(circles[i].name, circles[i].facts)
+    for (i = 0; i < bubbles.length(); i += 1) {
+        if (hitTest(mouseOnClick, bubbles.bubbles[i])) {
+            info = bubbles.bubbles[i].getNameAndFacts();
+            factBox = new FactBox(info.name, info.facts)
             onCircle = true;
             break;
         }
@@ -319,7 +238,7 @@ function mouseDownListener(evt) {
         canvas.addEventListener('mousemove', mouseMoveListener, false);
     }
 
-    renderCanvas(circles);
+    renderCanvas(bubbles);
 }
 
 function setCanvasSpeed(key, speed) {
@@ -361,34 +280,31 @@ function init() {
   var oneonetwoFacts = "The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).",
     oneonetwo = new Bubble(canvas.width / 2, canvas.height / 2, 100, '1 + 1 = 2', oneonetwoFacts, false),
     axiomFacts = 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
-    axiom = new Bubble(canvas.width / 2 + 600, canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false),
-    bubbles = new Bubbles();
+    axiom = new Bubble(canvas.width / 2 + 600, canvas.height / 2 - 600, 60, 'Axiom', axiomFacts, false);
+    
 
   bubbles.add(oneonetwo),
   bubbles.add(axiom);
 
 
+  var oneonetwo_old = {
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          r: 100,
+          name: '1 + 1 = 2',
+          facts: 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).',
+          hl: false
+      },
 
-
-  /*
-    var oneonetwo = {
-            x: canvas.width / 2,
-            y: canvas.height / 2,
-            r: 100,
-            name: '1 + 1 = 2',
-            facts: 'The equals sign can be used as a simple statement of fact (x = 2). The plus symbol (+) is a binary operator dependeny on its argument types. The same applies to multiplication (*), subtraction (-), and division (/).',
-            hl: false
-        },
-
-        aksiom = {
-            x: canvas.width / 2 + 600,
-            y: canvas.height / 2 - 600,
-            r: 60,
-            name: 'Axiom',
-            facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
-            hl: false
-        };
-    */
+      aksiom_old = {
+          x: canvas.width / 2 + 600,
+          y: canvas.height / 2 - 600,
+          r: 60,
+          name: 'Axiom',
+          facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
+          hl: false
+      };
+  
     /*
             circle1 = {
                 x: canvas.width / 2,
@@ -419,9 +335,10 @@ function init() {
     */
 
     //circles = [circle1, circle2, circle3];
-    circles = [oneonetwo, aksiom];
+    circles = [oneonetwo_old, aksiom_old];
+    //console.log(circle)
 
-    renderCanvas(circles);
+    //renderCanvas(bubbles);
     canvas.addEventListener('mousemove', mouseHoverListener, false);
     canvas.addEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("resize", onResize, false);
@@ -431,7 +348,7 @@ function init() {
     setInterval(function () {
         updateEntities();
         addSpeeds();
-        renderCanvas(circles);
+        renderCanvas(bubbles);
     }, 30);
 }
 
