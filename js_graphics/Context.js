@@ -62,3 +62,11 @@ Context.prototype.renderBG = function () {
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.restore();
 };
+
+Context.prototype.mousePos = function (evt) {
+    var rect = this.canvas.getBoundingClientRect();
+    return {
+        x: (evt.clientX - rect.left) * (canvas.width / rect.width),
+        y: (evt.clientY - rect.top) * (canvas.height / rect.height)
+    };
+};

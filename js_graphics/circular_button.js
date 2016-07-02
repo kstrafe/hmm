@@ -82,17 +82,8 @@ function updateEverything() {
     floaties.update(1080, 0, 0, 1080);
 }
 
-function getMousePos(canvas, evt) {
-    var rect = canvas.getBoundingClientRect();
-    return {
-        x: (evt.clientX - rect.left) * (canvas.width / rect.width),
-        y: (evt.clientY - rect.top) * (canvas.height / rect.height)
-    };
-}
-
-
 function mouseHoverListener(evt) {
-    var mousePos = getMousePos(canvas, evt),
+    var mousePos = context.mousePos(evt),
         i = null;
 
     for (i = 0; i < bubbles.length(); i += 1) {
@@ -115,7 +106,7 @@ function zoom() {
 }
 
 function mouseMoveListener(evt) {
-    var mousePos = getMousePos(canvas, evt),
+    var mousePos = context.mousePos(evt),
         dx = mouseOnClick.x - mousePos.x,
         dy = mouseOnClick.y - mousePos.y;
     context.offsetTemporary(dx, dy);
@@ -126,7 +117,7 @@ function mouseUpListener(evt) {
     window.removeEventListener("mouseup", mouseUpListener, false);
     canvas.addEventListener('mousemove', mouseHoverListener, false);
 
-    var mouseOnUp = getMousePos(canvas, evt);
+    var mouseOnUp = context.mousePos(evt);
     context.addOffset(mouseOnClick.x - mouseOnUp.x, mouseOnClick.y - mouseOnUp.y);
 
 }
@@ -138,7 +129,7 @@ function mouseDownListener(evt) {
     canvas.removeEventListener('mousemove', mouseHoverListener, false);
     window.addEventListener("mouseup", mouseUpListener, false);
 
-    mouseOnClick = getMousePos(canvas, evt);
+    mouseOnClick = context.mousePos(evt);
 
     for (i = 0; i < bubbles.length(); i += 1) {
         if (bubbles.getBubble(i).hitTest(mouseOnClick, context.getOffset())) {
