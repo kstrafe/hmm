@@ -11,7 +11,7 @@
 "use strict";
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
-var factBox = new FactBox('test', 'text');
+var factBox = null; //new FactBox('test', 'text');
 
 var audio = new Audio('Chronicles_of_Creation_Suite_No._1.mp3'),
     mouseOnClick = null;
@@ -43,8 +43,7 @@ var canvasSpeed = {
 };
 
 var infoBox = {
-    show: false,
-    text: ''
+    show: false
 };
 
 
@@ -295,7 +294,8 @@ function mouseDownListener(evt) {
 
     for (i = 0; i < circles.length; i += 1) {
         if (hitTest(mouseOnClick, circles[i])) {
-            infoBox.text = circles[i].facts;
+            factBox = new FactBox(circles[i].name, circles[i].facts)
+            //infoBox.text = ;
             onCircle = true;
             break;
         }
@@ -362,7 +362,7 @@ function init() {
             y: canvas.height / 2 - 600,
             r: 60,
             name: 'Axiom',
-            facts: 'Nothing here yet2',
+            facts: 'A statement that is so evident or well-established, that it is accepted without controversy or question. Thus, the axiom can be used as the premise or starting point for further reasoning or arguments',
             hl: false
         };
 
