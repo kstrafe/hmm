@@ -115,10 +115,20 @@ function setCanvasSpeed(key, speed) {
 }
 
 function keyboardDown(key) {
-    if (key.which === 68) {
+    console.log(key);
+    switch (key.which) {
+    case 68:
         context.flipDevMode();
-    } else {
+        break;
+    case 189:
+        context.zoomOut();
+        break;
+    case 187:
+        context.zoomIn();
+        break;
+    default:
         setCanvasSpeed(key, 20);
+        break;
     }
 }
 

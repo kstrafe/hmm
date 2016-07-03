@@ -19,7 +19,6 @@ Different coloration in the tree based on subject
 
 TODO:
 Add 'm' key for quick mute
-Add keys - and + for zooming
 Latex rendering in infoboxes
 Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 Picture/Sprite rendering inside the infoboxes
@@ -32,8 +31,8 @@ Make the zoom zoom toward position of the mouse
 FINNISHED:
 PARTIALLY DONE: OLE: Info box class
 
-KEVIN: BUG: Zooming out doesn't transform the mouse coordinates correctly, you can't click on Bubbles
-
+DONE: KEVIN: Add keys - and + for zooming
+DONE: KEVIN: BUG: Zooming out doesn't transform the mouse coordinates correctly, you can't click on Bubbles
 DONE: KEVIN: Limit zoom range and avoid usage of multipliers
 DONE: KEVIN: Zoom functionality (tricky?)
 DONE: OLE: Bubble + Bubbles klasse
