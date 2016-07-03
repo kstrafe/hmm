@@ -117,6 +117,9 @@ function setCanvasSpeed(key, speed) {
 function keyboardDown(key) {
     console.log(key);
     switch (key.which) {
+    case 77:
+        sfx.flipMute();
+        break;
     case 68:
         context.flipDevMode();
         break;
