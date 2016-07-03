@@ -153,7 +153,6 @@ Context.prototype.cacheGradient = function () {
 Context.prototype.renderBG = function () {
     var context = this.context;
     context.drawImage(this.blueGradient, 0, 0);
-    this.drawDevMode();
 };
 
 Context.prototype.flipDevMode = function () {
@@ -168,7 +167,10 @@ Context.prototype.drawDevMode = function () {
         ctx.textAlign = "left";
         ctx.font = '30px Calibri';
         ctx.fillText('x: ' + 1/this.scaleFactor*(this.xOffset + this.canvas.width / 2)
-            + ' y: ' + 1/this.scaleFactor*(this.yOffset + this.canvas.height / 2) + ' mouse: (' + mouse.x + ', ' + mouse.y + ')', 0, this.canvas.height);
+            + ' y: ' + 1/this.scaleFactor*(this.yOffset + this.canvas.height / 2)
+            + ' mouse: (' + mouse.x + ', ' + mouse.y + ')'
+            + ' mt: (' + (this.xOffset + mouse.x) + ', ' + (this.yOffset + mouse.y) + ')'
+            , 0, this.canvas.height);
     }
 };
 

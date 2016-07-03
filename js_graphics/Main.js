@@ -30,6 +30,7 @@ function renderEverything() {
     context.renderBG();
     context.draw([floaties, bubbles, curves]);
     context.drawAbsolute(factBox);
+    context.drawDevMode();
 }
 
 function updateEverything() {
