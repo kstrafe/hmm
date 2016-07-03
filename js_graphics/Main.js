@@ -45,9 +45,9 @@ function mouseHoverListener(evt) {
 
 function zoom(evt) {
     if (evt.deltaY > 0) {
-        context.zoom(0.5);
+        context.zoomOut();
     } else if (evt.deltaY < 0) {
-        context.zoom(2);
+        context.zoomIn();
     }
 }
 

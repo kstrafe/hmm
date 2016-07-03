@@ -24,13 +24,30 @@ function Context(canvas) {
         y: 0
     };
     this.cacheGradient();
+    this.zoomList = [0.125, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0];
+    this.zoomIndex = 4;
 }
 
-Context.prototype.zoom = function (factor) {
-    var center = this.getCenterOn();
-    center.x *= factor;
-    center.y *= factor;
-    this.scaleFactor *= factor;
+Context.prototype.zoomIn = function () {
+    if (this.zoomIndex < this.zoomList.length - 1) {
+        this.zoomIndex += 1;
+        this.zoom(this.zoomList[this.zoomIndex]);
+    }
+};
+
+Context.prototype.zoomOut = function () {
+    if (this.zoomIndex > 0) {
+        this.zoomIndex -= 1;
+        this.zoom(this.zoomList[this.zoomIndex]);
+    }
+};
+
+Context.prototype.zoom = function (absfactor) {
+    var relfactor = absfactor / this.scaleFactor,
+        center = this.getCenterOn();
+    center.x *= relfactor;
+    center.y *= relfactor;
+    this.scaleFactor = absfactor;
     this.centerOn(center.x, center.y);
 };
 
