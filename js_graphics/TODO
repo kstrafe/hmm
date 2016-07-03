@@ -1,5 +1,5 @@
 BUGS:
-Zooming out doesn't transform the mouse coordinates correctly, you can't click on Bubbles
+
 
 IDEAS:
 Create remote random music loader service
@@ -27,11 +27,13 @@ Picture/Sprite rendering inside the infoboxes
 Clickable hyperlinks in info box
 Hyperlinks activating links to different bubbles
 Music class for queing and loading after finishing
-Make the zoom zomm toward position of the mouse
+Make the zoom zoom toward position of the mouse
 
 
 FINNISHED:
 PARTIALLY DONE: OLE: Info box class
+
+BUG: Zooming out doesn't transform the mouse coordinates correctly, you can't click on Bubbles
 
 DONE: KEVIN: Zoom functionality (tricky?)
 DONE: OLE: Bubble + Bubbles klasse
