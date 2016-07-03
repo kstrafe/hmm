@@ -23,7 +23,11 @@ function Context(canvas) {
 }
 
 Context.prototype.zoom = function (factor) {
+    var center = this.getCenterOn();
+    center.x *= factor;
+    center.y *= factor;
     this.scaleFactor *= factor;
+    this.centerOn(center.x, center.y);
 };
 
 Context.prototype.centerOn = function (x, y) {
