@@ -8,11 +8,11 @@ function Sfx() {
 }
 
 Sfx.prototype.hover = function () {
-	if (!this.mute) {
-    	this.button_hover.play();
-	}
+    if (!this.mute) {
+        this.button_hover.play();
+    }
 };
 
 Sfx.prototype.flipMute = function () {
-	this.mute = !this.mute;
+    this.mute = !this.mute;
 };

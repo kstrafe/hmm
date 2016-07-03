@@ -1,4 +1,3 @@
-/*global Audio*/
 /*global document*/
 /*global window*/
 
@@ -22,8 +21,8 @@ var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
 var curves = new Curves();
 
-var audio = new Audio('Music/Chronicles_of_Creation_Suite_No._2.mp3');
-audio.play();
+var bgmusic = new Music();
+bgmusic.play();
 var sfx = new Sfx();
 
 function renderEverything() {
