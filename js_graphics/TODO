@@ -2,17 +2,25 @@ BUGS:
 Zooming out doesn't transform the mouse coordinates correctly, you can't click on Bubbles
 
 IDEAS:
+Create remote random music loader service
+Refactor Main into its own class for cleanliness
 Floaties start spawning in field of view (and dissapears out of view)
 Education mode: Answer question to unlock new bubbles about more challenging things
 Help menu button; describe keyboard shortcuts
 Introduce a summary in the info box. Title - summary - longer text / details
+Score system for visited nodes (Level and experience?)
+Persistence storage of visited nodes in cookie
+Different coloration in the tree based on subject
 
 	LONG(ER) TERM:
 		Short cut to places around the canvas
 		Mark nodes you've visited before
-
+		Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass
 
 TODO:
+Add 'm' key for quick mute
+Add keys - and + for zooming
+Limit zoom range and avoid usage of multipliers
 Latex rendering in infoboxes
 Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 Picture/Sprite rendering inside the infoboxes
