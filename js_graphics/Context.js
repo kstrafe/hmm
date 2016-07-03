@@ -161,17 +161,28 @@ Context.prototype.flipDevMode = function () {
 
 Context.prototype.drawDevMode = function () {
     var ctx = this.context,
-        mouse = this.mouse;
+        mouse = this.mouse,
+        invscl = 1 / this.scaleFactor;
     if (this.devMode) {
         ctx.fillStyle = "#FF0000";
         ctx.textAlign = "left";
         ctx.font = '30px Calibri';
-        ctx.fillText('x: ' + 1/this.scaleFactor*(this.xOffset + this.canvas.width / 2)
-            + ' y: ' + 1/this.scaleFactor*(this.yOffset + this.canvas.height / 2)
-            + ' mouse: (' + mouse.x + ', ' + mouse.y + ')'
-            + ' mt: (' + (this.xOffset + mouse.x) + ', ' + (this.yOffset + mouse.y) + ')'
-            , 0, this.canvas.height);
+        ctx.fillText('x: ' + invscl * (this.xOffset + this.canvas.width / 2) +
+            ' y: ' + invscl * (this.yOffset + this.canvas.height / 2) +
+            ' mouse: (' + mouse.x + ', ' + mouse.y + ')' +
+            ' mt: (' + invscl * (this.xOffset + mouse.x) + ', ' + invscl * (this.yOffset + mouse.y) + ')', 0, this.canvas.height);
     }
+};
+
+Context.prototype.scaledMousePos = function (evt) {
+    var invscl = 1 / this.scaleFactor;
+    if (evt) {
+        this.mousePos(evt);
+    }
+    return {
+        x: invscl * (this.xOffset + this.mouse.x),
+        y: invscl * (this.yOffset + this.mouse.y)
+    };
 };
 
 Context.prototype.mousePos = function (evt) {

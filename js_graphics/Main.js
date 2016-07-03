@@ -39,8 +39,8 @@ function updateEverything() {
 }
 
 function mouseHoverListener(evt) {
-    var mousePos = context.mousePos(evt);
-    bubbles.hover(mousePos, sfx, context.getOffset());
+    var mousePos = context.scaledMousePos(evt);
+    bubbles.hover(mousePos, sfx);
 }
 
 function zoom(evt) {
@@ -72,14 +72,16 @@ function mouseUpListener(evt) {
 
 function mouseDownListener(evt) {
     var onCircle = false,
-        mousePos = null;
+        mousePos = null,
+        scaledPos = null;
 
     context.canvas.removeEventListener('mousemove', mouseHoverListener, false);
     window.addEventListener("mouseup", mouseUpListener, false);
 
     mousePos = context.mousePos(evt);
+    scaledPos = context.scaledMousePos(evt);
     context.mouseDown = mousePos;
-    onCircle = bubbles.click(mousePos, context.getOffset());
+    onCircle = bubbles.click(scaledPos);
 
     if (onCircle.hit) {
         window.removeEventListener("mouseup", mouseUpListener, false);

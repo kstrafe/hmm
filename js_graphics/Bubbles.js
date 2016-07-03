@@ -23,10 +23,10 @@ Bubbles.prototype.length = function () {
     return this.bubbles.length;
 };
 
-Bubbles.prototype.hover = function (mousePos, sfx, offset) {
+Bubbles.prototype.hover = function (mousePos, sfx) {
     var i = null;
     for (i = 0; i < this.length(); i += 1) {
-        if (this.getBubble(i).hitTest(mousePos, offset)) {
+        if (this.getBubble(i).hitTest(mousePos)) {
             if (this.getBubble(i).getHL() === false) {
                 sfx.hover();
                 this.getBubble(i).setHighlighting(true);
@@ -37,10 +37,10 @@ Bubbles.prototype.hover = function (mousePos, sfx, offset) {
     }
 };
 
-Bubbles.prototype.click = function (mousePos, offset) {
+Bubbles.prototype.click = function (mousePos) {
     var i = null;
     for (i = 0; i < this.length(); i += 1) {
-        if (this.getBubble(i).hitTest(mousePos, offset)) {
+        if (this.getBubble(i).hitTest(mousePos)) {
             return {
                 hit: true,
                 facts: this.getBubble(i).getNameAndFacts()

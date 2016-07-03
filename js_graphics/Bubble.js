@@ -113,9 +113,9 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
     context.restore();
 };
 
-Bubble.prototype.hitTest = function (mousePos, offset) {
+Bubble.prototype.hitTest = function (mousePos) {
     var coord = this.getXY(),
-        rMouseCenter = (mousePos.x - coord.x + offset.x) * (mousePos.x - coord.x + offset.x) + (mousePos.y - coord.y + offset.y) * (mousePos.y - coord.y + offset.y);
+        rMouseCenter = (mousePos.x - coord.x) * (mousePos.x - coord.x) + (mousePos.y - coord.y) * (mousePos.y - coord.y);
 
     return rMouseCenter < (this.getR()) * (this.getR());
 };
