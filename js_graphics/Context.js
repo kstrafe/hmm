@@ -6,6 +6,10 @@ function Context(canvas) {
     this.devMode = false;
     this.context = canvas.getContext('2d');
     this.xOffset = 0;
+    this.mouse = {
+        x: 0,
+        y: 0
+    };
     this.scaleFactor = 1;
     this.yOffset = 0;
     this.tmpxOffset = 0;
@@ -157,19 +161,21 @@ Context.prototype.flipDevMode = function () {
 };
 
 Context.prototype.drawDevMode = function () {
-    var ctx = this.context;
+    var ctx = this.context,
+        mouse = this.mouse;
     if (this.devMode) {
         ctx.fillStyle = "#FF0000";
         ctx.textAlign = "left";
         ctx.font = '30px Calibri';
-        ctx.fillText('x: ' + (this.xOffset + this.canvas.width / 2) + ' y: ' + (this.yOffset + this.canvas.height / 2), 0, this.canvas.height);
+        ctx.fillText('x: ' + (this.xOffset + this.canvas.width / 2) + ' y: ' + (this.yOffset + this.canvas.height / 2) + ' mouse: (' + mouse.x + ', ' + mouse.y + ')', 0, this.canvas.height);
     }
 };
 
 Context.prototype.mousePos = function (evt) {
     var rect = this.canvas.getBoundingClientRect();
-    return {
+    this.mouse = {
         x: (evt.clientX - rect.left) * (this.canvas.width / rect.width),
         y: (evt.clientY - rect.top) * (this.canvas.height / rect.height)
     };
+    return this.mouse;
 };
