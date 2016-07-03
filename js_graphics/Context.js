@@ -167,7 +167,8 @@ Context.prototype.drawDevMode = function () {
         ctx.fillStyle = "#FF0000";
         ctx.textAlign = "left";
         ctx.font = '30px Calibri';
-        ctx.fillText('x: ' + (this.xOffset + this.canvas.width / 2) + ' y: ' + (this.yOffset + this.canvas.height / 2) + ' mouse: (' + mouse.x + ', ' + mouse.y + ')', 0, this.canvas.height);
+        ctx.fillText('x: ' + 1/this.scaleFactor*(this.xOffset + this.canvas.width / 2)
+            + ' y: ' + 1/this.scaleFactor*(this.yOffset + this.canvas.height / 2) + ' mouse: (' + mouse.x + ', ' + mouse.y + ')', 0, this.canvas.height);
     }
 };
 
