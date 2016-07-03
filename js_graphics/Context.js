@@ -125,23 +125,23 @@ Context.prototype.addOffset = function (dx, dy) {
 };
 
 Context.prototype.left = function () {
-    var invscl = 1/this.scaleFactor;
-    return invscl*this.xOffset;
+    var invscl = 1 / this.scaleFactor;
+    return invscl * this.xOffset;
 };
 
 Context.prototype.width = function () {
-    var invscl = 1/this.scaleFactor;
-    return invscl*this.canvas.width;
+    var invscl = 1 / this.scaleFactor;
+    return invscl * this.canvas.width;
 };
 
 Context.prototype.low = function () {
-    var invscl = 1/this.scaleFactor;
-    return invscl*(this.yOffset + this.canvas.height);
+    var invscl = 1 / this.scaleFactor;
+    return invscl * (this.yOffset + this.canvas.height);
 };
 
 Context.prototype.high = function () {
-    var invscl = 1/this.scaleFactor;
-    return invscl*this.yOffset;
+    var invscl = 1 / this.scaleFactor;
+    return invscl * this.yOffset;
 };
 
 Context.prototype.onResize = function () {
