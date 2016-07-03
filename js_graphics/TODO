@@ -11,12 +11,11 @@ Introduce a summary in the info box. Title - summary - longer text / details
 Score system for visited nodes (Level and experience?)
 Persistence storage of visited nodes in cookie
 Different coloration in the tree based on subject
-Change color of bubble when visited. 
 
 	LONG(ER) TERM:
 		Short cut to places around the canvas
 		Mark nodes you've visited before
-		Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass
+		Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 
 TODO:
 Add 'm' key for quick mute
@@ -28,6 +27,7 @@ Picture/Sprite rendering inside the infoboxes
 Clickable hyperlinks in info box
 Hyperlinks activating links to different bubbles
 Music class for queing and loading after finishing
+Make the zoom zomm toward position of the mouse
 
 
 FINNISHED:
