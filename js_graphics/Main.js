@@ -36,6 +36,7 @@ function renderEverything() {
 function updateEverything() {
     context.applySpeed();
     floaties.update(context.low(), context.high(), context.left(), context.width());
+    sounds.refreshBgm();
 }
 
 function mouseHoverListener(evt) {

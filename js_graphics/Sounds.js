@@ -25,6 +25,12 @@ function Sounds() {
 
 }
 
+Sounds.prototype.refreshBgm = function () {
+    if (this.backgroundSong.ended) {
+        this.backgroundSong.play();
+    }
+};
+
 Sounds.prototype.hover = function () {
     if (!this.muteSfx) {
         this.button_hover.play();
