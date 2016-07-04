@@ -11,13 +11,13 @@ function Sounds() {
     this.transparancy = 1;
 
     this.sfx = new Image();
-    this.sfx.src = "Textures/audio_icon_effects.PNG";
+    this.sfx.src = "Textures/audio_icon_effects.png";
     this.all = new Image();
-    this.all.src = "Textures/audio_icon_full.PNG";
+    this.all.src = "Textures/audio_icon_full.png";
     this.none = new Image();
-    this.none.src = "Textures/audio_icon_soundless.PNG";
+    this.none.src = "Textures/audio_icon_soundless.png";
     this.bgm = new Image();
-    this.bgm.src = "Textures/audio_icon_music.PNG";
+    this.bgm.src = "Textures/audio_icon_music.png";
 
     this.stateIndex = 0;
     this.stateNames = ["ALL", "SFX", "BGM", "NONE"];
@@ -132,3 +132,4 @@ Sounds.prototype.hoverButton = function (mousePos) {
         }
     }
 };
+
