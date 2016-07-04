@@ -21,17 +21,16 @@ FactBox.prototype.draw = function (context) {
     if (this.active === false) {
         return;
     }
-    var cornerRadius = 25,
+    var maxWidth = 750,
+        cornerRadius = 25,
         upLeft = {
-            x: context.canvas.width / 2 + 50,
+            x: Math.max(context.canvas.width - maxWidth, context.canvas.width / 2 + 50),
             y: 50
         },
         downRight = {
-            x: context.canvas.width - 50,
+            x: context.canvas.width - 75,
             y: context.canvas.height - 100
         };
-    //console.log(upLeft);
-    //console.log(downRight);
 
     context.save();
 
@@ -62,7 +61,7 @@ FactBox.prototype.draw = function (context) {
     context.fillStyle = '#FFFFFF';
     context.textAlign = "center";
     context.font = '30px Calibri';
-    context.fillText(this.title, 3 / 4 * context.canvas.width, 100);
+    context.fillText(this.title, (downRight.x + upLeft.x) / 2, 100);
 
     context.restore();
 
@@ -70,8 +69,8 @@ FactBox.prototype.draw = function (context) {
     context.fillStyle = '#000000';
     context.textAlign = "left";
     context.font = '20px Calibri';
-    this.wrapText(context, this.text, 3 / 4 * context.canvas.width - (downRight.x - upLeft.x - 25) / 2, 125, downRight.x - upLeft.x - 25, 25);
-    //context.fillText(this.text, 3 / 4 * context.canvas.width, 125);
+    this.wrapText(context, this.text, (downRight.x + upLeft.x) / 2 - (downRight.x - upLeft.x) / 2 + 15, 125, (downRight.x - upLeft.x) - 30, 25);
+
 
     context.restore();
 };
