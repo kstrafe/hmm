@@ -100,11 +100,11 @@ var all_bubbles = {
             facts: "You have seen integer division. What if the subtraction of the denominator from the numerator doesn't go to 0? Remember that with the expression 6 / 2, we subtract the right side from the left side (of the / sign) until the left side is 0. What if we have something like 5 / 2? Let's try: 5 - 2 = 3. Now we have 3. 3 -  2 = 1. If we subtract 2 once again, we get -1, an integer. So we can not divide the number. 1 is called the remainder. We can create a new type of number. We call this number a 'Rational Number'. It is called rational because it is defined by a ratio of two numbers. The expression 5 / 2 is 2.5 in decimal notation, because the remainder is only half (0.5) that of 2."
         },
         remainder: {
-           x: -3000,
-           y: -17000,
-           r: 100,
-           title: "Remainder",
-           facts: "If you divide a number, you subtract the denominator from the numerator until the numerator is zero. Sometimes, the subtraction hops over the zero. In the expression 7 / 3, we first subtract via 7 - 3, which is 4. Then we subtract via 4 - 3, which is 1. Then we subtract via 1 - 3, which is -2. We have hopped over 0. If we want integer division, we use what we call a 'remainder'. We go back and look at the number that was before the jump over 0. This was 1. So we can now say: 7 / 3 is the same as 2, with remainder 1. Why is it 2? Because we could subtract 2 times."
+            x: -3000,
+            y: -17000,
+            r: 100,
+            title: "Remainder",
+            facts: "If you divide a number, you subtract the denominator from the numerator until the numerator is zero. Sometimes, the subtraction hops over the zero. In the expression 7 / 3, we first subtract via 7 - 3, which is 4. Then we subtract via 4 - 3, which is 1. Then we subtract via 1 - 3, which is -2. We have hopped over 0. If we want integer division, we use what we call a 'remainder'. We go back and look at the number that was before the jump over 0. This was 1. So we can now say: 7 / 3 is the same as 2, with remainder 1. Why is it 2? Because we could subtract 2 times."
         },
         integer_mul: {
             x: 1400,
