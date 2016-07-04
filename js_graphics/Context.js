@@ -197,10 +197,11 @@ Context.prototype.drawDevMode = function () {
         ctx.fillStyle = "#FF0000";
         ctx.textAlign = "left";
         ctx.font = '30px Calibri';
-        ctx.fillText('x: ' + invscl * (this.xOffset + this.canvas.width / 2) +
-            ' y: ' + invscl * (this.yOffset + this.canvas.height / 2) +
-            ' mouse: (' + mouse.x + ', ' + mouse.y + ')' +
-            ' mt: (' + invscl * (this.xOffset + mouse.x) + ', ' + invscl * (this.yOffset + mouse.y) + ')', 0, this.canvas.height);
+        ctx.fillText('x: ' + (invscl * (this.xOffset + this.canvas.width / 2)).toFixed(0) +
+            ' y: ' + (invscl * (this.yOffset + this.canvas.height / 2)).toFixed(0) +
+            ' mouse: (' + mouse.x.toFixed(0) + ', ' + mouse.y.toFixed(0) + ')' +
+            ' mt: (' + (invscl * (this.xOffset + mouse.x)).toFixed(0) +
+            ', ' + (invscl * (this.yOffset + mouse.y)).toFixed(0) + ')', 0, this.canvas.height);
     }
 };
 
