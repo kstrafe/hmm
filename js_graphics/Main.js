@@ -34,8 +34,7 @@ function renderEverything() {
 }
 
 function updateEverything() {
-    var centerPos = context.applySpeed();
-    bubbles.hover(centerPos, sounds);
+    context.applySpeed();
     floaties.update(context.low(), context.high(), context.left(), context.width());
 }
 
@@ -122,6 +121,7 @@ function setCanvasSpeed(key, speed) {
         context.setSpeedY(speed);
         break;
     }
+    bubbles.hover(context.getCenterPos(), sounds);
 }
 
 function keyboardDown(key) {
