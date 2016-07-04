@@ -47,6 +47,14 @@ Sounds.prototype.flipBGMute = function () {
     this.backgroundSong.muted = !this.backgroundSong.muted;
 };
 
+Sounds.prototype.flipMute = function () {
+    if (this.isMuted()) {
+        this.unmuteAll();
+    } else {
+        this.muteAll();
+    }
+};
+
 Sounds.prototype.muteAll = function () {
     this.muteSfx = true;
     this.backgroundSong.muted = true;
@@ -124,3 +132,4 @@ Sounds.prototype.hoverButton = function (mousePos) {
         }
     }
 };
+
