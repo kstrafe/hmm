@@ -70,6 +70,7 @@ Context.prototype.getCenterOn = function () {
 Context.prototype.applySpeed = function () {
     this.xOffset += this.offsetSpeed.x;
     this.yOffset += this.offsetSpeed.y;
+    return this.getCenterPos();
 };
 
 Context.prototype.setSpeedX = function (speed) {
@@ -178,6 +179,14 @@ Context.prototype.renderBG = function () {
 
 Context.prototype.flipDevMode = function () {
     this.devMode = !this.devMode;
+};
+
+Context.prototype.getCenterPos = function () {
+    var invscl = 1 / this.scaleFactor;
+    return {
+        x: invscl * (this.xOffset + this.canvas.width / 2),
+        y: invscl * (this.yOffset + this.canvas.height / 2)
+    };
 };
 
 Context.prototype.drawDevMode = function () {

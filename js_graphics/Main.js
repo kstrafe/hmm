@@ -34,7 +34,8 @@ function renderEverything() {
 }
 
 function updateEverything() {
-    context.applySpeed();
+    var centerPos = context.applySpeed();
+    bubbles.hover(centerPos, sounds);
     floaties.update(context.low(), context.high(), context.left(), context.width());
 }
 
@@ -70,6 +71,17 @@ function mouseUpListener(evt) {
     context.addOffset(mouseOnDown.x - mouseOnUp.x, mouseOnDown.y - mouseOnUp.y);
 }
 
+function drawFactBox(onCircle) {
+    if (onCircle.hit) {
+        window.removeEventListener("mouseup", mouseUpListener, false);
+        context.canvas.addEventListener('mousemove', mouseHoverListener, false);
+        factBox.show(onCircle.facts);
+    } else {
+        context.canvas.addEventListener('mousemove', mouseMoveListener, false);
+        factBox.hide();
+    }
+}
+
 function mouseDownListener(evt) {
     var onCircle = false,
         mousePos = null,
@@ -82,15 +94,7 @@ function mouseDownListener(evt) {
     scaledPos = context.scaledMousePos(evt);
     context.mouseDown = mousePos;
     onCircle = bubbles.click(scaledPos);
-
-    if (onCircle.hit) {
-        window.removeEventListener("mouseup", mouseUpListener, false);
-        context.canvas.addEventListener('mousemove', mouseHoverListener, false);
-        factBox.show(onCircle.facts);
-    } else {
-        context.canvas.addEventListener('mousemove', mouseMoveListener, false);
-        factBox.hide();
-    }
+    drawFactBox(onCircle);
 }
 
 function setCanvasSpeed(key, speed) {
@@ -121,6 +125,9 @@ function setCanvasSpeed(key, speed) {
 function keyboardDown(key) {
     console.log(key);
     switch (key.which) {
+    case 32:
+        drawFactBox(bubbles.click(context.getCenterPos()));
+        break;
     case 77:
         sounds.flipMute();
         break;
@@ -135,6 +142,7 @@ function keyboardDown(key) {
         break;
     default:
         setCanvasSpeed(key, 20);
+        factBox.hide();
         break;
     }
 }
