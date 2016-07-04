@@ -11,6 +11,7 @@ Score system for visited nodes (Level and experience?)
 Persistence storage of visited nodes in cookie
 Different coloration in the tree based on subject
 'I master this' button in infobox to get score and color a node's text
+Create tutorial bubble sequence in the beginning
 
 	LONG(ER) TERM:
 		Short cut to places around the canvas
@@ -18,6 +19,7 @@ Different coloration in the tree based on subject
 		Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 
 TODO:
+Semantic zoom
 Latex rendering in infoboxes
 OLE: Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 Picture/Sprite rendering inside the infoboxes
