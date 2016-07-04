@@ -122,13 +122,9 @@ function keyboardDown(key) {
     console.log(key);
     switch (key.which) {
     case 77:
-        if (sounds.isMuted()) {
-            sounds.unmuteAll();
-        } else {
-            sounds.muteAll();
-        }
+        sounds.flipMute();
         break;
-    case 68:
+    case 69:
         context.flipDevMode();
         break;
     case 189:
