@@ -132,4 +132,3 @@ Sounds.prototype.hoverButton = function (mousePos) {
         }
     }
 };
-
