@@ -7,11 +7,10 @@ Floaties start spawning in field of view (and dissapears out of view)
 Education mode: Answer question to unlock new bubbles about more challenging things
 Help menu button; describe keyboard shortcuts
 Introduce a summary in the info box. Title - summary - longer text / details
-Score system for visited nodes (Level and experience?)
 Persistence storage of visited nodes in cookie
 Different coloration in the tree based on subject
 'I master this' button in infobox to get score and color a node's text
-Create tutorial bubble sequence in the beginning
+Make the zoom zoom toward position of the mouse
 
 	LONG(ER) TERM:
 		Short cut to places around the canvas
@@ -21,13 +20,13 @@ Create tutorial bubble sequence in the beginning
 TODO:
 Semantic zoom
 Latex rendering in infoboxes
-OLE: Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 Picture/Sprite rendering inside the infoboxes
 Clickable hyperlinks in info box
 Hyperlinks activating links to different bubbles
 Music class for queing and loading after finishing
-Make the zoom zoom toward position of the mouse
 
+KEVIN: Create tutorial bubble sequence in the beginning
+OLE: Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 
 FINNISHED:
 PARTIALLY DONE: OLE: Info box class
@@ -49,3 +48,6 @@ DONE: KEVIN: Context class for managing global context transformation state
 DONE: OLE: Smoother borders på info box
 DONE: KEVIN: Random Floaty spawning + drawing behind bubbles
 DONE: KEVIN: Arrow/vim -key scrolling
+
+SCRAP:
+Score system for visited nodes (Level and experience?) - REASON: Use colored nodes to visualize 'experience' and score
