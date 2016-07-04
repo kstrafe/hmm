@@ -29,9 +29,7 @@ Bubbles.prototype.hover = function (mousePos, sounds) {
         if (this.getBubble(i).hitTest(mousePos)) {
             if (this.getBubble(i).getHL() === false) {
                 this.getBubble(i).setHighlighting(true);
-                if (sounds.getSfxMute() === false) {
-                    sounds.hover();
-                }
+                sounds.hover();
             }
         } else {
             this.getBubble(i).setHighlighting(false);
