@@ -6,7 +6,7 @@ var all_bubbles = {
             y: 0,
             r: 100,
             title: "Click here!",
-            facts: "Welcome to 'Hmm', the sanctuary of knowledge and understanding! To get started, you can drag yourself anywhere using the mouse. The arrow keys can also be used. Click any named bubble (like this one!) to view its info box. Try to follow the connecting lines upwards. The higher you go, the more you've transcended all of mathematics! If you get stuck, try mastering the preliminaries first.\nhjkl can also be used for scrolling. Press 'd' for Dev-view."
+            facts: "Welcome to 'Hmm', the sanctuary of knowledge and understanding! To get started, you can drag yourself anywhere using the mouse. The arrow keys can also be used. Click any named bubble (like this one!) to view its info box. Try to follow the connecting lines upwards. The higher you go, the more you've transcended all of mathematics! If you get stuck, try mastering the preliminaries first.\nhjkl can also be used for scrolling. Press 'e' for Dev-view."
         },
 
         axioms: {

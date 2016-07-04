@@ -95,18 +95,22 @@ function mouseDownListener(evt) {
 
 function setCanvasSpeed(key, speed) {
     switch (key.which) {
+    case 65:
     case 72:
     case 37:
         context.setSpeedX(-speed);
         break;
+    case 87:
     case 75:
     case 38:
         context.setSpeedY(-speed);
         break;
+    case 68:
     case 76:
     case 39:
         context.setSpeedX(speed);
         break;
+    case 83:
     case 74:
     case 40:
         context.setSpeedY(speed);
