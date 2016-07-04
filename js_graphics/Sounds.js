@@ -31,7 +31,7 @@ Sounds.prototype.hover = function () {
     }
 };
 
-Sounds.prototype.playBGM  = function () {
+Sounds.prototype.playBGM = function () {
     this.backgroundSong.play();
 };
 
@@ -132,4 +132,3 @@ Sounds.prototype.hoverButton = function (mousePos) {
         }
     }
 };
-

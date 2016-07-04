@@ -131,7 +131,7 @@ function keyboardDown(key) {
         drawFactBox(bubbles.click(context.getCenterPos()));
         break;
     case 77:
-        sounds.flipMute();
+        sounds.nextState();
         break;
     case 69:
         context.flipDevMode();
