@@ -22,7 +22,7 @@ var bubbles = new Bubbles();
 var curves = new Curves();
 
 var sounds = new Sounds();
-sounds.playBackgroundMusic();
+sounds.playBGM();
 
 
 function renderEverything() {
@@ -42,6 +42,7 @@ function updateEverything() {
 function mouseHoverListener(evt) {
     var mousePos = context.scaledMousePos(evt);
     bubbles.hover(mousePos, sounds);
+    sounds.hoverButton(context.mousePos(evt));
 }
 
 function zoom(evt) {
@@ -95,6 +96,7 @@ function mouseDownListener(evt) {
     context.mouseDown = mousePos;
     onCircle = bubbles.click(scaledPos);
     drawFactBox(onCircle);
+    sounds.onClick(mousePos);
 }
 
 function setCanvasSpeed(key, speed) {

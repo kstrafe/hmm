@@ -26,11 +26,11 @@ Hyperlinks activating links to different bubbles
 Music class for queing and loading after finishing
 
 OLE: Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
-KEVIN: Mouseless selection using space
 
 FINNISHED:
 PARTIALLY DONE: OLE: Info box class
 
+DONE: KEVIN: Mouseless selection using space
 DONE: KEVIN: Create tutorial bubble sequence in the beginning
 DONE: KEVIN: Create remote random music loader service
 DONE: OLE: Add 'm' key for quick mute
