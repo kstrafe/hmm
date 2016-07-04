@@ -18,9 +18,8 @@ Different coloration in the tree based on subject
 		Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 
 TODO:
-Add 'm' key for quick mute
 Latex rendering in infoboxes
-Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
+OLE: Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 Picture/Sprite rendering inside the infoboxes
 Clickable hyperlinks in info box
 Hyperlinks activating links to different bubbles
@@ -30,7 +29,7 @@ Make the zoom zoom toward position of the mouse
 
 FINNISHED:
 PARTIALLY DONE: OLE: Info box class
-
+DONE: OLE: Add 'm' key for quick mute
 DONE: KEVIN: Add keys - and + for zooming
 DONE: KEVIN: BUG: Zooming out doesn't transform the mouse coordinates correctly, you can't click on Bubbles
 DONE: KEVIN: Limit zoom range and avoid usage of multipliers
