@@ -12,6 +12,7 @@
 /*global FactBox*/
 /*global Floaty*/
 /*global Floatys*/
+/*global Music*/
 /*global Sfx*/
 
 "use strict";
