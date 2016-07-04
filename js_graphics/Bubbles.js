@@ -23,13 +23,15 @@ Bubbles.prototype.length = function () {
     return this.bubbles.length;
 };
 
-Bubbles.prototype.hover = function (mousePos, sfx) {
+Bubbles.prototype.hover = function (mousePos, sounds) {
     var i = null;
     for (i = 0; i < this.length(); i += 1) {
         if (this.getBubble(i).hitTest(mousePos)) {
             if (this.getBubble(i).getHL() === false) {
-                sfx.hover();
                 this.getBubble(i).setHighlighting(true);
+                if (sounds.getSfxMute() === false) {
+                    sounds.hover();
+                }
             }
         } else {
             this.getBubble(i).setHighlighting(false);

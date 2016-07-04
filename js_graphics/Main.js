@@ -12,7 +12,7 @@
 /*global FactBox*/
 /*global Floaty*/
 /*global Floatys*/
-/*global Sfx*/
+/*global Sounds*/
 
 "use strict";
 var context = new Context(document.getElementById('canvas'));
@@ -21,14 +21,15 @@ var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
 var curves = new Curves();
 
-var bgmusic = new Music();
-bgmusic.play();
-var sfx = new Sfx();
+var sounds = new Sounds();
+sounds.playBackgroundMusic();
+
 
 function renderEverything() {
     context.renderBG();
     context.draw([floaties, bubbles, curves]);
     context.drawAbsolute(factBox);
+    context.drawAbsolute(sounds);
     context.drawDevMode();
 }
 
@@ -39,7 +40,7 @@ function updateEverything() {
 
 function mouseHoverListener(evt) {
     var mousePos = context.scaledMousePos(evt);
-    bubbles.hover(mousePos, sfx);
+    bubbles.hover(mousePos, sounds);
 }
 
 function zoom(evt) {
@@ -117,7 +118,11 @@ function keyboardDown(key) {
     console.log(key);
     switch (key.which) {
     case 77:
-        sfx.flipMute();
+        if (sounds.isMuted()) {
+            sounds.unmuteAll();
+        } else {
+            sounds.muteAll();
+        }
         break;
     case 68:
         context.flipDevMode();
