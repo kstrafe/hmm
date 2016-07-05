@@ -148,7 +148,9 @@ function setCanvasSpeed(key, speed) {
 }
 
 function keyboardDown(key) {
-    console.log(key);
+    var bubble = null,
+        mousePos = null;
+    console.log(key.which);
     switch (key.which) {
     case 32:
         drawFactBox(bubbles.click(context.getCenterPos()));
@@ -158,6 +160,11 @@ function keyboardDown(key) {
         break;
     case 69:
         context.flipDevMode();
+        break;
+    case 84:
+        mousePos = context.scaledMousePos();
+        bubble = new Bubble(mousePos.x, mousePos.y, 100, "New Knowledge!", "");
+        bubbles.add(bubble);
         break;
     case 189:
         context.zoomOut();
@@ -181,6 +188,7 @@ function main() {
         b = null,
         begin = null,
         end = null;
+
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
             b = all_bubbles[i];
