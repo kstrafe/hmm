@@ -24,6 +24,8 @@ var curves = new Curves();
 var sounds = new Sounds();
 sounds.playBGM();
 
+var line_between = null;
+
 
 function renderEverything() {
     context.renderBG();
@@ -149,6 +151,7 @@ function setCanvasSpeed(key, speed) {
 
 function keyboardDown(key) {
     var bubble = null,
+        curve = null,
         mousePos = null;
     console.log(key.which);
     switch (key.which) {
@@ -160,6 +163,17 @@ function keyboardDown(key) {
         break;
     case 69:
         context.flipDevMode();
+        break;
+    case 81:
+        mousePos = context.scaledMousePos();
+        bubble = bubbles.collide(mousePos);
+        if (line_between) {
+            curve = new Curve(line_between.x, line_between.y, line_between.r, bubble.x, bubble.y, bubble.r);
+            curves.append(curve);
+            line_between = null;
+        } else {
+            line_between = bubble;
+        }
         break;
     case 84:
         mousePos = context.scaledMousePos();

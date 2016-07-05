@@ -23,6 +23,15 @@ Bubbles.prototype.length = function () {
     return this.bubbles.length;
 };
 
+Bubbles.prototype.collide = function (pos) {
+    var i = null;
+    for (i = 0; i < this.length(); i += 1) {
+        if (this.getBubble(i).hitTest(pos)) {
+            return this.bubbles[i];
+        }
+    }
+};
+
 Bubbles.prototype.hover = function (mousePos, sounds) {
     var i = null;
     for (i = 0; i < this.length(); i += 1) {
