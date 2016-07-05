@@ -25,13 +25,13 @@
 	Clickable hyperlinks in info box
 	Hyperlinks activating links to different bubbles
 	Music class for queing and loading after finishing
-	Scrolling in factBox
+	
 
 
 # IN PROGRESS #
 
 	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
-	OLE: Info box class
+	OLE: Info box class, scrolling in factBox
 
 # DONE #
 

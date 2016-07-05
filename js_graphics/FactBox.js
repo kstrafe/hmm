@@ -5,6 +5,7 @@ function FactBox(title, text, image) {
     this.text = text;
     this.image = image;
     this.active = false;
+    this.contentOffset = 0;
 }
 
 FactBox.prototype.show = function (titleAndText) {
@@ -30,7 +31,9 @@ FactBox.prototype.draw = function (context) {
         downRight = {
             x: context.canvas.width - 75,
             y: context.canvas.height - 100
-        };
+        },
+        yMax = downRight.y -10,
+        content;
 
     context.save();
 
@@ -61,21 +64,24 @@ FactBox.prototype.draw = function (context) {
     context.fillStyle = '#FFFFFF';
     context.textAlign = "center";
     context.font = '30px Calibri';
-    context.fillText(this.title, (downRight.x + upLeft.x) / 2, 100);
+    context.fillText(this.title, (downRight.x + upLeft.x) / 2, 90);
 
     context.restore();
 
-    //Draw text
-    context.fillStyle = '#000000';
-    context.textAlign = "left";
-    context.font = '20px Calibri';
-    this.wrapText(context, this.text, (downRight.x + upLeft.x) / 2 - (downRight.x - upLeft.x) / 2 + 15, 125, (downRight.x - upLeft.x) - 30, 25);
+    content = this.contentCanvas(upLeft, downRight);
+    context.drawImage(content, upLeft.x + 15, upLeft.y + 50);
 
+    // //Draw text
+    // context.fillStyle = '#000000';
+    // context.textAlign = "left";
+    // context.font = '20px Calibri';
+    // this.wrapText(context, this.text, (downRight.x + upLeft.x) / 2 - (downRight.x - upLeft.x) / 2 + 15, 125, 25, (downRight.x - upLeft.x) - 35);
 
-    context.restore();
+    // context.restore();
+    // this.scrollBar(context, upLeft, downRight, yMax);
 };
 
-FactBox.prototype.wrapText = function (context, text, x, y, maxWidth, lineHeight) {
+FactBox.prototype.wrapText = function (context, text, x, y, lineHeight, maxWidth) {
     var words = text.split(' '),
         line = '',
         n,
@@ -98,3 +104,50 @@ FactBox.prototype.wrapText = function (context, text, x, y, maxWidth, lineHeight
 
     context.fillText(line, x, y);
 };
+
+FactBox.prototype.scrollBar = function (context, upLeft, downRight, yMax) {
+
+    context.save();
+
+    context.lineWidth = 8;
+    context.strokeStyle = '#DDDDDD';
+    context.shadowColor = '#FFFFFF';
+    context.shadowBlur = 10;
+    context.globalAlpha = 0.6;
+    context.lineCap = 'round';
+
+    context.beginPath();
+    context.moveTo(downRight.x - 20, upLeft.y + 35);
+    context.lineTo(downRight.x - 20, downRight.y - 35);
+    context.stroke();
+
+    context.restore();
+};
+
+FactBox.prototype.scroll = function () {
+    
+};
+
+FactBox.prototype.contentCanvas = function (upLeft, downRight) {
+    var canvas = document.createElement('canvas'),
+        context = null,
+
+    context = canvas.getContext('2d');
+
+    canvas.width = downRight.x - upLeft.x - 30;
+    canvas.height = downRight.y - upLeft.y - 65;
+
+    //context.fillStyle = '#FFFFFF';
+    context.fillStyle = '#000000';
+    context.textAlign = "left";
+    context.font = '20px Calibri';
+    context.translate(0, this.contentOffset);
+    
+    //context.fillRect(0, 0, canvas.width, canvas.height);
+    //context.fillText(this.text, 15, 40);
+    this.wrapText(context, this.text, 0, 20, 15, canvas.width)
+
+
+    return canvas;
+
+}
