@@ -48,10 +48,14 @@ function mouseHoverListener(evt) {
 }
 
 function zoom(evt) {
-    if (evt.deltaY > 0) {
-        context.zoomOut();
-    } else if (evt.deltaY < 0) {
-        context.zoomIn();
+    if (factBox.isActive()) {
+        factBox.scroll(evt.deltaY);
+    } else {
+        if (evt.deltaY > 0) {
+            context.zoomOut();
+        } else if (evt.deltaY < 0) {
+            context.zoomIn();
+        }
     }
 }
 

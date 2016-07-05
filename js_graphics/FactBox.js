@@ -1,12 +1,19 @@
+/*global Image*/
+
 "use strict";
 
-function FactBox(title, text, image) {
+function FactBox(title, text) {
     this.title = title;
     this.text = text;
-    this.image = image;
+    this.image = new Image();
     this.active = false;
     this.contentOffset = 0;
+    this.contentOOB = false;
 }
+
+FactBox.prototype.isActive = function () {
+    return this.active;
+};
 
 FactBox.prototype.show = function (titleAndText) {
     this.title = titleAndText.name;
@@ -16,6 +23,7 @@ FactBox.prototype.show = function (titleAndText) {
 
 FactBox.prototype.hide = function () {
     this.active = false;
+    this.contentOffset = 0;
 };
 
 FactBox.prototype.draw = function (context) {
@@ -32,7 +40,6 @@ FactBox.prototype.draw = function (context) {
             x: context.canvas.width - 75,
             y: context.canvas.height - 100
         },
-        yMax = downRight.y -10,
         content;
 
     context.save();
@@ -103,9 +110,11 @@ FactBox.prototype.wrapText = function (context, text, x, y, lineHeight, maxWidth
     }
 
     context.fillText(line, x, y);
+
+    return y;
 };
 
-FactBox.prototype.scrollBar = function (context, upLeft, downRight, yMax) {
+FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
 
     context.save();
 
@@ -124,13 +133,22 @@ FactBox.prototype.scrollBar = function (context, upLeft, downRight, yMax) {
     context.restore();
 };
 
-FactBox.prototype.scroll = function () {
-    
+FactBox.prototype.scroll = function (deltaY) {
+    if (deltaY < 0) {
+        if (this.contentOffset < 0) {
+            this.contentOffset += 50;
+        }
+    } else {
+        if (this.contentOOB) {
+            this.contentOffset -= 50;
+        }
+    }
 };
 
 FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     var canvas = document.createElement('canvas'),
         context = null,
+        yTextEnd = null;
 
     context = canvas.getContext('2d');
 
@@ -142,12 +160,15 @@ FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     context.textAlign = "left";
     context.font = '20px Calibri';
     context.translate(0, this.contentOffset);
-    
     //context.fillRect(0, 0, canvas.width, canvas.height);
-    //context.fillText(this.text, 15, 40);
-    this.wrapText(context, this.text, 0, 20, 15, canvas.width)
+    yTextEnd = this.wrapText(context, this.text, 0, 20, 20, canvas.width);
 
+    this.contentOOB = (yTextEnd + this.contentOffset > canvas.height);
+
+    // if (this.image.src !== "") {
+    //     context.drawImage(this.image, 0, yTextEnd + 20, canvas.width, canvas.width);
+    // }
 
     return canvas;
 
-}
+};
