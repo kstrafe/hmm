@@ -24,7 +24,7 @@ var curves = new Curves();
 var sounds = new Sounds();
 sounds.playBGM();
 
-var line_between = null;
+var selected_bubble = null;
 
 
 function renderEverything() {
@@ -164,15 +164,26 @@ function keyboardDown(key) {
     case 69:
         context.flipDevMode();
         break;
+    case 82:
+        mousePos = context.scaledMousePos();
+        bubble = bubbles.collide(mousePos);
+        if (selected_bubble) {
+            selected_bubble.x = mousePos.x;
+            selected_bubble.y = mousePos.y;
+            selected_bubble = null;
+        } else {
+            selected_bubble = bubble;
+        }
+        break;
     case 81:
         mousePos = context.scaledMousePos();
         bubble = bubbles.collide(mousePos);
-        if (line_between) {
-            curve = new Curve(line_between.x, line_between.y, line_between.r, bubble.x, bubble.y, bubble.r);
+        if (selected_bubble) {
+            curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
             curves.append(curve);
-            line_between = null;
+            selected_bubble = null;
         } else {
-            line_between = bubble;
+            selected_bubble = bubble;
         }
         break;
     case 84:
