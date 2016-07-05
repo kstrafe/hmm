@@ -105,24 +105,27 @@ function setCanvasSpeed(key, speed) {
     case 72:
     case 37:
         context.setSpeedX(-speed);
+        bubbles.hover(context.getCenterPos(), sounds);
         break;
     case 87:
     case 75:
     case 38:
         context.setSpeedY(-speed);
+        bubbles.hover(context.getCenterPos(), sounds);
         break;
     case 68:
     case 76:
     case 39:
         context.setSpeedX(speed);
+        bubbles.hover(context.getCenterPos(), sounds);
         break;
     case 83:
     case 74:
     case 40:
         context.setSpeedY(speed);
+        bubbles.hover(context.getCenterPos(), sounds);
         break;
     }
-    bubbles.hover(context.getCenterPos(), sounds);
 }
 
 function keyboardDown(key) {
