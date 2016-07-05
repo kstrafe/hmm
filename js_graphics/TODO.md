@@ -1,5 +1,5 @@
 # BUGS #
-
+	If the screen center is on a bubble, and you press a non-move key, the collision sound will activate
 
 # IDEAS #
 	Refactor Main into its own class for cleanliness
