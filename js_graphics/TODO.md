@@ -18,6 +18,7 @@
 
 # TODO #
 
+	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime.
 	Semantic zoom
 	Latex rendering in infoboxes
 	Picture/Sprite rendering inside the infoboxes
