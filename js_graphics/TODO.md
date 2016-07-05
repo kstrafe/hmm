@@ -1,6 +1,5 @@
 # BUGS #
 
-
 # IDEAS #
 	Refactor Main into its own class for cleanliness
 	Floaties start spawning in field of view (and dissapears out of view)
@@ -35,6 +34,7 @@
 
 # DONE #
 
+	KEVIN: If the screen center is on a bubble, and you press a non-move key, the collision sound will activate
 	KEVIN: Create tutorial bubble sequence in the beginning
 	OLE: Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
 	KEVIN: Create remote random music loader service

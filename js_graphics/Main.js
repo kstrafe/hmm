@@ -24,6 +24,8 @@ var curves = new Curves();
 var sounds = new Sounds();
 sounds.playBGM();
 
+var selected_bubble = null;
+
 
 function renderEverything() {
     context.renderBG();
@@ -99,6 +101,26 @@ function mouseDownListener(evt) {
     sounds.onClick(mousePos);
 }
 
+function isMovementKey(key) {
+    switch (key.which) {
+    case 65:
+    case 72:
+    case 37:
+    case 87:
+    case 75:
+    case 38:
+    case 68:
+    case 76:
+    case 39:
+    case 83:
+    case 74:
+    case 40:
+        return true;
+    default:
+        return false;
+    }
+}
+
 function setCanvasSpeed(key, speed) {
     switch (key.which) {
     case 65:
@@ -122,11 +144,16 @@ function setCanvasSpeed(key, speed) {
         context.setSpeedY(speed);
         break;
     }
-    bubbles.hover(context.getCenterPos(), sounds);
+    if (isMovementKey(key)) {
+        bubbles.hover(context.getCenterPos(), sounds);
+    }
 }
 
 function keyboardDown(key) {
-    console.log(key);
+    var bubble = null,
+        curve = null,
+        mousePos = null;
+    console.log(key.which);
     switch (key.which) {
     case 32:
         drawFactBox(bubbles.click(context.getCenterPos()));
@@ -136,6 +163,33 @@ function keyboardDown(key) {
         break;
     case 69:
         context.flipDevMode();
+        break;
+    case 82:
+        mousePos = context.scaledMousePos();
+        bubble = bubbles.collide(mousePos);
+        if (selected_bubble) {
+            selected_bubble.x = mousePos.x;
+            selected_bubble.y = mousePos.y;
+            selected_bubble = null;
+        } else {
+            selected_bubble = bubble;
+        }
+        break;
+    case 81:
+        mousePos = context.scaledMousePos();
+        bubble = bubbles.collide(mousePos);
+        if (selected_bubble) {
+            curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
+            curves.append(curve);
+            selected_bubble = null;
+        } else {
+            selected_bubble = bubble;
+        }
+        break;
+    case 84:
+        mousePos = context.scaledMousePos();
+        bubble = new Bubble(mousePos.x, mousePos.y, 100, "New Knowledge!", "");
+        bubbles.add(bubble);
         break;
     case 189:
         context.zoomOut();
@@ -159,6 +213,7 @@ function main() {
         b = null,
         begin = null,
         end = null;
+
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
             b = all_bubbles[i];
