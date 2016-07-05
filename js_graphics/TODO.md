@@ -15,7 +15,6 @@
 	LONG(ER) TERM:
 		Short cut to places around the canvas
 		Mark nodes you've visited before
-		Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 
 # TODO #
 
@@ -28,8 +27,9 @@
 	Scrolling in factBox
 
 
-# PARTIALLY DONE #
+# IN PROGRESS #
 
+	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 	OLE: Info box class
 
 # DONE #
