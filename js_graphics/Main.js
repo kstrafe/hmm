@@ -89,6 +89,14 @@ function drawFactBox(onCircle) {
     }
 }
 
+function drawFactBoxSpace(onCircle) {
+    if (onCircle.hit) {
+        window.removeEventListener("mouseup", mouseUpListener, false);
+        context.canvas.addEventListener('mousemove', mouseHoverListener, false);
+        factBox.show(onCircle.facts);
+    }
+}
+
 function mouseDownListener(evt) {
     var onCircle = false,
         mousePos = null,
@@ -160,7 +168,7 @@ function keyboardDown(key) {
     console.log(key.which);
     switch (key.which) {
     case 32:
-        drawFactBox(bubbles.click(context.getCenterPos()));
+        drawFactBoxSpace(bubbles.click(context.getCenterPos()));
         break;
     case 77:
         sounds.nextState();
