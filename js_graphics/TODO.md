@@ -2,6 +2,7 @@
 	Content in info box is allowed to be scrolled too far up
 	Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
 	Sounds icon and text collide for initially small windows
+	Moving nodes does not recalculate the connected lines
 
 # IDEAS #
 	Refactor Main into its own class for cleanliness
