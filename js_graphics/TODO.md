@@ -1,5 +1,6 @@
 # BUGS #
-	Content in info box is allowed to be scrolled too far up
+	Content in info box is allowed to be scrolled too far up.
+	If you press spacebar and then move the mouse and click you end up in the same place
 
 # IDEAS #
 	Refactor Main into its own class for cleanliness
