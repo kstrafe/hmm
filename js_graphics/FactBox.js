@@ -1,3 +1,4 @@
+/*global document*/
 /*global Image*/
 
 "use strict";
@@ -131,7 +132,7 @@ FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
         barLen = maxLen;
     }
 
-    yStart = yMin +  Math.abs(this.contentOffset) * ((maxLen - barLen) / (this.contentLen - maxLen));
+    yStart = yMin + Math.abs(this.contentOffset) * ((maxLen - barLen) / (this.contentLen - maxLen));
     yEnd = yStart + barLen;
 
     context.save();
