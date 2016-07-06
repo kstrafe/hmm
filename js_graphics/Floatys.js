@@ -9,6 +9,8 @@ function Floatys() {
     this.max_floaty = 200;
     this.radii_start = 3;
     this.radii_diff = 47;
+    this.speed_start = 0.3;
+    this.speed_diff = 0.3;
 }
 
 Floatys.prototype.draw = function (context) {
@@ -25,6 +27,7 @@ Floatys.prototype.update = function (low, high, left, width) {
         extra = 8000,
         floaty = null,
         radius = null,
+        speed = null,
         x_left = left,
         x_right = left + width,
         y_top = high,
@@ -43,13 +46,14 @@ Floatys.prototype.update = function (low, high, left, width) {
     }
 
     radius = this.radii_start + Math.random() * this.radii_diff;
+    speed = this.speed_start + Math.random() * this.speed_diff;
 
     if (this.current >= this.max) {
         if (this.floatys.length < this.max_floaty) {
             if (Math.random() >= 0.5) {
-                floaty = new Floaty(x_left - extra + Math.random() * ((x_right + extra) - (x_left - extra)), y_bottom + Math.random() * extra, radius);
+                floaty = new Floaty(x_left - extra + Math.random() * ((x_right + extra) - (x_left - extra)), y_bottom + Math.random() * extra, radius, speed);
             } else {
-                floaty = new Floaty(x_left - extra + Math.random() * ((x_right + extra) - (x_left - extra)), y_top - Math.random() * extra, radius);
+                floaty = new Floaty(x_left - extra + Math.random() * ((x_right + extra) - (x_left - extra)), y_top - Math.random() * extra, radius, speed);
             }
             floaty.setColor((new Colors()).random());
             this.floatys.push(floaty);

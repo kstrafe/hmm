@@ -1,9 +1,10 @@
 "use strict";
 
-function Floaty(x, y, r) {
+function Floaty(x, y, r, speed) {
     this.x = x;
     this.y = y;
     this.r = r;
+    this.speed = speed;
     this.angle = 0;
     this.color = '#8E8800';
 }
@@ -28,7 +29,7 @@ Floaty.prototype.draw = function (context) {
 };
 
 Floaty.prototype.move = function () {
-    this.y -= 0.3;
+    this.y -= this.speed;
     this.angle += 0.01;
 };
 
