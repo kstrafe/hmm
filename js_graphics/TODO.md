@@ -1,5 +1,6 @@
 # BUGS #
 	Content in info box is allowed to be scrolled too far up
+	Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
 	Sounds icon and text collide for initially small windows
 
 # IDEAS #
@@ -12,13 +13,11 @@
 	Different coloration in the tree based on subject
 	'I master this' button in infobox to get score and color a node's text
 	Make the zoom zoom toward position of the mouse
-
-	LONG(ER) TERM:
-		Short cut to places around the canvas
-		Mark nodes you've visited before
+	Short cut to places around the canvas
+	Mark nodes you've visited before
 
 # TODO #
-
+	Create variable for holding keystates (e.g. KEY_W: 87)
 	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime.
 	Semantic zoom
 	Latex rendering in infoboxes
@@ -27,15 +26,11 @@
 	Hyperlinks activating links to different bubbles
 	Music class for queing and loading after finishing
 
-
-
 # IN PROGRESS #
-
 	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 
 
 # DONE #
-
 	KEVIN: If you press spacebar and then move the mouse and click you end up in the same place
 	OLE: Info box class, scrolling in factBox
 	KEVIN: If the screen center is on a bubble, and you press a non-move key, the collision sound will activate
