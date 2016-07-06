@@ -8,6 +8,7 @@ function FactBox(title, text) {
     this.image = new Image();
     this.active = false;
     this.contentOffset = 0;
+    this.contentLen = 0;
     this.contentOOB = false;
 }
 
@@ -19,6 +20,8 @@ FactBox.prototype.show = function (titleAndText) {
     this.title = titleAndText.name;
     this.text = titleAndText.facts;
     this.active = true;
+    this.contentOffset = 0;
+    this.contentLen = 0;
 };
 
 FactBox.prototype.hide = function () {
@@ -85,7 +88,7 @@ FactBox.prototype.draw = function (context) {
     // this.wrapText(context, this.text, (downRight.x + upLeft.x) / 2 - (downRight.x - upLeft.x) / 2 + 15, 125, 25, (downRight.x - upLeft.x) - 35);
 
     // context.restore();
-    // this.scrollBar(context, upLeft, downRight, yMax);
+    this.scrollBar(context, upLeft, downRight);
 };
 
 FactBox.prototype.wrapText = function (context, text, x, y, lineHeight, maxWidth) {
@@ -115,9 +118,15 @@ FactBox.prototype.wrapText = function (context, text, x, y, lineHeight, maxWidth
 };
 
 FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
+    var yStart = (upLeft.y + 55),
+        yMax = (downRight.y - 35),
+        yEnd = null,
+        maxLength = yMax - yStart;
+
+    yStart = yStart - this.contentOffset;
+    yEnd = Math.min(yMax, yStart + maxLength * (maxLength / this.contentLen));
 
     context.save();
-
     context.lineWidth = 8;
     context.strokeStyle = '#DDDDDD';
     context.shadowColor = '#FFFFFF';
@@ -126,8 +135,8 @@ FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
     context.lineCap = 'round';
 
     context.beginPath();
-    context.moveTo(downRight.x - 20, upLeft.y + 35);
-    context.lineTo(downRight.x - 20, downRight.y - 35);
+    context.moveTo(downRight.x - 20, yStart);
+    context.lineTo(downRight.x - 20, yEnd);
     context.stroke();
 
     context.restore();
@@ -148,11 +157,10 @@ FactBox.prototype.scroll = function (deltaY) {
 FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     var canvas = document.createElement('canvas'),
         context = null,
-        yTextEnd = null;
 
     context = canvas.getContext('2d');
 
-    canvas.width = downRight.x - upLeft.x - 30;
+    canvas.width = downRight.x - upLeft.x - 45;
     canvas.height = downRight.y - upLeft.y - 65;
 
     //context.fillStyle = '#FFFFFF';
@@ -161,9 +169,10 @@ FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     context.font = '20px Calibri';
     context.translate(0, this.contentOffset);
     //context.fillRect(0, 0, canvas.width, canvas.height);
-    yTextEnd = this.wrapText(context, this.text, 0, 20, 20, canvas.width);
+    this.contentLen = this.wrapText(context, this.text, 0, 20, 20, canvas.width);
+    //console.log(yTextEnd)
 
-    this.contentOOB = (yTextEnd + this.contentOffset > canvas.height);
+    this.contentOOB = (this.contentLen + this.contentOffset > canvas.height);
 
     // if (this.image.src !== "") {
     //     context.drawImage(this.image, 0, yTextEnd + 20, canvas.width, canvas.width);
