@@ -118,13 +118,21 @@ FactBox.prototype.wrapText = function (context, text, x, y, lineHeight, maxWidth
 };
 
 FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
-    var yStart = (upLeft.y + 55),
+    var yMin = (upLeft.y + 55),
         yMax = (downRight.y - 35),
+        yStart = null,
         yEnd = null,
-        maxLength = yMax - yStart;
+        barLen = null,
+        maxLen = yMax - yMin;
 
-    yStart = yStart - this.contentOffset;
-    yEnd = Math.min(yMax, yStart + maxLength * (maxLength / this.contentLen));
+    if (this.contentLen > maxLen) {
+        barLen = maxLen * (maxLen / this.contentLen);
+    } else {
+        barLen = maxLen;
+    }
+
+    yStart = yMin +  Math.abs(this.contentOffset) * ((maxLen - barLen) / (this.contentLen - barLen));
+    yEnd = yStart + barLen;
 
     context.save();
     context.lineWidth = 8;
@@ -156,7 +164,7 @@ FactBox.prototype.scroll = function (deltaY) {
 
 FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     var canvas = document.createElement('canvas'),
-        context = null,
+        context = null;
 
     context = canvas.getContext('2d');
 
