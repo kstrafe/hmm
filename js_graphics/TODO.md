@@ -1,4 +1,5 @@
 # BUGS #
+	Content in info box is allowed to be scrolled too far up
 
 # IDEAS #
 	Refactor Main into its own class for cleanliness
@@ -30,10 +31,11 @@
 # IN PROGRESS #
 
 	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
-	OLE: Info box class, scrolling in factBox
+	
 
 # DONE #
 
+	OLE: Info box class, scrolling in factBox
 	KEVIN: If the screen center is on a bubble, and you press a non-move key, the collision sound will activate
 	KEVIN: Create tutorial bubble sequence in the beginning
 	OLE: Sound toggle button (bgm og sfx) (ALL/BGM/SFX/NONE)
