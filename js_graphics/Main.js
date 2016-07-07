@@ -224,16 +224,30 @@ function main() {
     var i = null,
         j = null,
         b = null,
+        ob = null,
         curve = null,
-        end = null;
+        end = null,
+        links = {};
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
             b = all_bubbles[i];
+            ob = b;
             b = new Bubble(b.x, b.y, b.r, b.title, b.facts);
             bubbles.add(i, b);
+            links[i] = [];
+            for (j = 0; j < ob.link.length; j += 1) {
+                links[i].push(ob.link[j]);
+                if (links[ob.link[j]] !== undefined) {
+                    links[ob.link[j]].push(i);
+                } else {
+                    links[ob.link[j]] = [i];
+                }
+            }
         }
     }
+
+    console.log(links);
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {

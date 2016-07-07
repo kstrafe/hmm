@@ -1,7 +1,6 @@
 # BUGS #
 	Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
 	Sounds icon and text collide for initially small windows
-	Moving nodes does not recalculate the connected lines
 
 # IDEAS #
 	Refactor Main into its own class for cleanliness
@@ -29,7 +28,7 @@
 
 # IN PROGRESS #
 	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
-		KEVIN: Re-design Data.js to allow nodes to easily change position - Allow curves to 'normalize' after move.
+		KEVIN: Re-design Data.js to allow nodes to easily change position - Allow curves to 'normalize' after move. Moving nodes does not recalculate the connected lines
 
 # DONE #
 	KEVIN: Make sound text opaque if the mouse is kept there
