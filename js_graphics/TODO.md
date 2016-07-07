@@ -1,5 +1,4 @@
 # BUGS #
-	Content in info box is allowed to be scrolled too far up if scrolling aggressively
 	Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
 	Sounds icon and text collide for initially small windows
 	Moving nodes does not recalculate the connected lines
@@ -28,8 +27,8 @@
 	Music class for queing and loading after finishing
 
 # IN PROGRESS #
+	KEVIN: Content in info box is allowed to be scrolled too far down if scrolling aggressively
 	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
-
 
 # DONE #
 	KEVIN: If you press spacebar and then move the mouse and click you end up in the same place

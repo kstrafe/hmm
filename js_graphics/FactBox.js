@@ -11,6 +11,7 @@ function FactBox(title, text) {
     this.contentOffset = 0;
     this.contentLen = 0;
     this.contentOOB = false;
+    this.content = null;
 }
 
 FactBox.prototype.isActive = function () {
@@ -79,8 +80,8 @@ FactBox.prototype.draw = function (context) {
 
     context.restore();
 
-    content = this.contentCanvas(upLeft, downRight);
-    context.drawImage(content, upLeft.x + 15, upLeft.y + 50);
+    this.content = this.contentCanvas(upLeft, downRight);
+    context.drawImage(this.content, upLeft.x + 15, upLeft.y + 50);
 
     // //Draw text
     // context.fillStyle = '#000000';
@@ -152,14 +153,19 @@ FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
 };
 
 FactBox.prototype.scroll = function (deltaY) {
+    console.log(this.contentOffset);
+    this.contentOOB = (this.contentLen + this.contentOffset < canvas.height);
+    console.log(this.contentLen, this.contentOffset, canvas.height);
     if (deltaY < 0) {
-        if (this.contentOffset < 0) {
-            this.contentOffset += 50;
-        }
+        this.contentOffset += 50;
     } else {
-        if (this.contentOOB) {
-            this.contentOffset -= 50;
-        }
+        this.contentOffset -= 50;
+    }
+    if (this.contentOffset > 0) {
+        this.contentOffset = 0;
+    }
+    else if (this.contentOOB) {
+        this.contentOffset = -(this.contentLen - canvas.height);
     }
 };
 
@@ -181,7 +187,6 @@ FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     this.contentLen = this.wrapText(context, this.text, 0, 20, 20, canvas.width);
     //console.log(yTextEnd)
 
-    this.contentOOB = (this.contentLen + this.contentOffset > canvas.height);
 
     // if (this.image.src !== "") {
     //     context.drawImage(this.image, 0, yTextEnd + 20, canvas.width, canvas.width);
