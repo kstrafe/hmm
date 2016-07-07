@@ -28,6 +28,7 @@
 	Music class for queing and loading after finishing
 
 # IN PROGRESS #
+	KEVIN: Re-design Data.js to allow nodes to easily change position
 	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 
 # DONE #
