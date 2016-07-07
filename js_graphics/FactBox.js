@@ -18,17 +18,33 @@ FactBox.prototype.isActive = function () {
     return this.active;
 };
 
-FactBox.prototype.show = function (titleAndText) {
+FactBox.prototype.show = function (context, titleAndText) {
+    var bounds = this.makeBounds(context);
     this.title = titleAndText.name;
     this.text = titleAndText.facts;
     this.active = true;
     this.contentOffset = 0;
     this.contentLen = 0;
+    this.content = this.contentCanvas(bounds.upLeft, bounds.downRight);
 };
 
 FactBox.prototype.hide = function () {
     this.active = false;
     this.contentOffset = 0;
+};
+
+FactBox.prototype.makeBounds = function (context) {
+    var maxWidth = 750;
+    return {
+        upLeft: {
+            x: Math.max(context.canvas.width - maxWidth, context.canvas.width / 2 + 50),
+            y: 50
+        },
+        downRight: {
+            x: context.canvas.width - 75,
+            y: context.canvas.height - 100
+        }
+    };
 };
 
 FactBox.prototype.draw = function (context) {
@@ -44,8 +60,7 @@ FactBox.prototype.draw = function (context) {
         downRight = {
             x: context.canvas.width - 75,
             y: context.canvas.height - 100
-        },
-        content;
+        };
 
     context.save();
 
@@ -80,7 +95,6 @@ FactBox.prototype.draw = function (context) {
 
     context.restore();
 
-    this.content = this.contentCanvas(upLeft, downRight);
     context.drawImage(this.content, upLeft.x + 15, upLeft.y + 50);
 
     // //Draw text
@@ -152,10 +166,10 @@ FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
     context.restore();
 };
 
-FactBox.prototype.scroll = function (deltaY) {
+FactBox.prototype.scroll = function (context, deltaY) {
     console.log(this.contentOffset);
-    this.contentOOB = (this.contentLen + this.contentOffset < canvas.height);
-    console.log(this.contentLen, this.contentOffset, canvas.height);
+    this.contentOOB = (this.contentLen + this.contentOffset < context.canvas.height);
+    console.log(this.contentLen, this.contentOffset, context.canvas.height);
     if (deltaY < 0) {
         this.contentOffset += 50;
     } else {
@@ -163,9 +177,8 @@ FactBox.prototype.scroll = function (deltaY) {
     }
     if (this.contentOffset > 0) {
         this.contentOffset = 0;
-    }
-    else if (this.contentOOB) {
-        this.contentOffset = -(this.contentLen - canvas.height);
+    } else if (this.contentOOB) {
+        this.contentOffset = -(this.contentLen - context.canvas.height);
     }
 };
 
