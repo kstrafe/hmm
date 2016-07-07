@@ -32,6 +32,7 @@
 		KEVIN: Re-design Data.js to allow nodes to easily change position - Allow curves to 'normalize' after move.
 
 # DONE #
+	KEVIN: Make sound text opaque if the mouse is kept there
 	KEVIN: Content in info box is allowed to be scrolled too far down if scrolling aggressively
 	KEVIN: If you press spacebar and then move the mouse and click you end up in the same place
 	OLE: Info box class, scrolling in factBox
