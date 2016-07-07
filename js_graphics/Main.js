@@ -49,7 +49,7 @@ function mouseHoverListener(evt) {
 
 function zoom(evt) {
     if (factBox.isActive()) {
-        factBox.scroll(context, evt.deltaY);
+        factBox.scroll(evt.deltaY);
     } else {
         if (evt.deltaY > 0) {
             context.zoomOut();
@@ -82,7 +82,7 @@ function drawFactBox(onCircle) {
     if (onCircle.hit) {
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
-        factBox.show(context, onCircle.facts);
+        factBox.show(onCircle.facts);
     } else {
         context.canvas.addEventListener('mousemove', mouseMoveListener, false);
         factBox.hide();
@@ -93,7 +93,7 @@ function drawFactBoxSpace(onCircle) {
     if (onCircle.hit) {
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
-        factBox.show(context, onCircle.facts);
+        factBox.show(onCircle.facts);
     }
 }
 
