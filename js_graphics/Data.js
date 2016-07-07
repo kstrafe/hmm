@@ -1,14 +1,6 @@
 "use strict";
 
 var all_bubbles = {
-    scroll_test: {
-        x: -400,
-        y: 0,
-        r: 100,
-        link: [],
-        title: "Scroll test",
-        facts: "START! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! MIDDLE! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! Super long text! FINISH! "
-    },
     start: {
         x: 0,
         y: 0,
