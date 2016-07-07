@@ -28,8 +28,8 @@
 	Music class for queing and loading after finishing
 
 # IN PROGRESS #
-	KEVIN: Re-design Data.js to allow nodes to easily change position
 	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
+		KEVIN: Re-design Data.js to allow nodes to easily change position - Allow curves to 'normalize' after move.
 
 # DONE #
 	KEVIN: Content in info box is allowed to be scrolled too far down if scrolling aggressively
