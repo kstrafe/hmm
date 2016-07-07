@@ -167,18 +167,19 @@ FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
 };
 
 FactBox.prototype.scroll = function (context, deltaY) {
+    var prevOffset = this.contentOffset;
     console.log(this.contentOffset);
-    this.contentOOB = (this.contentLen + this.contentOffset < context.canvas.height);
     console.log(this.contentLen, this.contentOffset, context.canvas.height);
     if (deltaY < 0) {
         this.contentOffset += 50;
     } else {
         this.contentOffset -= 50;
     }
+    this.contentOOB = (this.contentLen + this.contentOffset + 300 < context.canvas.height);
     if (this.contentOffset > 0) {
         this.contentOffset = 0;
     } else if (this.contentOOB) {
-        this.contentOffset = -(this.contentLen - context.canvas.height);
+        this.contentOffset = prevOffset;
     }
 };
 
@@ -200,11 +201,9 @@ FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     this.contentLen = this.wrapText(context, this.text, 0, 20, 20, canvas.width);
     //console.log(yTextEnd)
 
-
     // if (this.image.src !== "") {
     //     context.drawImage(this.image, 0, yTextEnd + 20, canvas.width, canvas.width);
     // }
 
     return canvas;
-
 };
