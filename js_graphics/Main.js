@@ -224,33 +224,16 @@ function main() {
     var i = null,
         j = null,
         b = null,
-        ob = null,
         curve = null,
-        end = null,
-        links = {};
+        end = null;
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
             b = all_bubbles[i];
-            ob = b;
             b = new Bubble(b.x, b.y, b.r, b.title, b.facts);
             bubbles.add(b);
-            if (links[i] === undefined) {
-                links[i] = [];
-            }
-            for (j = 0; j < ob.link.length; j += 1) {
-                links[i].push(ob.link[j]);
-                if (links[ob.link[j]] !== undefined) {
-                    links[ob.link[j]].push(i);
-                } else {
-                    console.log(ob.link[j], i);
-                    links[ob.link[j]] = [i];
-                }
-            }
         }
     }
-
-    console.log(links);
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
@@ -258,7 +241,7 @@ function main() {
             for (j = 0; j < b.link.length; j += 1) {
                 end = all_bubbles[b.link[j]];
                 curve = new Curve(b.x, b.y, b.r, end.x, end.y, end.r);
-                curves.append(curve);
+                curves.append(curve, i, b.link[j]);
             }
         }
     }
