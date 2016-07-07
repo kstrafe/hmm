@@ -15,6 +15,7 @@
 	Make the zoom zoom toward position of the mouse
 	Short cut to places around the canvas
 	Mark nodes you've visited before
+	Floaty speed proportional to size
 
 # TODO #
 	Create variable for holding keystates (e.g. KEY_W: 87)
