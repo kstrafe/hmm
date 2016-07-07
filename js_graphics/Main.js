@@ -234,13 +234,16 @@ function main() {
             b = all_bubbles[i];
             ob = b;
             b = new Bubble(b.x, b.y, b.r, b.title, b.facts);
-            bubbles.add(i, b);
-            links[i] = [];
+            bubbles.add(b);
+            if (links[i] === undefined) {
+                links[i] = [];
+            }
             for (j = 0; j < ob.link.length; j += 1) {
                 links[i].push(ob.link[j]);
                 if (links[ob.link[j]] !== undefined) {
                     links[ob.link[j]].push(i);
                 } else {
+                    console.log(ob.link[j], i);
                     links[ob.link[j]] = [i];
                 }
             }

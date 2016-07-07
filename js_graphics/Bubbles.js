@@ -2,7 +2,6 @@
 
 function Bubbles() {
     this.bubbles = [];
-    this.bubblesByName = {};
 }
 
 Bubbles.prototype.draw = function (context) {
@@ -12,13 +11,8 @@ Bubbles.prototype.draw = function (context) {
     }
 };
 
-Bubbles.prototype.add = function (name, bubble) {
+Bubbles.prototype.add = function (bubble) {
     this.bubbles.push(bubble);
-    this.bubblesByName[name] = bubble;
-};
-
-Bubbles.prototype.getByName = function (name) {
-    return this.bubblesByName[name];
 };
 
 Bubbles.prototype.getBubble = function (index) {
