@@ -4,7 +4,6 @@
 	Transparency doesn't stay at 1 when hovering sound button
 
 # IDEAS #
-	Refactor Main into its own class for cleanliness
 	Floaties start spawning in field of view (and dissapears out of view)
 	Education mode: Answer question to unlock new bubbles about more challenging things
 	Help menu button; describe keyboard shortcuts
@@ -59,4 +58,5 @@
 	KEVIN: Arrow/vim -key scrolling
 
 # SCRAP #
+	Refactor Main into its own class for cleanliness - REASON: Too noisy and methods don't work well with eventlisteners
 	Score system for visited nodes (Level and experience?) - REASON: Use colored nodes to visualize 'experience' and score
