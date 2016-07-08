@@ -10,6 +10,7 @@
 	Short cut to places around the canvas
 
 # TODO #
+	Implement Data.js generator (with button) and automatic download
 	Help menu button; describe keyboard shortcuts
 	Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
 	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime.
