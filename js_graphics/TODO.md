@@ -26,9 +26,9 @@
 
 # IN PROGRESS #
 	KEVIN: Editor for editing a specific bubble (HTML)
-	KEVIN: 'Edit' button somewhere when factbox is opened
 
 # DONE #
+	KEVIN: 'Edit' button somewhere when factbox is opened
 	KEVIN: Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
 	KEVIN: Help menu button; describe keyboard shortcuts
 	KEVIN: On-screen text when an edit mode (move, link) has been engaged

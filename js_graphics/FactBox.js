@@ -31,16 +31,27 @@ FactBox.prototype.hide = function () {
     this.contentOffset = 0;
 };
 
+FactBox.prototype.upLeft = function (context, boxTopLeftMarg, maxWidth) {
+    return {
+        x: Math.max(context.canvas.width - maxWidth, context.canvas.width / 2 + boxTopLeftMarg),
+        y: boxTopLeftMarg
+    };
+
+};
+
+FactBox.prototype.downRight = function (context, boxTopLeftMarg, boxRightMarg) {
+    return {
+        x: context.canvas.width - (boxTopLeftMarg + boxRightMarg),
+        y: context.canvas.height - 2 * boxTopLeftMarg
+    };
+};
+
 FactBox.prototype.resize = function (context) {
-    var maxWidth = 750,
-        upLeft = {
-            x: Math.max(context.canvas.width - maxWidth, context.canvas.width / 2 + 50),
-            y: 50
-        },
-        downRight = {
-            x: context.canvas.width - 75,
-            y: context.canvas.height - 100
-        };
+    var boxTopLeftMarg = 50,
+        boxRightMarg = 25,
+        maxWidth = 750,
+        upLeft = this.upLeft(context, boxTopLeftMarg, maxWidth),
+        downRight = this.downRight(context, boxTopLeftMarg, boxRightMarg);
     this.contentCanvas(upLeft, downRight);
 
     //this.contentOffset = 0
@@ -64,14 +75,8 @@ FactBox.prototype.draw = function (context) {
         boxRightMarg = 25,
         maxWidth = 750,
         cornerRadius = 25,
-        upLeft = {
-            x: Math.max(context.canvas.width - maxWidth, context.canvas.width / 2 + boxTopLeftMarg),
-            y: boxTopLeftMarg
-        },
-        downRight = {
-            x: context.canvas.width - (boxTopLeftMarg + boxRightMarg),
-            y: context.canvas.height - 2 * boxTopLeftMarg
-        },
+        upLeft = this.upLeft(context, boxTopLeftMarg, maxWidth),
+        downRight = this.downRight(context, boxTopLeftMarg, boxRightMarg),
         content,
         ytitle = 90,
         contLeftMarg = 15,

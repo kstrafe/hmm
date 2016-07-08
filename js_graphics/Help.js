@@ -83,7 +83,6 @@ Help.prototype.deactivate = function () {
 Help.prototype.hoverButton = function (mousePos) {
     this.mouseOn = this.collide(mousePos);
     if (this.mouseOn) {
-        console.log(this.mouseOn);
         this.transparancy = 1;
     }
 };
