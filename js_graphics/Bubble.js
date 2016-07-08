@@ -1,6 +1,7 @@
 "use strict";
 
-function Bubble(x, y, r, name, facts, highlighted) {
+function Bubble(index, x, y, r, name, facts, highlighted) {
+    this.index = index;
     this.x = x;
     this.y = y;
     this.r = r;
@@ -10,10 +11,22 @@ function Bubble(x, y, r, name, facts, highlighted) {
     this.color = '#4E8800';
 }
 
+Bubble.prototype.getIndex = function () {
+    return this.index;
+};
+
 Bubble.prototype.getXY = function () {
     return {
         x: this.x,
         y: this.y
+    };
+};
+
+Bubble.prototype.getCurveStart = function () {
+    return {
+        x: this.x,
+        y: this.y,
+        r: this.r
     };
 };
 
@@ -118,4 +131,9 @@ Bubble.prototype.hitTest = function (mousePos) {
         rMouseCenter = (mousePos.x - coord.x) * (mousePos.x - coord.x) + (mousePos.y - coord.y) * (mousePos.y - coord.y);
 
     return rMouseCenter < (this.getR()) * (this.getR());
+};
+
+Bubble.prototype.moveTo = function (x, y) {
+    this.x = x;
+    this.y = y;
 };

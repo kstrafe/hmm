@@ -4,10 +4,41 @@
 
 function Curves() {
     this.curves = [];
+    this.connected = {};
 }
 
-Curves.prototype.append = function (curve) {
+Curves.prototype.reposition = function (from, bubbles) {
+    var i = null,
+        con = this.connected[from],
+        to = null;
+    from = bubbles.getNamed(from);
+
+    for (i in con) {
+        if (con.hasOwnProperty(i)) {
+            to = bubbles.getNamed(i);
+            con[i].recompute(from.getCurveStart(), to.getCurveStart());
+        }
+    }
+};
+
+Curves.prototype.append = function (curve, from, to) {
     this.curves.push(curve);
+
+    if (this.connected[from] === undefined) {
+        this.connected[from] = {};
+    }
+    if (this.connected[from][to] !== undefined) {
+        console.log("Curve already linked! (from->to)");
+    }
+    if (this.connected[to] === undefined) {
+        this.connected[to] = {};
+    }
+    if (this.connected[to][from] !== undefined) {
+        console.log("Curve already linked! (to->from)");
+    }
+
+    this.connected[from][to] = curve;
+    this.connected[to][from] = curve;
 };
 
 Curves.prototype.draw = function (context) {

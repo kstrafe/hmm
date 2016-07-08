@@ -7,6 +7,7 @@ function Sounds() {
     this.backgroundSong = new Audio("http://music.stravers.net/");
     this.button_hover = new Audio("Audio/button_hov2.mp3");
     this.button_hover.volume = 0.3;
+    this.mouseOn = false;
     this.muteSfx = false;
     this.transparancy = 1;
 
@@ -106,8 +107,10 @@ Sounds.prototype.show = function () {
 };
 
 Sounds.prototype.fadeOut = function () {
-    if (this.transparancy > 0.15) {
-        this.transparancy -= 0.025;
+    if (this.mouseOn === false) {
+        if (this.transparancy > 0.15) {
+            this.transparancy -= 0.025;
+        }
     }
 };
 
@@ -135,7 +138,10 @@ Sounds.prototype.onClick = function (mousePos) {
 Sounds.prototype.hoverButton = function (mousePos) {
     if (mousePos.x > 12 && mousePos.x < 70) {
         if (mousePos.y > 25 && mousePos.y < 45) {
+            this.mouseOn = true;
             this.show();
+            return;
         }
     }
+    this.mouseOn = false;
 };

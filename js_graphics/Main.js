@@ -180,8 +180,8 @@ function keyboardDown(key) {
         mousePos = context.scaledMousePos();
         bubble = bubbles.collide(mousePos);
         if (selected_bubble) {
-            selected_bubble.x = mousePos.x;
-            selected_bubble.y = mousePos.y;
+            selected_bubble.moveTo(mousePos.x, mousePos.y);
+            curves.reposition(selected_bubble.getIndex(), bubbles);
             selected_bubble = null;
         } else {
             selected_bubble = bubble;
@@ -192,7 +192,7 @@ function keyboardDown(key) {
         bubble = bubbles.collide(mousePos);
         if (selected_bubble) {
             curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
-            curves.append(curve);
+            curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
             selected_bubble = null;
         } else {
             selected_bubble = bubble;
@@ -200,8 +200,8 @@ function keyboardDown(key) {
         break;
     case 84:
         mousePos = context.scaledMousePos();
-        bubble = new Bubble(mousePos.x, mousePos.y, 100, "New Knowledge!", "");
-        bubbles.add(bubble);
+        bubble = new Bubble(bubbles.length, mousePos.x, mousePos.y, 100, "New Knowledge!", "");
+        bubbles.add(bubbles.length, bubble);
         break;
     case 189:
         context.zoomOut();
@@ -222,25 +222,27 @@ function keyboardUp(key) {
 
 function main() {
     var i = null,
+        j = null,
         b = null,
-        begin = null,
+        curve = null,
         end = null;
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
             b = all_bubbles[i];
-            b = new Bubble(b.x, b.y, b.r, b.title, b.facts);
-            bubbles.add(b);
+            b = new Bubble(i, b.x, b.y, b.r, b.title, b.facts);
+            bubbles.add(i, b);
         }
     }
 
-    for (i in all_curves) {
-        if (all_curves.hasOwnProperty(i)) {
-            b = all_curves[i];
-            begin = all_bubbles[b.begin];
-            end = all_bubbles[b.end];
-            b = new Curve(begin.x, begin.y, begin.r, end.x, end.y, end.r);
-            curves.append(b);
+    for (i in all_bubbles) {
+        if (all_bubbles.hasOwnProperty(i)) {
+            b = all_bubbles[i];
+            for (j = 0; j < b.link.length; j += 1) {
+                end = all_bubbles[b.link[j]];
+                curve = new Curve(b.x, b.y, b.r, end.x, end.y, end.r);
+                curves.append(curve, i, b.link[j]);
+            }
         }
     }
 
