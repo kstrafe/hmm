@@ -126,6 +126,18 @@ FactBox.prototype.draw = function (context) {
 
     this.scrollBar(context, upLeft, downRight);
     context.restore();
+    this.drawEdit(context, (downRight.x + upLeft.x) / 2, downRight.y + contTopMarg);
+};
+
+FactBox.prototype.drawEdit = function (context, centerPos, height) {
+    var editstr = "Edit";
+    context.save();
+    context.font = '20px Calibri';
+    context.fillStyle = '#FFFFFF';
+    context.globalAlpha = 0.25;
+    context.textAlign = "center";
+    context.fillText(editstr, centerPos, height);
+    context.restore();
 };
 
 FactBox.prototype.wrapText = function (context, text, x, y, lineHeight, maxWidth) {
