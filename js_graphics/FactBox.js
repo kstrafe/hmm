@@ -60,17 +60,22 @@ FactBox.prototype.draw = function (context) {
         return;
     }
 
-    var maxWidth = 750,
+    var boxTopLeftMarg = 50,
+        boxRightMarg = 25,
+        maxWidth = 750,
         cornerRadius = 25,
         upLeft = {
-            x: Math.max(context.canvas.width - maxWidth, context.canvas.width / 2 + 50),
-            y: 50
+            x: Math.max(context.canvas.width - maxWidth, context.canvas.width / 2 + boxTopLeftMarg),
+            y: boxTopLeftMarg
         },
         downRight = {
-            x: context.canvas.width - 75,
-            y: context.canvas.height - 100
+            x: context.canvas.width - (boxTopLeftMarg + boxRightMarg),
+            y: context.canvas.height - 2 * boxTopLeftMarg
         },
-        content;
+        content,
+        ytitle = 90,
+        contLeftMarg = 15,
+        contTopMarg = 50;
 
     //this.contentOffset = 0
 
@@ -106,12 +111,12 @@ FactBox.prototype.draw = function (context) {
     context.fillStyle = '#FFFFFF';
     context.textAlign = "center";
     context.font = '30px Calibri';
-    context.fillText(this.title, (downRight.x + upLeft.x) / 2, 90);
+    context.fillText(this.title, (downRight.x + upLeft.x) / 2, ytitle);
 
     context.restore();
 
     content = this.contentCanvas(upLeft, downRight);
-    context.drawImage(content, upLeft.x + 15, upLeft.y + 50);
+    context.drawImage(content, upLeft.x + contLeftMarg, upLeft.y + contTopMarg);
 
     // //Draw text
     // context.fillStyle = '#000000';
@@ -150,8 +155,11 @@ FactBox.prototype.wrapText = function (context, text, x, y, lineHeight, maxWidth
 };
 
 FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
-    var yMin = (upLeft.y + 55),
-        yMax = (downRight.y - 35),
+    var topMargin = 55,
+        endMargin = 35,
+        rightMargin = 20,
+        yMin = (upLeft.y + topMargin),
+        yMax = (downRight.y - endMargin),
         yStart = null,
         yEnd = null,
         barLen = null,
@@ -175,22 +183,24 @@ FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
     context.lineCap = 'round';
 
     context.beginPath();
-    context.moveTo(downRight.x - 20, yStart);
-    context.lineTo(downRight.x - 20, yEnd);
+    context.moveTo(downRight.x - rightMargin, yStart);
+    context.lineTo(downRight.x - rightMargin, yEnd);
     context.stroke();
 
     context.restore();
 };
 
 FactBox.prototype.scroll = function (deltaY) {
+    var scrollDelta = 50;
+
     if (this.contentOOB) {
         if (deltaY < 0) {
-            this.contentOffset += 50;
+            this.contentOffset += scrollDelta;
             if (this.contentOffset > 0) {
                 this.contentOffset = 0;
             }
         } else {
-            this.contentOffset -= 50;
+            this.contentOffset -= scrollDelta;
             if (this.contentOffset < this.lowerBound) {
                 this.contentOffset = this.lowerBound;
             }
@@ -201,20 +211,24 @@ FactBox.prototype.scroll = function (deltaY) {
 
 FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     var canvas = document.createElement('canvas'),
-        context = null;
+        context = null,
+        LfMargin = 45,
+        TbMargin = 65,
+        fontSize = 20,
+        lineHeight = 20;
 
     context = canvas.getContext('2d');
 
-    canvas.width = downRight.x - upLeft.x - 45;
-    canvas.height = downRight.y - upLeft.y - 65;
+    canvas.width = downRight.x - upLeft.x - LfMargin;
+    canvas.height = downRight.y - upLeft.y - TbMargin;
 
     //context.fillStyle = '#FFFFFF';
     context.fillStyle = '#000000';
     context.textAlign = "left";
-    context.font = '20px Calibri';
+    context.font = fontSize + 'px Calibri';
     context.translate(0, this.contentOffset);
     //context.fillRect(0, 0, canvas.width, canvas.height);
-    this.contentLen = this.wrapText(context, this.text, 0, 20, 20, canvas.width);
+    this.contentLen = this.wrapText(context, this.text, 0, fontSize, lineHeight, canvas.width);
     //console.log(yTextEnd)
 
     this.contentOOB = ((this.contentLen + this.contentOffset) >= canvas.height);
