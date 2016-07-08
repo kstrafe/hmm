@@ -19,6 +19,10 @@
 
 "use strict";
 
+var editor = document.getElementById("editor");
+editor.style.visibility = "hidden";
+editor.style.height = "0vh";
+
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
 var factBox = new FactBox('', '');
