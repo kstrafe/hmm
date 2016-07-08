@@ -69,7 +69,7 @@ Sounds.prototype.flipMute = function () {
 Sounds.prototype.muteAll = function () {
     this.muteSfx = true;
     this.backgroundSong.muted = true;
-    this.stateIndex = this.stateNames.length();
+    this.stateIndex = this.stateNames.length - 1;
     this.show();
 };
 
@@ -82,7 +82,7 @@ Sounds.prototype.unmuteAll = function () {
 
 Sounds.prototype.nextState = function () {
     this.stateIndex += 1;
-    this.stateIndex %= this.stateNames.length() + 1;
+    this.stateIndex %= this.stateNames.length;
 
     switch (this.stateIndex) {
     case 0:
@@ -104,7 +104,7 @@ Sounds.prototype.nextState = function () {
 };
 
 Sounds.prototype.isMuted = function () {
-    return this.stateIndex === this.stateNames.length();
+    return this.stateIndex === this.stateNames.length - 1;
 };
 
 Sounds.prototype.show = function () {

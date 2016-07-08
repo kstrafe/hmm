@@ -1,5 +1,5 @@
 # BUGS #
-	
+
 
 # IDEAS #
 	Persistence storage of visited nodes in cookie
@@ -8,7 +8,7 @@
 	Different coloration in the tree based on subject
 	'I master this' button in infobox to get score and color a node's text - Mark nodes you've visited before
 	Short cut to places around the canvas
-	
+
 
 # TODO #
 	Implement Data.js generator (with button) and automatic download
