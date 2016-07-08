@@ -1,6 +1,5 @@
 # BUGS #
 	Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
-	Sounds icon and text collide for initially small windows
 
 # IDEAS #
 	Refactor Main into its own class for cleanliness
@@ -30,6 +29,7 @@
 	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 
 # DONE #
+	OLE: Sounds icon and text collide for initially small windows
 	KEVIN: Re-design Data.js to allow nodes to easily change position - Allow curves to 'normalize' after move. Moving nodes does not recalculate the connected lines
 	KEVIN: Make sound text opaque if the mouse is kept there
 	KEVIN: Content in info box is allowed to be scrolled too far down if scrolling aggressively
