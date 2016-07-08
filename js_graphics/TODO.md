@@ -2,7 +2,6 @@
 	Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
 	Fact box where content fits can also be scrolled
 	Transparency doesn't stay at 1 when hovering sound button
-	Moving nodes does not recalculate the connected lines
 
 # IDEAS #
 	Refactor Main into its own class for cleanliness
