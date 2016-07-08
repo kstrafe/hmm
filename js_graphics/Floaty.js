@@ -14,6 +14,7 @@ Floaty.prototype.setColor = function (color) {
 };
 
 Floaty.prototype.draw = function (context) {
+    var angleAmp = 30;
     context.save();
 
     context.beginPath();
@@ -22,21 +23,22 @@ Floaty.prototype.draw = function (context) {
     context.shadowColor = this.color;
     context.strokeStyle = this.color;
 
-    context.arc(this.x + Math.sin(this.angle) * 30, this.y, this.r, 0, 2 * Math.PI);
+    context.arc(this.x + Math.sin(this.angle) * angleAmp, this.y, this.r, 0, 2 * Math.PI);
 
     context.stroke();
     context.restore();
 };
 
 Floaty.prototype.move = function () {
+    var angleSpeed = 0.01;
     this.y -= this.speed;
-    this.angle += 0.01;
-};
-
-Floaty.prototype.yPos = function () {
-    return this.y;
+    this.angle += angleSpeed;
 };
 
 Floaty.prototype.xPos = function () {
     return this.x;
+};
+
+Floaty.prototype.yPos = function () {
+    return this.y;
 };

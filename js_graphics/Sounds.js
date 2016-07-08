@@ -24,6 +24,10 @@ function Sounds() {
     this.stateNames = ["ALL", "SFX", "BGM", "NONE"];
     this.stateIcons = [this.all, this.sfx, this.bgm, this.none];
 
+    this.maxX = 70;
+    this.minX = 12;
+    this.maxY = 45;
+    this.minY = 25;
 }
 
 Sounds.prototype.refreshBgm = function () {
@@ -65,7 +69,7 @@ Sounds.prototype.flipMute = function () {
 Sounds.prototype.muteAll = function () {
     this.muteSfx = true;
     this.backgroundSong.muted = true;
-    this.stateIndex = 3;
+    this.stateIndex = this.stateNames.length();
     this.show();
 };
 
@@ -78,7 +82,7 @@ Sounds.prototype.unmuteAll = function () {
 
 Sounds.prototype.nextState = function () {
     this.stateIndex += 1;
-    this.stateIndex %= 4;
+    this.stateIndex %= this.stateNames.length() + 1;
 
     switch (this.stateIndex) {
     case 0:
@@ -100,7 +104,7 @@ Sounds.prototype.nextState = function () {
 };
 
 Sounds.prototype.isMuted = function () {
-    return this.stateIndex === 3;
+    return this.stateIndex === this.stateNames.length();
 };
 
 Sounds.prototype.show = function () {
@@ -108,37 +112,40 @@ Sounds.prototype.show = function () {
 };
 
 Sounds.prototype.fadeOut = function () {
+    var tranTresh = 0.15,
+        tranFade = 0.025;
     if (this.mouseOn === false) {
-        if (this.transparancy > 0.15) {
-            this.transparancy -= 0.025;
+        if (this.transparancy > tranTresh) {
+            this.transparancy -= tranFade;
         }
     }
 };
 
 Sounds.prototype.draw = function (context) {
+    var l = [8, 18, 30, 30, 40, 40];
     context.save();
     context.fillStyle = '#FFFFFF';
     context.font = '20px Calibri';
 
-    context.drawImage(this.stateIcons[this.stateIndex], 8, 18, 30, 30);
+    context.drawImage(this.stateIcons[this.stateIndex], l[0], l[1], l[2], l[3]);
     context.globalAlpha = this.transparancy;
     context.textAlign = "left";
-    context.fillText(this.stateNames[this.stateIndex], 40, 40);
+    context.fillText(this.stateNames[this.stateIndex], l[4], l[5]);
     this.fadeOut();
     context.restore();
 };
 
 Sounds.prototype.onClick = function (mousePos) {
-    if (mousePos.x > 12 && mousePos.x < 70) {
-        if (mousePos.y > 25 && mousePos.y < 45) {
+    if (mousePos.x > this.minX && mousePos.x < this.maxX) {
+        if (mousePos.y > this.minY && mousePos.y < this.maxY) {
             this.nextState();
         }
     }
 };
 
 Sounds.prototype.hoverButton = function (mousePos) {
-    if (mousePos.x > 12 && mousePos.x < 70) {
-        if (mousePos.y > 25 && mousePos.y < 45) {
+    if (mousePos.x > this.minX && mousePos.x < this.maxX) {
+        if (mousePos.y > this.minY && mousePos.y < this.maxY) {
             this.mouseOn = true;
             this.show();
             return;
