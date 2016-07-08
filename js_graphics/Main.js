@@ -163,10 +163,40 @@ function setCanvasSpeed(key, speed) {
     }
 }
 
-function keyboardDown(key) {
-    var bubble = null,
+function moveOrSelectBubble() {
+    var mousePos = context.scaledMousePos(),
+        bubble = bubbles.collide(mousePos);
+
+    if (selected_bubble) {
+        selected_bubble.moveTo(mousePos.x, mousePos.y);
+        curves.reposition(selected_bubble.getIndex(), bubbles);
+        selected_bubble = null;
+    } else {
+        selected_bubble = bubble;
+    }
+}
+
+function createLineOrSelectBubble() {
+    var mousePos = context.scaledMousePos(),
         curve = null,
-        mousePos = null;
+        bubble = bubbles.collide(mousePos);
+    if (selected_bubble && bubble) {
+        console.log(selected_bubble.getIndex(), bubble.getIndex());
+        curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
+        curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
+        selected_bubble = null;
+    } else {
+        selected_bubble = bubble;
+    }
+}
+
+function createBubble() {
+    var mousePos = context.scaledMousePos(),
+        bubble = new Bubble(bubbles.length(), mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
+    bubbles.add(bubbles.length(), bubble);
+}
+
+function keyboardDown(key) {
     switch (key.which) {
     case KEY.SPACE:
         drawFactBoxSpace(bubbles.click(context.getCenterPos()));
@@ -178,31 +208,13 @@ function keyboardDown(key) {
         context.flipDevMode();
         break;
     case KEY.R:
-        mousePos = context.scaledMousePos();
-        bubble = bubbles.collide(mousePos);
-        if (selected_bubble) {
-            selected_bubble.moveTo(mousePos.x, mousePos.y);
-            curves.reposition(selected_bubble.getIndex(), bubbles);
-            selected_bubble = null;
-        } else {
-            selected_bubble = bubble;
-        }
+        moveOrSelectBubble();
         break;
     case KEY.Q:
-        mousePos = context.scaledMousePos();
-        bubble = bubbles.collide(mousePos);
-        if (selected_bubble && bubble) {
-            curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
-            curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
-            selected_bubble = null;
-        } else {
-            selected_bubble = bubble;
-        }
+        createLineOrSelectBubble();
         break;
     case KEY.T:
-        mousePos = context.scaledMousePos();
-        bubble = new Bubble(bubbles.length, mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
-        bubbles.add(bubbles.length, bubble);
+        createBubble();
         break;
     case KEY.MIN:
         context.zoomOut();
