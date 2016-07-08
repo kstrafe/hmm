@@ -167,7 +167,6 @@ function keyboardDown(key) {
     var bubble = null,
         curve = null,
         mousePos = null;
-    console.log(key.which);
     switch (key.which) {
     case KEY.SPACE:
         drawFactBoxSpace(bubbles.click(context.getCenterPos()));
@@ -192,7 +191,7 @@ function keyboardDown(key) {
     case KEY.Q:
         mousePos = context.scaledMousePos();
         bubble = bubbles.collide(mousePos);
-        if (selected_bubble) {
+        if (selected_bubble && bubble) {
             curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
             curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
             selected_bubble = null;
@@ -202,7 +201,7 @@ function keyboardDown(key) {
         break;
     case KEY.T:
         mousePos = context.scaledMousePos();
-        bubble = new Bubble(bubbles.length, mousePos.x, mousePos.y, 100, "New Knowledge!", "");
+        bubble = new Bubble(bubbles.length, mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
         bubbles.add(bubbles.length, bubble);
         break;
     case KEY.MIN:
