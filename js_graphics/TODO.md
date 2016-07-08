@@ -1,5 +1,5 @@
 # BUGS #
-	Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
+	
 
 # IDEAS #
 	Persistence storage of visited nodes in cookie
@@ -8,6 +8,7 @@
 	Different coloration in the tree based on subject
 	'I master this' button in infobox to get score and color a node's text - Mark nodes you've visited before
 	Short cut to places around the canvas
+	
 
 # TODO #
 	Implement Data.js generator (with button) and automatic download
@@ -19,10 +20,12 @@
 	Picture/Sprite rendering inside the infoboxes
 	Clickable hyperlinks in info box
 	Hyperlinks activating links to different bubbles
+	(Make content stay in the same place after resize)
 
 # IN PROGRESS #
 
 # DONE #
+	OLE: Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
 	OLE: Music class for queing and loading after finishing
 	KEVIN: ~~Right-click~~ (Q,R,T) add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 	KEVIN: Create variable for holding keystates (e.g. KEY_W: 87)
