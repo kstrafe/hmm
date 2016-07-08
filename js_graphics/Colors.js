@@ -10,6 +10,10 @@ function Colors() {
     ];
 }
 
+Colors.prototype.clrs = function (index) {
+    return this.colors[index];
+};
+
 Colors.prototype.random = function () {
     var value = Math.random(),
         interval = 1 / this.colors.length,

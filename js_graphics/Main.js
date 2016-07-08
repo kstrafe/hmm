@@ -121,6 +121,7 @@ function mouseDownListener(evt) {
     onCircle = bubbles.click(scaledPos);
     drawFactBox(onCircle);
     sounds.onClick(mousePos);
+    help.click();
 }
 
 function isMovementKey(key) {
@@ -231,6 +232,7 @@ function createBubble() {
 
 function keyboardDown(key) {
     var movingSpeed = 20;
+    help.deactivate();
     switch (key.which) {
     case KEY.SPACE:
         drawFactBoxSpace(bubbles.click(context.getCenterPos()));

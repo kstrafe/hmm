@@ -29,9 +29,9 @@
 	Sound effect when clicking/space on a bubble
 
 # IN PROGRESS #
-	KEVIN: Help menu button; describe keyboard shortcuts
 
 # DONE #
+	KEVIN: Help menu button; describe keyboard shortcuts
 	KEVIN: On-screen text when an edit mode (move, link) has been engaged
 	OLE: Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
 	OLE: Music class for queing and loading after finishing

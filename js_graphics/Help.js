@@ -1,3 +1,4 @@
+/*global Colors*/
 "use strict";
 
 function Help() {
@@ -5,6 +6,7 @@ function Help() {
     this.mouseOn = false;
     this.right = 0;
     this.safeOffset = 20;
+    this.active = false;
 
     this.maxY = 45;
     this.minY = 25;
@@ -37,7 +39,8 @@ Help.prototype.fadeOut = function () {
 };
 
 Help.prototype.draw = function (context) {
-    var right = this.right - this.safeOffset;
+    var right = this.right - this.safeOffset,
+        helpstr = "Q: Link Mode | E: Dev Info | R: Move Mode | T: New Bubble";
     context.save();
     context.font = '20px Calibri';
     context.fillStyle = '#FFFFFF';
@@ -45,6 +48,28 @@ Help.prototype.draw = function (context) {
     context.textAlign = "center";
     context.fillText("H", right, 40);
     context.restore();
+
+    if (this.active) {
+        context.save();
+        context.font = '20px Calibri';
+        context.fillStyle = (new Colors()).clrs(10);
+        context.textAlign = "center";
+
+        context.fillText(helpstr, context.canvas.width / 2, context.canvas.height / 2);
+        context.restore();
+    }
+};
+
+Help.prototype.click = function () {
+    if (this.mouseOn) {
+        this.active = true;
+    } else {
+        this.active = false;
+    }
+};
+
+Help.prototype.deactivate = function () {
+    this.active = false;
 };
 
 Help.prototype.hoverButton = function (mousePos) {
