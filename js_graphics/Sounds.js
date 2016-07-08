@@ -96,6 +96,7 @@ Sounds.prototype.nextState = function () {
         this.muteAll();
         break;
     }
+    this.show();
 };
 
 Sounds.prototype.isMuted = function () {
