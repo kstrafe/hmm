@@ -1,5 +1,5 @@
 # BUGS #
-	
+
 
 # IDEAS #
 	Persistence storage of visited nodes in cookie
@@ -14,17 +14,21 @@
 	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
 	Latex rendering in infoboxes
 	Picture/Sprite rendering inside the infoboxes
+	Create favicon for the site
 
 # TODO #
+	Add a whole bunch of new bubbles
+	Move random color strings into Colors.js
+	Improve bubble text-fitting (currently goes slightly OOB)
 	Implement Data.js generator (with button) and automatic download
 	Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
+	Right-mouse button editing interface
 	'Edit' button somewhere when factbox is opened
 	Editor for editing a specific bubble (HTML)
 	'I master this' button in/around factbox
 	Sound effect when clicking/space on a bubble
 	Help menu button; describe keyboard shortcuts
 	On-screen text when an edit mode (move, link) has been engaged
-
 
 # IN PROGRESS #
 

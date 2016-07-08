@@ -1,6 +1,7 @@
 "use strict";
 
 function Colors() {
+    // If you want to add colors, use another variable. These are from clrs.cc
     this.colors = [
         "#001F3F", "#0074D9", "#7FDBFF", "#39CCCC",
         "#3D9970", "#2ECC40", "#01FF70", "#FFDC00",
