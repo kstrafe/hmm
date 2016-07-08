@@ -105,8 +105,8 @@ FactBox.prototype.draw = function (context) {
     // context.font = '20px Calibri';
     // this.wrapText(context, this.text, (downRight.x + upLeft.x) / 2 - (downRight.x - upLeft.x) / 2 + 15, 125, 25, (downRight.x - upLeft.x) - 35);
 
-    // context.restore();
     this.scrollBar(context, upLeft, downRight);
+    context.restore();
 };
 
 FactBox.prototype.wrapText = function (context, text, x, y, lineHeight, maxWidth) {
