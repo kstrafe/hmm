@@ -28,11 +28,11 @@
 	'I master this' button in/around factbox
 	Sound effect when clicking/space on a bubble
 	Help menu button; describe keyboard shortcuts
-	On-screen text when an edit mode (move, link) has been engaged
 
 # IN PROGRESS #
 
 # DONE #
+	KEVIN: On-screen text when an edit mode (move, link) has been engaged
 	OLE: Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
 	OLE: Music class for queing and loading after finishing
 	KEVIN: ~~Right-click~~ (Q,R,T) add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?

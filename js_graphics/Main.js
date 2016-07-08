@@ -9,6 +9,7 @@
 /*global Context*/
 /*global Curve*/
 /*global Curves*/
+/*global Edit*/
 /*global FactBox*/
 /*global Floaty*/
 /*global Floatys*/
@@ -22,6 +23,7 @@ var floaties = new Floatys();
 var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
 var curves = new Curves();
+var edit = new Edit();
 
 var sounds = new Sounds();
 sounds.playBGM();
@@ -34,6 +36,7 @@ function renderEverything() {
     context.draw([floaties, bubbles, curves]);
     context.drawAbsolute(factBox);
     context.drawAbsolute(sounds);
+    context.drawAbsolute(edit);
     context.drawDevMode();
 }
 
@@ -167,6 +170,12 @@ function moveOrSelectBubble() {
     var mousePos = context.scaledMousePos(),
         bubble = bubbles.collide(mousePos);
 
+    if (edit.linking()) {
+        selected_bubble = null;
+        edit.flipLink();
+        return;
+    }
+
     if (selected_bubble) {
         selected_bubble.moveTo(mousePos.x, mousePos.y);
         curves.reposition(selected_bubble.getIndex(), bubbles);
@@ -174,12 +183,25 @@ function moveOrSelectBubble() {
     } else {
         selected_bubble = bubble;
     }
+
+    if (selected_bubble) {
+        edit.activateMove();
+    } else {
+        edit.deactivateMove();
+    }
 }
 
 function createLineOrSelectBubble() {
     var mousePos = context.scaledMousePos(),
         curve = null,
         bubble = bubbles.collide(mousePos);
+
+    if (edit.moving()) {
+        selected_bubble = null;
+        edit.flipMove();
+        return;
+    }
+
     if (selected_bubble && bubble) {
         console.log(selected_bubble.getIndex(), bubble.getIndex());
         curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
@@ -187,6 +209,12 @@ function createLineOrSelectBubble() {
         selected_bubble = null;
     } else {
         selected_bubble = bubble;
+    }
+
+    if (selected_bubble) {
+        edit.activateLink();
+    } else {
+        edit.deactivateLink();
     }
 }
 
