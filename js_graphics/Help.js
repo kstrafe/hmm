@@ -44,7 +44,8 @@ Help.prototype.draw = function (context) {
         right = this.right - this.safeOffset,
         helpstr = [
             "Q: Link Mode | E: Dev Info | R: Move Mode | T: New Bubble | M: Toggle Sound",
-            "WASD/HJKL/Arrows: Movement | Space: Select at Center | Mouse: Select at Pointer"
+            "WASD/HJKL/Arrows: Movement | Space: Select at Center | Mouse: Select at Pointer",
+            "Scroll wheel/+/-: Zoom"
         ];
     context.save();
     context.font = '20px Calibri';

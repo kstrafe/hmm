@@ -21,12 +21,12 @@
 	Improve bubble text-fitting (currently goes slightly OOB)
 	Implement Data.js generator (with button) and automatic download
 	Right-mouse button editing interface
-	'Edit' button somewhere when factbox is opened
 	'I master this' button in/around factbox
 	Sound effect when clicking/space on a bubble
 
 # IN PROGRESS #
 	KEVIN: Editor for editing a specific bubble (HTML)
+	KEVIN: 'Edit' button somewhere when factbox is opened
 
 # DONE #
 	KEVIN: Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
