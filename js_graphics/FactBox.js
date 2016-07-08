@@ -227,4 +227,3 @@ FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     return canvas;
 
 };
-

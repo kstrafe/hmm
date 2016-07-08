@@ -2,7 +2,7 @@
 
 var all_bubbles = {
     scroll_test: {
-        x: -400,
+        x: -4000000,
         y: 0,
         r: 100,
         link: [],
