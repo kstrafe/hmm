@@ -192,7 +192,7 @@ function keyboardDown(key) {
         bubble = bubbles.collide(mousePos);
         if (selected_bubble) {
             curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
-            curves.append(curve);
+            curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
             selected_bubble = null;
         } else {
             selected_bubble = bubble;
@@ -200,8 +200,8 @@ function keyboardDown(key) {
         break;
     case 84:
         mousePos = context.scaledMousePos();
-        bubble = new Bubble(null, mousePos.x, mousePos.y, 100, "New Knowledge!", "");
-        bubbles.add(null, bubble);
+        bubble = new Bubble(bubbles.length, mousePos.x, mousePos.y, 100, "New Knowledge!", "");
+        bubbles.add(bubbles.length, bubble);
         break;
     case 189:
         context.zoomOut();
