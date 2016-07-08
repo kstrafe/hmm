@@ -1,6 +1,5 @@
 # BUGS #
 
-
 # IDEAS #
 	Persistence storage of visited nodes in cookie
 	Education mode: Answer question to unlock new bubbles about more challenging things
@@ -23,14 +22,14 @@
 	Implement Data.js generator (with button) and automatic download
 	Right-mouse button editing interface
 	'Edit' button somewhere when factbox is opened
-	Editor for editing a specific bubble (HTML)
 	'I master this' button in/around factbox
 	Sound effect when clicking/space on a bubble
 
 # IN PROGRESS #
-	KEVIN: Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
+	KEVIN: Editor for editing a specific bubble (HTML)
 
 # DONE #
+	KEVIN: Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
 	KEVIN: Help menu button; describe keyboard shortcuts
 	KEVIN: On-screen text when an edit mode (move, link) has been engaged
 	OLE: Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up

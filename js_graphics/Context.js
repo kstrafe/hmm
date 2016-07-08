@@ -42,6 +42,28 @@ Context.prototype.zoomOut = function () {
     }
 };
 
+Context.prototype.zoomInMouse = function () {
+    if (this.zoomIndex < this.zoomList.length - 1) {
+        this.zoomIndex += 1;
+        this.zoomMouse(this.zoomList[this.zoomIndex]);
+    }
+};
+
+Context.prototype.zoomOutMouse = function () {
+    if (this.zoomIndex > 0) {
+        this.zoomIndex -= 1;
+        this.zoomMouse(this.zoomList[this.zoomIndex]);
+    }
+};
+
+Context.prototype.zoomMouse = function (absfactor) {
+    var center = this.scaledMousePos();
+    center.x *= absfactor;
+    center.y *= absfactor;
+    this.scaleFactor = absfactor;
+    this.centerOn(center.x, center.y);
+};
+
 Context.prototype.zoom = function (absfactor) {
     var relfactor = absfactor / this.scaleFactor,
         center = this.getCenterOn();

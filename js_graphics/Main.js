@@ -62,9 +62,9 @@ function zoom(evt) {
         factBox.scroll(evt.deltaY);
     } else {
         if (evt.deltaY > 0) {
-            context.zoomOut();
+            context.zoomOutMouse();
         } else if (evt.deltaY < 0) {
-            context.zoomIn();
+            context.zoomInMouse();
         }
     }
 }
