@@ -21,7 +21,6 @@
 	Move random color strings into Colors.js
 	Improve bubble text-fitting (currently goes slightly OOB)
 	Implement Data.js generator (with button) and automatic download
-	Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
 	Right-mouse button editing interface
 	'Edit' button somewhere when factbox is opened
 	Editor for editing a specific bubble (HTML)
@@ -29,6 +28,7 @@
 	Sound effect when clicking/space on a bubble
 
 # IN PROGRESS #
+	KEVIN: Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
 
 # DONE #
 	KEVIN: Help menu button; describe keyboard shortcuts
