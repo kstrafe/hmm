@@ -31,6 +31,22 @@ FactBox.prototype.hide = function () {
     this.contentOffset = 0;
 };
 
+FactBox.prototype.resize = function (context) {
+    var maxWidth = 750,
+        upLeft = {
+            x: Math.max(context.canvas.width - maxWidth, context.canvas.width / 2 + 50),
+            y: 50
+        },
+        downRight = {
+            x: context.canvas.width - 75,
+            y: context.canvas.height - 100
+        };
+    this.contentCanvas(upLeft, downRight);
+    if (this.contentOffset < this.lowerBound) {
+        this.contentOffset = this.lowerBound;
+    }
+};
+
 FactBox.prototype.draw = function (context) {
     if (this.active === false) {
         return;
