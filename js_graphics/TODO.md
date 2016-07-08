@@ -6,22 +6,24 @@
 	Education mode: Answer question to unlock new bubbles about more challenging things
 	Introduce a summary in the info box. Title - summary - longer text / details
 	Different coloration in the tree based on subject
-	'I master this' button in infobox to get score and color a node's text - Mark nodes you've visited before
 	Short cut to places around the canvas
-
-
-# TODO #
-	Help menu button; describe keyboard shortcuts
-	Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
-	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime.
-	Latex rendering in infoboxes
-	Picture/Sprite rendering inside the infoboxes
+	Make content (of FactBox) stay in the same place after resize
+	Semantic zoom
 	Clickable hyperlinks in info box
 	Hyperlinks activating links to different bubbles
-	Semantic zoom
-	Make content (of FactBox) stay in the same place after resize
-	Editor for editing a single bubble
+	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
+	Latex rendering in infoboxes
+	Picture/Sprite rendering inside the infoboxes
+
+# TODO #
 	Implement Data.js generator (with button) and automatic download
+	Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
+	'Edit' button somewhere when factbox is opened
+	Editor for editing a specific bubble (HTML)
+	'I master this' button in/around factbox
+	Sound effect when clicking/space on a bubble
+	Help menu button; describe keyboard shortcuts
+	On-screen text when an edit mode (move, link) has been engaged
 
 # IN PROGRESS #
 
