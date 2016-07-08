@@ -13,6 +13,7 @@
 /*global FactBox*/
 /*global Floaty*/
 /*global Floatys*/
+/*global Help*/
 /*global KEY*/
 /*global Sounds*/
 
@@ -24,6 +25,7 @@ var factBox = new FactBox('', '');
 var bubbles = new Bubbles();
 var curves = new Curves();
 var edit = new Edit();
+var help = new Help();
 
 var sounds = new Sounds();
 sounds.playBGM();
@@ -37,6 +39,7 @@ function renderEverything() {
     context.drawAbsolute(factBox);
     context.drawAbsolute(sounds);
     context.drawAbsolute(edit);
+    context.drawAbsolute(help);
     context.drawDevMode();
 }
 
@@ -44,12 +47,14 @@ function updateEverything() {
     context.applySpeed();
     floaties.update(context.low(), context.high(), context.left(), context.width());
     sounds.refreshBgm();
+    help.fadeOut();
 }
 
 function mouseHoverListener(evt) {
     var mousePos = context.scaledMousePos(evt);
     bubbles.hover(mousePos, sounds);
     sounds.hoverButton(context.mousePos(evt));
+    help.hoverButton(context.mousePos(evt));
 }
 
 function zoom(evt) {
@@ -262,6 +267,12 @@ function keyboardUp(key) {
     setCanvasSpeed(key, 0);
 }
 
+function onResize() {
+    context.onResize();
+    factBox.reset();
+    help.resize(context.canvas.width);
+}
+
 function main() {
     var i = null,
         j = null,
@@ -289,14 +300,11 @@ function main() {
         }
     }
 
-    context.onResize();
+    onResize();
     context.centerOn(0, 0);
     context.canvas.addEventListener('mousemove', mouseHoverListener, false);
     context.canvas.addEventListener("mousedown", mouseDownListener, false);
-    window.addEventListener("resize", function () {
-        context.onResize();
-        factBox.reset();
-    }, false);
+    window.addEventListener("resize", onResize, false);
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
     context.canvas.addEventListener("mousewheel", zoom, false);
