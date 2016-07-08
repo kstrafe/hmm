@@ -12,9 +12,11 @@
 /*global FactBox*/
 /*global Floaty*/
 /*global Floatys*/
+/*global KEY*/
 /*global Sounds*/
 
 "use strict";
+
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
 var factBox = new FactBox('', '');
@@ -115,18 +117,18 @@ function mouseDownListener(evt) {
 
 function isMovementKey(key) {
     switch (key.which) {
-    case 65:
-    case 72:
-    case 37:
-    case 87:
-    case 75:
-    case 38:
-    case 68:
-    case 76:
-    case 39:
-    case 83:
-    case 74:
-    case 40:
+    case KEY.LEFT:
+    case KEY.UP:
+    case KEY.RIGHT:
+    case KEY.DOWN:
+    case KEY.W:
+    case KEY.A:
+    case KEY.S:
+    case KEY.D:
+    case KEY.H:
+    case KEY.J:
+    case KEY.K:
+    case KEY.L:
         return true;
     default:
         return false;
@@ -135,24 +137,24 @@ function isMovementKey(key) {
 
 function setCanvasSpeed(key, speed) {
     switch (key.which) {
-    case 65:
-    case 72:
-    case 37:
+    case KEY.LEFT:
+    case KEY.A:
+    case KEY.H:
         context.setSpeedX(-speed);
         break;
-    case 87:
-    case 75:
-    case 38:
+    case KEY.UP:
+    case KEY.W:
+    case KEY.K:
         context.setSpeedY(-speed);
         break;
-    case 68:
-    case 76:
-    case 39:
+    case KEY.RIGHT:
+    case KEY.D:
+    case KEY.L:
         context.setSpeedX(speed);
         break;
-    case 83:
-    case 74:
-    case 40:
+    case KEY.DOWN:
+    case KEY.S:
+    case KEY.J:
         context.setSpeedY(speed);
         break;
     }
@@ -161,52 +163,63 @@ function setCanvasSpeed(key, speed) {
     }
 }
 
-function keyboardDown(key) {
-    var bubble = null,
+function moveOrSelectBubble() {
+    var mousePos = context.scaledMousePos(),
+        bubble = bubbles.collide(mousePos);
+
+    if (selected_bubble) {
+        selected_bubble.moveTo(mousePos.x, mousePos.y);
+        curves.reposition(selected_bubble.getIndex(), bubbles);
+        selected_bubble = null;
+    } else {
+        selected_bubble = bubble;
+    }
+}
+
+function createLineOrSelectBubble() {
+    var mousePos = context.scaledMousePos(),
         curve = null,
-        mousePos = null;
-    console.log(key.which);
+        bubble = bubbles.collide(mousePos);
+    if (selected_bubble && bubble) {
+        console.log(selected_bubble.getIndex(), bubble.getIndex());
+        curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
+        curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
+        selected_bubble = null;
+    } else {
+        selected_bubble = bubble;
+    }
+}
+
+function createBubble() {
+    var mousePos = context.scaledMousePos(),
+        bubble = new Bubble(bubbles.length(), mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
+    bubbles.add(bubbles.length(), bubble);
+}
+
+function keyboardDown(key) {
     switch (key.which) {
-    case 32:
+    case KEY.SPACE:
         drawFactBoxSpace(bubbles.click(context.getCenterPos()));
         break;
-    case 77:
+    case KEY.M:
         sounds.nextState();
         break;
-    case 69:
+    case KEY.E:
         context.flipDevMode();
         break;
-    case 82:
-        mousePos = context.scaledMousePos();
-        bubble = bubbles.collide(mousePos);
-        if (selected_bubble) {
-            selected_bubble.moveTo(mousePos.x, mousePos.y);
-            curves.reposition(selected_bubble.getIndex(), bubbles);
-            selected_bubble = null;
-        } else {
-            selected_bubble = bubble;
-        }
+    case KEY.R:
+        moveOrSelectBubble();
         break;
-    case 81:
-        mousePos = context.scaledMousePos();
-        bubble = bubbles.collide(mousePos);
-        if (selected_bubble) {
-            curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
-            curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
-            selected_bubble = null;
-        } else {
-            selected_bubble = bubble;
-        }
+    case KEY.Q:
+        createLineOrSelectBubble();
         break;
-    case 84:
-        mousePos = context.scaledMousePos();
-        bubble = new Bubble(bubbles.length, mousePos.x, mousePos.y, 100, "New Knowledge!", "");
-        bubbles.add(bubbles.length, bubble);
+    case KEY.T:
+        createBubble();
         break;
-    case 189:
+    case KEY.MIN:
         context.zoomOut();
         break;
-    case 187:
+    case KEY.PLUS:
         context.zoomIn();
         break;
     default:

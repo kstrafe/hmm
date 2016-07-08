@@ -2,32 +2,30 @@
 	Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
 
 # IDEAS #
-	Floaties start spawning in field of view (and dissapears out of view)
-	Education mode: Answer question to unlock new bubbles about more challenging things
-	Help menu button; describe keyboard shortcuts
-	Introduce a summary in the info box. Title - summary - longer text / details
 	Persistence storage of visited nodes in cookie
+	Education mode: Answer question to unlock new bubbles about more challenging things
+	Introduce a summary in the info box. Title - summary - longer text / details
 	Different coloration in the tree based on subject
-	'I master this' button in infobox to get score and color a node's text
-	Make the zoom zoom toward position of the mouse
+	'I master this' button in infobox to get score and color a node's text - Mark nodes you've visited before
 	Short cut to places around the canvas
-	Mark nodes you've visited before
-	Floaty speed proportional to size
 
 # TODO #
-	Create variable for holding keystates (e.g. KEY_W: 87)
+	Implement Data.js generator (with button) and automatic download
+	Help menu button; describe keyboard shortcuts
+	Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
 	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime.
 	Semantic zoom
 	Latex rendering in infoboxes
 	Picture/Sprite rendering inside the infoboxes
 	Clickable hyperlinks in info box
 	Hyperlinks activating links to different bubbles
-	Music class for queing and loading after finishing
 
 # IN PROGRESS #
-	KEVIN: Right-click add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
 
 # DONE #
+	OLE: Music class for queing and loading after finishing
+	KEVIN: ~~Right-click~~ (Q,R,T) add-node or 'Editor Mode', since editing Data.js is a pain in the ass. <- This could be in dev-mode?
+	KEVIN: Create variable for holding keystates (e.g. KEY_W: 87)
 	OLE: Sounds icon and text collide for initially small windows
 	KEVIN: Re-design Data.js to allow nodes to easily change position - Allow curves to 'normalize' after move. Moving nodes does not recalculate the connected lines
 	KEVIN: Make sound text opaque if the mouse is kept there
@@ -58,3 +56,5 @@
 # SCRAP #
 	Refactor Main into its own class for cleanliness - REASON: Too noisy and methods don't work well with eventlisteners
 	Score system for visited nodes (Level and experience?) - REASON: Use colored nodes to visualize 'experience' and score
+	Floaty speed proportional to size - REASON: Unimportant
+	Floaties start spawning in field of view (and dissapears out of view) - REASON: Doesn't look as good as random floaties in a wide area
