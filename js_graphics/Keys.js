@@ -25,4 +25,5 @@ var KEY = {
     PLUS: 187,
 
     SPACE: 32,
+    M: 77,
 };
