@@ -39,8 +39,13 @@ Help.prototype.fadeOut = function () {
 };
 
 Help.prototype.draw = function (context) {
-    var right = this.right - this.safeOffset,
-        helpstr = "Q: Link Mode | E: Dev Info | R: Move Mode | T: New Bubble";
+    var i = null,
+        hOffset = 25,
+        right = this.right - this.safeOffset,
+        helpstr = [
+            "Q: Link Mode | E: Dev Info | R: Move Mode | T: New Bubble | M: Toggle Sound",
+            "WASD/HJKL/Arrows: Movement | Space: Select at Center | Mouse: Select at Pointer"
+        ];
     context.save();
     context.font = '20px Calibri';
     context.fillStyle = '#FFFFFF';
@@ -55,7 +60,9 @@ Help.prototype.draw = function (context) {
         context.fillStyle = (new Colors()).clrs(10);
         context.textAlign = "center";
 
-        context.fillText(helpstr, context.canvas.width / 2, context.canvas.height / 2);
+        for (i = 0; i < helpstr.length; i += 1) {
+            context.fillText(helpstr[i], context.canvas.width / 2, context.canvas.height / 2 + i * hOffset);
+        }
         context.restore();
     }
 };
