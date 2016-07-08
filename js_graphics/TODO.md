@@ -1,7 +1,5 @@
 # BUGS #
 	Starting in narrow window with FactBox, scrolling down, resizing window to max, doesn't scroll back up
-	Fact box where content fits can also be scrolled
-	Transparency doesn't stay at 1 when hovering sound button
 
 # IDEAS #
 	Floaties start spawning in field of view (and dissapears out of view)
