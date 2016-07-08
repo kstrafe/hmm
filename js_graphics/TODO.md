@@ -1,5 +1,5 @@
 # BUGS #
-
+	
 
 # IDEAS #
 	Persistence storage of visited nodes in cookie
@@ -8,20 +8,19 @@
 	Different coloration in the tree based on subject
 	'I master this' button in infobox to get score and color a node's text - Mark nodes you've visited before
 	Short cut to places around the canvas
-
+	
 
 # TODO #
+	Implement Data.js generator (with button) and automatic download
 	Help menu button; describe keyboard shortcuts
 	Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
 	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime.
+	Semantic zoom
 	Latex rendering in infoboxes
 	Picture/Sprite rendering inside the infoboxes
 	Clickable hyperlinks in info box
 	Hyperlinks activating links to different bubbles
-	Semantic zoom
-	Make content (of FactBox) stay in the same place after resize
-	Editor for editing a single bubble
-	Implement Data.js generator (with button) and automatic download
+	
 
 # IN PROGRESS #
 
