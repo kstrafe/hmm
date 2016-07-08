@@ -42,15 +42,24 @@ FactBox.prototype.resize = function (context) {
             y: context.canvas.height - 100
         };
     this.contentCanvas(upLeft, downRight);
-    if (this.contentOffset < this.lowerBound) {
-        this.contentOffset = this.lowerBound;
-    }
+
+    //this.contentOffset = 0
+
+    //if (Math.abs(this.contentOffset) < this.lowerBound) {
+    //    this.contentOffset = this.lowerBound;
+    //}
+};
+
+FactBox.prototype.reset = function () {
+    this.contentOffset = 0;
+    this.contentLen = 0;
 };
 
 FactBox.prototype.draw = function (context) {
     if (this.active === false) {
         return;
     }
+
     var maxWidth = 750,
         cornerRadius = 25,
         upLeft = {
@@ -63,6 +72,11 @@ FactBox.prototype.draw = function (context) {
         },
         content;
 
+    //this.contentOffset = 0
+
+    //if (this.contentOffset +  > this.lowerBound) {
+    //    this.contentOffset = 0;
+    //}
     context.save();
 
     context.lineWidth = 0;
@@ -213,3 +227,4 @@ FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     return canvas;
 
 };
+

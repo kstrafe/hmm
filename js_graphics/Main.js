@@ -267,6 +267,7 @@ function main() {
     context.canvas.addEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("resize", function () {
         context.onResize();
+        factBox.reset();
     }, false);
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
