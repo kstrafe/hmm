@@ -197,6 +197,7 @@ function createBubble() {
 }
 
 function keyboardDown(key) {
+    var movingSpeed = 20;
     switch (key.which) {
     case KEY.SPACE:
         drawFactBoxSpace(bubbles.click(context.getCenterPos()));
@@ -223,7 +224,7 @@ function keyboardDown(key) {
         context.zoomIn();
         break;
     default:
-        setCanvasSpeed(key, 20);
+        setCanvasSpeed(key, movingSpeed);
         factBox.hide();
         break;
     }
@@ -238,7 +239,8 @@ function main() {
         j = null,
         b = null,
         curve = null,
-        end = null;
+        end = null,
+        frametime = 30;
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
@@ -272,7 +274,7 @@ function main() {
     setInterval(function () {
         updateEverything();
         renderEverything();
-    }, 30);
+    }, frametime);
 }
 
 main();

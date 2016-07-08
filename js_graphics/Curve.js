@@ -33,13 +33,13 @@ Curve.prototype.compute = function (c1, c2) {
         x2 = null,
         y2 = null,
         x3 = null,
-        y3 = null;
-
+        y3 = null,
+        smul = 5;
 
     a = Math.atan2(dy, dx);
 
-    x0 = c1x + c1.r * Math.cos(a + 0.5) + 5 * Math.sign(dx);
-    y0 = c1y + c1.r * Math.sin(a + 0.5) + 5 * Math.sign(dy);
+    x0 = c1x + c1.r * Math.cos(a + 0.5) + smul * Math.sign(dx);
+    y0 = c1y + c1.r * Math.sin(a + 0.5) + smul * Math.sign(dy);
 
     x1 = c1x + 2 * c1.r * Math.cos(a + 0.5);
     y1 = c1y + 2 * c1.r * Math.sin(a + 0.5);
@@ -49,8 +49,8 @@ Curve.prototype.compute = function (c1, c2) {
     x2 = c2x + 2 * c2.r * Math.cos(a - 0.5);
     y2 = c2y + 2 * c2.r * Math.sin(a - 0.5);
 
-    x3 = c2x + c2.r * Math.cos(a - 0.5) - 5 * Math.sign(dx);
-    y3 = c2y + c2.r * Math.sin(a - 0.5) - 5 * Math.sign(dy);
+    x3 = c2x + c2.r * Math.cos(a - 0.5) - smul * Math.sign(dx);
+    y3 = c2y + c2.r * Math.sin(a - 0.5) - smul * Math.sign(dy);
 
     return {
         x0: x0,

@@ -24,8 +24,8 @@ function Context(canvas) {
         y: 0
     };
     this.cacheGradient();
-    this.zoomList = [0.125, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0];
-    this.zoomIndex = 4;
+    this.zoomList = [0.03075, 0.06125, 0.125, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0];
+    this.zoomIndex = 6;
 }
 
 Context.prototype.zoomIn = function () {
@@ -156,14 +156,16 @@ Context.prototype.onResize = function () {
 Context.prototype.cacheGradient = function () {
     var canvas = document.createElement('canvas'),
         context = null,
-        gradient = null;
+        gradient = null,
+        startRad = 5,
+        endRad = 300;
 
     context = canvas.getContext('2d');
 
     canvas.width = this.canvas.width;
     canvas.height = this.canvas.height;
 
-    gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 5, canvas.width / 2, canvas.height / 2, 300);
+    gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, startRad, canvas.width / 2, canvas.height / 2, endRad);
     gradient.addColorStop(0, '#000028');
     gradient.addColorStop(1, '#080808');
 
