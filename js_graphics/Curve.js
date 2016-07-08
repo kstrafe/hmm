@@ -14,6 +14,10 @@ function Curve(x0, y0, r0, x1, y1, r1) {
     this.bezier = this.compute(c1, c2);
 }
 
+Curve.prototype.recompute = function (c1, c2) {
+    this.bezier = this.compute(c1, c2);
+};
+
 Curve.prototype.compute = function (c1, c2) {
     var c1x = c1.x,
         c1y = c1.y,

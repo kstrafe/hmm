@@ -180,8 +180,8 @@ function keyboardDown(key) {
         mousePos = context.scaledMousePos();
         bubble = bubbles.collide(mousePos);
         if (selected_bubble) {
-            selected_bubble.x = mousePos.x;
-            selected_bubble.y = mousePos.y;
+            selected_bubble.moveTo(mousePos.x, mousePos.y);
+            curves.reposition(selected_bubble.getIndex(), bubbles);
             selected_bubble = null;
         } else {
             selected_bubble = bubble;
@@ -200,7 +200,7 @@ function keyboardDown(key) {
         break;
     case 84:
         mousePos = context.scaledMousePos();
-        bubble = new Bubble(mousePos.x, mousePos.y, 100, "New Knowledge!", "");
+        bubble = new Bubble(null, mousePos.x, mousePos.y, 100, "New Knowledge!", "");
         bubbles.add(null, bubble);
         break;
     case 189:
@@ -230,8 +230,8 @@ function main() {
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
             b = all_bubbles[i];
-            b = new Bubble(b.x, b.y, b.r, b.title, b.facts);
-            bubbles.add(b);
+            b = new Bubble(i, b.x, b.y, b.r, b.title, b.facts);
+            bubbles.add(i, b);
         }
     }
 

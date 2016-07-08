@@ -7,6 +7,20 @@ function Curves() {
     this.connected = {};
 }
 
+Curves.prototype.reposition = function (from, bubbles) {
+    var i = null,
+        con = this.connected[from],
+        to = null;
+    from = bubbles.getNamed(from);
+
+    for (i in con) {
+        if (con.hasOwnProperty(i)) {
+            to = bubbles.getNamed(i);
+            con[i].recompute(from.getCurveStart(), to.getCurveStart());
+        }
+    }
+};
+
 Curves.prototype.append = function (curve, from, to) {
     this.curves.push(curve);
 
