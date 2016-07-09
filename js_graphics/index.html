@@ -10,10 +10,12 @@
     <div id="editor">
         <input id="title" type="text" name="Title" placeholder="title">
         <textarea id="facts" placeholder="Content"></textarea>
-        <button type="button" onclick="closeEditor();">Done</button>
+        <div class="botbuttons">
+            <button class="done" type="button" onclick="closeEditor();">Done</button>
+            <button class="cancel" type="button" onclick="closeEditor();">Cancel</button>
+        </div>
     </div>
-	<canvas id="canvas" width="1280" height="720">
-    </canvas>
+	<canvas id="canvas" width="1280" height="720">Your browser does not support canvas</canvas>
 	<script src="Bubble.js"></script>
 	<script src="Bubbles.js"></script>
 	<script src="Colors.js"></script>
