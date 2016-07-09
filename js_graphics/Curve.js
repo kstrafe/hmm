@@ -40,7 +40,6 @@ Curve.prototype.compute = function (c1, c2) {
         d = (dx * dx) + (dy * dy),
         curv = Math.max(1.5, (5e-7 * d));
 
-    console.log(curv);
     a = Math.atan2(dy, dx);
 
     x0 = c1x + c1.r * Math.cos(a + aOffset) + smul * Math.sign(dx);
