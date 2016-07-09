@@ -82,12 +82,15 @@ Bubble.prototype.getNameAndFacts = function () {
 };
 
 Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
-    var AVG_CHAR_SIZE = 0.4586, // Calibri 1px, unit: [px/(ch 1px)]
+    var tempWidth = 0,
+        metrics = null,
+        fontSizeGuess = 20,
         words = name.split(' '),
         fontSize = null,
-        maxLen = null,
         lineHeight = null,
-        n = null;
+        n = null,
+        fillRatio = [0.9, 0.8, 0.7],
+        maxLines = 3;
 
     context.save();
 
@@ -96,33 +99,36 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
         context.shadowColor = '#FFFFFF';
     }
 
-    //var maxWidth = 0.9*2*r;
-    //console.log(context.fillStyle)
     context.fillStyle = '#DDDDDD';
     context.textAlign = "center";
+    context.font = fontSizeGuess + 'px Calibri';
+
+    for (n = 0; n < words.length; n += 1) {
+        if (n > maxLines) {
+            metrics = context.measureText(name);
+            tempWidth = metrics.width;
+            break;
+        }
+
+        metrics = context.measureText(words[n]);
+        tempWidth = Math.max(tempWidth, metrics.width);
+    }
 
 
-    if (words.length === 1) {
-        fontSize = (0.85 * 2 * r) / (AVG_CHAR_SIZE * words[0].length);
+    if (words.length === 1 || words.length > maxLines) {
+        fontSize = fontSizeGuess * (fillRatio[0] * 2 * r) / tempWidth;
         y = y + fontSize / 3;
 
     } else if (words.length === 2) {
-        maxLen = Math.max(words[0].length, words[1].length);
-        fontSize = (0.75 * 2 * r) / (AVG_CHAR_SIZE * maxLen);
+        fontSize = fontSizeGuess * (fillRatio[1] * 2 * r) / tempWidth;
         y = y - fontSize * 0.1;
 
     } else if (words.length === 3) {
-        maxLen = Math.max(words[0].length, words[1].length, words[2].length);
-        fontSize = (0.6 * 2 * r) / (AVG_CHAR_SIZE * maxLen);
+        fontSize = fontSizeGuess * (fillRatio[2] * 2 * r) / tempWidth;
         y = y - fontSize / 2;
 
-    } else {
-        words = [name];
-        fontSize = (0.85 * 2 * r) / (AVG_CHAR_SIZE * words[0].length);
-        y = y + fontSize / 3;
     }
-    //totlen = avgCharSize*name.length*fontSize
-    //console.log(fontSize)
+
     lineHeight = fontSize;
     context.font = fontSize + "px Calibri";
 

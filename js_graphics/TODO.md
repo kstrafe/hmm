@@ -18,7 +18,6 @@
 # TODO #
 	Add a whole bunch of new bubbles
 	Move random color strings into Colors.js
-	Improve bubble text-fitting (currently goes slightly OOB)
 	Implement Data.js generator (with button) and automatic download
 	Right-mouse button editing interface
 	'I master this' button in/around factbox
@@ -28,6 +27,7 @@
 	KEVIN: Editor for editing a specific bubble (HTML)
 
 # DONE #
+	OLE: Improve bubble text-fitting
 	KEVIN: 'Edit' button somewhere when factbox is opened
 	KEVIN: Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
 	KEVIN: Help menu button; describe keyboard shortcuts
