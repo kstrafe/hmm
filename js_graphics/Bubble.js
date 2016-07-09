@@ -1,3 +1,5 @@
+/*global Colors*/
+
 "use strict";
 
 function Bubble(index, x, y, r, name, facts, highlighted) {
@@ -8,7 +10,7 @@ function Bubble(index, x, y, r, name, facts, highlighted) {
     this.name = name;
     this.facts = facts;
     this.highlighted = highlighted;
-    this.color = '#4E8800';
+    this.colors = new Colors();
 }
 
 Bubble.prototype.setName = function (name) {
@@ -52,16 +54,16 @@ Bubble.prototype.draw = function (context) {
     context.beginPath();
     context.lineWidth = 3;
     context.shadowBlur = 10;
-    context.shadowColor = this.color;
-    context.strokeStyle = this.color;
+    context.shadowColor = this.colors.getByName('bubbleGreen');
+    context.strokeStyle = this.colors.getByName('bubbleGreen');
 
     context.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
 
     if (this.highlighted) {
         context.lineWidth = 4;
+        context.strokeStyle = this.colors.getByName('bubbleHL');
         context.shadowBlur = 15;
-        context.shadowColor = '#6ED80D';
-        context.strokeStyle = '#69B00C';
+        context.shadowColor = this.colors.getByName('bubbleHLShadow');
     }
 
     context.stroke();
@@ -96,10 +98,10 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
 
     if (hl) {
         context.shadowBlur = 2.5;
-        context.shadowColor = '#FFFFFF';
+        context.shadowColor = this.colors.getByName('white');
     }
 
-    context.fillStyle = '#DDDDDD';
+    context.fillStyle = this.colors.getByName('textColor');
     context.textAlign = "center";
     context.font = fontSizeGuess + 'px Calibri';
 

@@ -8,6 +8,14 @@ function Colors() {
         "#FF851B", "#FF4136", "#85144B", "#F012BE",
         "#B10DC9", "#111111", "#AAAAAA", "#DDDDDD"
     ];
+
+    this.themeColors = {
+        bubbleGreen: "#4E8800",
+        bubbleHL: "#69B00C",
+        bubbleHLShadow: '#6ED80D',
+        textColor: "#DDDDDD",
+        white: "#FFFFFF"
+    };
 }
 
 Colors.prototype.clrs = function (index) {
@@ -19,4 +27,8 @@ Colors.prototype.random = function () {
         interval = 1 / this.colors.length,
         approx = Math.floor(value / interval);
     return this.colors[approx];
+};
+
+Colors.prototype.getByName = function (name) {
+    return this.themeColors[name];
 };
