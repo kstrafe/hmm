@@ -15,12 +15,13 @@ function FactBox(title, text) {
     this.contentOOB = false;
     this.lowerBound = null;
     this.hoversEdit = false;
-    this.boxTopLeftMarg = 50;
-    this.boxRightMarg = 25;
-    this.maxWidth = 750;
-    this.contTopMarg = 50;
     this.cornerRadius = 25;
     this.colors = new Colors();
+    this.contTopMarg = 50;
+    this.topMargin = 0.075;
+    this.rightMargin = 0.05;
+    this.width = 0.35;
+    this.height = 0.8;
 }
 
 FactBox.prototype.isActive = function () {
@@ -40,24 +41,25 @@ FactBox.prototype.hide = function () {
     this.contentOffset = 0;
 };
 
-FactBox.prototype.upLeft = function (context, boxTopLeftMarg, maxWidth) {
+FactBox.prototype.upLeft = function (context, topMargin, rightMargin, width) {
     return {
-        x: Math.max(context.canvas.width - maxWidth, context.canvas.width / 2 + boxTopLeftMarg),
-        y: boxTopLeftMarg
+        x: (1 - rightMargin - width) * context.canvas.width,
+        y: topMargin * context.canvas.height
     };
 
 };
 
-FactBox.prototype.downRight = function (context, boxTopLeftMarg, boxRightMarg) {
+FactBox.prototype.downRight = function (context, topMargin, rightMargin, height) {
     return {
-        x: context.canvas.width - (boxTopLeftMarg + boxRightMarg),
-        y: context.canvas.height - 2 * boxTopLeftMarg
+        x: (1 - rightMargin) * context.canvas.width,
+        y: (topMargin + height) * context.canvas.height
     };
 };
 
 FactBox.prototype.click = function (context, mousePos) {
-    var upLeft = this.upLeft(context, this.boxTopLeftMarg, this.maxWidth),
-        downRight = this.downRight(context, this.boxTopLeftMarg, this.boxRightMarg);
+    var upLeft = this.upLeft(context, this.topMargin, this.rightMargin, this.width),
+        downRight = this.downRight(context, this.topMargin, this.rightMargin, this.height);
+
     if (mousePos.x > upLeft.x && mousePos.x < downRight.x) {
         if (mousePos.y > downRight.y && mousePos.y < downRight.y + this.contTopMarg) {
             this.hoverEdit = true;
@@ -70,8 +72,8 @@ FactBox.prototype.click = function (context, mousePos) {
 
 /*
 FactBox.prototype.resize = function (context) {
-    var upLeft = this.upLeft(context, this.boxTopLeftMarg, this.maxWidth),
-        downRight = this.downRight(context, this.boxTopLeftMarg, this.boxRightMarg);
+    var upLeft = this.upLeft(context, this.rightMargin, this.height, this.width),
+        downRight = this.downRight(context, this.rightMargin, this.height);
     this.contentCanvas(upLeft, downRight);
 
     //this.contentOffset = 0
@@ -104,8 +106,8 @@ FactBox.prototype.draw = function (context) {
         return;
     }
 
-    var upLeft = this.upLeft(context, this.boxTopLeftMarg, this.maxWidth),
-        downRight = this.downRight(context, this.boxTopLeftMarg, this.boxRightMarg),
+    var upLeft = this.upLeft(context, this.topMargin, this.rightMargin, this.width),
+        downRight = this.downRight(context, this.topMargin, this.rightMargin, this.height),
         content,
         ytitle = 90,
         contLeftMarg = 15,
@@ -147,12 +149,6 @@ FactBox.prototype.draw = function (context) {
 
     content = this.contentCanvas(upLeft, downRight);
     context.drawImage(content, upLeft.x + contLeftMarg, upLeft.y + contTopMarg);
-
-    // //Draw text
-    // context.fillStyle = '#000000';
-    // context.textAlign = "left";
-    // context.font = '20px Calibri';
-    // this.wrapText(context, this.text, (downRight.x + upLeft.x) / 2 - (downRight.x - upLeft.x) / 2 + 15, 125, 25, (downRight.x - upLeft.x) - 35);
 
     this.scrollBar(context, upLeft, downRight);
     context.restore();
