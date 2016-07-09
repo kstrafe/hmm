@@ -20,7 +20,9 @@
 "use strict";
 
 var editor = document.getElementById("editor");
+var viewer = document.getElementById("editor");
 editor.style.visibility = "hidden";
+viewer.style.visibility = "hidden";
 var inEditor = false;
 var lastBubble = null;
 
