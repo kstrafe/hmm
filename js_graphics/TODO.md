@@ -18,7 +18,6 @@
 
 # TODO #
 	Add a whole bunch of new bubbles
-	
 	Implement Data.js generator (with button) and automatic download
 	Right-mouse button editing interface
 	'I master this' button in/around factbox
