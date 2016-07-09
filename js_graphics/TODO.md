@@ -8,7 +8,6 @@
 	Introduce a summary in the info box. Title - summary - longer text / details
 	Different coloration in the tree based on subject
 	Short cut to places around the canvas
-	Make content (of FactBox) stay in the same place after resize
 	Semantic zoom
 	Clickable hyperlinks in info box
 	Hyperlinks activating links to different bubbles
@@ -22,6 +21,7 @@
 	Implement Data.js generator (with button) and automatic download
 	Right-mouse button editing interface
 	'I master this' button in/around factbox
+	Use percentages of the window to position and size factBox
 	Sound effect when clicking/space on a bubble
 
 # IN PROGRESS #
