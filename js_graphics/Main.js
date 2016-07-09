@@ -103,6 +103,7 @@ function mouseUpListener(evt) {
 
 function drawFactBox(onCircle) {
     if (onCircle.hit) {
+        sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
         factBox.show(onCircle.facts);
@@ -114,6 +115,7 @@ function drawFactBox(onCircle) {
 
 function drawFactBoxSpace(onCircle) {
     if (onCircle.hit) {
+        sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
         factBox.show(onCircle.facts);
