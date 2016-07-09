@@ -128,6 +128,8 @@ function openEditor() {
 
     document.getElementById("title").value = nameFacts.name;
     document.getElementById("facts").value = nameFacts.facts;
+
+    viewer.style.visibility = "hidden";
 }
 
 function closeEditor() {
@@ -140,6 +142,7 @@ function closeEditor() {
         hit: true,
         facts: lastBubble.getNameAndFacts()
     });
+    viewer.style.visibility = "visible";
 }
 
 function mouseDownListener(evt) {
