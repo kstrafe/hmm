@@ -59,10 +59,21 @@ Context.prototype.zoomOutMouse = function () {
 };
 
 Context.prototype.zoomMouse = function (absfactor) {
-    var center = this.scaledMousePos();
+    var center = this.scaledMousePos(),
+        relfactor = absfactor / this.scaleFactor,
+        oldScaleFactor = this.scaleFactor;
+
+    //console.log(center.x);
+    //console.log(center.y);
+
+    this.scaleFactor = absfactor;
     center.x *= absfactor;
     center.y *= absfactor;
-    this.scaleFactor = absfactor;
+    //center.x *= absfactor / (this.scaleFactor / oldScaleFactor) ;
+    //center.y *= absfactor / (this.scaleFactor / oldScaleFactor);
+
+    //console.log(center.x);
+    //console.log(center.y);
     this.centerOn(center.x, center.y);
 };
 

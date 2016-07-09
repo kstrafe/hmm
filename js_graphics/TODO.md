@@ -23,6 +23,7 @@
 	Right-mouse button editing interface
 
 # IN PROGRESS #
+	OLE: Make mouse stay on same place when zooming with scrollwheel
 	KEVIN: 'I master this' button in/around factbox
 
 # DONE #
