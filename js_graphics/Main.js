@@ -15,6 +15,7 @@
 /*global Floatys*/
 /*global Help*/
 /*global KEY*/
+/*global MathJax*/
 /*global Sounds*/
 
 "use strict";
@@ -30,7 +31,7 @@ var lastBubble = null;
 
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
-var factBox = new FactBox('', '');
+var factBox = new FactBox();
 var bubbles = new Bubbles();
 var curves = new Curves();
 var edit = new Edit();
@@ -57,7 +58,6 @@ function updateEverything() {
     floaties.update(context.low(), context.high(), context.left(), context.width());
     sounds.refreshBgm();
     help.fadeOut();
-    factBox.update();
 }
 
 function mouseHoverListener(evt) {
@@ -66,18 +66,13 @@ function mouseHoverListener(evt) {
     bubbles.hover(smousePos, sounds);
     sounds.hoverButton(mPos);
     help.hoverButton(mPos);
-    factBox.click(context, mPos);
 }
 
 function zoom(evt) {
-    if (factBox.isActive()) {
-        factBox.scroll(evt.deltaY);
-    } else {
-        if (evt.deltaY > 0) {
-            context.zoomOutMouse();
-        } else if (evt.deltaY < 0) {
-            context.zoomInMouse();
-        }
+    if (evt.deltaY > 0) {
+        context.zoomOutMouse();
+    } else if (evt.deltaY < 0) {
+        context.zoomInMouse();
     }
 }
 
@@ -158,24 +153,20 @@ function mouseDownListener(evt) {
     mousePos = context.mousePos(evt);
     scaledPos = context.scaledMousePos(evt);
     context.mouseDown = mousePos;
-    if (factBox.click(context, mousePos)) {
-        openEditor();
-    } else {
-        onCircle = bubbles.click(scaledPos);
-        console.log(onCircle);
-        if (onCircle.hit) {
-            lastBubble = onCircle.bubble;
-            viewerfacts.innerHTML = onCircle.facts.facts;
-            viewertitle.innerHTML = onCircle.facts.name;
-            // MathJax.Hub.Typeset();
-            viewer.style.visibility = "visible";
-        } else {
-            factBox.hide();
-            viewer.style.visibility = "hidden";
-        }
-        drawFactBox(onCircle);
 
+    onCircle = bubbles.click(scaledPos);
+    console.log(onCircle);
+    if (onCircle.hit) {
+        lastBubble = onCircle.bubble;
+        viewerfacts.innerHTML = onCircle.facts.facts;
+        viewertitle.innerHTML = onCircle.facts.name;
+        MathJax.Hub.Typeset();
+        viewer.style.visibility = "visible";
+    } else {
+        factBox.hide();
+        viewer.style.visibility = "hidden";
     }
+    drawFactBox(onCircle);
     sounds.onClick(mousePos);
     help.click();
 }
@@ -322,6 +313,7 @@ function keyboardDown(key) {
     default:
         setCanvasSpeed(key, movingSpeed);
         factBox.hide();
+        viewer.style.visibility = "hidden";
         break;
     }
 }
@@ -332,7 +324,6 @@ function keyboardUp(key) {
 
 function onResize() {
     context.onResize();
-    factBox.reset();
     help.resize(context.canvas.width);
 }
 
