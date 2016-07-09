@@ -112,11 +112,6 @@ FactBox.prototype.draw = function (context) {
         contTopMarg = 50,
         corRad = this.cornerRadius;
 
-    //this.contentOffset = 0
-
-    //if (this.contentOffset +  > this.lowerBound) {
-    //    this.contentOffset = 0;
-    //}
     context.save();
 
     context.lineWidth = 0;
