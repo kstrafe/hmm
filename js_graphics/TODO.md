@@ -22,12 +22,13 @@
 	Right-mouse button editing interface
 	'I master this' button in/around factbox
 	Use percentages of the window to position and size factBox
-	Sound effect when clicking/space on a bubble
+	
 
 # IN PROGRESS #
 	KEVIN: Editor for editing a specific bubble (HTML)
 
 # DONE #
+	OLE: Sound effect when clicking/space on a bubble
 	OLE: Move random color strings into Colors.js
 	OLE: Improve bubble text-fitting
 	KEVIN: 'Edit' button somewhere when factbox is opened
