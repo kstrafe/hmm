@@ -11,6 +11,14 @@ function Bubble(index, x, y, r, name, facts, highlighted) {
     this.color = '#4E8800';
 }
 
+Bubble.prototype.setName = function (name) {
+    this.name = name;
+};
+
+Bubble.prototype.setFacts = function (facts) {
+    this.facts = facts;
+};
+
 Bubble.prototype.getIndex = function () {
     return this.index;
 };

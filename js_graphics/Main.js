@@ -23,6 +23,7 @@ var editor = document.getElementById("editor");
 editor.style.visibility = "hidden";
 editor.style.height = "0vh";
 var inEditor = false;
+var lastBubble = null;
 
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
@@ -120,14 +121,16 @@ function drawFactBoxSpace(onCircle) {
 }
 
 function openEditor() {
-    var ed = editor;
+    var ed = editor,
+        nameFacts = lastBubble.getNameAndFacts();
     ed.style.visibility = "visible";
     ed.style.height = "100vh";
     context.canvas.style.visibility = "hidden";
     context.canvas.style.height = "0vh";
     inEditor = true;
-    document.getElementById("title").value = factBox.title;
-    document.getElementById("facts").value = factBox.text;
+
+    document.getElementById("title").value = nameFacts.name;
+    document.getElementById("facts").value = nameFacts.facts;
 }
 
 function closeEditor() {
@@ -137,6 +140,12 @@ function closeEditor() {
     context.canvas.style.visibility = "visible";
     context.canvas.style.height = "100vh";
     inEditor = false;
+    lastBubble.setName(document.getElementById("title").value);
+    lastBubble.setFacts(document.getElementById("facts").value);
+    drawFactBox({
+        hit: true,
+        facts: lastBubble.getNameAndFacts()
+    });
 }
 
 function mouseDownListener(evt) {
@@ -150,10 +159,14 @@ function mouseDownListener(evt) {
     mousePos = context.mousePos(evt);
     scaledPos = context.scaledMousePos(evt);
     context.mouseDown = mousePos;
-    onCircle = bubbles.click(scaledPos);
     if (factBox.click(context, mousePos)) {
         openEditor();
     } else {
+        onCircle = bubbles.click(scaledPos);
+        console.log(onCircle);
+        if (onCircle.hit) {
+            lastBubble = onCircle.bubble;
+        }
         drawFactBox(onCircle);
     }
     sounds.onClick(mousePos);

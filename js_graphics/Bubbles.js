@@ -58,7 +58,8 @@ Bubbles.prototype.click = function (mousePos) {
         if (this.getBubble(i).hitTest(mousePos)) {
             return {
                 hit: true,
-                facts: this.getBubble(i).getNameAndFacts()
+                facts: this.getBubble(i).getNameAndFacts(),
+                bubble: this.getBubble(i)
             };
         }
     }
