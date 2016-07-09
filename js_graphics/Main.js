@@ -165,7 +165,6 @@ function mouseDownListener(evt) {
         console.log(onCircle);
         if (onCircle.hit) {
             lastBubble = onCircle.bubble;
-            drawFactBox(onCircle);
             viewerfacts.innerHTML = onCircle.facts.facts;
             viewertitle.innerHTML = onCircle.facts.name;
             // MathJax.Hub.Typeset();
@@ -174,6 +173,7 @@ function mouseDownListener(evt) {
             factBox.hide();
             viewer.style.visibility = "hidden";
         }
+        drawFactBox(onCircle);
 
     }
     sounds.onClick(mousePos);
