@@ -11,6 +11,7 @@ function Colors() {
 
     this.themeColors = {
         bubbleGreen: "#4E8800",
+        bubblePurple: "#B10DC9",
         bubbleHL: "#69B00C",
         bubbleHLShadow: '#6ED80D',
         textColor: "#DDDDDD",

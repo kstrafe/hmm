@@ -159,6 +159,11 @@ function closeEditor() {
     MathJax.Hub.Typeset();
 }
 
+function master() {
+    console.log(lastBubble);
+    lastBubble.masterThis();
+}
+
 function mouseDownListener(evt) {
     var onCircle = false,
         mousePos = null,
