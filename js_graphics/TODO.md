@@ -15,15 +15,16 @@
 	Latex rendering in infoboxes
 	Picture/Sprite rendering inside the infoboxes
 	Create favicon for the site
+	Make the FactBox scrollbar have a nicer style
 
 # TODO #
 	Add a whole bunch of new bubbles
 	Implement Data.js generator (with button) and automatic download
 	Right-mouse button editing interface
-	'I master this' button in/around factbox
 	Use percentages of the window to position and size factBox
 
 # IN PROGRESS #
+	KEVIN: 'I master this' button in/around factbox
 	KEVIN: Editor for editing a specific bubble (HTML)
 
 # DONE #
