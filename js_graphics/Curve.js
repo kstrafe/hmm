@@ -37,8 +37,8 @@ Curve.prototype.compute = function (c1, c2) {
         smul = 5,
         aOffset = 0.75,
         curv = 3;
-        //d = dx * dx + dy * dy,
-        //curv = (5e-7 * d);
+    //d = dx * dx + dy * dy,
+    //curv = (5e-7 * d);
 
     a = Math.atan2(dy, dx);
 

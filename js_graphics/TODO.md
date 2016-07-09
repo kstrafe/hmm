@@ -1,4 +1,5 @@
 # BUGS #
+	Editor window doesn't scale properly (See right scrollbar)
 
 # IDEAS #
 	Persistence storage of visited nodes in cookie
