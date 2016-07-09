@@ -5,16 +5,19 @@
 	<title>Hmm</title>
 	<link rel="stylesheet" type="text/css" href="reset.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
 </head>
 <body>
-    <div id="editor">
-        <input id="title" type="text" name="Title" placeholder="title">
-        <textarea id="facts" placeholder="Content"></textarea>
-        <div class="botbuttons">
-            <button class="done" type="button" onclick="closeEditor();">Done</button>
-            <button class="cancel" type="button" onclick="closeEditor();">Cancel</button>
-        </div>
-    </div>
+	<div id="editor">
+		<input id="title" type="text" name="Title" placeholder="title">
+		<textarea id="facts" placeholder="Content"></textarea>
+		<div class="botbuttons">
+			<button class="done" type="button" onclick="closeEditor();">Done</button>
+			<button class="cancel" type="button" onclick="closeEditor();">Cancel</button>
+		</div>
+	</div>
 	<canvas id="canvas" width="1280" height="720">Your browser does not support canvas</canvas>
 	<script src="Bubble.js"></script>
 	<script src="Bubbles.js"></script>
