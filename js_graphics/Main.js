@@ -21,6 +21,7 @@
 
 var editor = document.getElementById("editor");
 var viewer = document.getElementById("viewer");
+var viewerfacts = document.getElementById("viewerfacts");
 editor.style.visibility = "hidden";
 viewer.style.visibility = "hidden";
 var inEditor = false;
@@ -165,6 +166,8 @@ function mouseDownListener(evt) {
             lastBubble = onCircle.bubble;
         }
         drawFactBox(onCircle);
+        viewerfacts.innerHTML = onCircle.facts.facts;
+        viewer.style.visibility = "visible";
     }
     sounds.onClick(mousePos);
     help.click();

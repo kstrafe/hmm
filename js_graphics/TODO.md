@@ -22,7 +22,6 @@
 	Right-mouse button editing interface
 	'I master this' button in/around factbox
 	Use percentages of the window to position and size factBox
-	
 
 # IN PROGRESS #
 	KEVIN: Editor for editing a specific bubble (HTML)
