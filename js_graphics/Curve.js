@@ -37,8 +37,8 @@ Curve.prototype.compute = function (c1, c2) {
         smul = 5,
         aOffset = 0.75,
         //curv = 0.5,
-        d = (dx * dx) + (dy * dy),
-        curv = Math.max(1.5, (5e-7 * d));
+        d = Math.sqrt((dx * dx) + (dy * dy)),
+        curv = Math.max(1.5, (2e-3 * d));
 
     a = Math.atan2(dy, dx);
 
