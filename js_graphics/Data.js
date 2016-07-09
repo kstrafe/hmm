@@ -153,4 +153,12 @@ var all_bubbles = {
         title: "Integer Addition",
         facts: "Adding integers is very similar to natural numbers. 4 and 5 are both natural numbers as well as integer numbers. Adding them gives 9. This is also a natural number and an integer number. Integers can be negative. This means they have a minus sign in the number. The expression 5 + -3 contains two numbers, '5', and '-3'. When you see a '+ -', you can replace the '+ -' by just '-'. You then get '5 - 3', which is subtraction."
     },
+    integral: {
+        x: 0,
+        y: -18500,
+        r: 100,
+        link: [],
+        title: "Integration",
+        facts: "$$\\int$$ is the integration symbol, it means \"to sum\" over an infinitesimally small intervals."
+    },
 };
