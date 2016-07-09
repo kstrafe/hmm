@@ -120,7 +120,7 @@ FactBox.prototype.draw = function (context) {
     context.save();
 
     context.lineWidth = 0;
-    context.strokeStyle = this.colors.getByName('');
+    context.strokeStyle = this.colors.getByName('factBoxLine');
     context.shadowColor = this.colors.getByName('factBoxShad');
     context.shadowBlur = 20;
     context.globalAlpha = 0.4;
