@@ -116,7 +116,7 @@ function drawFactBoxSpace(onCircle) {
         sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
-        factBox.show(onCircle.facts);
+        factBox.show();
     }
 }
 
@@ -142,7 +142,11 @@ function closeEditor() {
         hit: true,
         facts: lastBubble.getNameAndFacts()
     });
+    console.log(lastBubble);
+    viewerfacts.innerHTML = lastBubble.getNameAndFacts().facts;
+    viewertitle.innerHTML = lastBubble.getNameAndFacts().name;
     viewer.style.visibility = "visible";
+    MathJax.Hub.Typeset();
 }
 
 function mouseDownListener(evt) {
@@ -158,7 +162,6 @@ function mouseDownListener(evt) {
     context.mouseDown = mousePos;
 
     onCircle = bubbles.click(scaledPos);
-    console.log(onCircle);
     if (onCircle.hit) {
         lastBubble = onCircle.bubble;
         viewerfacts.innerHTML = onCircle.facts.facts;
@@ -259,7 +262,6 @@ function createLineOrSelectBubble() {
     }
 
     if (selected_bubble && bubble) {
-        console.log(selected_bubble.getIndex(), bubble.getIndex());
         curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
         curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
         selected_bubble = null;

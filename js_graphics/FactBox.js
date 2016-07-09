@@ -19,9 +19,7 @@ FactBox.prototype.isActive = function () {
     return this.active;
 };
 
-FactBox.prototype.show = function (titleAndText) {
-    this.title = titleAndText.name;
-    this.text = titleAndText.facts;
+FactBox.prototype.show = function () {
     this.active = true;
 };
 
