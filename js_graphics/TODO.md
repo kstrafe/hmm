@@ -1,5 +1,6 @@
 # BUGS #
 	Editor window doesn't scale properly (See right scrollbar)
+	A bubble in the bottom left, clicking it, will open the editor window (because it simultaneously clicks the edit button)
 
 # IDEAS #
 	Persistence storage of visited nodes in cookie
@@ -18,7 +19,7 @@
 
 # TODO #
 	Add a whole bunch of new bubbles
-	
+
 	Implement Data.js generator (with button) and automatic download
 	Right-mouse button editing interface
 	'I master this' button in/around factbox
