@@ -1,4 +1,8 @@
-#id { height: 0vh; visibility: hidden; width: 100vw; }
+#editor { left: 60%; height: 70%; position: absolute; top: 10%; width: 30%; }
+
+button[type="button"] { border: 0; height: 5%; width: 100%; }
+canvas { position: absolute; z-index: -1; }
 input[type="text"] { background-color: #222222; border: 0; color: #FFFFFF; height: 5%; text-align: center; width: 100%; }
 textarea { background-color: #333333; border:0; color: #FFFFFF; height: 90%; resize: none; width: 100%; }
-button[type="button"] { border: 0; height: 5%; width: 100%; }
+
+.oncanvas { color: white; position: absolute; }

@@ -21,7 +21,6 @@
 
 var editor = document.getElementById("editor");
 editor.style.visibility = "hidden";
-editor.style.height = "0vh";
 var inEditor = false;
 var lastBubble = null;
 
@@ -126,9 +125,6 @@ function openEditor() {
     var ed = editor,
         nameFacts = lastBubble.getNameAndFacts();
     ed.style.visibility = "visible";
-    ed.style.height = "100vh";
-    context.canvas.style.visibility = "hidden";
-    context.canvas.style.height = "0vh";
     inEditor = true;
 
     document.getElementById("title").value = nameFacts.name;
@@ -138,9 +134,6 @@ function openEditor() {
 function closeEditor() {
     var ed = editor;
     ed.style.visibility = "hidden";
-    ed.style.height = "0vh";
-    context.canvas.style.visibility = "visible";
-    context.canvas.style.height = "100vh";
     inEditor = false;
     lastBubble.setName(document.getElementById("title").value);
     lastBubble.setFacts(document.getElementById("facts").value);
