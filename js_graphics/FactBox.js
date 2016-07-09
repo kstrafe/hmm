@@ -1,5 +1,6 @@
 /*global document*/
 /*global Image*/
+/*global Colors*/
 
 "use strict";
 
@@ -19,6 +20,7 @@ function FactBox(title, text) {
     this.maxWidth = 750;
     this.contTopMarg = 50;
     this.cornerRadius = 25;
+    this.colors = new Colors();
 }
 
 FactBox.prototype.isActive = function () {
@@ -66,6 +68,7 @@ FactBox.prototype.click = function (context, mousePos) {
     return false;
 };
 
+/*
 FactBox.prototype.resize = function (context) {
     var upLeft = this.upLeft(context, this.boxTopLeftMarg, this.maxWidth),
         downRight = this.downRight(context, this.boxTopLeftMarg, this.boxRightMarg);
@@ -77,6 +80,7 @@ FactBox.prototype.resize = function (context) {
     //    this.contentOffset = this.lowerBound;
     //}
 };
+*/
 
 FactBox.prototype.reset = function () {
     this.contentOffset = 0;
@@ -116,11 +120,11 @@ FactBox.prototype.draw = function (context) {
     context.save();
 
     context.lineWidth = 0;
-    context.strokeStyle = '#777777';
-    context.shadowColor = '#FFFFFF';
+    context.strokeStyle = this.colors.getByName('');
+    context.shadowColor = this.colors.getByName('factBoxShad');
     context.shadowBlur = 20;
     context.globalAlpha = 0.4;
-    context.fillStyle = '#555555';
+    context.fillStyle = this.colors.getByName('factBox');
 
     context.beginPath();
     context.moveTo(upLeft.x + corRad, upLeft.y);
@@ -139,7 +143,7 @@ FactBox.prototype.draw = function (context) {
     context.restore();
 
     //Draw title
-    context.fillStyle = '#FFFFFF';
+    context.fillStyle = this.colors.getByName('white');
     context.textAlign = "center";
     context.font = '30px Calibri';
     context.fillText(this.title, (downRight.x + upLeft.x) / 2, ytitle);
@@ -164,7 +168,7 @@ FactBox.prototype.drawEdit = function (context, centerPos, height) {
     var editstr = "Edit";
     context.save();
     context.font = '20px Calibri';
-    context.fillStyle = '#FFFFFF';
+    context.fillStyle = this.colors.getByName('white');
     context.globalAlpha = this.transparancy;
     context.textAlign = "center";
     context.fillText(editstr, centerPos, height);
@@ -219,8 +223,8 @@ FactBox.prototype.scrollBar = function (context, upLeft, downRight) {
 
     context.save();
     context.lineWidth = 8;
-    context.strokeStyle = '#DDDDDD';
-    context.shadowColor = '#FFFFFF';
+    context.strokeStyle = this.colors.getByName('scrollBar');
+    context.shadowColor = this.colors.getByName('scrollBarShade');
     context.shadowBlur = 10;
     context.globalAlpha = 0.6;
     context.lineCap = 'round';
@@ -266,7 +270,7 @@ FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     canvas.height = downRight.y - upLeft.y - TbMargin;
 
     //context.fillStyle = '#FFFFFF';
-    context.fillStyle = '#000000';
+    context.fillStyle = this.colors.getByName('factCont');
     context.textAlign = "left";
     context.font = fontSize + 'px Calibri';
     context.translate(0, this.contentOffset);

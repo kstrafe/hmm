@@ -14,7 +14,16 @@ function Colors() {
         bubbleHL: "#69B00C",
         bubbleHLShadow: '#6ED80D',
         textColor: "#DDDDDD",
-        white: "#FFFFFF"
+        white: "#FFFFFF",
+        factCont: "#000000",
+        factBox: "#555555",
+        factBoxLine: "#777777", //Math.ceil((factBox + factBoxShad) / 3)
+        factBoxShad: "#FFFFFF",
+        scrollBar: "#DDDDDD",
+        scrollBarShade: "#FFFFFF",
+        devMode: "#FF0000",
+        bgCenter: "#080808",
+        bgPeriphery: "#000028"
     };
 }
 
