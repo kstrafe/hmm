@@ -126,6 +126,8 @@ function openEditor() {
     context.canvas.style.visibility = "hidden";
     context.canvas.style.height = "0vh";
     inEditor = true;
+    document.getElementById("title").value = factBox.title;
+    document.getElementById("facts").value = factBox.text;
 }
 
 function closeEditor() {
