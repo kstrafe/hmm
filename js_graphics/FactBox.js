@@ -12,6 +12,7 @@ function FactBox(title, text) {
     this.contentLen = 0;
     this.contentOOB = false;
     this.lowerBound = null;
+    this.hoversEdit = false;
 }
 
 FactBox.prototype.isActive = function () {
@@ -44,6 +45,24 @@ FactBox.prototype.downRight = function (context, boxTopLeftMarg, boxRightMarg) {
         x: context.canvas.width - (boxTopLeftMarg + boxRightMarg),
         y: context.canvas.height - 2 * boxTopLeftMarg
     };
+};
+
+FactBox.prototype.click = function (context, mousePos) {
+    var boxTopLeftMarg = 50,
+        boxRightMarg = 25,
+        maxWidth = 750,
+        upLeft = this.upLeft(context, boxTopLeftMarg, maxWidth),
+        downRight = this.downRight(context, boxTopLeftMarg, boxRightMarg),
+        contTopMarg = 50;
+    if (mousePos.x > upLeft.x && mousePos.x < downRight.x) {
+        console.log(mousePos.y, downRight.y, upLeft.y);
+        if (mousePos.y > downRight.y && mousePos.y < downRight.y + contTopMarg) {
+            this.hoverEdit = true;
+            return true;
+        }
+    }
+    this.hoverEdit = false;
+    return false;
 };
 
 FactBox.prototype.resize = function (context) {

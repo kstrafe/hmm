@@ -123,7 +123,11 @@ function mouseDownListener(evt) {
     scaledPos = context.scaledMousePos(evt);
     context.mouseDown = mousePos;
     onCircle = bubbles.click(scaledPos);
-    drawFactBox(onCircle);
+    if (factBox.click(context, mousePos)) {
+        console.log("Transition to editor");
+    } else {
+        drawFactBox(onCircle);
+    }
     sounds.onClick(mousePos);
     help.click();
 }
