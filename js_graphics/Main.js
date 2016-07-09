@@ -22,6 +22,7 @@
 var editor = document.getElementById("editor");
 editor.style.visibility = "hidden";
 editor.style.height = "0vh";
+var inEditor = false;
 
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
@@ -52,13 +53,16 @@ function updateEverything() {
     floaties.update(context.low(), context.high(), context.left(), context.width());
     sounds.refreshBgm();
     help.fadeOut();
+    factBox.update();
 }
 
 function mouseHoverListener(evt) {
-    var mousePos = context.scaledMousePos(evt);
-    bubbles.hover(mousePos, sounds);
-    sounds.hoverButton(context.mousePos(evt));
-    help.hoverButton(context.mousePos(evt));
+    var smousePos = context.scaledMousePos(evt),
+        mPos = context.mousePos(evt);
+    bubbles.hover(smousePos, sounds);
+    sounds.hoverButton(mPos);
+    help.hoverButton(mPos);
+    factBox.click(context, mPos);
 }
 
 function zoom(evt) {
@@ -78,7 +82,9 @@ function mouseMoveListener(evt) {
         offtmp = context.mouseDown,
         dx = offtmp.x - mousePos.x,
         dy = offtmp.y - mousePos.y;
-    context.offsetTemporary(dx, dy);
+    if (inEditor === false) {
+        context.offsetTemporary(dx, dy);
+    }
 }
 
 function mouseUpListener(evt) {
@@ -89,7 +95,9 @@ function mouseUpListener(evt) {
     var mouseOnUp = context.mousePos(evt),
         mouseOnDown = context.mouseDown;
 
-    context.addOffset(mouseOnDown.x - mouseOnUp.x, mouseOnDown.y - mouseOnUp.y);
+    if (inEditor === false) {
+        context.addOffset(mouseOnDown.x - mouseOnUp.x, mouseOnDown.y - mouseOnUp.y);
+    }
 }
 
 function drawFactBox(onCircle) {
@@ -111,6 +119,24 @@ function drawFactBoxSpace(onCircle) {
     }
 }
 
+function openEditor() {
+    var ed = editor;
+    ed.style.visibility = "visible";
+    ed.style.height = "100vh";
+    context.canvas.style.visibility = "hidden";
+    context.canvas.style.height = "0vh";
+    inEditor = true;
+}
+
+function closeEditor() {
+    var ed = editor;
+    ed.style.visibility = "hidden";
+    ed.style.height = "0vh";
+    context.canvas.style.visibility = "visible";
+    context.canvas.style.height = "100vh";
+    inEditor = false;
+}
+
 function mouseDownListener(evt) {
     var onCircle = false,
         mousePos = null,
@@ -124,7 +150,7 @@ function mouseDownListener(evt) {
     context.mouseDown = mousePos;
     onCircle = bubbles.click(scaledPos);
     if (factBox.click(context, mousePos)) {
-        console.log("Transition to editor");
+        openEditor();
     } else {
         drawFactBox(onCircle);
     }
@@ -240,6 +266,11 @@ function createBubble() {
 
 function keyboardDown(key) {
     var movingSpeed = 20;
+
+    if (inEditor === true) {
+        return;
+    }
+
     help.deactivate();
     switch (key.which) {
     case KEY.SPACE:
