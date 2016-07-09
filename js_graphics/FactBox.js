@@ -13,6 +13,11 @@ function FactBox(title, text) {
     this.contentOOB = false;
     this.lowerBound = null;
     this.hoversEdit = false;
+    this.boxTopLeftMarg = 50;
+    this.boxRightMarg = 25;
+    this.maxWidth = 750;
+    this.contTopMarg = 50;
+    this.cornerRadius = 25;
 }
 
 FactBox.prototype.isActive = function () {
@@ -48,15 +53,10 @@ FactBox.prototype.downRight = function (context, boxTopLeftMarg, boxRightMarg) {
 };
 
 FactBox.prototype.click = function (context, mousePos) {
-    var boxTopLeftMarg = 50,
-        boxRightMarg = 25,
-        maxWidth = 750,
-        upLeft = this.upLeft(context, boxTopLeftMarg, maxWidth),
-        downRight = this.downRight(context, boxTopLeftMarg, boxRightMarg),
-        contTopMarg = 50;
+    var upLeft = this.upLeft(context, this.boxTopLeftMarg, this.maxWidth),
+        downRight = this.downRight(context, this.boxTopLeftMarg, this.boxRightMarg);
     if (mousePos.x > upLeft.x && mousePos.x < downRight.x) {
-        console.log(mousePos.y, downRight.y, upLeft.y);
-        if (mousePos.y > downRight.y && mousePos.y < downRight.y + contTopMarg) {
+        if (mousePos.y > downRight.y && mousePos.y < downRight.y + this.contTopMarg) {
             this.hoverEdit = true;
             return true;
         }
@@ -66,11 +66,8 @@ FactBox.prototype.click = function (context, mousePos) {
 };
 
 FactBox.prototype.resize = function (context) {
-    var boxTopLeftMarg = 50,
-        boxRightMarg = 25,
-        maxWidth = 750,
-        upLeft = this.upLeft(context, boxTopLeftMarg, maxWidth),
-        downRight = this.downRight(context, boxTopLeftMarg, boxRightMarg);
+    var upLeft = this.upLeft(context, this.boxTopLeftMarg, this.maxWidth),
+        downRight = this.downRight(context, this.boxTopLeftMarg, this.boxRightMarg);
     this.contentCanvas(upLeft, downRight);
 
     //this.contentOffset = 0
@@ -90,16 +87,13 @@ FactBox.prototype.draw = function (context) {
         return;
     }
 
-    var boxTopLeftMarg = 50,
-        boxRightMarg = 25,
-        maxWidth = 750,
-        cornerRadius = 25,
-        upLeft = this.upLeft(context, boxTopLeftMarg, maxWidth),
-        downRight = this.downRight(context, boxTopLeftMarg, boxRightMarg),
+    var upLeft = this.upLeft(context, this.boxTopLeftMarg, this.maxWidth),
+        downRight = this.downRight(context, this.boxTopLeftMarg, this.boxRightMarg),
         content,
         ytitle = 90,
         contLeftMarg = 15,
-        contTopMarg = 50;
+        contTopMarg = 50,
+        corRad = this.cornerRadius;
 
     //this.contentOffset = 0
 
@@ -116,15 +110,15 @@ FactBox.prototype.draw = function (context) {
     context.fillStyle = '#555555';
 
     context.beginPath();
-    context.moveTo(upLeft.x + cornerRadius, upLeft.y);
-    context.lineTo(downRight.x - cornerRadius, upLeft.y);
-    context.quadraticCurveTo(downRight.x, upLeft.y, downRight.x, upLeft.y + cornerRadius);
-    context.lineTo(downRight.x, downRight.y - cornerRadius);
-    context.quadraticCurveTo(downRight.x, downRight.y, downRight.x - cornerRadius, downRight.y);
-    context.lineTo(upLeft.x + cornerRadius, downRight.y);
-    context.quadraticCurveTo(upLeft.x, downRight.y, upLeft.x, downRight.y - cornerRadius);
-    context.lineTo(upLeft.x, upLeft.y + cornerRadius);
-    context.quadraticCurveTo(upLeft.x, upLeft.y, upLeft.x + cornerRadius, upLeft.y);
+    context.moveTo(upLeft.x + corRad, upLeft.y);
+    context.lineTo(downRight.x - corRad, upLeft.y);
+    context.quadraticCurveTo(downRight.x, upLeft.y, downRight.x, upLeft.y + corRad);
+    context.lineTo(downRight.x, downRight.y - corRad);
+    context.quadraticCurveTo(downRight.x, downRight.y, downRight.x - corRad, downRight.y);
+    context.lineTo(upLeft.x + corRad, downRight.y);
+    context.quadraticCurveTo(upLeft.x, downRight.y, upLeft.x, downRight.y - corRad);
+    context.lineTo(upLeft.x, upLeft.y + corRad);
+    context.quadraticCurveTo(upLeft.x, upLeft.y, upLeft.x + corRad, upLeft.y);
 
     context.closePath();
     context.fill();
