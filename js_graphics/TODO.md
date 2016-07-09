@@ -1,5 +1,6 @@
 # BUGS #
 	Editor window doesn't scale properly (See right scrollbar)
+	A bubble in the bottom left, clicking it, will open the editor window (because it simultaneously clicks the edit button)
 
 # IDEAS #
 	Persistence storage of visited nodes in cookie
