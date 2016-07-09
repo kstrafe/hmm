@@ -22,6 +22,7 @@
 var editor = document.getElementById("editor");
 var viewer = document.getElementById("viewer");
 var viewerfacts = document.getElementById("viewerfacts");
+var viewertitle = document.getElementById("viewertitle");
 editor.style.visibility = "hidden";
 viewer.style.visibility = "hidden";
 var inEditor = false;
@@ -164,10 +165,16 @@ function mouseDownListener(evt) {
         console.log(onCircle);
         if (onCircle.hit) {
             lastBubble = onCircle.bubble;
+            drawFactBox(onCircle);
+            viewerfacts.innerHTML = onCircle.facts.facts;
+            viewertitle.innerHTML = onCircle.facts.name;
+            // MathJax.Hub.Typeset();
+            viewer.style.visibility = "visible";
+        } else {
+            factBox.hide();
+            viewer.style.visibility = "hidden";
         }
-        drawFactBox(onCircle);
-        viewerfacts.innerHTML = onCircle.facts.facts;
-        viewer.style.visibility = "visible";
+
     }
     sounds.onClick(mousePos);
     help.click();
