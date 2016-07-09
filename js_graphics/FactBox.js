@@ -9,7 +9,7 @@ function FactBox(title, text) {
     this.image = new Image();
     this.active = false;
     this.contentOffset = 0;
-    this.transparancy = 1;
+    this.transparency = 1;
     this.contentLen = 0;
     this.contentOOB = false;
     this.lowerBound = null;
@@ -87,10 +87,10 @@ FactBox.prototype.update = function () {
     var tranTresh = 0.15,
         tranFade = 0.025;
     if (this.hoverEdit) {
-        this.transparancy = 1;
+        this.transparency = 1;
     } else {
-        if (this.transparancy > tranTresh) {
-            this.transparancy -= tranFade;
+        if (this.transparency > tranTresh) {
+            this.transparency -= tranFade;
         }
     }
 };
@@ -165,7 +165,7 @@ FactBox.prototype.drawEdit = function (context, centerPos, height) {
     context.save();
     context.font = '20px Calibri';
     context.fillStyle = '#FFFFFF';
-    context.globalAlpha = this.transparancy;
+    context.globalAlpha = this.transparency;
     context.textAlign = "center";
     context.fillText(editstr, centerPos, height);
     context.restore();
