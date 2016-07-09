@@ -21,13 +21,13 @@
 	Add a whole bunch of new bubbles
 	Implement Data.js generator (with button) and automatic download
 	Right-mouse button editing interface
-	Use percentages of the window to position and size factBox
 
 # IN PROGRESS #
 	KEVIN: 'I master this' button in/around factbox
-	KEVIN: Editor for editing a specific bubble (HTML)
 
 # DONE #
+	KEVIN: Editor for editing a specific bubble (HTML)
+	OLE: Use percentages of the window to position and size factBox
 	OLE: Sound effect when clicking/space on a bubble
 	OLE: Move random color strings into Colors.js
 	OLE: Improve bubble text-fitting
