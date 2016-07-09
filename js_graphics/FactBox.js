@@ -109,7 +109,7 @@ FactBox.prototype.draw = function (context) {
     var upLeft = this.upLeft(context, this.topMargin, this.rightMargin, this.width),
         downRight = this.downRight(context, this.topMargin, this.rightMargin, this.height),
         content,
-        ytitle = 90,
+        // ytitle = 90,
         contLeftMarg = 15,
         contTopMarg = 50,
         corRad = this.cornerRadius;
@@ -140,17 +140,19 @@ FactBox.prototype.draw = function (context) {
     context.restore();
 
     //Draw title
+    /*
     context.fillStyle = this.colors.getByName('white');
     context.textAlign = "center";
     context.font = '30px Calibri';
     context.fillText(this.title, (downRight.x + upLeft.x) / 2, ytitle);
 
     context.restore();
+    */
 
     content = this.contentCanvas(upLeft, downRight);
     context.drawImage(content, upLeft.x + contLeftMarg, upLeft.y + contTopMarg);
 
-    this.scrollBar(context, upLeft, downRight);
+    // this.scrollBar(context, upLeft, downRight);
     context.restore();
     this.drawEdit(context, (downRight.x + upLeft.x) / 2, downRight.y + contTopMarg);
 };
@@ -252,8 +254,8 @@ FactBox.prototype.contentCanvas = function (upLeft, downRight) {
         context = null,
         LfMargin = 45,
         TbMargin = 65,
-        fontSize = 20,
-        lineHeight = 20;
+        fontSize = 20;
+    // lineHeight = 20;
 
     context = canvas.getContext('2d');
 
@@ -266,7 +268,7 @@ FactBox.prototype.contentCanvas = function (upLeft, downRight) {
     context.font = fontSize + 'px Calibri';
     context.translate(0, this.contentOffset);
     //context.fillRect(0, 0, canvas.width, canvas.height);
-    this.contentLen = this.wrapText(context, this.text, 0, fontSize, lineHeight, canvas.width);
+    // this.contentLen = this.wrapText(context, this.text, 0, fontSize, lineHeight, canvas.width);
     //console.log(yTextEnd)
 
     this.contentOOB = ((this.contentLen + this.contentOffset) >= canvas.height);

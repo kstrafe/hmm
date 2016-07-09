@@ -20,7 +20,7 @@
 "use strict";
 
 var editor = document.getElementById("editor");
-var viewer = document.getElementById("editor");
+var viewer = document.getElementById("viewer");
 editor.style.visibility = "hidden";
 viewer.style.visibility = "hidden";
 var inEditor = false;
