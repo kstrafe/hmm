@@ -15,10 +15,13 @@
 	Latex rendering in infoboxes
 	Picture/Sprite rendering inside the infoboxes
 	Create favicon for the site
-	Make the FactBox scrollbar have a nicer style
+	Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red
+	New color to relevant curves when 'I master this' is clicked
 
 # TODO #
 	Add a whole bunch of new bubbles
+	Make the data generator include curves
+	Make the FactBox scrollbar have a nicer style
 	Right-mouse button editing interface
 
 # IN PROGRESS #
