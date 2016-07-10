@@ -295,6 +295,25 @@ function createBubble() {
     bubbles.add(bubbles.length(), bubble);
 }
 
+function generateDataJs() {
+    var tot = '"use strict";\n\nvar all_bubbles = {\n',
+        i = null,
+        bubble = null;
+    for (i = 0; i < bubbles.length(); i += 1) {
+        bubble = bubbles.getBubble(i);
+        tot += '\t' + bubble.getIndex() + ': {\n';
+        tot += '\t\tx: ' + bubble.getXY().x + ',\n';
+        tot += '\t\ty: ' + bubble.getXY().y + ',\n';
+        tot += '\t\tr: ' + bubble.getR() + ',\n';
+        tot += '\t\tlink: ' + '[]' + ',\n';
+        tot += '\t\ttitle: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
+        tot += '\t\tfacts: "' + bubble.getFacts().replace(/[\""]/g, '\\"') + '",\n';
+        tot += '\t},\n';
+    }
+    tot += '};';
+    console.log(tot);
+}
+
 function keyboardDown(key) {
     var movingSpeed = 20;
 
@@ -304,6 +323,9 @@ function keyboardDown(key) {
 
     help.deactivate();
     switch (key.which) {
+    case KEY.G:
+        generateDataJs();
+        break;
     case KEY.SPACE:
         drawFactBoxSpace(bubbles.click(context.getCenterPos()));
         break;
