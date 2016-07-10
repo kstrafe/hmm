@@ -129,6 +129,10 @@ function closeEditor() {
     factBox.closeEditor(lastBubble);
 }
 
+function closeEditorNoSave() {
+    factBox.closeEditorNoSave();
+}
+
 function master() {
     console.log(lastBubble);
     lastBubble.masterThis();

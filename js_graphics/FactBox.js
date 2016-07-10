@@ -48,6 +48,12 @@ FactBox.prototype.closeEditor = function (bubble) {
     MathJax.Hub.Typeset();
 };
 
+FactBox.prototype.closeEditorNoSave = function () {
+    this.inEditor = false;
+    this.editor.style.visibility = "hidden";
+    this.viewer.style.visibility = "visible";
+};
+
 FactBox.prototype.show = function (info) {
     this.active = true;
     this.viewerfacts.innerHTML = info.facts;

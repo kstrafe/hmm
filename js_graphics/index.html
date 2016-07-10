@@ -15,15 +15,15 @@
 		<textarea id="facts" placeholder="Content"></textarea>
 		<div class="botbuttons">
 			<button class="done" type="button" onclick="closeEditor();">Done</button>
-			<button class="cancel" type="button" onclick="closeEditor();">Cancel</button>
+			<button class="cancel" type="button" onclick="closeEditorNoSave();">Cancel</button>
 		</div>
 	</div>
 	<div id="viewer">
 		<span id="viewertitle" type="text" name="Title"></span>
 		<span id="viewerfacts"></span>
         <div class="botbuttons">
-            <button class="done" id="mastery" type="button" onclick="master();">I Master This</button>
-            <button class="cancel" id="Edit" type="button" onclick="openEditor();">Edit</button>
+            <button class="master" id="mastery" type="button" onclick="master();">I Master This</button>
+            <button class="edit" id="Edit" type="button" onclick="openEditor();">Edit</button>
         </div>
 	</div>
 	<canvas id="canvas" width="1280" height="720">Your browser does not support canvas</canvas>

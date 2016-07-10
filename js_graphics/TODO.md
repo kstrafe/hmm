@@ -15,7 +15,6 @@
 	Latex rendering in infoboxes
 	Picture/Sprite rendering inside the infoboxes
 	Create favicon for the site
-	Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red
 	New color to relevant curves when 'I master this' is clicked
 
 # TODO #
@@ -24,6 +23,7 @@
 	Right-mouse button editing interface
 
 # IN PROGRESS #
+	KEVIN: Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red
 
 # DONE #
 	KEVIN: Implement Data.js generator (with button) and automatic download
