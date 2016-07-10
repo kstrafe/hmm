@@ -323,7 +323,7 @@ function generateDataJs() {
         tot += '\t\tx: ' + bubble.getXY().x + ',\n';
         tot += '\t\ty: ' + bubble.getXY().y + ',\n';
         tot += '\t\tr: ' + bubble.getR() + ',\n';
-        tot += '\t\tlink: ' + '[]' + ',\n';
+        tot += '\t\tlink: [' + curves.getForwards(bubble.getIndex()) + '],\n';
         tot += '\t\ttitle: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
         tot += '\t\tfacts: "' + bubble.getFacts().replace(/[\""]/g, '\\"') + '",\n';
         tot += '\t},\n';
