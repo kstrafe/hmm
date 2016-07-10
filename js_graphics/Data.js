@@ -167,6 +167,6 @@ var all_bubbles = {
 		r: 100,
 		link: [],
 		title: "Integration",
-		facts: "$$int$$ is the integration symbol, it means \"to sum\" over an infinitesimally small intervals.",
+		facts: "$$\\int$$ is the integration symbol, it means \"to sum\" over an infinitesimally small intervals.",
 	},
 };

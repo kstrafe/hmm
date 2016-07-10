@@ -317,6 +317,10 @@ function surroundQuotes(string) {
     return '"' + string + '"';
 }
 
+function jsEscape(string) {
+    return string.replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/"/g, '\\"');
+}
+
 function generateDataJs() {
     var tot = '"use strict";\n\nvar all_bubbles = {\n',
         i = null,
@@ -329,7 +333,7 @@ function generateDataJs() {
         tot += '\t\tr: ' + bubble.getR() + ',\n';
         tot += '\t\tlink: [' + curves.getForwards(bubble.getIndex()).map(surroundQuotes) + '],\n';
         tot += '\t\ttitle: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
-        tot += '\t\tfacts: "' + bubble.getFacts().replace(/[\""]/g, '\\"').replace(/\n/g, '\\n') + '",\n';
+        tot += '\t\tfacts: "' + jsEscape(bubble.getFacts()) + '",\n';
         tot += '\t},\n';
     }
     tot += '};';
