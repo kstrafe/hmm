@@ -5,6 +5,7 @@
 function Curves() {
     this.curves = [];
     this.connected = {};
+    this.rawfrom = {};
 }
 
 Curves.prototype.reposition = function (from, bubbles) {
@@ -36,9 +37,20 @@ Curves.prototype.append = function (curve, from, to) {
     if (this.connected[to][from] !== undefined) {
         console.log("Curve already linked! (to->from)");
     }
+    if (this.rawfrom[from] === undefined) {
+        this.rawfrom[from] = [];
+    }
 
     this.connected[from][to] = curve;
     this.connected[to][from] = curve;
+    this.rawfrom[from].push(to);
+};
+
+Curves.prototype.getForwards = function (from) {
+    if (this.rawfrom[from] !== undefined) {
+        return this.rawfrom[from];
+    }
+    return [];
 };
 
 Curves.prototype.draw = function (context) {

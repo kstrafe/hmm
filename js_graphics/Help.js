@@ -45,7 +45,7 @@ Help.prototype.draw = function (context) {
         helpstr = [
             "Q: Link Mode | E: Dev Info | R: Move Mode | T: New Bubble | M: Toggle Sound",
             "WASD/HJKL/Arrows: Movement | Space: Select at Center | Mouse: Select at Pointer",
-            "Scroll wheel/+/-: Zoom"
+            "Scroll wheel/+/-: Zoom | G: Generate Data File (save your changes)"
         ];
     context.save();
     context.font = '20px Calibri';
