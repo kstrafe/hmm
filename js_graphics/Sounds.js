@@ -11,7 +11,7 @@ function Sounds() {
     this.button_open.volume = 0.1;
     this.mouseOn = false;
     this.muteSfx = false;
-    this.transparancy = 1;
+    this.transparency = 1;
 
     this.sfx = new Image();
     this.sfx.src = "Textures/audio_icon_effects.png";
@@ -116,15 +116,15 @@ Sounds.prototype.isMuted = function () {
 };
 
 Sounds.prototype.show = function () {
-    this.transparancy = 1;
+    this.transparency = 1;
 };
 
 Sounds.prototype.fadeOut = function () {
     var tranTresh = 0.15,
         tranFade = 0.025;
     if (this.mouseOn === false) {
-        if (this.transparancy > tranTresh) {
-            this.transparancy -= tranFade;
+        if (this.transparency > tranTresh) {
+            this.transparency -= tranFade;
         }
     }
 };
@@ -136,7 +136,7 @@ Sounds.prototype.draw = function (context) {
     context.font = '20px Calibri';
 
     context.drawImage(this.stateIcons[this.stateIndex], l[0], l[1], l[2], l[3]);
-    context.globalAlpha = this.transparancy;
+    context.globalAlpha = this.transparency;
     context.textAlign = "left";
     context.fillText(this.stateNames[this.stateIndex], l[4], l[5]);
     this.fadeOut();

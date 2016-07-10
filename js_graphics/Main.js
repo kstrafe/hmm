@@ -3,6 +3,7 @@
 
 /*global all_bubbles*/
 /*global all_curves*/
+/*global Blob*/
 /*global Bubble*/
 /*global Bubbles*/
 /*global Colors*/
@@ -295,6 +296,42 @@ function createBubble() {
     bubbles.add(bubbles.length(), bubble);
 }
 
+function downloadData(filename, data) {
+    var blob = new Blob([data], {
+            type: 'text/csv'
+        }),
+        elem;
+    if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveBlob(blob, filename);
+    } else {
+        elem = window.document.createElement('a');
+        elem.href = window.URL.createObjectURL(blob);
+        elem.download = filename;
+        document.body.appendChild(elem);
+        elem.click();
+        document.body.removeChild(elem);
+    }
+}
+
+function generateDataJs() {
+    var tot = '"use strict";\n\nvar all_bubbles = {\n',
+        i = null,
+        bubble = null;
+    for (i = 0; i < bubbles.length(); i += 1) {
+        bubble = bubbles.getBubble(i);
+        tot += '\t' + bubble.getIndex() + ': {\n';
+        tot += '\t\tx: ' + bubble.getXY().x + ',\n';
+        tot += '\t\ty: ' + bubble.getXY().y + ',\n';
+        tot += '\t\tr: ' + bubble.getR() + ',\n';
+        tot += '\t\tlink: ' + '[]' + ',\n';
+        tot += '\t\ttitle: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
+        tot += '\t\tfacts: "' + bubble.getFacts().replace(/[\""]/g, '\\"') + '",\n';
+        tot += '\t},\n';
+    }
+    tot += '};';
+    downloadData('Data.js', tot);
+}
+
 function keyboardDown(key) {
     var movingSpeed = 20;
 
@@ -304,6 +341,9 @@ function keyboardDown(key) {
 
     help.deactivate();
     switch (key.which) {
+    case KEY.G:
+        generateDataJs();
+        break;
     case KEY.SPACE:
         drawFactBoxSpace(bubbles.click(context.getCenterPos()));
         break;

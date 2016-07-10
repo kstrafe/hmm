@@ -86,6 +86,14 @@ Bubble.prototype.setHighlighting = function (bool) {
     this.highlighted = bool;
 };
 
+Bubble.prototype.getTitle = function () {
+    return this.name;
+};
+
+Bubble.prototype.getFacts = function () {
+    return this.facts;
+};
+
 Bubble.prototype.getNameAndFacts = function () {
     return {
         name: this.name,
