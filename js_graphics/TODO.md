@@ -20,12 +20,12 @@
 # TODO #
 	Add a whole bunch of new bubbles
 	Make the FactBox scrollbar have a nicer style
-	Right-mouse button editing interface
 
 # IN PROGRESS #
-	KEVIN: Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red
+	Right-mouse button editing interface
 
 # DONE #
+	KEVIN: Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red
 	KEVIN: Implement Data.js generator (with button) and automatic download
 	OLE: Make mouse stay on same place when zooming with scrollwheel
 	KEVIN: 'I master this' button in/around factbox
