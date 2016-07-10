@@ -64,6 +64,7 @@ FactBox.prototype.show = function (info) {
 
 FactBox.prototype.hide = function () {
     this.active = false;
+    this.inEditor = false;
     this.viewer.style.visibility = "hidden";
     this.editor.style.visibility = "hidden";
 };
