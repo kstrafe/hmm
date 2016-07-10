@@ -37,6 +37,10 @@ FactBox.prototype.openEditor = function (nameFacts) {
     this.viewer.style.visibility = "hidden";
 };
 
+FactBox.prototype.isEditing = function () {
+    return this.inEditor;
+};
+
 FactBox.prototype.closeEditor = function (bubble) {
     this.inEditor = false;
     bubble.setName(document.getElementById("title").value);

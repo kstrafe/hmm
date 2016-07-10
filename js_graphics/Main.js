@@ -314,10 +314,13 @@ function keyboardDown(key) {
     var movingSpeed = 20;
 
     if (factBox.isActive()) {
-        if (key.which === KEY.SPACE) {
+        if (key.which === KEY.SPACE && factBox.isEditing() === false) {
             drawFactBoxSpace();
+            return;
         }
-        return;
+        if (factBox.isEditing()) {
+            return;
+        }
     }
 
     help.deactivate();
@@ -400,6 +403,10 @@ function main() {
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
     context.canvas.addEventListener("mousewheel", zoom, false);
+    context.canvas.oncontextmenu = function () {
+        console.log("HEY");
+        return false;
+    };
     setInterval(function () {
         updateEverything();
         renderEverything();
