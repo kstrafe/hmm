@@ -15,8 +15,9 @@
 	Picture/Sprite rendering inside the infoboxes
 	Create favicon for the site
 	New color to relevant curves when 'I master this' is clicked
-	Make child-bubbles first visible when hovering or clicking parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.
+	Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.
 	this will require a tree structuring of the drawing of bubbled
+
 
 # TODO #
 	Add a whole bunch of new bubbles
