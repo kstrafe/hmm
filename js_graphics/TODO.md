@@ -20,7 +20,6 @@
 
 # TODO #
 	Add a whole bunch of new bubbles
-	Make the data generator include curves
 	Make the FactBox scrollbar have a nicer style
 	Right-mouse button editing interface
 
