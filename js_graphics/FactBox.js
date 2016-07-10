@@ -1,6 +1,7 @@
 /*global document*/
 /*global Image*/
 /*global Colors*/
+/*global MathJax*/
 
 "use strict";
 
@@ -13,18 +14,31 @@ function FactBox() {
     this.rightMargin = 0.05;
     this.width = 0.35;
     this.height = 0.8;
+    this.editor = document.getElementById("editor");
+    this.viewer = document.getElementById("viewer");
+    this.viewerfacts = document.getElementById("viewerfacts");
+    this.viewertitle = document.getElementById("viewertitle");
+    this.editor.style.visibility = "hidden";
+    this.viewer.style.visibility = "hidden";
+    this.inEditor = false;
 }
 
 FactBox.prototype.isActive = function () {
     return this.active;
 };
 
-FactBox.prototype.show = function () {
+FactBox.prototype.show = function (info) {
     this.active = true;
+    this.viewerfacts.innerHTML = info.facts;
+    this.viewertitle.innerHTML = info.name;
+    MathJax.Hub.Typeset();
+    this.viewer.style.visibility = "visible";
 };
 
 FactBox.prototype.hide = function () {
     this.active = false;
+    this.viewer.style.visibility = "hidden";
+    this.editor.style.visibility = "hidden";
 };
 
 FactBox.prototype.upLeft = function (context, topMargin, rightMargin, width) {

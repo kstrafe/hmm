@@ -102,11 +102,6 @@ function mouseUpListener(evt) {
 
 function drawFactBox(onCircle) {
     if (onCircle.hit) {
-        viewerfacts.innerHTML = onCircle.facts.facts;
-        viewertitle.innerHTML = onCircle.facts.name;
-        MathJax.Hub.Typeset();
-        viewer.style.visibility = "visible";
-
         sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
@@ -182,8 +177,6 @@ function mouseDownListener(evt) {
         lastBubble = onCircle.bubble;
     } else {
         factBox.hide();
-        viewer.style.visibility = "hidden";
-        editor.style.visibility = "hidden";
         inEditor = false;
     }
     drawFactBox(onCircle);
