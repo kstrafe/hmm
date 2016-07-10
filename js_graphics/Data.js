@@ -7,7 +7,7 @@ var all_bubbles = {
 		r: 100,
 		link: [],
 		title: "Editing",
-		facts: "Check out the help menu in the top right corner of the screen. After you're done editing, you've only really edited the graph locally. Nobody else who visits this website will see your edits.<br>If you want to publicize your edits, press 'g' (this creates a data file), and send it to the developers, or visit us on <a href=\"https://github.com/BourgondAries/hmm\">github</a> and open up a pull request of leave an issue.\n<br>\n<br>\n<a href=\"mailto:macocio@gmail.com\">macocio@gmail.com</a><br>\n<a href=\"mailto:kevinrs@stud.ntnu.no\">kevinrs@stud.ntnu.no</a>",
+		facts: "Check out the help menu in the top right corner of the screen.\n<br>\nYou can put arbitrary html (images, links, ...) in these boxes. We also support latex using <a href=\"https://www.mathjax.org/\">MathJax</a>.  We use the $$\\$\\$$$ quotes to start a mathjax context. Here is an example:\n<br>\n$$ \\frac{\\partial c}{\\partial t} = e^{-t} $$\nAfter you're done editing, you've only really edited the graph locally. Nobody else who visits this website will see your edits.<br>If you want to publicize your edits, press 'g' (this creates a data file), and send it to the developers, or visit us on <a href=\"https://github.com/BourgondAries/hmm\">github</a> and open up a pull request of leave an issue.\n<br>\n<br>\nContact us at any of these addresses:\n<br>\n<a href=\"mailto:macocio@gmail.com\">macocio@gmail.com</a><br>\n<a href=\"mailto:kevinrs@stud.ntnu.no\">kevinrs@stud.ntnu.no</a>\n",
 	},
 	start: {
 		x: 0,
