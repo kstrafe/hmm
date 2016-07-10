@@ -8,6 +8,24 @@ function Colors() {
         "#FF851B", "#FF4136", "#85144B", "#F012BE",
         "#B10DC9", "#111111", "#AAAAAA", "#DDDDDD"
     ];
+
+    this.themeColors = {
+        bubbleGreen: "#4E8800",
+        bubblePurple: "#B10DC9",
+        bubbleHL: "#69B00C",
+        bubbleHLShadow: '#6ED80D',
+        textColor: "#DDDDDD",
+        white: "#FFFFFF",
+        factCont: "#000000",
+        factBox: "#555555",
+        factBoxLine: "#777777", //Math.ceil((factBox + factBoxShad) / 3)
+        factBoxShad: "#FFFFFF",
+        scrollBar: "#DDDDDD",
+        scrollBarShade: "#FFFFFF",
+        devMode: "#FF0000",
+        bgCenter: "#080808",
+        bgPeriphery: "#000028"
+    };
 }
 
 Colors.prototype.clrs = function (index) {
@@ -19,4 +37,8 @@ Colors.prototype.random = function () {
         interval = 1 / this.colors.length,
         approx = Math.floor(value / interval);
     return this.colors[approx];
+};
+
+Colors.prototype.getByName = function (name) {
+    return this.themeColors[name];
 };

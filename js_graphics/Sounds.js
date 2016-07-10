@@ -6,7 +6,9 @@
 function Sounds() {
     this.backgroundSong = new Audio("http://music.stravers.net/");
     this.button_hover = new Audio("Audio/button_hov2.mp3");
+    this.button_open = new Audio("Audio/show_facts3.mp3");
     this.button_hover.volume = 0.3;
+    this.button_open.volume = 0.1;
     this.mouseOn = false;
     this.muteSfx = false;
     this.transparency = 1;
@@ -39,6 +41,12 @@ Sounds.prototype.refreshBgm = function () {
 Sounds.prototype.hover = function () {
     if (!this.muteSfx) {
         this.button_hover.play();
+    }
+};
+
+Sounds.prototype.openInfo = function () {
+    if (!this.muteSfx) {
+        this.button_open.play();
     }
 };
 

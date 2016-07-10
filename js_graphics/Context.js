@@ -1,4 +1,6 @@
 /*global document*/
+/*global Colors*/
+
 "use strict";
 
 function Context(canvas) {
@@ -188,8 +190,8 @@ Context.prototype.cacheGradient = function () {
     canvas.height = this.canvas.height;
 
     gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, startRad, canvas.width / 2, canvas.height / 2, endRad);
-    gradient.addColorStop(0, '#000028');
-    gradient.addColorStop(1, '#080808');
+    gradient.addColorStop(0, new Colors().getByName('bgPeriphery'));
+    gradient.addColorStop(1, new Colors().getByName('bgCenter'));
 
     context.fillStyle = gradient;
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -218,7 +220,7 @@ Context.prototype.drawDevMode = function () {
         mouse = this.mouse,
         invscl = 1 / this.scaleFactor;
     if (this.devMode) {
-        ctx.fillStyle = "#FF0000";
+        ctx.fillStyle = new Colors().getByName('devMode');
         ctx.textAlign = "left";
         ctx.font = '30px Calibri';
         ctx.fillText('x: ' + (invscl * (this.xOffset + this.canvas.width / 2)).toFixed(0) +

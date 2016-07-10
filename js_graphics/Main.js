@@ -3,6 +3,7 @@
 
 /*global all_bubbles*/
 /*global all_curves*/
+/*global Blob*/
 /*global Bubble*/
 /*global Bubbles*/
 /*global Colors*/
@@ -15,19 +16,23 @@
 /*global Floatys*/
 /*global Help*/
 /*global KEY*/
+/*global MathJax*/
 /*global Sounds*/
 
 "use strict";
 
 var editor = document.getElementById("editor");
+var viewer = document.getElementById("viewer");
+var viewerfacts = document.getElementById("viewerfacts");
+var viewertitle = document.getElementById("viewertitle");
 editor.style.visibility = "hidden";
-editor.style.height = "0vh";
+viewer.style.visibility = "hidden";
 var inEditor = false;
 var lastBubble = null;
 
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
-var factBox = new FactBox('', '');
+var factBox = new FactBox();
 var bubbles = new Bubbles();
 var curves = new Curves();
 var edit = new Edit();
@@ -54,7 +59,6 @@ function updateEverything() {
     floaties.update(context.low(), context.high(), context.left(), context.width());
     sounds.refreshBgm();
     help.fadeOut();
-    factBox.update();
 }
 
 function mouseHoverListener(evt) {
@@ -63,18 +67,13 @@ function mouseHoverListener(evt) {
     bubbles.hover(smousePos, sounds);
     sounds.hoverButton(mPos);
     help.hoverButton(mPos);
-    factBox.click(context, mPos);
 }
 
 function zoom(evt) {
-    if (factBox.isActive()) {
-        factBox.scroll(evt.deltaY);
-    } else {
-        if (evt.deltaY > 0) {
-            context.zoomOutMouse();
-        } else if (evt.deltaY < 0) {
-            context.zoomInMouse();
-        }
+    if (evt.deltaY > 0) {
+        context.zoomOutMouse();
+    } else if (evt.deltaY < 0) {
+        context.zoomInMouse();
     }
 }
 
@@ -103,6 +102,12 @@ function mouseUpListener(evt) {
 
 function drawFactBox(onCircle) {
     if (onCircle.hit) {
+        viewerfacts.innerHTML = onCircle.facts.facts;
+        viewertitle.innerHTML = onCircle.facts.name;
+        MathJax.Hub.Typeset();
+        viewer.style.visibility = "visible";
+
+        sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
         factBox.show(onCircle.facts);
@@ -114,9 +119,15 @@ function drawFactBox(onCircle) {
 
 function drawFactBoxSpace(onCircle) {
     if (onCircle.hit) {
+        viewerfacts.innerHTML = onCircle.facts.facts;
+        viewertitle.innerHTML = onCircle.facts.name;
+        MathJax.Hub.Typeset();
+
+        viewer.style.visibility = "visible";
+        sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
-        factBox.show(onCircle.facts);
+        factBox.show();
     }
 }
 
@@ -124,21 +135,17 @@ function openEditor() {
     var ed = editor,
         nameFacts = lastBubble.getNameAndFacts();
     ed.style.visibility = "visible";
-    ed.style.height = "100vh";
-    context.canvas.style.visibility = "hidden";
-    context.canvas.style.height = "0vh";
     inEditor = true;
 
     document.getElementById("title").value = nameFacts.name;
     document.getElementById("facts").value = nameFacts.facts;
+
+    viewer.style.visibility = "hidden";
 }
 
 function closeEditor() {
     var ed = editor;
     ed.style.visibility = "hidden";
-    ed.style.height = "0vh";
-    context.canvas.style.visibility = "visible";
-    context.canvas.style.height = "100vh";
     inEditor = false;
     lastBubble.setName(document.getElementById("title").value);
     lastBubble.setFacts(document.getElementById("facts").value);
@@ -146,6 +153,16 @@ function closeEditor() {
         hit: true,
         facts: lastBubble.getNameAndFacts()
     });
+    console.log(lastBubble);
+    viewerfacts.innerHTML = lastBubble.getNameAndFacts().facts;
+    viewertitle.innerHTML = lastBubble.getNameAndFacts().name;
+    viewer.style.visibility = "visible";
+    MathJax.Hub.Typeset();
+}
+
+function master() {
+    console.log(lastBubble);
+    lastBubble.masterThis();
 }
 
 function mouseDownListener(evt) {
@@ -159,16 +176,17 @@ function mouseDownListener(evt) {
     mousePos = context.mousePos(evt);
     scaledPos = context.scaledMousePos(evt);
     context.mouseDown = mousePos;
-    if (factBox.click(context, mousePos)) {
-        openEditor();
+
+    onCircle = bubbles.click(scaledPos);
+    if (onCircle.hit) {
+        lastBubble = onCircle.bubble;
     } else {
-        onCircle = bubbles.click(scaledPos);
-        console.log(onCircle);
-        if (onCircle.hit) {
-            lastBubble = onCircle.bubble;
-        }
-        drawFactBox(onCircle);
+        factBox.hide();
+        viewer.style.visibility = "hidden";
+        editor.style.visibility = "hidden";
+        inEditor = false;
     }
+    drawFactBox(onCircle);
     sounds.onClick(mousePos);
     help.click();
 }
@@ -258,7 +276,6 @@ function createLineOrSelectBubble() {
     }
 
     if (selected_bubble && bubble) {
-        console.log(selected_bubble.getIndex(), bubble.getIndex());
         curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
         curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
         selected_bubble = null;
@@ -279,6 +296,42 @@ function createBubble() {
     bubbles.add(bubbles.length(), bubble);
 }
 
+function downloadData(filename, data) {
+    var blob = new Blob([data], {
+            type: 'text/csv'
+        }),
+        elem;
+    if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveBlob(blob, filename);
+    } else {
+        elem = window.document.createElement('a');
+        elem.href = window.URL.createObjectURL(blob);
+        elem.download = filename;
+        document.body.appendChild(elem);
+        elem.click();
+        document.body.removeChild(elem);
+    }
+}
+
+function generateDataJs() {
+    var tot = '"use strict";\n\nvar all_bubbles = {\n',
+        i = null,
+        bubble = null;
+    for (i = 0; i < bubbles.length(); i += 1) {
+        bubble = bubbles.getBubble(i);
+        tot += '\t' + bubble.getIndex() + ': {\n';
+        tot += '\t\tx: ' + bubble.getXY().x + ',\n';
+        tot += '\t\ty: ' + bubble.getXY().y + ',\n';
+        tot += '\t\tr: ' + bubble.getR() + ',\n';
+        tot += '\t\tlink: ' + '[]' + ',\n';
+        tot += '\t\ttitle: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
+        tot += '\t\tfacts: "' + bubble.getFacts().replace(/[\""]/g, '\\"') + '",\n';
+        tot += '\t},\n';
+    }
+    tot += '};';
+    downloadData('Data.js', tot);
+}
+
 function keyboardDown(key) {
     var movingSpeed = 20;
 
@@ -288,6 +341,9 @@ function keyboardDown(key) {
 
     help.deactivate();
     switch (key.which) {
+    case KEY.G:
+        generateDataJs();
+        break;
     case KEY.SPACE:
         drawFactBoxSpace(bubbles.click(context.getCenterPos()));
         break;
@@ -315,6 +371,7 @@ function keyboardDown(key) {
     default:
         setCanvasSpeed(key, movingSpeed);
         factBox.hide();
+        viewer.style.visibility = "hidden";
         break;
     }
 }
@@ -325,7 +382,6 @@ function keyboardUp(key) {
 
 function onResize() {
     context.onResize();
-    factBox.reset();
     help.resize(context.canvas.width);
 }
 

@@ -23,7 +23,7 @@ Curve.prototype.compute = function (c1, c2) {
         c1y = c1.y,
         c2x = c2.x,
         c2y = c2.y,
-        dx = c2x - c1.x,
+        dx = c2x - c1x,
         dy = c2y - c1y,
         a = null,
         x0 = null,
@@ -34,23 +34,27 @@ Curve.prototype.compute = function (c1, c2) {
         y2 = null,
         x3 = null,
         y3 = null,
-        smul = 5;
+        smul = 5,
+        aOffset = 0.75,
+        //curv = 0.5,
+        d = Math.sqrt((dx * dx) + (dy * dy)),
+        curv = Math.max(1.5, (2e-3 * d));
 
     a = Math.atan2(dy, dx);
 
-    x0 = c1x + c1.r * Math.cos(a + 0.5) + smul * Math.sign(dx);
-    y0 = c1y + c1.r * Math.sin(a + 0.5) + smul * Math.sign(dy);
+    x0 = c1x + c1.r * Math.cos(a + aOffset) + smul * Math.sign(dx);
+    y0 = c1y + c1.r * Math.sin(a + aOffset) + smul * Math.sign(dy);
 
-    x1 = c1x + 2 * c1.r * Math.cos(a + 0.5);
-    y1 = c1y + 2 * c1.r * Math.sin(a + 0.5);
+    x1 = c1x + curv * c1.r * Math.cos(a + aOffset);
+    y1 = c1y + curv * c1.r * Math.sin(a + aOffset);
 
     a = a + Math.PI;
 
-    x2 = c2x + 2 * c2.r * Math.cos(a - 0.5);
-    y2 = c2y + 2 * c2.r * Math.sin(a - 0.5);
+    x2 = c2x + curv * c2.r * Math.cos(a - aOffset);
+    y2 = c2y + curv * c2.r * Math.sin(a - aOffset);
 
-    x3 = c2x + c2.r * Math.cos(a - 0.5) - smul * Math.sign(dx);
-    y3 = c2y + c2.r * Math.sin(a - 0.5) - smul * Math.sign(dy);
+    x3 = c2x + c2.r * Math.cos(a - aOffset) - smul * Math.sign(dx);
+    y3 = c2y + c2.r * Math.sin(a - aOffset) - smul * Math.sign(dy);
 
     return {
         x0: x0,

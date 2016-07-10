@@ -1,4 +1,6 @@
 # BUGS #
+	Editor window doesn't scale properly (See right scrollbar)
+	A bubble in the bottom left, clicking it, will open the editor window (because it simultaneously clicks the edit button)
 
 # IDEAS #
 	Persistence storage of visited nodes in cookie
@@ -6,7 +8,6 @@
 	Introduce a summary in the info box. Title - summary - longer text / details
 	Different coloration in the tree based on subject
 	Short cut to places around the canvas
-	Make content (of FactBox) stay in the same place after resize
 	Semantic zoom
 	Clickable hyperlinks in info box
 	Hyperlinks activating links to different bubbles
@@ -14,20 +15,22 @@
 	Latex rendering in infoboxes
 	Picture/Sprite rendering inside the infoboxes
 	Create favicon for the site
+	Make the FactBox scrollbar have a nicer style
 
 # TODO #
 	Add a whole bunch of new bubbles
-	Move random color strings into Colors.js
-	Improve bubble text-fitting (currently goes slightly OOB)
-	Implement Data.js generator (with button) and automatic download
 	Right-mouse button editing interface
-	'I master this' button in/around factbox
-	Sound effect when clicking/space on a bubble
 
 # IN PROGRESS #
-	KEVIN: Editor for editing a specific bubble (HTML)
+	Implement Data.js generator (with button) and automatic download
 
 # DONE #
+	KEVIN: 'I master this' button in/around factbox
+	KEVIN: Editor for editing a specific bubble (HTML)
+	OLE: Use percentages of the window to position and size factBox
+	OLE: Sound effect when clicking/space on a bubble
+	OLE: Move random color strings into Colors.js
+	OLE: Improve bubble text-fitting
 	KEVIN: 'Edit' button somewhere when factbox is opened
 	KEVIN: Make the zoom zoom toward position of the mouse - Only for MOUSE zoom, keyboard zoom stays centered
 	KEVIN: Help menu button; describe keyboard shortcuts
