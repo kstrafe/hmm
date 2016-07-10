@@ -25,9 +25,9 @@
 	Right-mouse button editing interface
 
 # IN PROGRESS #
-	KEVIN: Implement Data.js generator (with button) and automatic download
 
 # DONE #
+	KEVIN: Implement Data.js generator (with button) and automatic download
 	OLE: Make mouse stay on same place when zooming with scrollwheel
 	KEVIN: 'I master this' button in/around factbox
 	KEVIN: Editor for editing a specific bubble (HTML)
