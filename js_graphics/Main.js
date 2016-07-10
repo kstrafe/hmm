@@ -3,6 +3,7 @@
 
 /*global all_bubbles*/
 /*global all_curves*/
+/*global Blob*/
 /*global Bubble*/
 /*global Bubbles*/
 /*global Colors*/
@@ -295,6 +296,23 @@ function createBubble() {
     bubbles.add(bubbles.length(), bubble);
 }
 
+function downloadData(filename, data) {
+    var blob = new Blob([data], {
+            type: 'text/csv'
+        }),
+        elem;
+    if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveBlob(blob, filename);
+    } else {
+        elem = window.document.createElement('a');
+        elem.href = window.URL.createObjectURL(blob);
+        elem.download = filename;
+        document.body.appendChild(elem);
+        elem.click();
+        document.body.removeChild(elem);
+    }
+}
+
 function generateDataJs() {
     var tot = '"use strict";\n\nvar all_bubbles = {\n',
         i = null,
@@ -311,7 +329,7 @@ function generateDataJs() {
         tot += '\t},\n';
     }
     tot += '};';
-    console.log(tot);
+    downloadData('Data.js', tot);
 }
 
 function keyboardDown(key) {
