@@ -60,21 +60,16 @@ Context.prototype.zoomOutMouse = function () {
 
 Context.prototype.zoomMouse = function (absfactor) {
     var center = this.scaledMousePos(),
-        relfactor = absfactor / this.scaleFactor,
         oldScaleFactor = this.scaleFactor;
 
-    //console.log(center.x);
-    //console.log(center.y);
+    center.x =  center.x + (this.left() + this.width() - center.x) * (oldScaleFactor / absfactor) - 0.5 * this.width() * (oldScaleFactor / absfactor);
+    center.y =  center.y + (this.high() - center.y) * (oldScaleFactor / absfactor) + 0.5 * (Math.abs(this.high() - this.low())) * (oldScaleFactor / absfactor);
 
     this.scaleFactor = absfactor;
-    center.x *= absfactor;
-    center.y *= absfactor;
-    //center.x *= absfactor / (this.scaleFactor / oldScaleFactor) ;
-    //center.y *= absfactor / (this.scaleFactor / oldScaleFactor);
 
-    //console.log(center.x);
-    //console.log(center.y);
-    this.centerOn(center.x, center.y);
+    this.xOffset = center.x * this.scaleFactor - this.canvas.width / 2
+    this.yOffset = center.y * this.scaleFactor - this.canvas.height / 2
+    //this.centerOn(center.x, center.y);
 };
 
 Context.prototype.zoom = function (absfactor) {
@@ -89,6 +84,7 @@ Context.prototype.zoom = function (absfactor) {
 Context.prototype.centerOn = function (x, y) {
     var width = this.canvas.width,
         height = this.canvas.height;
+
     this.xOffset = x - width / 2;
     this.yOffset = y - height / 2;
 };
@@ -126,6 +122,7 @@ Context.prototype.clear = function () {
 
 Context.prototype.draw = function (drawables) {
     var i = null;
+
     this.context.save();
     this.context.translate(-this.xOffset - this.tmpxOffset, -this.yOffset - this.tmpyOffset);
     this.context.scale(this.scaleFactor, this.scaleFactor);
