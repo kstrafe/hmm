@@ -22,10 +22,10 @@
 	Right-mouse button editing interface
 
 # IN PROGRESS #
-	OLE: Make mouse stay on same place when zooming with scrollwheel
 	KEVIN: Implement Data.js generator (with button) and automatic download
 
 # DONE #
+	OLE: Make mouse stay on same place when zooming with scrollwheel
 	KEVIN: 'I master this' button in/around factbox
 	KEVIN: Editor for editing a specific bubble (HTML)
 	OLE: Use percentages of the window to position and size factBox

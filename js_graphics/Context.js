@@ -60,15 +60,17 @@ Context.prototype.zoomOutMouse = function () {
 
 Context.prototype.zoomMouse = function (absfactor) {
     var center = this.scaledMousePos(),
-        oldScaleFactor = this.scaleFactor;
+        oldScaleFactor = this.scaleFactor,
+        newCenter = {x: null, y: null},
+        scaleRatio = (oldScaleFactor / absfactor);
 
-    center.x =  center.x + (this.left() + this.width() - center.x) * (oldScaleFactor / absfactor) - 0.5 * this.width() * (oldScaleFactor / absfactor);
-    center.y =  center.y + (this.high() - center.y) * (oldScaleFactor / absfactor) + 0.5 * (Math.abs(this.high() - this.low())) * (oldScaleFactor / absfactor);
+    newCenter.x =  center.x + (this.left() + this.width() - center.x) * scaleRatio - 0.5 * this.width() * scaleRatio;
+    newCenter.y =  center.y + (this.high() - center.y) * scaleRatio + 0.5 * (this.low() - this.high()) * scaleRatio;
 
     this.scaleFactor = absfactor;
 
-    this.xOffset = center.x * this.scaleFactor - this.canvas.width / 2
-    this.yOffset = center.y * this.scaleFactor - this.canvas.height / 2
+    this.xOffset = newCenter.x * this.scaleFactor - this.canvas.width / 2;
+    this.yOffset = newCenter.y * this.scaleFactor - this.canvas.height / 2;
     //this.centerOn(center.x, center.y);
 };
 
