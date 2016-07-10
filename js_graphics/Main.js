@@ -313,6 +313,10 @@ function downloadData(filename, data) {
     }
 }
 
+function surroundQuotes(string) {
+    return '"' + string + '"';
+}
+
 function generateDataJs() {
     var tot = '"use strict";\n\nvar all_bubbles = {\n',
         i = null,
@@ -323,7 +327,7 @@ function generateDataJs() {
         tot += '\t\tx: ' + bubble.getXY().x + ',\n';
         tot += '\t\ty: ' + bubble.getXY().y + ',\n';
         tot += '\t\tr: ' + bubble.getR() + ',\n';
-        tot += '\t\tlink: [' + curves.getForwards(bubble.getIndex()) + '],\n';
+        tot += '\t\tlink: [' + curves.getForwards(bubble.getIndex()).map(surroundQuotes) + '],\n';
         tot += '\t\ttitle: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
         tot += '\t\tfacts: "' + bubble.getFacts().replace(/[\""]/g, '\\"') + '",\n';
         tot += '\t},\n';

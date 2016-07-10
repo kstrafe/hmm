@@ -47,7 +47,10 @@ Curves.prototype.append = function (curve, from, to) {
 };
 
 Curves.prototype.getForwards = function (from) {
-    return this.rawfrom[from];
+    if (this.rawfrom[from] !== undefined) {
+        return this.rawfrom[from];
+    }
+    return [];
 };
 
 Curves.prototype.draw = function (context) {
