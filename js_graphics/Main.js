@@ -329,7 +329,7 @@ function generateDataJs() {
         tot += '\t\tr: ' + bubble.getR() + ',\n';
         tot += '\t\tlink: [' + curves.getForwards(bubble.getIndex()).map(surroundQuotes) + '],\n';
         tot += '\t\ttitle: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
-        tot += '\t\tfacts: "' + bubble.getFacts().replace(/[\""]/g, '\\"') + '",\n';
+        tot += '\t\tfacts: "' + bubble.getFacts().replace(/[\""]/g, '\\"').replace(/\n/g, '\\n') + '",\n';
         tot += '\t},\n';
     }
     tot += '};';
