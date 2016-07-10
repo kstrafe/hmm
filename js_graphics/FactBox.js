@@ -24,7 +24,28 @@ function FactBox() {
 }
 
 FactBox.prototype.isActive = function () {
-    return this.active;
+    return this.active || this.inEditor;
+};
+
+FactBox.prototype.openEditor = function (nameFacts) {
+    this.editor.style.visibility = "visible";
+    this.inEditor = true;
+
+    document.getElementById("title").value = nameFacts.name;
+    document.getElementById("facts").value = nameFacts.facts;
+
+    this.viewer.style.visibility = "hidden";
+};
+
+FactBox.prototype.closeEditor = function (bubble) {
+    this.inEditor = false;
+    bubble.setName(document.getElementById("title").value);
+    bubble.setFacts(document.getElementById("facts").value);
+    this.viewerfacts.innerHTML = bubble.getNameAndFacts().facts;
+    this.viewertitle.innerHTML = bubble.getNameAndFacts().name;
+    this.editor.style.visibility = "hidden";
+    this.viewer.style.visibility = "visible";
+    MathJax.Hub.Typeset();
 };
 
 FactBox.prototype.show = function (info) {

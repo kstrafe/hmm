@@ -21,13 +21,6 @@
 
 "use strict";
 
-var editor = document.getElementById("editor");
-var viewer = document.getElementById("viewer");
-var viewerfacts = document.getElementById("viewerfacts");
-var viewertitle = document.getElementById("viewertitle");
-editor.style.visibility = "hidden";
-viewer.style.visibility = "hidden";
-var inEditor = false;
 var lastBubble = null;
 
 var context = new Context(document.getElementById('canvas'));
@@ -82,7 +75,7 @@ function mouseMoveListener(evt) {
         offtmp = context.mouseDown,
         dx = offtmp.x - mousePos.x,
         dy = offtmp.y - mousePos.y;
-    if (inEditor === false) {
+    if (factBox.isActive() === false) {
         context.offsetTemporary(dx, dy);
     }
 }
@@ -95,7 +88,7 @@ function mouseUpListener(evt) {
     var mouseOnUp = context.mousePos(evt),
         mouseOnDown = context.mouseDown;
 
-    if (inEditor === false) {
+    if (factBox.isActive() === false) {
         context.addOffset(mouseOnDown.x - mouseOnUp.x, mouseOnDown.y - mouseOnUp.y);
     }
 }
@@ -113,46 +106,27 @@ function drawFactBox(onCircle) {
 }
 
 function drawFactBoxSpace(onCircle) {
+    if (factBox.isActive() === true) {
+        factBox.hide();
+        return;
+    }
+    lastBubble = onCircle.bubble;
     if (onCircle.hit) {
-        viewerfacts.innerHTML = onCircle.facts.facts;
-        viewertitle.innerHTML = onCircle.facts.name;
-        MathJax.Hub.Typeset();
+        factBox.show(onCircle.facts);
 
-        viewer.style.visibility = "visible";
         sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
-        factBox.show();
     }
 }
 
 function openEditor() {
-    var ed = editor,
-        nameFacts = lastBubble.getNameAndFacts();
-    ed.style.visibility = "visible";
-    inEditor = true;
-
-    document.getElementById("title").value = nameFacts.name;
-    document.getElementById("facts").value = nameFacts.facts;
-
-    viewer.style.visibility = "hidden";
+    var nameFacts = lastBubble.getNameAndFacts();
+    factBox.openEditor(nameFacts);
 }
 
 function closeEditor() {
-    var ed = editor;
-    ed.style.visibility = "hidden";
-    inEditor = false;
-    lastBubble.setName(document.getElementById("title").value);
-    lastBubble.setFacts(document.getElementById("facts").value);
-    drawFactBox({
-        hit: true,
-        facts: lastBubble.getNameAndFacts()
-    });
-    console.log(lastBubble);
-    viewerfacts.innerHTML = lastBubble.getNameAndFacts().facts;
-    viewertitle.innerHTML = lastBubble.getNameAndFacts().name;
-    viewer.style.visibility = "visible";
-    MathJax.Hub.Typeset();
+    factBox.closeEditor(lastBubble);
 }
 
 function master() {
@@ -177,7 +151,6 @@ function mouseDownListener(evt) {
         lastBubble = onCircle.bubble;
     } else {
         factBox.hide();
-        inEditor = false;
     }
     drawFactBox(onCircle);
     sounds.onClick(mousePos);
@@ -336,7 +309,10 @@ function generateDataJs() {
 function keyboardDown(key) {
     var movingSpeed = 20;
 
-    if (inEditor === true) {
+    if (factBox.isActive()) {
+        if (key.which === KEY.SPACE) {
+            drawFactBoxSpace();
+        }
         return;
     }
 
@@ -372,7 +348,6 @@ function keyboardDown(key) {
     default:
         setCanvasSpeed(key, movingSpeed);
         factBox.hide();
-        viewer.style.visibility = "hidden";
         break;
     }
 }
