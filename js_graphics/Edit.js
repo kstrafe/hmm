@@ -54,7 +54,7 @@ Edit.prototype.draw = function (context) {
     context.fillStyle = '#FFFFFF';
     context.font = '20px Calibri';
     if (this.isLinking) {
-        context.fillText("Press 'Q' whilst holding the mouse pointer over a bubble to link to it", middle, bottom);
+        context.fillText("Press 'Q' whilst holding the mouse pointer over a bubble to (un)link to it", middle, bottom);
     } else if (this.isMoving) {
         context.fillText("Press 'R' whilst holding the mouse pointer over a free spot to move", middle, bottom);
     }
