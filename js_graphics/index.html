@@ -19,12 +19,15 @@
 		</div>
 	</div>
 	<div id="viewer">
-		<span id="viewertitle" type="text" name="Title"></span>
+		<div id="viewcont">
+			<div id="viewertitle">
+			</div>
+		</div>
 		<span id="viewerfacts"></span>
-        <div class="botbuttons">
-            <button class="master" id="mastery" type="button" onclick="master();">I Master This</button>
-            <button class="edit" id="Edit" type="button" onclick="openEditor();">Edit</button>
-        </div>
+		<div class="botbuttons">
+			<button class="master" id="mastery" type="button" onclick="master();" disabled>I Master This</button>
+			<button class="edit" id="Edit" type="button" onclick="openEditor();">Edit</button>
+		</div>
 	</div>
 	<canvas id="canvas" width="1280" height="720">Your browser does not support canvas</canvas>
 	<script src="Bubble.js"></script>
