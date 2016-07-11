@@ -3,6 +3,8 @@
 	A bubble in the bottom left, clicking it, will open the editor window (because it simultaneously clicks the edit button)
 
 # IDEAS #
+	Mark bubble as favorite/interesting/(?) :)
+	Bubble text fitting still need some optimization (long vs short two letter words)
 	Right-mouse button editing interface
 	Persistence storage of visited nodes in cookie
 	Education mode: Answer question to unlock new bubbles about more challenging things
