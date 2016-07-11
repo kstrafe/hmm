@@ -17,6 +17,7 @@
 /*global Help*/
 /*global KEY*/
 /*global MathJax*/
+/*global navigator*/
 /*global Sounds*/
 
 "use strict";
@@ -62,11 +63,19 @@ function mouseHoverListener(evt) {
     help.hoverButton(mPos);
 }
 
-function zoom(evt) {
-    if (evt.deltaY > 0) {
+function pureZoom(val) {
+    if (val > 0) {
         context.zoomOutMouse();
-    } else if (evt.deltaY < 0) {
+    } else if (val < 0) {
         context.zoomInMouse();
+    }
+}
+
+function zoom(evt) {
+    if (evt.deltaY !== undefined) {
+        pureZoom(evt.deltaY);
+    } else if (evt.detail !== undefined) {
+        pureZoom(evt.detail);
     }
 }
 
@@ -377,13 +386,12 @@ function contextMenu() {
     return false;
 }
 
-function main() {
+function setupBubblesAndCurves() {
     var i = null,
         j = null,
         b = null,
         curve = null,
-        end = null,
-        frametime = 30;
+        end = null;
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
@@ -404,6 +412,14 @@ function main() {
         }
     }
 
+
+}
+
+function main() {
+    var frametime = 30,
+        mousewheelevt = null;
+
+    setupBubblesAndCurves();
     onResize();
     context.centerOn(0, 0);
     context.canvas.addEventListener('mousemove', mouseHoverListener, false);
@@ -411,8 +427,16 @@ function main() {
     window.addEventListener("resize", onResize, false);
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
-    context.canvas.addEventListener("mousewheel", zoom, false);
+
+    mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+    if (context.canvas.attachEvent) {
+        context.canvas.attachEvent("on" + mousewheelevt, zoom);
+    } else if (document.addEventListener) {
+        context.canvas.addEventListener(mousewheelevt, zoom, false);
+    }
+    // context.canvas.addEventListener("mousewheel", zoom, false);
     context.canvas.oncontextmenu = contextMenu;
+
     setInterval(function () {
         updateEverything();
         renderEverything();
