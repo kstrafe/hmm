@@ -58,6 +58,9 @@ FactBox.prototype.closeEditorNoSave = function () {
 };
 
 FactBox.prototype.show = function (info) {
+    if (this.inEditor) {
+        return;
+    }
     this.active = true;
     this.viewerfacts.innerHTML = info.facts;
     this.viewertitle.innerHTML = info.name;
