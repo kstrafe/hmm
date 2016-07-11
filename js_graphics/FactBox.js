@@ -9,7 +9,6 @@ function FactBox() {
     this.active = false;
     this.cornerRadius = 25;
     this.colors = new Colors();
-    this.contTopMarg = 50;
     this.topMargin = 0.075;
     this.rightMargin = 0.05;
     this.width = 0.35;
