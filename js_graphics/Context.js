@@ -58,6 +58,14 @@ Context.prototype.zoomOutMouse = function () {
     }
 };
 
+Context.prototype.zoomMouseVal = function (val) {
+    if (val > 0) {
+        this.zoomOutMouse();
+    } else if (val < 0) {
+        this.zoomInMouse();
+    }
+};
+
 Context.prototype.zoomMouse = function (absfactor) {
     var center = this.scaledMousePos(),
         oldScaleFactor = this.scaleFactor,

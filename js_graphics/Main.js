@@ -64,19 +64,11 @@ function mouseHoverListener(evt) {
     help.hoverButton(mPos);
 }
 
-function pureZoom(val) {
-    if (val > 0) {
-        context.zoomOutMouse();
-    } else if (val < 0) {
-        context.zoomInMouse();
-    }
-}
-
 function zoom(evt) {
     if (evt.deltaY !== undefined) {
-        pureZoom(evt.deltaY);
+        context.zoomMouseVal(evt.deltaY);
     } else if (evt.detail !== undefined) {
-        pureZoom(evt.detail);
+        context.zoomMouseVal(evt.detail);
     }
 }
 
@@ -429,9 +421,9 @@ function main() {
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
 
-    mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
+    mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
     if (context.canvas.attachEvent) {
-        context.canvas.attachEvent("on"+mousewheelevt, zoom);
+        context.canvas.attachEvent("on" + mousewheelevt, zoom);
     } else if (document.addEventListener) {
         context.canvas.addEventListener(mousewheelevt, zoom, false);
     }
