@@ -3,6 +3,7 @@
 	A bubble in the bottom left, clicking it, will open the editor window (because it simultaneously clicks the edit button)
 
 # IDEAS #
+	Right-mouse button editing interface
 	Persistence storage of visited nodes in cookie
 	Education mode: Answer question to unlock new bubbles about more challenging things
 	Different coloration in the tree based on subject
@@ -24,7 +25,6 @@
 	Make the FactBox scrollbar have a nicer style
 
 # IN PROGRESS #
-	KEVIN: Right-mouse button editing interface
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 0/10)
 
 # DONE #
