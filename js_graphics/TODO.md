@@ -26,9 +26,9 @@
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 0/10)
-	KEVIN: Fix style issues and lineups
 
 # DONE #
+	KEVIN: Fix style issues and lineups
 	KEVIN: Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red
 	KEVIN: Implement Data.js generator (with button) and automatic download
 	OLE: Make mouse stay on same place when zooming with scrollwheel
