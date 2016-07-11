@@ -9,11 +9,8 @@
 	Different coloration in the tree based on subject
 	Short cut to places around the canvas
 	Semantic zoom
-	Clickable hyperlinks in info box
 	Hyperlinks activating links to different bubbles
 	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
-	Latex rendering in infoboxes
-	Picture/Sprite rendering inside the infoboxes
 	Create favicon for the site
 	New color to relevant curves when 'I master this' is clicked
 	Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.
