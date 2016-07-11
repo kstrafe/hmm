@@ -427,7 +427,6 @@ function main() {
     } else if (document.addEventListener) {
         context.canvas.addEventListener(mousewheelevt, zoom, false);
     }
-    // context.canvas.addEventListener("mousewheel", zoom, false);
     context.canvas.oncontextmenu = contextMenu;
 
     setInterval(function () {
