@@ -143,6 +143,10 @@ function mouseDownListener(evt) {
         mousePos = null,
         scaledPos = null;
 
+    if (factBox.isEditing()) {
+        return;
+    }
+
     context.canvas.removeEventListener('mousemove', mouseHoverListener, false);
     window.addEventListener("mouseup", mouseUpListener, false);
 
