@@ -20,13 +20,12 @@
 
 
 # TODO #
-	Add a whole bunch of new bubbles
-	Make the FactBox scrollbar have a nicer style
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 0/10)
 
 # DONE #
+	KEVIN: Make the FactBox scrollbar have a nicer style
 	KEVIN: Fix style issues and lineups
 	KEVIN: Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red
 	KEVIN: Implement Data.js generator (with button) and automatic download
