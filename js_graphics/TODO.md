@@ -5,7 +5,6 @@
 # IDEAS #
 	Persistence storage of visited nodes in cookie
 	Education mode: Answer question to unlock new bubbles about more challenging things
-	Introduce a summary in the info box. Title - summary - longer text / details
 	Different coloration in the tree based on subject
 	Short cut to places around the canvas
 	Semantic zoom
@@ -16,6 +15,9 @@
 	Picture/Sprite rendering inside the infoboxes
 	Create favicon for the site
 	New color to relevant curves when 'I master this' is clicked
+	Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.
+	this will require a tree structuring of the drawing of bubbled
+
 
 # TODO #
 	Add a whole bunch of new bubbles
@@ -23,6 +25,7 @@
 
 # IN PROGRESS #
 	KEVIN: Right-mouse button editing interface
+	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 0/10)
 
 # DONE #
 	KEVIN: Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red
@@ -74,3 +77,4 @@
 	Score system for visited nodes (Level and experience?) - REASON: Use colored nodes to visualize 'experience' and score
 	Floaty speed proportional to size - REASON: Unimportant
 	Floaties start spawning in field of view (and dissapears out of view) - REASON: Doesn't look as good as random floaties in a wide area
+	Introduce a summary in the info box. Title - summary - longer text / details REASON Was proposed before content of factbox was html, coding no longer needed for this idea
