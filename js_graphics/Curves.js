@@ -23,24 +23,36 @@ Curves.prototype.reposition = function (from, bubbles) {
 };
 
 Curves.prototype.append = function (curve, from, to) {
-    this.curves.push(curve);
 
     if (this.connected[from] === undefined) {
         this.connected[from] = {};
     }
     if (this.connected[from][to] !== undefined) {
         console.log("Curve already linked! (from->to)");
+        this.curves.splice(this.curves.indexOf(this.connected[from][to]), 1);
+        if (this.connected[to] !== undefined) {
+            this.connected[to][from] = undefined;
+        }
+        this.connected[from][to] = undefined;
+        return;
     }
     if (this.connected[to] === undefined) {
         this.connected[to] = {};
     }
     if (this.connected[to][from] !== undefined) {
         console.log("Curve already linked! (to->from)");
+        this.curves.splice(this.curves.indexOf(this.connected[to][from]), 1);
+        this.connected[to][from] = undefined;
+        if (this.connected[from] !== undefined) {
+            this.connected[from][to] = undefined;
+        }
+        return;
     }
     if (this.rawfrom[from] === undefined) {
         this.rawfrom[from] = [];
     }
 
+    this.curves.push(curve);
     this.connected[from][to] = curve;
     this.connected[to][from] = curve;
     this.rawfrom[from].push(to);
