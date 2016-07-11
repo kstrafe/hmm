@@ -31,9 +31,9 @@ Curves.prototype.append = function (curve, from, to) {
         console.log("Curve already linked! (from->to)");
         this.curves.splice(this.curves.indexOf(this.connected[from][to]), 1);
         if (this.connected[to] !== undefined) {
-            this.connected[to][from] = undefined;
+            delete this.connected[to][from];
         }
-        this.connected[from][to] = undefined;
+        delete this.connected[from][to];
         return;
     }
     if (this.connected[to] === undefined) {
@@ -42,9 +42,9 @@ Curves.prototype.append = function (curve, from, to) {
     if (this.connected[to][from] !== undefined) {
         console.log("Curve already linked! (to->from)");
         this.curves.splice(this.curves.indexOf(this.connected[to][from]), 1);
-        this.connected[to][from] = undefined;
+        delete this.connected[to][from];
         if (this.connected[from] !== undefined) {
-            this.connected[from][to] = undefined;
+            delete this.connected[from][to];
         }
         return;
     }
