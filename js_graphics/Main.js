@@ -368,6 +368,11 @@ function onResize() {
     help.resize(context.canvas.width);
 }
 
+function contextMenu() {
+    console.log(context.mousePos());
+    return false;
+}
+
 function main() {
     var i = null,
         j = null,
@@ -403,10 +408,7 @@ function main() {
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
     context.canvas.addEventListener("mousewheel", zoom, false);
-    context.canvas.oncontextmenu = function () {
-        console.log("HEY");
-        return false;
-    };
+    context.canvas.oncontextmenu = contextMenu;
     setInterval(function () {
         updateEverything();
         renderEverything();

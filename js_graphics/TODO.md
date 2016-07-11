@@ -22,7 +22,7 @@
 	Make the FactBox scrollbar have a nicer style
 
 # IN PROGRESS #
-	Right-mouse button editing interface
+	KEVIN: Right-mouse button editing interface
 
 # DONE #
 	KEVIN: Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red

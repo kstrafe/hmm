@@ -257,9 +257,11 @@ Context.prototype.scaledMousePos = function (evt) {
 
 Context.prototype.mousePos = function (evt) {
     var rect = this.canvas.getBoundingClientRect();
-    this.mouse = {
-        x: (evt.clientX - rect.left) * (this.canvas.width / rect.width),
-        y: (evt.clientY - rect.top) * (this.canvas.height / rect.height)
-    };
+    if (evt) {
+        this.mouse = {
+            x: (evt.clientX - rect.left) * (this.canvas.width / rect.width),
+            y: (evt.clientY - rect.top) * (this.canvas.height / rect.height)
+        };
+    }
     return this.mouse;
 };
