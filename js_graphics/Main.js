@@ -52,6 +52,7 @@ function updateEverything() {
     context.applySpeed();
     floaties.update(context.low(), context.high(), context.left(), context.width());
     sounds.refreshBgm();
+    sounds.fadeOut();
     help.fadeOut();
 }
 
@@ -428,9 +429,9 @@ function main() {
     document.addEventListener("keydown", keyboardDown, false);
     document.addEventListener("keyup", keyboardUp, false);
 
-    mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel";
+    mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel";
     if (context.canvas.attachEvent) {
-        context.canvas.attachEvent("on" + mousewheelevt, zoom);
+        context.canvas.attachEvent("on"+mousewheelevt, zoom);
     } else if (document.addEventListener) {
         context.canvas.addEventListener(mousewheelevt, zoom, false);
     }

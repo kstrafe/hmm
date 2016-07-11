@@ -139,7 +139,6 @@ Sounds.prototype.draw = function (context) {
     context.globalAlpha = this.transparency;
     context.textAlign = "left";
     context.fillText(this.stateNames[this.stateIndex], l[4], l[5]);
-    this.fadeOut();
     context.restore();
 };
 
