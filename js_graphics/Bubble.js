@@ -134,7 +134,6 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
         tempWidth = Math.max(tempWidth, metrics.width);
     }
 
-
     if (words.length === 1 || words.length > maxLines) {
         fontSize = fontSizeGuess * (fillRatio[0] * 2 * r) / tempWidth;
         y = y + fontSize / 3;
