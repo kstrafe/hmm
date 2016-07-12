@@ -22,6 +22,20 @@ Curves.prototype.reposition = function (from, bubbles) {
     }
 };
 
+Curves.prototype.masterFrom = function (bubbleIndex) {
+    var i,
+        list = this.rawfrom[bubbleIndex];
+
+    if (list === undefined) {
+        return;
+    }
+
+    for (i = 0; i < list.length; i += 1) {
+        this.connected[bubbleIndex][list[i]].intoMastered();
+    }
+};
+
+
 Curves.prototype.append = function (curve, from, to) {
     var retEarly = false,
         index = 0;

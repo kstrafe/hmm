@@ -1,3 +1,4 @@
+/*global Colors*/
 "use strict";
 
 function Curve(x0, y0, r0, x1, y1, r1) {
@@ -12,7 +13,13 @@ function Curve(x0, y0, r0, x1, y1, r1) {
             r: r1
         };
     this.bezier = this.compute(c1, c2);
+    this.colors = new Colors();
+    this.color = this.colors.getByName('bubbleGreen');
 }
+
+Curve.prototype.intoMastered = function () {
+    this.color = this.colors.getByName('bubblePurple');
+};
 
 Curve.prototype.recompute = function (c1, c2) {
     this.bezier = this.compute(c1, c2);
@@ -78,8 +85,8 @@ Curve.prototype.draw = function (context) {
     context.bezierCurveTo(b.x1, b.y1, b.x2, b.y2, b.x3, b.y3);
     context.lineWidth = 2;
     context.shadowBlur = 2.5;
-    context.shadowColor = '#4E8800';
-    context.strokeStyle = '#4E8800';
+    context.shadowColor = this.color;
+    context.strokeStyle = this.color;
     context.lineCap = 'round';
     context.stroke();
 

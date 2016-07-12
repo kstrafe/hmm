@@ -139,8 +139,8 @@ function closeEditorNoSave() {
 
 function master() {
     var mastered;
-    console.log(lastBubble);
     lastBubble.masterThis();
+    curves.masterFrom(lastBubble.getIndex());
     mastered = JSON.stringify(bubbles.getMastered());
     localStorage.setItem("mastered", mastered);
 }
@@ -380,7 +380,6 @@ function onResize() {
 }
 
 function contextMenu() {
-    console.log(context.mousePos());
     return false;
 }
 
@@ -389,7 +388,8 @@ function setupBubblesAndCurves() {
         j = null,
         b = null,
         curve = null,
-        end = null;
+        end = null,
+        mastereds = JSON.parse(localStorage.mastered);
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
@@ -415,7 +415,10 @@ function setupBubblesAndCurves() {
         document.getElementById("viewmaster").disabled = true;
     } else {
         if (localStorage.mastered !== undefined) {
-            bubbles.setMastereds(JSON.parse(localStorage.mastered));
+            bubbles.setMastereds(mastereds);
+            for (i = 0; i < mastereds.length; i += 1) {
+                curves.masterFrom(mastereds[i]);
+            }
         }
     }
 }
