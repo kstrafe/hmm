@@ -12,6 +12,14 @@ Bubbles.prototype.draw = function (context) {
     }
 };
 
+Bubbles.prototype.getFavd = function () {
+    return this.bubbles.filter(function (e) {
+        return e.getFav();
+    }).map(function (e) {
+        return e.getIndex();
+    });
+};
+
 Bubbles.prototype.getMastered = function () {
     return this.bubbles.filter(function (e) {
         return e.isMastered();

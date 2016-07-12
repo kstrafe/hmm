@@ -384,7 +384,10 @@ function contextMenu() {
 }
 
 function toggleFavorite() {
+    var favd;
     lastBubble.toggleFav();
+    favd = JSON.stringify(bubbles.getFavd());
+    localStorage.setItem("favd", favd);
 }
 
 function setupBubblesAndCurves() {
@@ -422,6 +425,12 @@ function setupBubblesAndCurves() {
             bubbles.setMastereds(mastereds);
             for (i = 0; i < mastereds.length; i += 1) {
                 curves.masterFrom(mastereds[i]);
+            }
+        }
+        if (localStorage.favd !== undefined) {
+            mastereds = JSON.parse(localStorage.favd);
+            for (i = 0; i < mastereds.length; i += 1) {
+                bubbles.getNamed(mastereds[i]).toggleFav();
             }
         }
     }
