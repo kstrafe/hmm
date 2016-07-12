@@ -389,7 +389,7 @@ function setupBubblesAndCurves() {
         b = null,
         curve = null,
         end = null,
-        mastereds = JSON.parse(localStorage.mastered);
+        mastereds;
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
@@ -415,6 +415,7 @@ function setupBubblesAndCurves() {
         document.getElementById("viewmaster").disabled = true;
     } else {
         if (localStorage.mastered !== undefined) {
+            mastereds = JSON.parse(localStorage.mastered);
             bubbles.setMastereds(mastereds);
             for (i = 0; i < mastereds.length; i += 1) {
                 curves.masterFrom(mastereds[i]);
