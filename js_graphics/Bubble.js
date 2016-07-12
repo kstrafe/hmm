@@ -53,6 +53,10 @@ Bubble.prototype.masterThis = function () {
     this.master = true;
 };
 
+Bubble.prototype.isMastered = function () {
+    return this.master;
+};
+
 Bubble.prototype.draw = function (context) {
     context.save();
 

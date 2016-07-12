@@ -12,6 +12,14 @@ Bubbles.prototype.draw = function (context) {
     }
 };
 
+Bubbles.prototype.getMastered = function () {
+    return this.bubbles.filter(function (e) {
+        return e.isMastered();
+    }).map(function (e) {
+        return e.getIndex();
+    });
+};
+
 Bubbles.prototype.getNamed = function (name) {
     return this.namedBubbles[name];
 };
