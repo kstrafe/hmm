@@ -12,7 +12,16 @@ function Bubble(index, x, y, r, name, facts, highlighted) {
     this.highlighted = highlighted;
     this.colors = new Colors();
     this.master = false;
+    this.favorite = false;
 }
+
+Bubble.prototype.getFav = function () {
+    return this.favorite;
+};
+
+Bubble.prototype.toggleFav = function () {
+    this.favorite = !this.favorite;
+};
 
 Bubble.prototype.setName = function (name) {
     this.name = name;
@@ -63,7 +72,10 @@ Bubble.prototype.draw = function (context) {
     context.beginPath();
     context.lineWidth = 3;
     context.shadowBlur = 10;
-    if (this.master === false) {
+    if (this.favorite) {
+        context.strokeStyle = this.colors.getByName('white');
+        context.shadowColor = this.colors.getByName('white');
+    } else if (this.master === false) {
         context.strokeStyle = this.colors.getByName('bubbleGreen');
         context.shadowColor = this.colors.getByName('bubbleGreen');
     } else {

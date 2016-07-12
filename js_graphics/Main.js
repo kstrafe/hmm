@@ -383,6 +383,10 @@ function contextMenu() {
     return false;
 }
 
+function toggleFavorite() {
+    lastBubble.toggleFav();
+}
+
 function setupBubblesAndCurves() {
     var i = null,
         j = null,
@@ -409,7 +413,6 @@ function setupBubblesAndCurves() {
             }
         }
     }
-
 
     if (Storage === undefined) {
         document.getElementById("viewmaster").disabled = true;

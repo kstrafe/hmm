@@ -12,7 +12,7 @@
       #title { box-sizing: border-box; background: transparent; border: 0; color: #FFFFFF; display: inline-block; height: 5%; text-align: center; width: 100%; font-family: Calibri, Arial, sans-serif; font-size:large;}
 #viewcont { box-sizing: border-box; background: transparent; border: 0; color: #FFFFFF; display: inline-block; height: 5%; text-align: center; width: 100%; }
 #viewertitle { box-sizing: border-box; background: transparent; border: 0; color: #EEEEEE; display: inline-block; position: relative; top: 50%; transform: translate(0, -50%); width: 50%; font-size:x-large; }
-#viewerfav { box-sizing: border-box; background: transparent; border: 0; color: #FFDC00; cursor: pointer; display: inline; position: relative; top: 20%; transform: translate(0, -50%); width: 50%; font-size:x-large; }
+#viewerfav { box-sizing: border-box; background: transparent; border: 0; color: #FFDC00; cursor: pointer; display: inline; position: relative; text-align: right; top: 20%; transform: translate(0, -50%); width: 50%; font-size:x-large; }
 #editdone { border-bottom-left-radius: 12px; }
 #editcancel { border-bottom-right-radius: 12px; }
 #viewmaster { border-bottom-left-radius: 12px; }

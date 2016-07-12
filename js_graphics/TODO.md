@@ -17,9 +17,9 @@
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
-	KEVIN: Mark bubble as favorite/interesting/(?) :)
 
 # DONE #
+	KEVIN: Mark bubble as favorite/interesting/(?) :)
 	KEVIN: New color to relevant curves when 'I master this' is clicked
 	KEVIN: Persistent script storage of mastered nodes
 	KEVIN: Add CSS style for common HTML elements for factbox (strong)
