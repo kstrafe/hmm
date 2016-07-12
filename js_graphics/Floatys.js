@@ -6,7 +6,7 @@ function Floatys() {
     this.floatys = [];
     this.max = 0;
     this.current = 0;
-    this.max_floaty = 200;
+    this.max_floaty = 100;
     this.radii_start = 3;
     this.radii_diff = 47;
     this.speed_start = 0.3;
@@ -24,7 +24,7 @@ Floatys.prototype.update = function (low, high, left, width) {
     var i = null,
         x = null,
         y = null,
-        extra = 8000,
+        extra = 16000,
         floaty = null,
         radius = null,
         speed = null,
