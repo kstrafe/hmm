@@ -20,7 +20,7 @@
 # TODO #
 
 # IN PROGRESS #
-	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 0/10)
+	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
 	KEVIN: Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
 
 # DONE #
