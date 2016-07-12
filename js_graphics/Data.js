@@ -174,7 +174,7 @@ var all_bubbles = {
         y: -14172.770516011282,
         r: 100,
         link: [],
-        title: "Euler's constant",
+        title: "Euler's number",
         facts: "$$e = \\mathop {\\lim }\\limits_{n \\to \\infty } \\left( {1 + \\frac{1}{n}} \\right)^n$$\n\n\nMore knowledge shall arrive here soon",
     },
     start: {
