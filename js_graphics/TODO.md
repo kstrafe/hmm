@@ -3,12 +3,13 @@
 # IDEAS #
 	Bubble text fitting still need some optimization (long vs short two letter words)
 	Right-mouse button editing interface
-	Different coloration in the tree based on subject | Postpone until sufficient subjects
+	Different coloration in the tree based on subject | Custom color per node instead?
 
 	// Education mode: Answer question to unlock new bubbles about more challenging things
 	// Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.  this will require a tree structuring of the drawing of bubbled
 
 # TODO #
+	Reset the scrollbar to top after closing a factbox (opening another factbox may start with the scrollbar already down)
 	Mark bubble as favorite/interesting/(?) :)
 	Loading screen (else people click the first bubble and get an empty window)
 	Hyperlinks to bubbles
@@ -19,6 +20,7 @@
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
+	KEVIN: Add CSS style for common HTML elements for factbox (strong)
 
 # DONE #
 	KEVIN: Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
