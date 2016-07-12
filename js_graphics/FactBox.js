@@ -13,6 +13,7 @@ function FactBox() {
     this.rightMargin = 0.05;
     this.width = 0.35;
     this.height = 0.8;
+    this.favbut = document.getElementById("viewerfav");
     this.editor = document.getElementById("editor");
     this.viewer = document.getElementById("viewer");
     this.viewerfacts = document.getElementById("viewerfacts");
@@ -57,10 +58,11 @@ FactBox.prototype.closeEditorNoSave = function () {
     this.viewer.style.visibility = "visible";
 };
 
-FactBox.prototype.show = function (info) {
+FactBox.prototype.show = function (info, fav) {
     if (this.inEditor) {
         return;
     }
+    this.favbut.innerHTML = fav ? "★" : "☆";
     this.active = true;
     this.viewerfacts.innerHTML = info.facts;
     this.viewertitle.innerHTML = info.name;

@@ -102,7 +102,7 @@ function drawFactBox(onCircle) {
         sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
-        factBox.show(onCircle.facts);
+        factBox.show(onCircle.facts, lastBubble.getFav());
     } else {
         context.canvas.addEventListener('mousemove', mouseMoveListener, false);
         factBox.hide();
@@ -116,7 +116,7 @@ function drawFactBoxSpace(onCircle) {
     }
     lastBubble = onCircle.bubble;
     if (onCircle.hit) {
-        factBox.show(onCircle.facts);
+        factBox.show(onCircle.facts, lastBubble.getFav());
 
         sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
@@ -383,6 +383,10 @@ function contextMenu() {
     return false;
 }
 
+function toggleFavorite() {
+    lastBubble.toggleFav();
+}
+
 function setupBubblesAndCurves() {
     var i = null,
         j = null,
@@ -409,7 +413,6 @@ function setupBubblesAndCurves() {
             }
         }
     }
-
 
     if (Storage === undefined) {
         document.getElementById("viewmaster").disabled = true;
