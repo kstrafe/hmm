@@ -10,7 +10,6 @@
 
 # TODO #
 	Reset the scrollbar to top after closing a factbox (opening another factbox may start with the scrollbar already down)
-	Mark bubble as favorite/interesting/(?) :)
 	Loading screen (else people click the first bubble and get an empty window)
 	Hyperlinks to bubbles
 	Short cut to places around the canvas (Teleport functionality? Press X, opens small writable window, write 3000, -30400, enter, move to that location)
@@ -18,6 +17,7 @@
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
+	KEVIN: Mark bubble as favorite/interesting/(?) :)
 
 # DONE #
 	KEVIN: New color to relevant curves when 'I master this' is clicked
