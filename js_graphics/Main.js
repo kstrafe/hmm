@@ -16,9 +16,11 @@
 /*global Floatys*/
 /*global Help*/
 /*global KEY*/
+/*global localStorage*/
 /*global MathJax*/
 /*global navigator*/
 /*global Sounds*/
+/*global Storage*/
 
 "use strict";
 
@@ -136,8 +138,11 @@ function closeEditorNoSave() {
 }
 
 function master() {
+    var mastered;
     console.log(lastBubble);
     lastBubble.masterThis();
+    mastered = JSON.stringify(bubbles.getMastered());
+    localStorage.setItem("mastered", mastered);
 }
 
 function mouseDownListener(evt) {
@@ -406,6 +411,13 @@ function setupBubblesAndCurves() {
     }
 
 
+    if (Storage === undefined) {
+        document.getElementById("viewmaster").disabled = true;
+    } else {
+        if (localStorage.mastered !== undefined) {
+            bubbles.setMastereds(JSON.parse(localStorage.mastered));
+        }
+    }
 }
 
 function main() {

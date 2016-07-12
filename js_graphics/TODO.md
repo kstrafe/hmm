@@ -19,9 +19,9 @@
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
-	KEVIN: Persistent script storage of mastered nodes
 
 # DONE #
+	KEVIN: Persistent script storage of mastered nodes
 	KEVIN: Add CSS style for common HTML elements for factbox (strong)
 	KEVIN: Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
 	KEVIN: Create favicon for the site

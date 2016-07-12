@@ -20,6 +20,16 @@ Bubbles.prototype.getMastered = function () {
     });
 };
 
+Bubbles.prototype.setMastereds = function (list) {
+    var i, bubble;
+    for (i = 0; i < list.length; i += 1) {
+        bubble = this.namedBubbles[list[i]];
+        if (bubble !== undefined) {
+            bubble.masterThis();
+        }
+    }
+};
+
 Bubbles.prototype.getNamed = function (name) {
     return this.namedBubbles[name];
 };
