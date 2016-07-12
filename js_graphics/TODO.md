@@ -20,9 +20,9 @@
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
-	KEVIN: Add CSS style for common HTML elements for factbox (strong)
 
 # DONE #
+	KEVIN: Add CSS style for common HTML elements for factbox (strong)
 	KEVIN: Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
 	KEVIN: Create favicon for the site
 	KEVIN: Make the FactBox scrollbar have a nicer style
