@@ -13,7 +13,6 @@
 	Semantic zoom
 	Hyperlinks activating links to different bubbles
 	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
-	Create favicon for the site
 	New color to relevant curves when 'I master this' is clicked
 	Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.
 	this will require a tree structuring of the drawing of bubbled
@@ -25,6 +24,7 @@
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 0/10)
 
 # DONE #
+	KEVIN: Create favicon for the site
 	KEVIN: Make the FactBox scrollbar have a nicer style
 	KEVIN: Fix style issues and lineups
 	KEVIN: Different colors for 'I master this'/'Edit' and 'Done'/'Cancel' than green and red
