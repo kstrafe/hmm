@@ -1,22 +1,21 @@
 # BUGS #
-	Editor window doesn't scale properly (See right scrollbar)
-	A bubble in the bottom left, clicking it, will open the editor window (because it simultaneously clicks the edit button)
 
 # IDEAS #
-	Mark bubble as favorite/interesting/(?) :)
 	Bubble text fitting still need some optimization (long vs short two letter words)
 	Right-mouse button editing interface
-	Persistence storage of visited nodes in cookie
-	Education mode: Answer question to unlock new bubbles about more challenging things
-	Different coloration in the tree based on subject
-	Short cut to places around the canvas
-	Semantic zoom
-	Hyperlinks activating links to different bubbles
-	New color to relevant curves when 'I master this' is clicked
-	Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.
-	this will require a tree structuring of the drawing of bubbled
+	Different coloration in the tree based on subject | Postpone until sufficient subjects
+
+	// Education mode: Answer question to unlock new bubbles about more challenging things
+	// Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.  this will require a tree structuring of the drawing of bubbled
 
 # TODO #
+	Mark bubble as favorite/interesting/(?) :)
+	Loading screen (else people click the first bubble and get an empty window)
+	Hyperlinks to bubbles
+	Short cut to places around the canvas (Teleport functionality? Press X, opens small writable window, write 3000, -30400, enter, move to that location)
+	Semantic zoom
+	New color to relevant curves when 'I master this' is clicked
+	Persistent script storage of mastered nodes
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
