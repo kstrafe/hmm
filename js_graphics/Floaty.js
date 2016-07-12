@@ -34,6 +34,22 @@ Floaty.prototype.draw = function (context) {
     context.drawImage(this.prerender, this.x + Math.sin(this.angle) * angleAmp, this.y);
 };
 
+Floaty.prototype.drawRaw = function (context) {
+    var angleAmp = 30;
+    context.save();
+
+    context.beginPath();
+    context.lineWidth = 8;
+    context.shadowBlur = 20;
+    context.shadowColor = this.color;
+    context.strokeStyle = this.color;
+
+    context.arc(this.x + Math.sin(this.angle) * angleAmp, this.y, this.r, 0, 2 * Math.PI);
+
+    context.stroke();
+    context.restore();
+};
+
 Floaty.prototype.renderTo = function (context) {
     context.save();
 
