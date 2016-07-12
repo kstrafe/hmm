@@ -23,37 +23,58 @@ Curves.prototype.reposition = function (from, bubbles) {
 };
 
 Curves.prototype.append = function (curve, from, to) {
+    var retEarly = false,
+        index = 0;
 
+    if (from === to) {
+        return;
+    }
     if (this.connected[from] === undefined) {
         this.connected[from] = {};
     }
     if (this.connected[from][to] !== undefined) {
-        console.log("Curve already linked! (from->to)");
         if (this.rawfrom[from] !== undefined) {
-            this.rawfrom[from].splice(this.rawfrom[from].indexOf(this.connected[from][to]), 1);
+            index = this.rawfrom[from].indexOf(to);
+            console.log("fromto index: ", index);
+            if (index !== -1) {
+                this.rawfrom[from].splice(index, 1);
+                console.log("removed rawfrom from-to: curves[" + index + "]");
+            }
         }
-        this.curves.splice(this.curves.indexOf(this.connected[from][to]), 1);
-        if (this.connected[to] !== undefined) {
-            delete this.connected[to][from];
+        index = this.curves.indexOf(this.connected[from][to]);
+        if (index !== -1) {
+            this.curves.splice(index, 1);
+            console.log("removed curve from-to: curves[" + index + "]");
         }
         delete this.connected[from][to];
-        return;
+        retEarly = true;
     }
     if (this.connected[to] === undefined) {
         this.connected[to] = {};
     }
     if (this.connected[to][from] !== undefined) {
-        console.log("Curve already linked! (to->from)");
-        if (this.rawfrom[from] !== undefined) {
-            this.rawfrom[from].splice(this.rawfrom[from].indexOf(this.connected[to][from]), 1);
+        if (this.rawfrom[to] !== undefined) {
+            index = this.rawfrom[to].indexOf(from);
+            console.log("fromto index: ", index);
+            if (index !== -1) {
+                this.rawfrom[to].splice(index, 1);
+                console.log("removed rawfrom from-to: curves[" + index + "]");
+            }
         }
-        this.curves.splice(this.curves.indexOf(this.connected[to][from]), 1);
+        index = this.curves.indexOf(this.connected[to][from]);
+        if (index !== -1) {
+            this.curves.splice(index, 1);
+            console.log("removed curve to-from: curves[" + index + "]");
+        }
         delete this.connected[to][from];
-        if (this.connected[from] !== undefined) {
-            delete this.connected[from][to];
-        }
+        retEarly = true;
+    }
+
+    if (retEarly) {
+        console.log("Ret early");
         return;
     }
+
     if (this.rawfrom[from] === undefined) {
         this.rawfrom[from] = [];
     }

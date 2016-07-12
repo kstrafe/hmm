@@ -303,14 +303,14 @@ function generateDataJs() {
         bubble = null;
     for (i = 0; i < bubbles.length(); i += 1) {
         bubble = bubbles.getBubble(i);
-        tot += '\t' + bubble.getIndex() + ': {\n';
-        tot += '\t\tx: ' + bubble.getXY().x + ',\n';
-        tot += '\t\ty: ' + bubble.getXY().y + ',\n';
-        tot += '\t\tr: ' + bubble.getR() + ',\n';
-        tot += '\t\tlink: [' + curves.getForwards(bubble.getIndex()).map(surroundQuotes) + '],\n';
-        tot += '\t\ttitle: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
-        tot += '\t\tfacts: "' + jsEscape(bubble.getFacts()) + '",\n';
-        tot += '\t},\n';
+        tot += '    ' + bubble.getIndex() + ': {\n';
+        tot += '        x: ' + bubble.getXY().x + ',\n';
+        tot += '        y: ' + bubble.getXY().y + ',\n';
+        tot += '        r: ' + bubble.getR() + ',\n';
+        tot += '        link: [' + curves.getForwards(bubble.getIndex()).map(surroundQuotes) + '],\n';
+        tot += '        title: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
+        tot += '        facts: "' + jsEscape(bubble.getFacts()) + '",\n';
+        tot += '    },\n';
     }
     tot += '};';
     downloadData('Data.js', tot);

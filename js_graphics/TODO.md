@@ -12,7 +12,6 @@
 	Short cut to places around the canvas
 	Semantic zoom
 	Hyperlinks activating links to different bubbles
-	Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
 	New color to relevant curves when 'I master this' is clicked
 	Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.
 	this will require a tree structuring of the drawing of bubbled
@@ -22,6 +21,7 @@
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
+	KEVIN: Cull floaty drawing to screen boundaries, currently takes up 1/4th of the frametime
 
 # DONE #
 	KEVIN: Create favicon for the site
