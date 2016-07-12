@@ -16,10 +16,10 @@
 	Short cut to places around the canvas (Teleport functionality? Press X, opens small writable window, write 3000, -30400, enter, move to that location)
 	Semantic zoom
 	New color to relevant curves when 'I master this' is clicked
-	Persistent script storage of mastered nodes
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
+	KEVIN: Persistent script storage of mastered nodes
 
 # DONE #
 	KEVIN: Add CSS style for common HTML elements for factbox (strong)
