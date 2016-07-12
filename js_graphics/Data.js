@@ -103,7 +103,7 @@ var all_bubbles = {
         r: 100,
         link: ["33"],
         title: "Degree",
-        facts: "The degree of the polynomial is the number that is the largest exponent.\n\n$$ x^4 + x^3 - 3 $$\n\nis a polynomial of degree 4.\n\n$$ x^8 + x^93 - 94 $$\n\nis a polynomial of degree 93. 94 is not an exponent.",
+        facts: "The degree of the polynomial is the number that is the largest exponent.\n\n$$ x^4 + x^3 - 3 $$\n\nis a polynomial of degree 4.\n\n$$ x^8 + x^{93} - 94 $$\n\nis a polynomial of degree 93. 94 is not an exponent.",
     },
     33: {
         x: 1688.780238924839,
@@ -119,7 +119,7 @@ var all_bubbles = {
         r: 100,
         link: ["32","33","30"],
         title: "1. Polynomial",
-        facts: "Sometimes we have a polynomial. The order of the polynomial is 1.\n\n$$ x + 3 $$\n\nTo find the root, we ass ' = 0':\n\n$$ x + 3 = 0 $$\n\nFirst order polynomials can easily be solved for 'x'. You first add or subtract to remove the term:\n\n$$ x + 3 - 3 = -3 $$\n\nYou subtract 3 from both sides\n\n$$ x + (3 - 3) = -3 $$\n$$ \\Rightarrow x + (0) = -3 $$\n$$ \\Rightarrow x = -3 $$\n\nWe have now solved the root of the polynomial. It is $$-3$$\n\nIf you have a polynomial with a multiplier:\n\n$$ 43\\cdot x + 3 = 0 $$\n\nFirst, you remove the <span style=\"font-weight: bold;\">term</span>: (3) is the term.\n\n$$ 43\\cdot x + 3 - 3 = -3 $$\n$$ \\Rightarrow 43\\cdot x + (3-3) = -3$$\n$$ \\Rightarrow 43\\cdot x + (0) = -3$$\n$$\\Rightarrow 43\\cdot x = -3$$\n\nNow you can divide both sides by 43:\n\n$$\\Rightarrow \\frac{43}{43}x = \\frac{-3}{43} $$\n$$\\Rightarrow x = \\frac{-3}{43}$$\n\nWe have now solved the root.",
+        facts: "Sometimes we have a polynomial. The order of that polynomial is 1.\n<br>\nThis is a polynomial:\n$$ x + 3 $$\n\nTo find the root, we add ' = 0', we get:\n\n$$ x + 3 = 0 $$\n\nFirst order polynomials can easily be solved for 'x'. You first add or subtract to remove the term:\n\n$$ x + 3 - 3 = -3 $$\n\nYou subtract 3 from both sides\n\n$$ x + (3 - 3) = -3 $$\n$$ \\Rightarrow x + (0) = -3 $$\n$$ \\Rightarrow x = -3 $$\n\nWe have now solved the root of the polynomial. It is $-3$.\n<br>\nIf you have a polynomial with a multiplier:\n\n$$ 43\\cdot x + 3 = 0 $$\n\nFirst, you remove the <span style=\"font-weight: bold;\">term</span>: (3) is the term.\n\n$$ 43\\cdot x + 3 - 3 = -3 $$\n$$ \\Rightarrow 43\\cdot x + (3-3) = -3$$\n$$ \\Rightarrow 43\\cdot x + (0) = -3$$\n$$\\Rightarrow 43\\cdot x = -3$$\n\nNow you can divide both sides by 43:\n\n$$\\Rightarrow \\frac{43}{43}x = \\frac{-3}{43} $$\n$$\\Rightarrow x = \\frac{-3}{43}$$\n\nWe have now solved the root.",
     },
     35: {
         x: 174.5,
@@ -135,7 +135,7 @@ var all_bubbles = {
         r: 100,
         link: ["26","37"],
         title: "Right Triangle",
-        facts: "A right triangle is any triangle with a corner that is exactly $$90^\\circ$$\n\n<img src=\"Textures/small-right-triangle.png\">\n\nWe use a square to point out where that corner is.\n\n<img src=\"Textures/small-right-triangle-noted.png\">\n\nHere, a, b, and c mean the <span style=\"font-weight: bold;\">lengths</span> of the sides.\n<br>\nA, B, and C mean the <span style=\"font-weight: bold;\">angles</span> of the corners.\n<br>\n\nWe see that C is 90 degrees.",
+        facts: "A right triangle is any triangle with a corner that is exactly $$90^\\circ$$\n\n<img src=\"Textures/small-right-triangle.png\">\n<br>\nWe use a square to point out where that corner is.\n\n<img src=\"Textures/small-right-triangle-noted.png\">\n<br>\nHere, a, b, and c mean the <span style=\"font-weight: bold;\">lengths</span> of the sides.\n<br>\nA, B, and C mean the <span style=\"font-weight: bold;\">angles</span> of the corners.\n<br>\n\nWe see that C is 90 degrees.",
     },
     37: {
         x: -662.8469387755104,
@@ -143,7 +143,7 @@ var all_bubbles = {
         r: 100,
         link: [],
         title: "Pythagorean Theorem",
-        facts: "The Pythagorean theorem is an ancient triangle theorem.\nA theorem is to be considered an \"eternal truth\". It can never be broken. It is impossible.\n\n<img src=\"Textures/small-right-triangle-noted.png\">\n\n<br>\n<span style=\"font-weight: bold;\">Theorem:</span>\n$$ c^2 = a^2 + b^2 $$\n\nThis can be rewritten as \n\n$$ c = \\sqrt{a^2 + b^2} $$\n\nThis means that having two of the a, b, c numbers, you can calculate the other one. This is <span style=\"font-weight: bold;\">only for right triangles</span> (with a 90 degree corner).",
+        facts: "The Pythagorean theorem is an ancient triangle theorem.\nA theorem is to be considered an \"eternal truth\". It can never be broken. It is impossible.\n\n<img src=\"Textures/small-right-triangle-noted.png\">\n\n<br>\n<span style=\"font-weight: bold;\">Theorem:</span>\n$$ c^2 = a^2 + b^2 $$\n<strong>End of Theorem</strong>\n<br>\nThis can be rewritten as \n\n$$ c = \\sqrt{a^2 + b^2} $$\n\nThis means that having two of the a, b, c numbers, you can calculate the other one. This is <span style=\"font-weight: bold;\">only for right triangles</span> (with a 90 degree corner).",
     },
     38: {
         x: -607.8129251700689,
@@ -239,7 +239,7 @@ var all_bubbles = {
         r: 100,
         link: ["natural_numbers","number_system"],
         title: "Numbers",
-        facts: "Numbers are mathematical objects. A number can represent a quantity, they can be used as labels, for ordering of objects or measuring. There are many types of numbers. '1' is a number. '9.8' is also a number. Not all numbers can be written only with the use of 0, 1, 2, 3, 4, 5, 6 ,7, 8, 9. You will learn about these number later. <br>\n<br>\nNumbers where invented thousands of years ago, but did you know that the number 0 was invented relativly more recently.",
+        facts: "Numbers are mathematical objects. A number can represent a quantity, they can be used as labels, for ordering of objects or measuring. There are many types of numbers. $1$ is a number. $9.8$ is also a number. Not all numbers can be written only with the use of $0, 1, 2, 3, 4, 5, 6 ,7, 8, 9$. You will learn about these number later. <br>\n<br>\nNumbers where invented thousands of years ago, but did you know that the number 0 was invented relatively recently?",
     },
     number_system: {
         x: 600,
@@ -247,7 +247,7 @@ var all_bubbles = {
         r: 100,
         link: [],
         title: "Number System",
-        facts: "The decimal number system is made up of ten symbols: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0. The least significant digit is the rightmost digit. This means that 10 is greater than 1. When we compare, we can pad digits so they become the same length. 10 and 1 can be seen as 10 and 01. A zero to the left does not change the number. A zero to the right does change the number.",
+        facts: "The decimal number system is made up of ten symbols: $0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0$. The least significant digit is the rightmost digit. This means that 10 is greater than 1. When we compare, we can pad digits so they become the same length. 10 and 1 can be seen as $10$ and $01$. A zero to the left does not change the number. A zero to the right does change the number.",
     },
     natural_numbers: {
         x: 161.33333333333212,
@@ -255,7 +255,7 @@ var all_bubbles = {
         r: 100,
         link: ["natural_numbers_addition","natural_numbers_subtraction","integers"],
         title: "Natural Numbers",
-        facts: "Natural numbers are whole numbers. They do not have a '.' in the number. $$10$$ is natural number. $$8932$$ is a natural number. $$-3$$ is not a natural number, because it has a minus sign (-). $$5.5$$ is not a natural number because it contains a dot '.'.\n<br>\n<br>\nThis picture shows the natural number line. It never ends to the right.\n<img src=\"Textures/number-line-positive.gif\">\n<br>\nWe use the symbol\n\n$$ \\mathbb{N} $$\n\nto mean \"all natural numbers\".",
+        facts: "Natural numbers are whole numbers. They do not have a '.' in the number. $$10$$ is natural number. $$8932$$ is a natural number. $$-3$$ is not a natural number, because it has a minus sign (-). $$5.5$$ is not a natural number because it contains a dot '.'.\n<br>\n<br>\nThis picture shows the natural number line. It never ends to the right.\n<img src=\"Textures/number-line-positive.gif\">\n<br>\nWe use the symbol $ \\mathbb{N} $ to mean \"all natural numbers\".",
     },
     natural_numbers_addition: {
         x: -334.6666666666679,
@@ -266,8 +266,8 @@ var all_bubbles = {
         facts: "You can add natural numbers together. This creates a new number. The symbol for adding is '+' (called plus). You put two natural numbers on either side of the plus: 3 + 4. The expression 3 + 4 is the same as the number 7.",
     },
     natural_numbers_subtraction: {
-        x: -365.21976107516093,
-        y: -11742.650323544047,
+        x: -260.6666666666665,
+        y: -11514.833333333334,
         r: 100,
         link: ["integers","integer_division"],
         title: "Subtraction",
@@ -279,7 +279,7 @@ var all_bubbles = {
         r: 100,
         link: ["remainder","rationals"],
         title: "Division",
-        facts: "We divide using the '/' symbol. Two integers on either side can create a new number. The left side is the 'numerator', and the right side is the 'denominator'. The expression 6 / 2 is the same as 3, and integer and natural number. The expression -8 / 2 is the same as -(8 / 2), which is the same as - ( 4 ), which is the same as -4, an integer. What does division mean? It means how often can we subtract the denominator from the numerator until it becomes zero? From 6 we can subtract 2, three times: 6 / 2 is the same as 3. The expression 6 - 2 - 2 - 2 becomes 0.",
+        facts: "We divide using the '/' symbol. Two integers on either side can create a new number. The left side is the 'numerator', and the right side is the 'denominator'. The expression $6 / 2$ is the same as $3$, and integer and natural number. The expression $-8 / 2$ is the same as $-(8 / 2)$, which is the same as $- ( 4 )$, which is the same as $-4$, an integer. What does division mean? It means how often can we subtract the denominator from the numerator until it becomes zero? From 6 we can subtract 2, three times: $6 / 2$ is the same as $3$. The expression $6 - 2 - 2 - 2$ becomes $0$.",
     },
     rationals: {
         x: 457.3333333333321,
@@ -295,7 +295,7 @@ var all_bubbles = {
         r: 100,
         link: ["21"],
         title: "Remainder",
-        facts: "If you divide a number, you subtract the denominator from the numerator until the numerator is zero. Sometimes, the subtraction hops over the zero. In the expression 7 / 3, we first subtract via 7 - 3, which is 4. Then we subtract via 4 - 3, which is 1. Then we subtract via 1 - 3, which is -2. We have hopped over 0. If we want integer division, we use what we call a 'remainder'. We go back and look at the number that was before the jump over 0. This was 1. So we can now say: 7 / 3 is the same as 2, with remainder 1. Why is it 2? Because we could subtract 2 times.",
+        facts: "If you divide a number, you subtract the denominator from the numerator until the numerator is zero. Sometimes, the subtraction hops over the zero. In the expression $7 / 3$, we first subtract via $7 - 3$, which is $4$. Then we subtract via $4 - 3$, which is $1$. Then we subtract via $1 - 3$, which is $-2$. We have hopped over $0$. If we want integer division, we use what we call a 'remainder'. We go back and look at the number that was before the jump over $0$. This was $1$. So we can now say: $7 / 3$ is the same as $2$, with remainder $1$. Why is it $2$? Because we could subtract $2$ times.",
     },
     integer_mul: {
         x: 1027.3333333333321,
@@ -303,15 +303,15 @@ var all_bubbles = {
         r: 100,
         link: [],
         title: "Integer Multiplication",
-        facts: "When multiplying two integers (using the * or x symbol), you will always get a new integer. 4 x 3 is 12. Remember, integers can be negative, like -5. The expression -5 x 2 is -10, which is an integer. When you multiply negative number, you can move them 'out' of the multiplication: -5 x 2 can be written as -(5 x 2). You can now calculate 5 x 2, which is 10. You put 10 where 5 x 2 is: -(10). You remove the parentheses, and get -10.",
+        facts: "When multiplying two integers (using the $*$ or $\\times$ symbol), you will always get a new integer. $4 \\times 3$ is $12$. Remember, integers can be negative, like $-5$. The expression $-5 \\times 2$ is $-10$, which is an integer. When you multiply negative number, you can move them 'out' of the multiplication: $-5 \\times 2$ can be written as $-(5 \\times 2)$. You can now calculate $5 \\times 2$, which is $10$. You put 10 where $5 \\times 2$ is: $-(10)$. You remove the parentheses, and get $-10$.",
     },
     integers: {
-        x: 521.3333333333321,
-        y: -11872.833333333332,
+        x: 463.3333333333335,
+        y: -11842.833333333334,
         r: 100,
         link: ["integer_division","rationals","integer_mul","integer_addition"],
         title: "Integers",
-        facts: "Remember from 'Natural Numbers' that -1 is not a natural number, because it has a minus sign in the number. When you subtract: $$3 - 4$$ you will not get a natural number. The expression $$3 - 4$$ evaluates to $$-1$$ This is not a natural number. One type of number can create other types of numbers. All natural numbers are also integers, but not all integers are natural numbers.\n<br><br>\nHere is the integer number line.\n\n<img src=\"Textures/integers-numbers-on-number-line.png\">\n\nWe use the symbol\n\n$$ \\mathbb{Z} $$\n\nto mean \"all integer numbers\".",
+        facts: "Remember from 'Natural Numbers' that -1 is not a natural number, because it has a minus sign in the number. When you subtract: $$3 - 4$$ you will not get a natural number. The expression $$3 - 4$$ evaluates to $$-1$$ This is not a natural number. One type of number can create other types of numbers. All natural numbers are also integers, but not all integers are natural numbers.\n<br><br>\nHere is the integer number line.\n\n<img src=\"Textures/integers-numbers-on-number-line.png\">\n\nWe use the symbol $ \\mathbb{Z} $ to mean \"all integer numbers\".",
     },
     natural_multiplication: {
         x: -766.6666666666679,
@@ -319,7 +319,7 @@ var all_bubbles = {
         r: 100,
         link: [],
         title: "Multiplication",
-        facts: "Multiplication is an operation on two natural numbers. It always generates a new natural number. It can not create a non-natural number. We use the (*) or (x) symbol for multiplication. The expression 5 x 4 is the same as the number 20. The expression can be read as (5 + 5 + 5 + 5). There are 4 fives, which are added together. This means that 3 x 6 is the same as (3 + 3 + 3 + 3 + 3 + 3). This number is 18.",
+        facts: "Multiplication is an operation on two natural numbers. It always generates a new natural number. It can not create a non-natural number. We use the $*$ or $\\times$ symbol for multiplication. The expression $5 \\times 4$ is the same as the number $20$. The expression can be read as $5 + 5 + 5 + 5$. There are $4$ fives, which are added together. This means that $3 \\times 6$ is the same as $3 + 3 + 3 + 3 + 3 + 3$. This number is $18$.",
     },
     integer_addition: {
         x: 983.3333333333321,
@@ -327,7 +327,7 @@ var all_bubbles = {
         r: 100,
         link: ["integer_mul"],
         title: "Integer Addition",
-        facts: "Adding integers is very similar to natural numbers. 4 and 5 are both natural numbers as well as integer numbers. Adding them gives 9. This is also a natural number and an integer number. Integers can be negative. This means they have a minus sign in the number. The expression $$5 + -3$$ contains two numbers, '5', and '-3'. When you see a '+ -', you can replace the '+ -' by just '-'. You then get $$5 - 3$$ which is subtraction. You get\n\n$$2$$\n\nWhen you see $$5 + -3$$ think that you have temperature 5, and you're adding 3 ice blocks (because of -, they are cold). The temperature goes down.",
+        facts: "Adding integers is very similar to natural numbers. 4 and 5 are both natural numbers as well as integer numbers. Adding them gives 9. This is also a natural number and an integer number. Integers can be negative. This means they have a minus sign in the number. The expression $$5 + -3$$ contains two numbers, $5$, and $-3$. When you see a '+ -', you can replace the '+ -' by just '-'. You then get $$5 - 3$$ which is subtraction. You get\n\n$$2$$\n\nWhen you see $$5 + -3$$ think that you have temperature $5$, and you're adding $3$ ice blocks (because of -, they are cold). The temperature goes down.",
     },
     integral: {
         x: 0,
