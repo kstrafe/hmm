@@ -21,6 +21,7 @@
 /*global navigator*/
 /*global Sounds*/
 /*global Storage*/
+/*global TempLine*/
 
 "use strict";
 
@@ -33,6 +34,7 @@ var bubbles = new Bubbles();
 var curves = new Curves();
 var edit = new Edit();
 var help = new Help();
+var templine = new TempLine();
 
 var sounds = new Sounds();
 sounds.playBGM();
@@ -42,7 +44,7 @@ var selected_bubble = null;
 
 function renderEverything() {
     context.renderBG();
-    context.draw([floaties, bubbles, curves]);
+    context.draw([floaties, bubbles, curves, templine]);
     context.drawAbsolute(factBox);
     context.drawAbsolute(sounds);
     context.drawAbsolute(edit);
@@ -64,6 +66,7 @@ function mouseHoverListener(evt) {
     bubbles.hover(smousePos, sounds);
     sounds.hoverButton(mPos);
     help.hoverButton(mPos);
+    templine.setStop(smousePos);
 }
 
 function zoom(evt) {
@@ -228,6 +231,7 @@ function moveOrSelectBubble() {
     if (edit.linking()) {
         selected_bubble = null;
         edit.flipLink();
+        templine.setStart(null);
         return;
     }
 
@@ -235,8 +239,14 @@ function moveOrSelectBubble() {
         selected_bubble.moveTo(mousePos.x, mousePos.y);
         curves.reposition(selected_bubble.getIndex(), bubbles);
         selected_bubble = null;
+        templine.setStart(null);
     } else {
         selected_bubble = bubble;
+        if (bubble !== undefined) {
+            templine.setStart(bubble.getXY());
+        } else {
+            templine.setStart(null);
+        }
     }
 
     if (selected_bubble) {
@@ -254,6 +264,7 @@ function createLineOrSelectBubble() {
     if (edit.moving()) {
         selected_bubble = null;
         edit.flipMove();
+        templine.setStart(null);
         return;
     }
 
@@ -261,8 +272,14 @@ function createLineOrSelectBubble() {
         curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
         curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
         selected_bubble = null;
+        templine.setStart(null);
     } else {
         selected_bubble = bubble;
+        if (bubble !== undefined) {
+            templine.setStart(bubble.getXY());
+        } else {
+            templine.setStart(null);
+        }
     }
 
     if (selected_bubble) {
