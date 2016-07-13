@@ -313,6 +313,22 @@ var all_bubbles = {
         title: "Trigonometry",
         facts: "In trigonometry we study the relations involving lengths and angles of triangles. <br>\nThis is an arbitrary triangle with all lengths and angles denoted by symbols <br>\n\n<img src=\"Textures/Triangle_with_notations.png\"> <br>\n\nMore knowledge shall arrive here soon",
     },
+    59: {
+        x: 1989.3766384602604,
+        y: -15187.310353409659,
+        r: 100,
+        link: [],
+        title: "Inequalities",
+        facts: "New knowledge shall arrive here soon",
+    },
+    60: {
+        x: 9456.128422100548,
+        y: 8948.56719761075,
+        r: 100,
+        link: [],
+        title: "Magic Carpet",
+        facts: "Welcome to the magic carpet, your teleport and taxi. Mathematicians get a 100% discount!\n\n$$ 3000, -30000 $$\n\n<input id=\"carpet\" type=\"text\" placeholder=\"place your order\">\n<button id=\"carpbut\" style=\"width: 100%; height: 5vh;\" onclick=\"eval('context.centerAbs(' + document.getElementById('carpet').value + ')');\">Woosh!</button>\n<br><br>\nYou can also write the identifier of the node you wish to travel to!\n\n$$ 53 $$\n\nTravels to node ID 53.\n",
+    },
     start: {
         x: 0,
         y: 0,
@@ -472,13 +488,5 @@ var all_bubbles = {
         link: ["44"],
         title: "Integration",
         facts: "$$\\int$$ is the integration symbol, it means \"to sum\" over an infinitesimally small intervals.",
-    },
-    59: {
-        x: 1989.3766384602604,
-        y: -15187.310353409659,
-        r: 100,
-        link: [],
-        title: "Inequalities",
-        facts: "New knowledge shall arrive here soon",
     },
 };
