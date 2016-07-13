@@ -5,7 +5,7 @@ function ConMenu() {
     this.colors = new Colors();
     this.active = false;
     this.pos = null;
-    this.hovers = '';
+    this.hovers = "";
 }
 
 ConMenu.prototype.activate = function (pos) {
@@ -22,12 +22,14 @@ ConMenu.prototype.hover = function (mpos) {
         return false;
     }
 
-    if (mpos.y < this.pos.y) {
-        this.hovers = 'new';
-    } else if (mpos.x > this.pos.x) {
-        this.hovers = 'link';
+    if (mpos.y < this.pos.y && mpos.y > this.pos.y - 60 && mpos.x > this.pos.x - 40 && mpos.x < this.pos.x + 40) {
+        this.hovers = "new";
+    } else if (mpos.x > this.pos.x && mpos.x < this.pos.x + 80 && mpos.y < this.pos.y + 40 && mpos.y > this.pos.y) {
+        this.hovers = "link";
+    } else if (mpos.x < this.pos.x && mpos.x > this.pos.x - 80 && mpos.y < this.pos.y + 40 && mpos.y > this.pos.y) {
+        this.hovers = "move";
     } else {
-        this.hovers = 'move';
+        this.hovers = "";
     }
 
     return true;
