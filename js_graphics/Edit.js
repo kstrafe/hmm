@@ -24,6 +24,7 @@ Edit.prototype.draw = function (context) {
     context.globalAlpha = 0.25;
     context.fillStyle = '#FFFFFF';
     context.font = '20px Calibri';
-    context.fillText("Press 'Q' whilst holding the mouse pointer over a bubble to (un)link to it", middle, bottom);
+    context.fillText("Press 'Q/Right Mouse' whilst holding the mouse pointer over a bubble to (un)link to it", middle, bottom - 20);
+    context.fillText("hold the mouse pointer over an empty area to move", middle, bottom);
     context.restore();
 };

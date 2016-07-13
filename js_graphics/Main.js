@@ -26,7 +26,7 @@
 
 "use strict";
 
-var lastBubble = null;
+var openBubble = null;
 
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
@@ -40,7 +40,7 @@ var templine = new TempLine();
 var sounds = new Sounds();
 sounds.playBGM();
 
-var selected_bubble = null;
+var editingBubble = null;
 
 
 function renderEverything() {
@@ -61,36 +61,33 @@ function updateEverything() {
     help.fadeOut();
 }
 
-function createBubble(optPos) {
-    var mousePos = optPos === undefined ? context.scaledMousePos() : optPos,
-        bubble = new Bubble(bubbles.length(), mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
-    bubbles.add(bubbles.length(), bubble);
-}
-
-function editGraph(optPos) {
-    var mousePos = optPos === undefined ? context.scaledMousePos() : optPos,
+function editGraph() {
+    var mousePos = context.scaledMousePos(),
         curve = null,
         bubble = bubbles.collide(mousePos);
 
-    if (bubble === undefined && selected_bubble === null) {
+    if (bubble === undefined && editingBubble === null) {
         console.log("create");
-        createBubble(mousePos);
-        selected_bubble = null;
-    } else if (bubble === undefined && selected_bubble !== null) {
+        bubble = new Bubble(bubbles.length(), mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
+        bubbles.add(bubbles.length(), bubble);
+    } else if (bubble === undefined && editingBubble !== null) {
         console.log("move-end");
-        selected_bubble.moveTo(mousePos.x, mousePos.y);
-        curves.reposition(selected_bubble.getIndex(), bubbles);
-        selected_bubble = null;
+        edit.flipActive();
+        editingBubble.moveTo(mousePos.x, mousePos.y);
+        curves.reposition(editingBubble.getIndex(), bubbles);
+        editingBubble = null;
         templine.setStart(null);
-    } else if (bubble !== undefined && selected_bubble !== null) {
+    } else if (bubble !== undefined && editingBubble !== null) {
         console.log("link-end");
-        curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
-        curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
-        selected_bubble = null;
+        edit.flipActive();
+        curve = new Curve(editingBubble.x, editingBubble.y, editingBubble.r, bubble.x, bubble.y, bubble.r);
+        curves.append(curve, editingBubble.getIndex(), bubble.getIndex());
+        editingBubble = null;
         templine.setStart(null);
-    } else if (bubble !== undefined && selected_bubble === null) {
+    } else if (bubble !== undefined && editingBubble === null) {
         console.log("movelink-start");
-        selected_bubble = bubble;
+        edit.flipActive();
+        editingBubble = bubble;
         if (bubble !== undefined) {
             templine.setStart(bubble.getXY());
         } else {
@@ -144,7 +141,7 @@ function drawFactBox(onCircle) {
         sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
-        factBox.show(onCircle.facts, lastBubble.getFav(), lastBubble.isMastered());
+        factBox.show(onCircle.facts, openBubble.getFav(), openBubble.isMastered());
     } else {
         context.canvas.addEventListener('mousemove', mouseMoveListener, false);
         factBox.hide();
@@ -156,9 +153,9 @@ function drawFactBoxSpace(onCircle) {
         factBox.hide();
         return;
     }
-    lastBubble = onCircle.bubble;
+    openBubble = onCircle.bubble;
     if (onCircle.hit) {
-        factBox.show(onCircle.facts, lastBubble.getFav(), lastBubble.isMastered());
+        factBox.show(onCircle.facts, openBubble.getFav(), openBubble.isMastered());
 
         sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
@@ -167,12 +164,12 @@ function drawFactBoxSpace(onCircle) {
 }
 
 function openEditor() {
-    var nameFacts = lastBubble.getNameAndFacts();
+    var nameFacts = openBubble.getNameAndFacts();
     factBox.openEditor(nameFacts);
 }
 
 function closeEditor() {
-    factBox.closeEditor(lastBubble);
+    factBox.closeEditor(openBubble);
 }
 
 function closeEditorNoSave() {
@@ -181,9 +178,9 @@ function closeEditorNoSave() {
 
 function master() {
     var mastered;
-    lastBubble.flipMaster();
-    curves.masterFrom(lastBubble.getIndex(), lastBubble.isMastered());
-    factBox.setMaster(lastBubble.isMastered());
+    openBubble.flipMaster();
+    curves.masterFrom(openBubble.getIndex(), openBubble.isMastered());
+    factBox.setMaster(openBubble.isMastered());
     mastered = JSON.stringify(bubbles.getMastered());
     localStorage.setItem("mastered", mastered);
 }
@@ -210,7 +207,7 @@ function mouseDownListener(evt) {
 
     onCircle = bubbles.click(scaledPos);
     if (onCircle.hit) {
-        lastBubble = onCircle.bubble;
+        openBubble = onCircle.bubble;
     } else {
         factBox.hide();
     }
@@ -370,7 +367,7 @@ function contextMenu() {
 
 function toggleFavorite() {
     var favd;
-    lastBubble.toggleFav();
+    openBubble.toggleFav();
     favd = JSON.stringify(bubbles.getFavd());
     localStorage.setItem("favd", favd);
 }
