@@ -1,6 +1,7 @@
 # BUGS #
 
 # IDEAS #
+	Calibri font everywhere. Host font like this?: (http://jsfiddle.net/zMKge/)
 	Create short video tutorials for editing
 
 	// Education mode: Answer question to unlock new bubbles about more challenging things
