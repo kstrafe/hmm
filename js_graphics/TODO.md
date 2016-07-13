@@ -2,18 +2,22 @@
 
 # IDEAS #
 	Bubble text fitting still need some optimization (long vs short two letter words)
-	Right-mouse button editing interface
-	Different coloration in the tree based on subject | Custom color per node instead?
+	Create short video tutorials for editing
 
 	// Education mode: Answer question to unlock new bubbles about more challenging things
 	// Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.  this will require a tree structuring of the drawing of bubbled
 
 # TODO #
+	Semantic zoom (Basic Arithmetic, Symbolics, Geometry, Probability, ...)
+	Custom node colour
+	Create a button for factBox to almost completely maximize and become opaque
 	Reset the scrollbar to top after closing a factbox (opening another factbox may start with the scrollbar already down)
 	Loading screen (else people click the first bubble and get an empty window)
-	Hyperlinks to bubbles
-	Short cut to places around the canvas (Teleport functionality? Press X, opens small writable window, write 3000, -30400, enter, move to that location)
-	Semantic zoom
+	Hyperlinks to bubbles (Use onclick to teleport to a bubble)
+	Short cut to places around the canvas (Teleport functionality? Press X, opens small writable window, write 3000, -30400, enter, move to that location, or write an ID number)
+	Right-mouse button editing interface
+	Draw a line from Q'd and an arrow for R'd bubbles
+	Allow bubbles to be unmastered
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
