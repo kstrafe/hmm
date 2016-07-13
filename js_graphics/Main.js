@@ -66,6 +66,9 @@ function updateEverything() {
 function mouseHoverListener(evt) {
     var smousePos = context.scaledMousePos(evt),
         mPos = context.mousePos(evt);
+    if (conmenu.hover(mPos)) {
+        return;
+    }
     bubbles.hover(smousePos, sounds);
     sounds.hoverButton(mPos);
     help.hoverButton(mPos);
@@ -408,7 +411,10 @@ function onResize() {
 }
 
 function contextMenu(evt) {
-    conmenu.activate({x: evt.clientX, y: evt.clientY});
+    conmenu.activate({
+        x: evt.clientX,
+        y: evt.clientY
+    });
     return false;
 }
 
