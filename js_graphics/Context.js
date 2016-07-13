@@ -252,15 +252,19 @@ Context.prototype.drawDevMode = function () {
     }
 };
 
-Context.prototype.scaledMousePos = function (evt) {
+Context.prototype.scalemPos = function (mpos) {
     var invscl = 1 / this.scaleFactor;
+    return {
+        x: invscl * (this.xOffset + mpos.x),
+        y: invscl * (this.yOffset + mpos.y)
+    };
+};
+
+Context.prototype.scaledMousePos = function (evt) {
     if (evt) {
         this.mousePos(evt);
     }
-    return {
-        x: invscl * (this.xOffset + this.mouse.x),
-        y: invscl * (this.yOffset + this.mouse.y)
-    };
+    return this.scalemPos(this.mouse);
 };
 
 Context.prototype.mousePos = function (evt) {
