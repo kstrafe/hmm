@@ -82,7 +82,6 @@ Context.prototype.zoomMouse = function (absfactor) {
 
     this.xOffset = newCenter.x * this.scaleFactor - this.canvas.width / 2;
     this.yOffset = newCenter.y * this.scaleFactor - this.canvas.height / 2;
-    //this.centerOn(center.x, center.y);
 };
 
 Context.prototype.zoom = function (absfactor) {
@@ -92,6 +91,14 @@ Context.prototype.zoom = function (absfactor) {
     center.y *= relfactor;
     this.scaleFactor = absfactor;
     this.centerOn(center.x, center.y);
+};
+
+Context.prototype.centerAbs = function (x, y) {
+    var width = this.canvas.width,
+        height = this.canvas.height;
+
+    this.xOffset = x * this.scaleFactor - width / 2;
+    this.yOffset = y * this.scaleFactor - height / 2;
 };
 
 Context.prototype.centerOn = function (x, y) {

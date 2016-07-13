@@ -180,8 +180,10 @@ function master() {
     openBubble.flipMaster();
     curves.masterFrom(openBubble.getIndex(), openBubble.isMastered());
     factBox.setMaster(openBubble.isMastered());
-    mastered = JSON.stringify(bubbles.getMastered());
-    localStorage.setItem("mastered", mastered);
+    if (Storage !== undefined) {
+        mastered = JSON.stringify(bubbles.getMastered());
+        localStorage.setItem("mastered", mastered);
+    }
 }
 
 function mouseDownListener(evt) {
@@ -372,8 +374,10 @@ function contextMenu() {
 function toggleFavorite() {
     var favd;
     openBubble.toggleFav();
-    favd = JSON.stringify(bubbles.getFavd());
-    localStorage.setItem("favd", favd);
+    if (Storage !== undefined) {
+        favd = JSON.stringify(bubbles.getFavd());
+        localStorage.setItem("favd", favd);
+    }
 }
 
 function setupBubblesAndCurves() {
