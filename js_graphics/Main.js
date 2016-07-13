@@ -63,6 +63,45 @@ function updateEverything() {
     help.fadeOut();
 }
 
+function createLineOrSelectBubble(optPos) {
+    var mousePos = optPos === undefined ? context.scaledMousePos() : optPos,
+        curve = null,
+        bubble = bubbles.collide(mousePos);
+
+    if (edit.moving()) {
+        selected_bubble = null;
+        edit.flipMove();
+        templine.setStart(null);
+        return;
+    }
+
+    if (selected_bubble && bubble) {
+        curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
+        curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
+        selected_bubble = null;
+        templine.setStart(null);
+    } else {
+        selected_bubble = bubble;
+        if (bubble !== undefined) {
+            templine.setStart(bubble.getXY());
+        } else {
+            templine.setStart(null);
+        }
+    }
+
+    if (selected_bubble) {
+        edit.activateLink();
+    } else {
+        edit.deactivateLink();
+    }
+}
+
+function createBubble(optPos) {
+    var mousePos = optPos === undefined ? context.scaledMousePos() : optPos,
+        bubble = new Bubble(bubbles.length(), mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
+    bubbles.add(bubbles.length(), bubble);
+}
+
 function mouseHoverListener(evt) {
     var smousePos = context.scaledMousePos(evt),
         mPos = context.mousePos(evt);
@@ -146,6 +185,38 @@ function closeEditorNoSave() {
     factBox.closeEditorNoSave();
 }
 
+function moveOrSelectBubble(optPos) {
+    var mousePos = optPos === undefined ? context.scaledMousePos() : optPos,
+        bubble = bubbles.collide(mousePos);
+
+    if (edit.linking()) {
+        selected_bubble = null;
+        edit.flipLink();
+        templine.setStart(null);
+        return;
+    }
+
+    if (selected_bubble) {
+        selected_bubble.moveTo(mousePos.x, mousePos.y);
+        curves.reposition(selected_bubble.getIndex(), bubbles);
+        selected_bubble = null;
+        templine.setStart(null);
+    } else {
+        selected_bubble = bubble;
+        if (bubble !== undefined) {
+            templine.setStart(bubble.getXY());
+        } else {
+            templine.setStart(null);
+        }
+    }
+
+    if (selected_bubble) {
+        edit.activateMove();
+    } else {
+        edit.deactivateMove();
+    }
+}
+
 function master() {
     var mastered;
     lastBubble.flipMaster();
@@ -161,6 +232,25 @@ function mouseDownListener(evt) {
         scaledPos = null;
 
     if (evt.button === 2) {
+        return;
+    }
+
+    if (conmenu.click()) {
+        switch (conmenu.getHover()) {
+        case "new":
+            createBubble(context.scalemPos(conmenu.getPos()));
+            break;
+        case "link":
+            createLineOrSelectBubble(context.scalemPos(conmenu.getPos()));
+            break;
+        case "move":
+            moveOrSelectBubble(context.scalemPos(conmenu.getPos()));
+            break;
+        default:
+            console.log("UNKNOWN");
+            break;
+        }
+        conmenu.close();
         return;
     }
 
@@ -233,77 +323,6 @@ function setCanvasSpeed(key, speed) {
     if (isMovementKey(key)) {
         bubbles.hover(context.getCenterPos(), sounds);
     }
-}
-
-function moveOrSelectBubble() {
-    var mousePos = context.scaledMousePos(),
-        bubble = bubbles.collide(mousePos);
-
-    if (edit.linking()) {
-        selected_bubble = null;
-        edit.flipLink();
-        templine.setStart(null);
-        return;
-    }
-
-    if (selected_bubble) {
-        selected_bubble.moveTo(mousePos.x, mousePos.y);
-        curves.reposition(selected_bubble.getIndex(), bubbles);
-        selected_bubble = null;
-        templine.setStart(null);
-    } else {
-        selected_bubble = bubble;
-        if (bubble !== undefined) {
-            templine.setStart(bubble.getXY());
-        } else {
-            templine.setStart(null);
-        }
-    }
-
-    if (selected_bubble) {
-        edit.activateMove();
-    } else {
-        edit.deactivateMove();
-    }
-}
-
-function createLineOrSelectBubble() {
-    var mousePos = context.scaledMousePos(),
-        curve = null,
-        bubble = bubbles.collide(mousePos);
-
-    if (edit.moving()) {
-        selected_bubble = null;
-        edit.flipMove();
-        templine.setStart(null);
-        return;
-    }
-
-    if (selected_bubble && bubble) {
-        curve = new Curve(selected_bubble.x, selected_bubble.y, selected_bubble.r, bubble.x, bubble.y, bubble.r);
-        curves.append(curve, selected_bubble.getIndex(), bubble.getIndex());
-        selected_bubble = null;
-        templine.setStart(null);
-    } else {
-        selected_bubble = bubble;
-        if (bubble !== undefined) {
-            templine.setStart(bubble.getXY());
-        } else {
-            templine.setStart(null);
-        }
-    }
-
-    if (selected_bubble) {
-        edit.activateLink();
-    } else {
-        edit.deactivateLink();
-    }
-}
-
-function createBubble() {
-    var mousePos = context.scaledMousePos(),
-        bubble = new Bubble(bubbles.length(), mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
-    bubbles.add(bubbles.length(), bubble);
 }
 
 function downloadData(filename, data) {

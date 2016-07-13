@@ -35,6 +35,21 @@ ConMenu.prototype.hover = function (mpos) {
     return true;
 };
 
+ConMenu.prototype.click = function () {
+    if (this.active && this.hovers !== "") {
+        return true;
+    }
+    return false;
+};
+
+ConMenu.prototype.getPos = function () {
+    return this.pos;
+};
+
+ConMenu.prototype.getHover = function () {
+    return this.hovers;
+};
+
 ConMenu.prototype.draw = function (ctx) {
     if (this.active === false) {
         return;
