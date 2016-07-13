@@ -157,6 +157,7 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
 
     } else if (words.length === 2) {
         fontSize = fontSizeGuess * (fillRatio[1] * 2 * r) / tempWidth;
+        fontSize = Math.min(fontSize, this.r / 1.5);
         y = y - fontSize * 0.1;
 
     } else if (words.length === 3) {
@@ -164,7 +165,6 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
         y = y - fontSize / 2;
 
     }
-
     lineHeight = fontSize;
     context.font = fontSize + "px Calibri";
 
@@ -176,6 +176,9 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
     context.restore();
 };
 
+Bubble.prototype.fillRatio = function (numWords, avgLen) {
+
+};
 Bubble.prototype.hitTest = function (mousePos) {
     var coord = this.getXY(),
         rMouseCenter = (mousePos.x - coord.x) * (mousePos.x - coord.x) + (mousePos.y - coord.y) * (mousePos.y - coord.y);
