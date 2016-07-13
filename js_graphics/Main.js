@@ -7,6 +7,7 @@
 /*global Bubble*/
 /*global Bubbles*/
 /*global Colors*/
+/*global ConMenu*/
 /*global Context*/
 /*global Curve*/
 /*global Curves*/
@@ -35,6 +36,7 @@ var curves = new Curves();
 var edit = new Edit();
 var help = new Help();
 var templine = new TempLine();
+var conmenu = new ConMenu();
 
 var sounds = new Sounds();
 sounds.playBGM();
@@ -49,6 +51,7 @@ function renderEverything() {
     context.drawAbsolute(sounds);
     context.drawAbsolute(edit);
     context.drawAbsolute(help);
+    context.drawAbsolute(conmenu);
     context.drawDevMode();
 }
 
@@ -154,6 +157,11 @@ function mouseDownListener(evt) {
         mousePos = null,
         scaledPos = null;
 
+    if (evt.button === 2) {
+        return;
+    }
+
+    conmenu.close();
     if (factBox.isEditing()) {
         return;
     }
@@ -342,6 +350,8 @@ function generateDataJs() {
 function keyboardDown(key) {
     var movingSpeed = 20;
 
+    conmenu.close();
+
     if (factBox.isActive()) {
         if (key.which === KEY.SPACE && factBox.isEditing() === false) {
             drawFactBoxSpace();
@@ -397,7 +407,8 @@ function onResize() {
     help.resize(context.canvas.width);
 }
 
-function contextMenu() {
+function contextMenu(evt) {
+    conmenu.activate({x: evt.clientX, y: evt.clientY});
     return false;
 }
 
