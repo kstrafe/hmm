@@ -14,6 +14,7 @@ function Colors() {
         bubblePurple: "#B10DC9",
         bubbleHL: "#69B00C",
         bubbleHLShadow: '#6ED80D',
+        bubbleFav: '#D9EFFF',
         textColor: "#DDDDDD",
         white: "#FFFFFF",
         factCont: "#000000",

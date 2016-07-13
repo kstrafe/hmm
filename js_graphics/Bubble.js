@@ -70,11 +70,12 @@ Bubble.prototype.draw = function (context) {
     context.save();
 
     context.beginPath();
-    context.lineWidth = 3;
+    context.lineWidth = 6;
     context.shadowBlur = 10;
     if (this.favorite) {
-        context.strokeStyle = this.colors.getByName('white');
+        context.strokeStyle = this.colors.getByName('bubbleFav');
         context.shadowColor = this.colors.getByName('white');
+        context.shadowBlur = 25;
     } else if (this.master === false) {
         context.strokeStyle = this.colors.getByName('bubbleGreen');
         context.shadowColor = this.colors.getByName('bubbleGreen');
@@ -86,7 +87,7 @@ Bubble.prototype.draw = function (context) {
     context.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
 
     if (this.highlighted) {
-        context.lineWidth = 4;
+        context.lineWidth = 8;
         context.strokeStyle = this.colors.getByName('bubbleHL');
         context.shadowBlur = 15;
         context.shadowColor = this.colors.getByName('bubbleHLShadow');

@@ -41,7 +41,7 @@ Curve.prototype.compute = function (c1, c2) {
         y2 = null,
         x3 = null,
         y3 = null,
-        smul = 5,
+        smul = 10,
         aOffset = 0.5,
         //curv = 0.5,
         d = Math.sqrt((dx * dx) + (dy * dy)),
@@ -83,7 +83,7 @@ Curve.prototype.draw = function (context) {
     context.beginPath();
     context.moveTo(b.x0, b.y0);
     context.bezierCurveTo(b.x1, b.y1, b.x2, b.y2, b.x3, b.y3);
-    context.lineWidth = 2;
+    context.lineWidth = 4;
     context.shadowBlur = 2.5;
     context.shadowColor = this.color;
     context.strokeStyle = this.color;
