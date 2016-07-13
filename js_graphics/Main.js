@@ -313,13 +313,11 @@ function keyboardDown(key) {
     var movingSpeed = 20;
 
     if (factBox.isActive()) {
-        if (key.which === KEY.SPACE && factBox.isEditing() === false) {
+        if (key.which === KEY.ESC && factBox.isEditing() === false) {
             drawFactBoxSpace();
             return;
         }
-        if (factBox.isEditing()) {
-            return;
-        }
+        return;
     }
 
     help.deactivate();
@@ -340,6 +338,9 @@ function keyboardDown(key) {
         break;
     case KEY.E:
         context.flipDevMode();
+        break;
+    case KEY.T:
+        // drawFactBox(bubbles.
         break;
     case KEY.Q:
         editGraph();
