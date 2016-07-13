@@ -481,4 +481,4 @@ function main() {
     }, frametime);
 }
 
-main();
+window.onload = main;
