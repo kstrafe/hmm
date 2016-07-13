@@ -71,7 +71,7 @@ var all_bubbles = {
         r: 100,
         link: ["34","32"],
         title: "Polynomials",
-        facts: "Polynomials are expressions. Here is an example of a polynomial:\n\n$$ x^2 + 4\\cdot x - 2 $$\n\nYou can put a number into x, and the polynomial will become another number.\n<br><br>\nIf x is 2:\n\n$$ 2^2 + 4\\cdot 2 - 2 $$\n\nWhich becomes\n\n$$ 4 + 8 - 2 $$\n$$ \\Rightarrow 10 $$\n\nPolynomials can have any natural number exponent:\n\n$$ 54\\cdot x^{143} + \\frac{73}{3}\\cdot x^3 + 94 $$\nis a valid polynomial. <br>\n<br>\nA polynomial can't contain any special functions like logarithmic or trigonometric functions. ",
+        facts: "Polynomials are expressions. Here is an example of a polynomial:\n\n$$ x^2 + 4\\cdot x - 2 $$\n\nYou can put a number into x, and the polynomial will become another number.\n<br><br>\nIf x is 2:\n\n$$ 2^2 + 4\\cdot 2 - 2 $$\n\nWhich becomes\n\n$$ 4 + 8 - 2 $$\n$$ \\Rightarrow 10 $$\n\nPolynomials can have any natural number exponent:\n\n$$ 54\\cdot x^{143} + \\frac{73}{3}\\cdot x^3 + 94 $$\nis a valid polynomial. <br>\n<br>\n<Strong>Properties:</strong><br>\nThe x's must be raised to a non-negative integer exponent and the polynomial can't contain any special functions like logarithmic or trigonometric functions. ",
     },
     29: {
         x: -756.2940268790453,
@@ -119,7 +119,7 @@ var all_bubbles = {
         r: 100,
         link: ["35"],
         title: "1. Polynomial",
-        facts: "Sometimes when we have a polynomial, the order of that polynomial is 1. It is then called a first order polynomial or a linear polynomial.\n<br>\nThis is a 1. order polynomial:\n$$ x + 3 $$\n\nTo find the root, we add ' = 0', we get:\n\n$$ x + 3 = 0 $$\n\nFirst order polynomials can easily be solved for 'x'. You first add or subtract to remove the term:\n\n$$ x + 3 - 3 = -3 $$\n\nYou subtract 3 from both sides\n\n$$ x + (3 - 3) = -3 $$\n$$ \\Rightarrow x + (0) = -3 $$\n$$ \\Rightarrow x = -3 $$\n\nWe have now solved the root of the polynomial. It is $-3$.\n<br>\nIf you have a polynomial with a multiplier:\n\n$$ 43\\cdot x + 3 = 0 $$\n\nFirst, you remove the <span style=\"font-weight: bold;\">term</span>: (3) is the term.\n\n$$ 43\\cdot x + 3 - 3 = -3 $$\n$$ \\Rightarrow 43\\cdot x + (3-3) = -3$$\n$$ \\Rightarrow 43\\cdot x + (0) = -3$$\n$$\\Rightarrow 43\\cdot x = -3$$\n\nNow you can divide both sides by 43:\n\n$$\\Rightarrow \\frac{43}{43}x = \\frac{-3}{43} $$\n$$\\Rightarrow x = \\frac{-3}{43}$$\n\nWe have now solved the root.",
+        facts: "Sometimes when we have a polynomial, the order of that polynomial is 1. This is called a first order polynomial or a linear polynomial.\n<br>\nThis is a 1. order polynomial:\n$$ x + 3 $$\nThis is <strong>not</strong> a 1. order polynomial:\n$$x^3 + x - 5$$\nBecause in that polynomial $x$ is raised to the power of $3$. There must be a x raised to the power of 1 and there can't be one raised to any number above 1. <br>\n<br>\nIt is called a linear polynomial because if you increase $x$ by any amount, the value of the polynomial will increase the same amount.\n<br>\nTo find the root, we add ' = 0', we get:\n\n$$ x + 3 = 0 $$\n\nFirst order polynomials can easily be solved for 'x'. You first add or subtract to remove the term:\n\n$$ x + 3 - 3 = -3 $$\n\nYou subtract 3 from both sides\n\n$$ x + (3 - 3) = -3 $$\n$$ \\Rightarrow x + (0) = -3 $$\n$$ \\Rightarrow x = -3 $$\n\nWe have now solved the root of the polynomial. It is $-3$.\n<br>\nIf you have a polynomial with a multiplier:\n\n$$ 43\\cdot x + 3 = 0 $$\n\nFirst, you remove the <span style=\"font-weight: bold;\">term</span>: (3) is the term.\n\n$$ 43\\cdot x + 3 - 3 = -3 $$\n$$ \\Rightarrow 43\\cdot x + (3-3) = -3$$\n$$ \\Rightarrow 43\\cdot x + (0) = -3$$\n$$\\Rightarrow 43\\cdot x = -3$$\n\nNow you can divide both sides by 43:\n\n$$\\Rightarrow \\frac{43}{43}x = \\frac{-3}{43} $$\n$$\\Rightarrow x = \\frac{-3}{43}$$\n\nWe have now solved the root.",
     },
     35: {
         x: 111.7059731209547,
@@ -272,6 +272,22 @@ var all_bubbles = {
         link: ["28"],
         title: "Symbolic Expressions",
         facts: "A symbolic expression is an expression where we use one or more <strong>symbols</strong>. A symbol is the name of a <strong>variable</strong>. A variable is simply a number that we don't want to write down yet, e.g. because we don't know what it's value is.\n<br>\n<strong>Example:</strong>\n$$ x + 3 $$\n\nWe can later choose to set $x$ to any number we like. Think of a variable, or $x$, like a box. We can put any number in the box. When there is a number inside the box, we can collapse the expression.\n<br>\nLet's put $8$ inside $x$. The expression becomes $8+3$. This collapses into $11$.",
+    },
+    54: {
+        x: 861.35772357723,
+        y: -14116.182926829268,
+        r: 100,
+        link: [],
+        title: "Equal sign",
+        facts: "The equal sign looks like this:\n$$=$$\nThe sign indicates equality, usually between two expressions. You can also combine multiple equal sign and expressions like this:\n$$1 + 2 = 6 - 3 = 9 / 3$$\nNote that all combination must be true\n$$1 + 2 = 6 - 3$$\n$$6 - 3 = 9/3$$\n$$1 + 2 = 9/3$$",
+    },
+    55: {
+        x: 1351.35772357723,
+        y: -15167.182926829268,
+        r: 100,
+        link: [],
+        title: "Implies sign",
+        facts: "This is the implies sign: \n$$\\Rightarrow$$\nand is not to be confused with the equal sign. It's a normal mistake to do. Let's learn the difference! <br>\n<br>\nSimply put, the equal sign is used between two expressions while the implies sign is used between two equations. <br>\n<br>\nLet's look at some examples: <br>\n<br>\nAn expression:<br>\n$$5 + 3 = 8$$\nAn other:<br>\n$$5 = 8 - 3$$\nNote that the second equation is the same is the first only we subtracted 3 from each side. <Strong> Important: </strong> If we do the same operation on both sides of an equation, we can place the implies sign between the old and the new equation, like this:\n$$5 + 3 = 8 \\Rightarrow 5 = 8 - 3$$\nAnother example with symbolic equations:\n$$x + 5 = 2x - 8$$\nWe subtract with x on both sides:\n$$x + 5 = 3x - 8 \\Rightarrow 5 = 2x - 8 $$\nAdd 8 to both sides:\n$$5 = 2x - 8 \\Rightarrow 13 = 2x $$\nDivide by 2 on both sides:\n$$13 = 2x \\Rightarrow 13/2 = x $$\nFinal equation:\n$$x = 7.5$$",
     },
     start: {
         x: 0,
@@ -432,13 +448,5 @@ var all_bubbles = {
         link: ["44"],
         title: "Integration",
         facts: "$$\\int$$ is the integration symbol, it means \"to sum\" over an infinitesimally small intervals.",
-    },
-    54: {
-        x: 807.2094574415114,
-        y: -14058.913821138212,
-        r: 100,
-        link: [],
-        title: "Equal sign",
-        facts: "The equal sign looks like this:\n$$=$$\nThe sign indicates equality, usually between two expressions. You can also combine multiple equal sign and expressions like this:\n$$1 + 2 = 6 - 3 = 9 / 3$$\nNote that all combination must be true\n$$1 + 2 = 6 - 3$$\n$$6 - 3 = 9/3$$\n$$1 + 2 = 9/3$$",
     },
 };
