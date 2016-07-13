@@ -18,9 +18,9 @@
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
-	KEVIN: Right-mouse button editing interface
 
 # DONE #
+	KEVIN: Right-mouse button editing interface
 	KEVIN: Draw a line from Q'd and an arrow for R'd bubbles
 	KEVIN: Allow bubbles to be unmastered
 	OLE: Bubble text fitting still need some optimization (long vs short two letter words)
