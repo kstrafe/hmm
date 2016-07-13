@@ -17,10 +17,10 @@
 	Short cut to places around the canvas (Teleport functionality? Press X, opens small writable window, write 3000, -30400, enter, move to that location, or write an ID number)
 	Right-mouse button editing interface
 	Draw a line from Q'd and an arrow for R'd bubbles
-	Allow bubbles to be unmastered
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
+	KEVIN: Allow bubbles to be unmastered
 
 # DONE #
 	OLE: Bubble text fitting still need some optimization (long vs short two letter words)
