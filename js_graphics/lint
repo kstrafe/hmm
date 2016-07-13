@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+
+for i in *.js; do
+    if echo "$i" | grep -v Data.js; then
+        js-beautify -n -r -j "$i"
+        jslint "$i"
+    fi
+done
