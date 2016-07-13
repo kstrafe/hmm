@@ -102,7 +102,7 @@ function drawFactBox(onCircle) {
         sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
         context.canvas.addEventListener('mousemove', mouseHoverListener, false);
-        factBox.show(onCircle.facts, lastBubble.getFav());
+        factBox.show(onCircle.facts, lastBubble.getFav(), lastBubble.isMastered());
     } else {
         context.canvas.addEventListener('mousemove', mouseMoveListener, false);
         factBox.hide();
@@ -116,7 +116,7 @@ function drawFactBoxSpace(onCircle) {
     }
     lastBubble = onCircle.bubble;
     if (onCircle.hit) {
-        factBox.show(onCircle.facts, lastBubble.getFav());
+        factBox.show(onCircle.facts, lastBubble.getFav(), lastBubble.isMastered());
 
         sounds.openInfo();
         window.removeEventListener("mouseup", mouseUpListener, false);
@@ -139,8 +139,9 @@ function closeEditorNoSave() {
 
 function master() {
     var mastered;
-    lastBubble.masterThis();
-    curves.masterFrom(lastBubble.getIndex());
+    lastBubble.flipMaster();
+    curves.masterFrom(lastBubble.getIndex(), lastBubble.isMastered());
+    factBox.setMaster(lastBubble.isMastered());
     mastered = JSON.stringify(bubbles.getMastered());
     localStorage.setItem("mastered", mastered);
 }
@@ -424,7 +425,7 @@ function setupBubblesAndCurves() {
             mastereds = JSON.parse(localStorage.mastered);
             bubbles.setMastereds(mastereds);
             for (i = 0; i < mastereds.length; i += 1) {
-                curves.masterFrom(mastereds[i]);
+                curves.masterFrom(mastereds[i], true);
             }
         }
         if (localStorage.favd !== undefined) {

@@ -17,8 +17,12 @@ function Curve(x0, y0, r0, x1, y1, r1) {
     this.color = this.colors.getByName('bubbleGreen');
 }
 
-Curve.prototype.intoMastered = function () {
-    this.color = this.colors.getByName('bubblePurple');
+Curve.prototype.intoMastered = function (state) {
+    if (state) {
+        this.color = this.colors.getByName('bubblePurple');
+    } else {
+        this.color = this.colors.getByName('bubbleGreen');
+    }
 };
 
 Curve.prototype.recompute = function (c1, c2) {

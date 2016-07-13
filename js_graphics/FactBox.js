@@ -17,6 +17,7 @@ function FactBox() {
     this.editor = document.getElementById("editor");
     this.viewer = document.getElementById("viewer");
     this.viewerfacts = document.getElementById("viewerfacts");
+    this.viewmaster = document.getElementById("viewmaster");
     this.viewertitle = document.getElementById("viewertitle");
     this.editor.style.visibility = "hidden";
     this.viewer.style.visibility = "hidden";
@@ -58,7 +59,11 @@ FactBox.prototype.closeEditorNoSave = function () {
     this.viewer.style.visibility = "visible";
 };
 
-FactBox.prototype.show = function (info, fav) {
+FactBox.prototype.setMaster = function (mastered) {
+    this.viewmaster.innerHTML = mastered ? 'Unmaster' : 'Master';
+};
+
+FactBox.prototype.show = function (info, fav, mastered) {
     if (this.inEditor) {
         return;
     }
@@ -66,6 +71,7 @@ FactBox.prototype.show = function (info, fav) {
     this.active = true;
     this.viewerfacts.innerHTML = info.facts;
     this.viewertitle.innerHTML = info.name;
+    this.setMaster(mastered);
     MathJax.Hub.Typeset();
     this.viewer.style.visibility = "visible";
 };

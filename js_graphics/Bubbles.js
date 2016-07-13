@@ -33,7 +33,7 @@ Bubbles.prototype.setMastereds = function (list) {
     for (i = 0; i < list.length; i += 1) {
         bubble = this.namedBubbles[list[i]];
         if (bubble !== undefined) {
-            bubble.masterThis();
+            bubble.flipMaster();
         }
     }
 };

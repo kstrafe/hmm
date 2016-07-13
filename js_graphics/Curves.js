@@ -22,7 +22,7 @@ Curves.prototype.reposition = function (from, bubbles) {
     }
 };
 
-Curves.prototype.masterFrom = function (bubbleIndex) {
+Curves.prototype.masterFrom = function (bubbleIndex, mastered) {
     var i,
         list = this.rawfrom[bubbleIndex];
 
@@ -31,7 +31,7 @@ Curves.prototype.masterFrom = function (bubbleIndex) {
     }
 
     for (i = 0; i < list.length; i += 1) {
-        this.connected[bubbleIndex][list[i]].intoMastered();
+        this.connected[bubbleIndex][list[i]].intoMastered(mastered);
     }
 };
 
