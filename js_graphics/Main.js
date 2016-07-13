@@ -26,7 +26,6 @@
 
 "use strict";
 
-var openBubble = null;
 
 var context = new Context(document.getElementById('canvas'));
 var floaties = new Floatys();
@@ -36,10 +35,10 @@ var curves = new Curves();
 var edit = new Edit();
 var help = new Help();
 var templine = new TempLine();
-
 var sounds = new Sounds();
 sounds.playBGM();
 
+var openBubble = null;
 var editingBubble = null;
 
 
@@ -72,21 +71,21 @@ function editGraph() {
         bubbles.add(bubbles.length(), bubble);
     } else if (bubble === undefined && editingBubble !== null) {
         console.log("move-end");
-        edit.flipActive();
+        edit.off();
         editingBubble.moveTo(mousePos.x, mousePos.y);
         curves.reposition(editingBubble.getIndex(), bubbles);
         editingBubble = null;
         templine.setStart(null);
     } else if (bubble !== undefined && editingBubble !== null) {
         console.log("link-end");
-        edit.flipActive();
+        edit.off();
         curve = new Curve(editingBubble.x, editingBubble.y, editingBubble.r, bubble.x, bubble.y, bubble.r);
         curves.append(curve, editingBubble.getIndex(), bubble.getIndex());
         editingBubble = null;
         templine.setStart(null);
     } else if (bubble !== undefined && editingBubble === null) {
         console.log("movelink-start");
-        edit.flipActive();
+        edit.on();
         editingBubble = bubble;
         if (bubble !== undefined) {
             templine.setStart(bubble.getXY());
@@ -323,6 +322,11 @@ function keyboardDown(key) {
 
     help.deactivate();
     switch (key.which) {
+    case KEY.ESC:
+        editingBubble = null;
+        templine.setStart(null);
+        edit.off();
+        break;
     case KEY.G:
         generateDataJs();
         break;

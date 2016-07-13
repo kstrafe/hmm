@@ -4,8 +4,12 @@ function Edit() {
     this.active = false;
 }
 
-Edit.prototype.flipActive = function () {
-    this.active = !this.active;
+Edit.prototype.on = function () {
+    this.active = true;
+};
+
+Edit.prototype.off = function () {
+    this.active = false;
 };
 
 Edit.prototype.draw = function (context) {
@@ -24,7 +28,7 @@ Edit.prototype.draw = function (context) {
     context.globalAlpha = 0.25;
     context.fillStyle = '#FFFFFF';
     context.font = '20px Calibri';
-    context.fillText("Press 'Q/Right Mouse' whilst holding the mouse pointer over a bubble to (un)link to it", middle, bottom - 20);
-    context.fillText("hold the mouse pointer over an empty area to move", middle, bottom);
+    context.fillText("Press 'Q/Right Mouse' whilst holding the mouse pointer over a bubble to (un)link to it", middle, bottom - safetyOffset);
+    context.fillText("hold the mouse pointer over an empty area to move. Esc to abort", middle, bottom);
     context.restore();
 };

@@ -43,7 +43,7 @@ Help.prototype.draw = function (context) {
         hOffset = 25,
         right = this.right - this.safeOffset,
         helpstr = [
-            "Q/Right Mouse: Edit Mode | E: Dev Info | M: Toggle Sound",
+            "Q/Right Mouse: Edit Mode | Esc: Abort Edit Mode | E: Dev Info | M: Toggle Sound",
             "WASD/HJKL/Arrows: Movement | Space: Select at Center | Mouse: Select at Pointer",
             "Scroll wheel/+/-: Zoom | G: Generate Data File (save your changes)"
         ];
