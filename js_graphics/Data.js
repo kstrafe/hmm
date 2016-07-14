@@ -45,7 +45,7 @@ var all_bubbles = {
         x: -1044.6224489795904,
         y: -15111.418367346938,
         r: 100,
-        link: ["24"],
+        link: ["24","386721657746765"],
         title: "Decimal power",
         facts: "We know what it means to find the nth root or calculate an exponential with a positive whole number. But can we do the same with a decimal number?<br>\nWhat does the following equal?\n$$ 5^{2.5} $$  \n\nRemember that\n\n$$ 5^2 = 5 \\times 5 $$\n\nHowever, with the added 0.5, we can simply multiply with the square root:\n\n$$ 5^{2.5} = 5^2 \\times 5^{0.5} = 5 \\times 5 \\times \\sqrt{5} $$\nWhat about:\n$$5^{3.375}$$\nThis can similarly be written as:\n$$5^{3.375} = 5^3 \\times 5^{0.375}$$ \nAnd\n$$0.375 = \\frac{3}{8}$$\nSo\n$$5^{0.375} = 5^{\\frac{3}{8}}$$\nRemember\n$$\\sqrt{5} = 5^{0.5} = 5^{\\frac{1}{2}} $$\nWhich is the same as: \n$$\\sqrt[2]{5^1}$$\n(we usually don't write 2 next to the root sign for the square root since it is implied) <br>\nThis must mean that\n$$5^{\\frac{3}{8}} = \\sqrt[8]{5^3}$$\nWhich is the 8th root of\n$$5^3 = 125$$\nSo\n$$5^{3.375} = 125 \\times \\sqrt[8]{125}$$\nThat's cool, but what if the exponent is an irrational number? These can't be written as a rational number. We will now use variables <br>\n$$b^a$$\n\nTo be continued..",
     },
@@ -239,7 +239,7 @@ var all_bubbles = {
         r: 100,
         link: ["50"],
         title: "Rational Addition",
-        facts: "Adding rational numbers is different from integers and natural numbers.\n<br>\n<strong>Example:</strong>\n<br>\n$$ \\frac{3}{4} + \\frac{2}{4} $$\n\nThis is the same as\n\n$$ \\frac{3 + 2}{4} $$\n\nWhich is the same as\n\n$$ \\frac{5}{4} $$\n\n<strong>Rule:</strong>\n<br>\nWhen the denominator is the same, you can simply add the numerators together.\n<br>\nWhat if the denominators are not the same?\n<br>\n<strong>Example:</strong>\n$$ \\frac{3}{4} + \\frac{2}{5} $$\nWhat number is this?\n<br>\nThe technique is to multiply by the opposite denominator:\n\n$$ \\frac{5}{5}\\cdot \\frac{3}{4} + \\frac{4}{4}\\cdot \\frac{2}{5} $$\n\nYou can multiply because the values $\\frac{5}{5}$ and $\\frac{4}{4}$ are 1, which means the number (the result) does not change.\n<br>\nRemember that multiplying rationals allows you to multiply the numerators together independently from the denominators:\n\n$$ \\frac{5\\cdot 3}{20} + \\frac{4\\cdot 2}{20} $$\n\nThe denominators are now the same. You can collapse this expression into\n\n$$ \\frac{5\\cdot 3 + 4 \\cdot 2}{20} $$\n\nWhich can collapse into\n\n$$ \\frac{15 + 8}{20} $$\n\n$$ \\frac{23}{20} $$",
+        facts: "Adding rational numbers is different from integers and natural numbers.\n<br>\n<strong>Example:</strong>\n<br>\n$$ \\frac{3}{4} + \\frac{2}{4} $$\n\nThis is the same as\n\n$$ \\frac{3 + 2}{4} $$\n\nWhich is the same as\n\n$$ \\frac{5}{4} $$\n\n<strong>Rule:</strong>\n<br>\nWhen the denominator is the same, you can simply add the numerators together.\n<br>\nWhat if the denominators are not the same? Come back after learning: \n<a onclick=\"teleportTo(50);\">Rational multiplication</a>\n<br>\n<strong>Example:</strong>\n$$ \\frac{3}{4} + \\frac{2}{5} $$\nWhat number is this?\n<br>\nThe technique is to multiply by the opposite denominator:\n\n$$ \\frac{5}{5}\\cdot \\frac{3}{4} + \\frac{4}{4}\\cdot \\frac{2}{5} $$\n\nYou can multiply because the values $\\frac{5}{5}$ and $\\frac{4}{4}$ are 1, which means the number (the result) does not change.\n<br>\nRemember that multiplying rationals allows you to multiply the numerators together independently from the denominators:\n\n$$ \\frac{5\\cdot 3}{20} + \\frac{4\\cdot 2}{20} $$\n\nThe denominators are now the same. You can collapse this expression into\n\n$$ \\frac{5\\cdot 3 + 4 \\cdot 2}{20} $$\n\nWhich can collapse into\n\n$$ \\frac{15 + 8}{20} $$\n\n$$ \\frac{23}{20} $$",
     },
     50: {
         x: -636.5204081632655,
@@ -247,7 +247,7 @@ var all_bubbles = {
         r: 100,
         link: ["22"],
         title: "Rational Multiplication",
-        facts: "",
+        facts: "Rational multiplication has a easy rule to remember. <br>\n<strong>Example:</strong>\n$$\\frac{1}{2} \\cdot \\frac{1}{4}$$\nThis is the same as:\n$$\\frac{1}{8}$$\nAs you can see we multiplies the denominators<br>\nBut also the numerator, check out this example:\n$$\\frac{3}{8} \\cdot \\frac{4}{5}$$\nThis equals\n$$\\frac{3 \\cdot 4}{8 \\cdot 5}$$\nWhich again is the same as\n$$\\frac{12}{40}$$",
     },
     51: {
         x: 607.4795918367345,
@@ -255,7 +255,7 @@ var all_bubbles = {
         r: 100,
         link: ["52"],
         title: "Rational Subtraction",
-        facts: "New knowledge shall arrive here soon",
+        facts: "Like with rational addition must must make sure the denominators are the same in order to subtract the rational numbers.\n$$\\frac{5}{3} - \\frac{2}{3}$$\nThese have the same denominator, so all we need to do is subtract the numarators.\n$$\\frac{5-2}{3}$$\nWhich is the same as\n$$\\frac{3}{3}$$\nIf the denominators aren't equal we must make them equal in order to continue.",
     },
     52: {
         x: 1035.4795918367345,
@@ -263,7 +263,7 @@ var all_bubbles = {
         r: 100,
         link: ["62"],
         title: "Rational Division",
-        facts: "New knowledge shall arrive here soon",
+        facts: "Let's look at an example\n$$\\frac{1}{4} / \\frac{2}{3}$$\nThe rule goes as follows: Flip the number on the right. That is, put the number on the top on the bottom and vice versa, and then multiply the numbers.<br>\n<br>\nSo we get (notice the last fraction is flipped)\n$$\\frac{1}{4} \\cdot \\frac{3}{2}$$\nWhich is\n$$\\frac{1 \\cdot 3}{4 \\cdot 2}$$\nFinally\n$$\\frac{3}{8}$$\nAnother way to do it is start with:\n$$\\frac{\\frac{1}{4}}{\\frac{2}{3}}$$\nThen multiply with $\\frac{3}{3}$ and after that $\\frac{4}{4}$. Notice that $2$ and $3$ are the denominators and that  $\\frac{3}{3}$ and $\\frac{4}{4}$ equals $1$. <br>\n<br>\nLet's do the multiplications:\n$$\\frac{\\frac{1}{4}}{\\frac{2}{3}} \\cdot \\frac{3}{3}$$\nRewritten as \n$$\\frac{\\frac{1}{4} \\cdot 3}{\\frac{2}{3} \\cdot 3}$$\nOr\n$$\\frac{\\frac{1}{4} \\cdot \\frac{3}{1}}{\\frac{2}{3} \\cdot \\frac{3}{1}}$$\nWe get:\n$$\\frac{\\frac{3}{4}}{2}$$\nNow multiply with $\\frac{4}{4}$\n$$\\frac{\\frac{3}{4}}{2} \\cdot \\frac{4}{4}$$\nRewritten\n$$\\frac{\\frac{3}{4} \\cdot \\frac{4}{1}}{2 \\cdot \\frac{4}{1}}$$\nFinally\n$$\\frac{3}{8}$$",
     },
     53: {
         x: 256.37263978762167,
@@ -455,7 +455,7 @@ var all_bubbles = {
         r: 100,
         link: ["51","49","45"],
         title: "Rationals",
-        facts: "You have seen integer division. What if the subtraction of the denominator from the numerator doesn't go to 0? Remember that with the expression 6 / 2, we subtract the right side from the left side (of the / sign) until the left side is 0. What if we have something like $$\\frac{5}{2}$$ Let's try: $$5 - 2 = 3$$ Now we have $$3$$ Next: $$3 -  2 = 1$$ If we subtract 2 once again, we get -1, an integer. So we can not divide the number. We are left at 1. This (1) is called the remainder. We can create a new type of number. We call this number a 'Rational Number'. It is called rational because it is defined by a ratio of two numbers. The expression \\frac{5}{2} is 2.5 in decimal notation, because the remainder is only half (0.5) that of 2.\n<br><br>\nWe use the symbol\n\n$$ \\mathbb{Q} $$\nto mean \"all rational numbers\".",
+        facts: "Names you must know: <br>\n<strong>Numerator:</strong> The number on top <br>\n<strong>Denominator:</strong> The number on the bottom <br>\n<br>\nYou have seen integer division. What if the subtraction of the denominator from the numerator doesn't go to 0? Remember that with the expression 6 / 2, we subtract the right side from the left side (of the / sign) until the left side is 0. What if we have something like $$\\frac{5}{2}$$ Let's try: $$5 - 2 = 3$$\nNow we have $$3$$\nNext:\n$$3 -  2 = 1$$\n If we subtract 2 once again, we get -1, an integer. So we can not divide the number and get a integer as result. We are left at 1. This (1) is called the remainder. We can create a new type of number. We call this number a 'Rational Number'. It is called rational because it is defined by a ratio of two numbers. The expression $\\frac{5}{2}$ is 2.5 in decimal notation, because the remainder is only half (0.5) that of 2.\n<br><br>\nWe use the symbol\n\n$$ \\mathbb{Q} $$\nto mean \"all rational numbers\".",
     },
     remainder: {
         x: 1586.3726397876217,
@@ -504,5 +504,13 @@ var all_bubbles = {
         link: ["44"],
         title: "Integration",
         facts: "$$\\int$$ is the integration symbol, it means \"to sum\" over an infinitesimally small intervals.",
+    },
+    386721657746765: {
+        x: -850.8952380952414,
+        y: -15131.370748299323,
+        r: 40,
+        link: [],
+        title: "Negative base",
+        facts: "So we are getting pretty good at exponentiation and powers. It's time to look at negative bases. <br>\nWith integers it fairly easy:\n$$(-3)^4 = (-3) \\times (-3) \\times (-3) \\times (-3) = 81$$\nWait, that's the same as\n$$3^4 = 81$$\nBut with a odd number we get:\n$$(-3)^3 = -27$$\nBut \n$$3^3 = 27$$\nSo the sign will flip for odd integers. <br>\n<br>\nNow the interesting part, decimal power: <br>\n$$(-3)^{2.5}$$\nWell that's just\n$$(-3) \\times (-3) \\times (-3)^{0.5}$$\nBut what is:\n$$(-3)^{0.5}$$ \n? <br>\nFirst you must know <a onclick=\"teleportTo(31);\">Complex numbers</a> <br>\nStay tuned for more\n",
     },
 };
