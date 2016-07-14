@@ -64,6 +64,21 @@ Bubbles.prototype.collide = function (pos) {
     }
 };
 
+Bubbles.prototype.genUniqId = function () {
+    var randNum, i;
+
+    for (i = 0; i < 1000; i += 1) {
+        randNum = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+        if (this.namedBubbles[randNum] === undefined) {
+            return randNum;
+        }
+    }
+    while (this.namedBubbles[i] !== undefined) {
+        i += 1;
+    }
+    return i;
+};
+
 Bubbles.prototype.hover = function (mousePos, sounds) {
     var i = null;
     for (i = 0; i < this.length(); i += 1) {

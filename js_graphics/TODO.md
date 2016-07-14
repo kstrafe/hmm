@@ -20,6 +20,7 @@
 	KEVIN: Short cut to places around the canvas (Teleport functionality? Press X, opens small writable window, write 3000, -30400, enter, move to that location, or write an ID number)
 
 # DONE #
+	KEVIN: Random IDs for nodes to avoid merge conflicts
 	KEVIN: Right-mouse button editing interface
 	KEVIN: Draw a line from Q'd and an arrow for R'd bubbles
 	KEVIN: Allow bubbles to be unmastered

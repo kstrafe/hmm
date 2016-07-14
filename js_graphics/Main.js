@@ -67,8 +67,8 @@ function editGraph() {
 
     if (bubble === undefined && editingBubble === null) {
         console.log("create");
-        bubble = new Bubble(bubbles.length(), mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
-        bubbles.add(bubbles.length(), bubble);
+        bubble = new Bubble(bubbles.genUniqId(), mousePos.x, mousePos.y, 100, bubbles.length().toString(), "New knowledge shall arrive here soon");
+        bubbles.add(bubble.getIndex(), bubble);
     } else if (bubble === undefined && editingBubble !== null) {
         console.log("move-end");
         edit.off();

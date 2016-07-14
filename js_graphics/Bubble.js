@@ -1,4 +1,6 @@
 /*global Colors*/
+/*global Math*/
+/*global Numbers*/
 
 "use strict";
 
