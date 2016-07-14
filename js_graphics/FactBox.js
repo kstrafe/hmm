@@ -69,6 +69,7 @@ FactBox.prototype.show = function (info, fav, mastered) {
     }
     this.favbut.innerHTML = fav ? "★" : "☆";
     this.active = true;
+    this.viewerfacts.scrollTop = 0;
     this.viewerfacts.innerHTML = info.facts;
     this.viewertitle.innerHTML = info.name;
     this.setMaster(mastered);
