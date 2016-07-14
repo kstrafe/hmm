@@ -6,11 +6,11 @@
 
 # TODO #
 	Semantic zoom (Basic Arithmetic, Symbolics, Geometry, Probability, ...)
-	Custom node colour
 	Loading screen (Currently nothing shows until page is loaded)
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
+	KEVIN: Custom node colour
 
 # DONE #
 	KEVIN: Create a button for factBox to almost completely maximize and become opaque
