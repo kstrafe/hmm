@@ -13,7 +13,7 @@ function Help() {
 }
 
 Help.prototype.collide = function (absPos) {
-    var rightOffset = 40,
+    var rightOffset = 30,
         left = this.right - rightOffset,
         right = this.right;
     if (absPos.x > left && absPos.x < right) {

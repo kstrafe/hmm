@@ -22,6 +22,7 @@
 /*global navigator*/
 /*global Sounds*/
 /*global Storage*/
+/*global Teleport*/
 /*global TempLine*/
 
 "use strict";
@@ -37,6 +38,7 @@ var help = new Help();
 var templine = new TempLine();
 var sounds = new Sounds();
 sounds.playBGM();
+var teleport = new Teleport();
 
 var openBubble = null;
 var editingBubble = null;
@@ -49,6 +51,7 @@ function renderEverything() {
     context.drawAbsolute(sounds);
     context.drawAbsolute(edit);
     context.drawAbsolute(help);
+    context.drawAbsolute(teleport);
     context.drawDevMode();
 }
 
@@ -58,6 +61,7 @@ function updateEverything() {
     sounds.refreshBgm();
     sounds.fadeOut();
     help.fadeOut();
+    teleport.fadeOut();
 }
 
 function editGraph() {
@@ -101,6 +105,7 @@ function mouseHoverListener(evt) {
     bubbles.hover(smousePos, sounds);
     sounds.hoverButton(mPos);
     help.hoverButton(mPos);
+    teleport.hoverButton(mPos);
     templine.setStop(smousePos);
 }
 
@@ -186,6 +191,26 @@ function master() {
     }
 }
 
+function teleportTo(x, y) {
+    var bubble;
+    if (y === undefined && x !== undefined) {
+        bubble = bubbles.getNamed(x);
+        if (bubble !== undefined) {
+            context.centerAbs(bubble.getXY().x, bubble.getXY().y);
+        }
+    } else if (x !== undefined) {
+        context.centerAbs(x, y);
+    }
+}
+
+function openTeleport() {
+    openBubble = bubbles.getNamed('60');
+    drawFactBox({
+        hit: true,
+        facts: openBubble.getNameAndFacts()
+    });
+}
+
 function mouseDownListener(evt) {
     var onCircle = false,
         mousePos = null,
@@ -215,6 +240,9 @@ function mouseDownListener(evt) {
     drawFactBox(onCircle);
     sounds.onClick(mousePos);
     help.click();
+    if (teleport.click()) {
+        openTeleport();
+    }
 }
 
 function isMovementKey(key) {
@@ -340,7 +368,7 @@ function keyboardDown(key) {
         context.flipDevMode();
         break;
     case KEY.T:
-        // drawFactBox(bubbles.
+        openTeleport();
         break;
     case KEY.Q:
         editGraph();
@@ -365,6 +393,7 @@ function keyboardUp(key) {
 function onResize() {
     context.onResize();
     help.resize(context.canvas.width);
+    teleport.resize(context.canvas.width);
 }
 
 function contextMenu() {
