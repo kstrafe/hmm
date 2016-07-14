@@ -328,6 +328,7 @@ function generateDataJs() {
         tot += '        x: ' + bubble.getXY().x + ',\n';
         tot += '        y: ' + bubble.getXY().y + ',\n';
         tot += '        r: ' + bubble.getR() + ',\n';
+        tot += '        color: "' + bubble.getColor() + '",\n';
         tot += '        link: [' + curves.getForwards(bubble.getIndex()).map(surroundQuotes) + '],\n';
         tot += '        title: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
         tot += '        facts: "' + jsEscape(bubble.getFacts()) + '",\n';
@@ -414,6 +415,7 @@ function setupBubblesAndCurves() {
     var i = null,
         j = null,
         b = null,
+        bubble,
         curve = null,
         end = null,
         mastereds;
@@ -421,8 +423,11 @@ function setupBubblesAndCurves() {
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
             b = all_bubbles[i];
-            b = new Bubble(i, b.x, b.y, b.r, b.title, b.facts);
-            bubbles.add(i, b);
+            bubble = new Bubble(i, b.x, b.y, b.r, b.title, b.facts);
+            if (bubble.color !== undefined) {
+                bubble.setColor(b.color);
+            }
+            bubbles.add(i, bubble);
         }
     }
 
