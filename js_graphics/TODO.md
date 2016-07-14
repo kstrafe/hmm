@@ -2,19 +2,16 @@
 
 # IDEAS #
 	Calibri font everywhere. Host font like this?: (http://jsfiddle.net/zMKge/)
-	Create short video tutorials for editing
-
-	// Education mode: Answer question to unlock new bubbles about more challenging things
-	// Make child-bubbles first visible when hovering, but dissapear if you don't click the parent bubbles. E.g. when you click a bubble named Trigonometric funtions, the bubbles sine, cosine , etc. will appear.  this will require a tree structuring of the drawing of bubbled
+	Create short animation tutorials for editing
 
 # TODO #
 	Semantic zoom (Basic Arithmetic, Symbolics, Geometry, Probability, ...)
 	Custom node colour
-	Create a button for factBox to almost completely maximize and become opaque
-	Loading screen (else people click the first bubble and get an empty window)
+	Loading screen (Currently nothing shows until page is loaded)
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
+	KEVIN: Create a button for factBox to almost completely maximize and become opaque
 
 # DONE #
 	KEVIN: Reset the scrollbar to top after closing a factbox (opening another factbox may start with the scrollbar already down)
