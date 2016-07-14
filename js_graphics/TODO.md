@@ -13,13 +13,12 @@
 	Create a button for factBox to almost completely maximize and become opaque
 	Reset the scrollbar to top after closing a factbox (opening another factbox may start with the scrollbar already down)
 	Loading screen (else people click the first bubble and get an empty window)
-	Hyperlinks to bubbles (Use onclick to teleport to a bubble)
 
 # IN PROGRESS #
 	OLE: Make 10 new bubbles with content before 17.07 23.59 (Status: 3/10)
 
 # DONE #
-	KEVIN: Short cut to places around the canvas (Teleport functionality? Press X, opens small writable window, write 3000, -30400, enter, move to that location, or write an ID number)
+	KEVIN: Short cut to places around the canvas (Teleport functionality? Press X, opens small writable window, write 3000, -30400, enter, move to that location, or write an ID number) - "Hyperlinks to bubbles (Use onclick to teleport to a bubble)": Use <a> with onclick="teleportTo(nodeID)" or coordinate.
 	KEVIN: Random IDs for nodes to avoid merge conflicts
 	KEVIN: Right-mouse button editing interface
 	KEVIN: Draw a line from Q'd and an arrow for R'd bubbles
