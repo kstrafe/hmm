@@ -4,6 +4,9 @@
 	Calibri font everywhere. Host font like this?: (http://jsfiddle.net/zMKge/)
 	Create short animation tutorials for editing
 
+# MILESTONES #
+	First 100 nodes
+
 # TODO #
 	Semantic zoom (Basic Arithmetic, Symbolics, Geometry, Probability, ...)
 	Loading screen (Currently nothing shows until page is loaded)
