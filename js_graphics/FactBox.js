@@ -22,6 +22,8 @@ function FactBox() {
     this.editor.style.visibility = "hidden";
     this.viewer.style.visibility = "hidden";
     this.inEditor = false;
+    this.small = true;
+    this.opacity = 0.4;
 }
 
 FactBox.prototype.isActive = function () {
@@ -61,6 +63,25 @@ FactBox.prototype.closeEditorNoSave = function () {
 
 FactBox.prototype.setMaster = function (mastered) {
     this.viewmaster.innerHTML = mastered ? 'Unmaster' : 'Master';
+};
+
+FactBox.prototype.isSmall = function () {
+    return this.small;
+};
+
+FactBox.prototype.toggleSize = function () {
+    this.small = !this.small;
+    if (this.small) {
+        this.width = 0.35;
+        this.viewer.style.width = "33vw";
+        this.editor.style.width = "33vw";
+        this.opacity = 0.4;
+    } else {
+        this.width = 0.90;
+        this.viewer.style.width = "88vw";
+        this.editor.style.width = "88vw";
+        this.opacity = 0.9;
+    }
 };
 
 FactBox.prototype.show = function (info, fav, mastered) {
@@ -114,7 +135,7 @@ FactBox.prototype.draw = function (context) {
     context.strokeStyle = this.colors.getByName('factBoxLine');
     context.shadowColor = this.colors.getByName('factBoxShad');
     context.shadowBlur = 20;
-    context.globalAlpha = 0.4;
+    context.globalAlpha = this.opacity;
     context.fillStyle = this.colors.getByName('factBox');
 
     context.beginPath();
