@@ -20,7 +20,12 @@
 </head>
 <body>
 	<div id="editor">
-		<input id="title" type="text" name="Title" placeholder="title">
+		<div id="editcont">
+			<div id="editorsize" onclick="factBox.toggleSize();">
+				&plusmn;
+			</div>
+			<input id="title" type="text" name="Title" placeholder="title">
+		</div>
 		<textarea id="facts" placeholder="Content"></textarea>
 		<div class="botbuttons">
 			<button id="editdone" class="done" type="button" onclick="closeEditor();">Done</button>
