@@ -40,3 +40,8 @@ textarea::-webkit-scrollbar-thumb { background-color: rgba(50, 50, 50, 0.75); ou
 span::-webkit-scrollbar { width: 1em; }
 span::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); -webkit-border-radius: 0.5em;}
 span::-webkit-scrollbar-thumb { background-color: rgba(50, 50, 50, 0.75); outline: 1px solid slategrey; -webkit-border-radius: 0.5em;}
+
+ol {
+	list-style-type: decimal;
+	list-style-position: inside;
+}
