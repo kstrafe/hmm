@@ -1,11 +1,15 @@
 # BUGS #
 
 # IDEAS #
+	(Favorite colored lone between two favorited bubbles) 
+	If factbox active and you teleport to bubble, load new content to factbox
 	Calibri font everywhere. Host font like this?: (http://jsfiddle.net/zMKge/)
 	Create short animation tutorials for editing
 
 # MILESTONES #
+	#### UPCOMING ####
 	First 100 nodes
+	#### REACHED ####
 
 # TODO #
 	Semantic zoom (Basic Arithmetic, Symbolics, Geometry, Probability, ...)
