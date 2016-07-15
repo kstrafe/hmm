@@ -10,10 +10,10 @@
 #viewer u { font-style: underline; }
       #facts { box-sizing: border-box; display: block; height: 90%; min-height: 90%; overflow-y: scroll; }
 #viewerfacts { box-sizing: border-box; display: block; height: 90%; min-height: 90%; overflow-y: scroll; }
-	#title { box-sizing: border-box; background: transparent; border: 0; color: #EEEEEE; display: inline-block; font-size: x-large; position: relative; top: 50%; transform: translate(0, -50%); width: auto; height: 100%; }
+	#title { box-sizing: border-box; background: transparent; border: 0; color: #EEEEEE; display: inline-block; font-size: x-large; position: relative; top: 50%; transform: translate(0, -50%); width: auto; height: 100%; overflow: hidden; white-space: nowrap; }
     /*#title { box-sizing: border-box; background: transparent; border: 0; color: #FFFFFF; display: inline-block; height: 5%; text-align: center; width: 100%; font-family: Calibri, Arial, sans-serif; font-size:large;}*/
 #viewcont { box-sizing: border-box; background: transparent; border: 0; color: #FFFFFF; display: inline-block; height: 5%; text-align: center; width: 100%; }
-#viewertitle { box-sizing: border-box; background: transparent; border: 0; color: #EEEEEE; display: inline-block; font-size: x-large; position: relative; top: 50%; transform: translate(0, -50%); width: 50%; }
+#viewertitle { box-sizing: border-box; background: transparent; border: 0; color: #EEEEEE; display: inline-block; font-size: x-large; position: relative; top: 50%; transform: translate(0, -50%); width: auto; overflow: hidden; white-space: nowrap; }
 #editorsize { box-sizing: border-box; background: transparent; border: 0; color: #EEEEEE; cursor: pointer; display: inline-block; float: left; font-size: x-large; left: 0%;  position: relative; text-align: left; top: 50%; transform: translate(0, -50%); }
 #viewersize { box-sizing: border-box; background: transparent; border: 0; color: #EEEEEE; cursor: pointer; display: inline-block; float: left; font-size: x-large; left: 0%;  position: relative; text-align: left; top: 50%; transform: translate(0, -50%); }
 #viewerfav { box-sizing: border-box; background: transparent; border: 0; color: #FFDC00; cursor: pointer; display: inline; float: right; font-size: x-large; position: relative; text-align: right; top: 50%; transform: translate(0, -50%); }
