@@ -188,7 +188,7 @@ var all_bubbles = {
         color: "bubbleHL",
         link: ["31"],
         title: "Natural logarithm",
-        facts: "The natural logarithm is the logarithm with base:\n$$e$$\n\nNormally we would write:\n$$\\log_{e}()$$\nSince e is the base, but this base is so often used that it is referred to as\n$$\\ln()$$",
+        facts: "The natural logarithm is the logarithm with base:\n$$e$$\n\nWe normally write:\n$$\\log_{e}(x)$$\nSince $e$ is the base. This base is so often used that it is referred to as\n$$\\ln(x)$$\n\nwhere x is any number.",
     },
     41: {
         x: -1100.3243570599045,
@@ -197,7 +197,7 @@ var all_bubbles = {
         color: "bubbleHL",
         link: ["40"],
         title: "Euler's number",
-        facts: "$$e = \\mathop {\\lim }\\limits_{n \\to \\infty } \\left( {1 + \\frac{1}{n}} \\right)^n$$\n\n\nThis is an important number in mathematics, for one it is the base number for the natural logarithm. <br> \nThis first six digits of the number is:\n$$e \\approx 2.71828$$\nEuler's number is irrational, it is not a ratio of integer and has infinite amount of digits.",
+        facts: "$$e = \\mathop {\\lim }\\limits_{n \\to \\infty } \\left( {1 + \\frac{1}{n}} \\right)^n$$\n\n\nThis is an important number in mathematics, for one it is the base number for the natural logarithm. <br> \nThis first six digits of the number are:\n$$e \\approx 2.71828$$\nEuler's number is irrational, it is not a ratio of integers, and has an infinite amount of digits.",
     },
     42: {
         x: 1047.7327857972377,
