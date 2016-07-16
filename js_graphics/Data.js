@@ -638,7 +638,7 @@ var all_bubbles = {
         color: "bubbleHL",
         link: ["1365603668161835","4134109354619697"],
         title: "cosine",
-        facts: "Sine is a function. It looks like\n\n$$ \\sin(\\theta) $$\n\nWhere $\\theta$ (pronounced \"theta\") is a number.\n<br>\nsin gives you the <em>horizontal</em> (x) position on the unit circle for a certain $\\theta$.\n\n<br>\n<br>\n<img src=\"Textures/circle-unit-sct.gif\">\n<br>\n<br>",
+        facts: "Cosine is a function. It looks like\n\n$$ \\sin(\\theta) $$\n\nWhere $\\theta$ (pronounced \"theta\") is a number.\n<br>\nsin gives you the <em>horizontal</em> (x) position on the unit circle for a certain $\\theta$.\n\n<br>\n<br>\n<img src=\"Textures/circle-unit-sct.gif\">\n<br>\n<br>",
     },
     4976277242509039: {
         x: 1381.7327857972377,
