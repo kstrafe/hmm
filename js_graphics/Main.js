@@ -425,7 +425,7 @@ function setupBubblesAndCurves() {
         if (all_bubbles.hasOwnProperty(i)) {
             b = all_bubbles[i];
             bubble = new Bubble(i, b.x, b.y, b.r, b.title, b.facts);
-            if (bubble.color !== undefined) {
+            if (b.color !== undefined) {
                 bubble.setColor(b.color);
             }
             bubbles.add(i, bubble);
