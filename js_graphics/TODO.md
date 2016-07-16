@@ -1,8 +1,8 @@
 # BUGS #
 
 # IDEAS #
-	(Favorite colored lone between two favorited bubbles) 
-	If factbox active and you teleport to bubble, load new content to factbox
+	(Favorite colored line between two favorited bubbles) 
+	If factbox is active and you teleport to bubble, load content of this bubble to factbox
 	Calibri font everywhere. Host font like this?: (http://jsfiddle.net/zMKge/)
 	Create short animation tutorials for editing
 
