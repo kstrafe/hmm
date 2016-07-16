@@ -418,7 +418,8 @@ function setupBubblesAndCurves() {
         bubble,
         curve = null,
         end = null,
-        mastereds;
+        mastereds,
+        tmps;
 
     for (i in all_bubbles) {
         if (all_bubbles.hasOwnProperty(i)) {
@@ -455,7 +456,10 @@ function setupBubblesAndCurves() {
         if (localStorage.favd !== undefined) {
             mastereds = JSON.parse(localStorage.favd);
             for (i = 0; i < mastereds.length; i += 1) {
-                bubbles.getNamed(mastereds[i]).toggleFav();
+                tmps = bubbles.getNamed(mastereds[i]);
+                if (tmps !== undefined) {
+                    tmps.toggleFav();
+                }
             }
         }
     }
