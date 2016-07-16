@@ -141,9 +141,9 @@ var all_bubbles = {
         y: -15896.604197776667,
         r: 100,
         color: "bubbleHL",
-        link: ["23","58"],
+        link: ["23","58","2860149780001975"],
         title: "2. Polynomial",
-        facts: "The second order polynomial is more difficult to find the root for. Here is an example of a second order polynomial:\n\n$$ 3x^2 + 5x + 2 $$\n\nTo find the root, we add '= 0':\n\n$$ 3x^2 + 5x + 2 = 0 $$\n\nWe have to <span style=\"font-weight: bold;\">remember</span> the equation\n\n$$ x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a} $$\n\nThis says: \"The root (x) is the right side of the = sign\".\n\nWhat do a, b, and c mean? The root equation is assumed to be of the form:\n\n$$ a\\cdot x^2 + b\\cdot x + c = 0 $$\n\nWe see that:\n\n$$ a = 3, b = 5, c = 2 $$\n\nWe can put these number into the equation and get:\n\n$$ x_1 = \\frac{-5+\\sqrt(1)}{6}$$\n$$ \\Rightarrow x_1 = \\frac{-4}{6} = \\frac{-2}{3}$$\n$$ x_2 = \\frac{-5-\\sqrt(1)}{6}$$\n$$ \\Rightarrow x_2 = \\frac{-6}{6} = -1$$\n\nNote the\n\n$$\\pm$$\n\nThis means that there will be two roots! In fact, an polynomial of second order has two roots!\n<br>\nHow many roots do you think a polynomial of third order has?",
+        facts: "The second order polynomial is more difficult to find the root for. Here is an example of a second order polynomial:\n\n$$ 3x^2 + 5x + 2 $$\n\nTo find the root, we add '= 0':\n\n$$ 3x^2 + 5x + 2 = 0 $$\n\nWe have to <span style=\"font-weight: bold;\">remember</span> the equation\n\n$$ x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a} $$\n\nThis says: \"The root (x) is the right side of the = sign\".\n\nWhat do a, b, and c mean? The root equation is assumed to be of the form:\n\n$$ a\\cdot x^2 + b\\cdot x + c = 0 $$\n\nWe see that:\n\n$$ a = 3, b = 5, c = 2 $$\n\nWe can put these number into the equation and get:\n\n$$ x_1 = \\frac{-5+\\sqrt{1}}{6}$$\n$$ \\Rightarrow x_1 = \\frac{-4}{6} = \\frac{-2}{3}$$\n$$ x_2 = \\frac{-5-\\sqrt{1}}{6}$$\n$$ \\Rightarrow x_2 = \\frac{-6}{6} = -1$$\n\nNote the\n\n$$\\pm$$\n\nThis means that there will be two roots! In fact, an polynomial of second order has two roots!\n<br>\nHow many roots do you think a polynomial of third order has?",
     },
     36: {
         x: 989.7327857972377,
@@ -353,8 +353,8 @@ var all_bubbles = {
         facts: "In trigonometry we study the relations involving lengths and angles of triangles. <br>\nThis is an arbitrary triangle with all lengths and angles denoted by symbols.\n<br>\n\n<img src=\"Textures/Triangle_with_notations.png\">\n<br>\n\n<br>\n<br>\n<strong>Trivia:</strong>\n<br>\nDid you know that triangles are of the simplest 2D shapes?",
     },
     59: {
-        x: 1548.1654388584639,
-        y: -17332.072490459585,
+        x: 1663.1651733864273,
+        y: -17335.611332337816,
         r: 100,
         color: "bubbleHL",
         link: [],
@@ -801,5 +801,14 @@ var all_bubbles = {
         link: [],
         title: "Sine Sum",
         facts: "Let's see what we can do with\n\n$$ \\sin(A+B) $$\n\nRemember Euler's formula:\n\n$$\\cos(\\theta) + i\\cdot \\sin(\\theta) = e^{i\\theta}$$\n\nLet's replace $\\theta$:\n\n$$\\Rightarrow \\cos(A+B) + i\\cdot \\sin(A + B) = e^{i\\cdot (A + B)}$$\n\nNow use the identity\n\n$$ e^{A+B} = e^A \\cdot e^B $$\n\n$$ \\Rightarrow \\cos(A+B) + i\\cdot \\sin(A + B) = (\\cos(A) + i\\cdot \\sin(A))\\cdot(\\cos(B) + i\\cdot \\sin(B)) $$\n\n$$ \\Rightarrow \\cos(A+B) + i\\cdot \\sin(A + B) = \\cos(A)\\cos(B) + i\\cdot \\sin(A)\\cos(B) + \\cos(A)\\cdot i\\cdot \\sin(B) - \\sin(A)\\cdot\\sin(B) $$\n\nMultiply both sides by $i$.\n\n\n$$ \\Rightarrow i\\cdot \\cos(A+B) - \\sin(A + B) = i\\cdot\\cos(A)\\cos(B) - \\sin(A)\\cos(B) - \\cos(A)\\cdot \\sin(B) - i\\cdot \\sin(A)\\cdot\\sin(B) $$\n\nRealizing that $\\cos$ only returns a real number, we can remove all terms that are imaginary:\n\n$$ \\Rightarrow \\sin(A+B) = \\sin(A)\\cdot\\cos(B) + \\cos(A)\\cdot\\sin(B) $$\n\nThis identity can be really useful!",
+    },
+    2860149780001975: {
+        x: 298.64816658370546,
+        y: -16282.985481997675,
+        r: 100,
+        color: "bubbleHL",
+        link: [],
+        title: "3. Polynomial",
+        facts: "Third order polynomials and higher are generally more difficult to find the root for.\n\nSuppose our polynomial is\n$$ x^3 - x $$\n\nThe root equation is\n\n$$ x^3 - x = 0 $$\n\nNow, we can <em>factor</em> the x out of the left expression:\n\n$$ x\\cdot (x^2 - 1) = 0 $$\n\nWe now see that there are two possibilities\n\n<ol>\n<li> The first factor $x$ can be $0$, then the expression becomes $0$. </li>\n<li> The second factor $x^2 - 1$ can be $0$, then the expression becomes $0$. </li>\n</ol>\n\nSo we see find that $x=0$ is a solution. Our next solution is given by the equation\n\n$$ x^2 - 1 = 0 $$\n\nWhich is a second order polynomial root\n\n$$\\Rightarrow x^2 = 1 $$\n$$\\Rightarrow x = \\pm 1 $$\n\nSo the solutions are $\\{-1, 0, 1\\}$.\n\n<br>\n<br>\n<strong>Trivia:</strong>\n<br>\nDid you know that the general polynomial $a\\cdot x^3 + b\\cdot x^2 + c \\cdot x + d$ has a general solution?",
     },
 };
