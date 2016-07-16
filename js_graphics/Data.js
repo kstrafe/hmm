@@ -758,8 +758,8 @@ var all_bubbles = {
         facts: "The following symbol is called the sum symbol:\n\n\n$$ \\sum $$\n\nIt is the greek letter 'sigma'. \n\nIn mathematics it is used to define a sum without writing each term.\n\n$$ \\sum^5_{n=1} n $$\n\nexpands to\n\n$$ 1 + 2 + 3 + 4 + 5 $$\n\nWe can apply any operation to the number:\n\n$$ \\sum^5_{n=1} f(n) $$\n\nWill turn into:\n\n$$ f(1) + f(2) + f(3) + f(4) + f(5) $$",
     },
     4419110068750971: {
-        x: 399.64219346274876,
-        y: -16913.06213704994,
+        x: 312.1625186660003,
+        y: -16968.0418948067,
         r: 100,
         color: "bubbleHL",
         link: ["8398340884863259"],
