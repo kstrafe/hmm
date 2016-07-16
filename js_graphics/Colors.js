@@ -17,6 +17,7 @@ function Colors() {
         bubbleHLShadow: '#6ED80D',
         bubbleFav: '#D9EFFF',
         bubbleFavHL: '#A7D8FC',
+        bubbleRed: '#DB0B0B',
         textColor: "#DDDDDD",
         white: "#FFFFFF",
         factCont: "#000000",
