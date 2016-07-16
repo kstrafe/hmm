@@ -836,7 +836,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: ["1017434823716583","4334165748894481","176922068250853"],
         title: "Newton's laws of motion",
-        facts: "New knowledge shall arrive here soon",
+        facts: "The three fundamental law where first published by Isaac Newton in 1687. These laws laid the foundation for classical mechanics. They describe the relationship between objects and the forces that act upon them.",
     },
     1017434823716583: {
         x: 17243.01144848184,
@@ -845,7 +845,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "1. law",
-        facts: "New knowledge shall arrive here soon",
+        facts: "When viewed in an inertial reference frame, an object either remains at rest or continues to move at a constant velocity, unless acted upon by a net force.\n$$\\sum \\vec{F} = \\vec{0} \\Rightarrow \\vec{a} = \\frac{d \\vec{v}}{dt} = \\vec{0}$$",
     },
     4334165748894481: {
         x: 17515.01144848184,
@@ -854,7 +854,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "2. law",
-        facts: "New knowledge shall arrive here soon",
+        facts: "In an inertial reference frame, the vector sum of the forces F on an object is equal to the mass $m$ of that object multiplied by the acceleration vector $\\vec{a}$ of the object: \n$$\\vec{F} = m \\vec{a}$$",
     },
     176922068250853: {
         x: 17749.01144848184,
@@ -863,6 +863,6 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "3. law",
-        facts: "New knowledge shall arrive here soon",
+        facts: "When one body exerts a force on a second body, the second body simultaneously exerts a force equal in magnitude and opposite in direction on the first body.",
     },
 };
