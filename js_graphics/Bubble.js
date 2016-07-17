@@ -148,8 +148,8 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
         fontSize = null,
         lineHeight = null,
         n = null,
-        fillRatio = [0.9, 0.8, 0.7],
-        maxLines = 3;
+        fillRatio = [0.9, 0.8, 0.7, 0.6],
+        maxLines = 4;
 
     context.save();
 
@@ -185,7 +185,10 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
     } else if (words.length === 3) {
         fontSize = fontSizeGuess * (fillRatio[2] * 2 * r) / tempWidth;
         y = y - fontSize / 2;
-
+    } else if (words.length === 4) {
+        fontSize = fontSizeGuess * (fillRatio[3] * 2 * r) / tempWidth;
+        //console.log()
+        y = y - fontSize;
     }
     lineHeight = fontSize;
     context.font = fontSize + "px Calibri";
