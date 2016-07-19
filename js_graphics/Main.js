@@ -473,9 +473,15 @@ function setupBubblesAndCurves() {
     }
 }
 
+function loop() {
+    var frametime = 30;
+    updateEverything();
+    renderEverything();
+    setTimeout(loop, frametime);
+}
+
 function main() {
-    var frametime = 30,
-        mousewheelevt = null;
+    var mousewheelevt = null;
 
     setupBubblesAndCurves();
     onResize();
@@ -494,10 +500,7 @@ function main() {
     }
     context.canvas.oncontextmenu = contextMenu;
 
-    setInterval(function () {
-        updateEverything();
-        renderEverything();
-    }, frametime);
+    loop();
 }
 
 window.onload = main;
