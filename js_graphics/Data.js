@@ -361,7 +361,7 @@ var all_bubbles = {
         title: "Law of Sines",
         facts: "The law of sines works for any triangle.\n<br>\n<strong>Theorem:</strong>\n$$ \\frac{\\sin(\\alpha)}{a} = \\frac{\\sin(\\beta)}{b} = \\frac{\\sin(\\gamma)}{c} $$\n<strong>End of Theorem</strong>\n\n<br>\n<img src=\"Textures/Triangle_with_notations.png\">\n<br>",
     },
-    60: {
+    magic_carpet: {
         x: 9456.128422100548,
         y: 8948.56719761075,
         r: 100,

@@ -17,6 +17,7 @@
 
 # IN PROGRESS #
 	KEVIN: Custom node colour
+	OLE: If factbox is active and you teleport to bubble, load content of this bubble to factbox.
 
 # DONE #
 	OLE: Make 10 new bubbles with content before 17.07 23.59

@@ -192,11 +192,18 @@ function master() {
 }
 
 function teleportTo(x, y) {
-    var bubble;
+    var bubble,
+        currTitle = document.getElementById("viewertitle").innerHTML;
     if (y === undefined && x !== undefined) {
         bubble = bubbles.getNamed(x);
         if (bubble !== undefined) {
             context.centerAbs(bubble.getXY().x, bubble.getXY().y);
+
+            if (currTitle !== 'Magic Carpet') {
+                factBox.show(bubble.getNameAndFacts(), bubble.getFav(), bubble.isMastered());
+            } else {
+                //factBox.hide();
+            }
         }
     } else if (x !== undefined) {
         context.centerAbs(x, y);
@@ -204,7 +211,7 @@ function teleportTo(x, y) {
 }
 
 function openTeleport() {
-    openBubble = bubbles.getNamed('60');
+    openBubble = bubbles.getNamed('magic_carpet');
     drawFactBox({
         hit: true,
         facts: openBubble.getNameAndFacts()
