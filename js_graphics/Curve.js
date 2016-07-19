@@ -15,7 +15,12 @@ function Curve(x0, y0, r0, x1, y1, r1) {
     this.bezier = this.compute(c1, c2);
     this.colors = new Colors();
     this.color = this.colors.getByName('bubbleGreen');
+    this.nativeColor = "";
 }
+
+Curve.prototype.setColor = function (color) {
+    this.nativeColor = color;
+};
 
 Curve.prototype.intoMastered = function (state) {
     if (state) {

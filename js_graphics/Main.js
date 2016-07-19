@@ -445,6 +445,7 @@ function setupBubblesAndCurves() {
             for (j = 0; j < b.link.length; j += 1) {
                 end = all_bubbles[b.link[j]];
                 curve = new Curve(b.x, b.y, b.r, end.x, end.y, end.r);
+                curve.setColor(b.color);
                 curves.append(curve, i, b.link[j]);
             }
         }
