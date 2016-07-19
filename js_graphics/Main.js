@@ -199,11 +199,7 @@ function teleportTo(x, y) {
         if (bubble !== undefined) {
             context.centerAbs(bubble.getXY().x, bubble.getXY().y);
 
-            if (currTitle !== 'Magic Carpet') {
-                factBox.show(bubble.getNameAndFacts(), bubble.getFav(), bubble.isMastered());
-            } else {
-                //factBox.hide();
-            }
+            factBox.show(bubble.getNameAndFacts(), bubble.getFav(), bubble.isMastered());
         }
     } else if (x !== undefined) {
         context.centerAbs(x, y);
