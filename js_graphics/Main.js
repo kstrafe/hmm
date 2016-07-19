@@ -192,8 +192,7 @@ function master() {
 }
 
 function teleportTo(x, y) {
-    var bubble,
-        currTitle = document.getElementById("viewertitle").innerHTML;
+    var bubble;
     if (y === undefined && x !== undefined) {
         bubble = bubbles.getNamed(x);
         if (bubble !== undefined) {
