@@ -11,13 +11,10 @@ function Colors() {
 
     this.themeColors = {
         bubbleGreen: "#4E8800",
+        bubbleShadow: '#6ED80D',
         bubblePurple: "#B10DC9",
-        bubblePurpleHL: '#D300F2',
-        bubbleHL: "#69B00C",
-        bubbleHLShadow: '#6ED80D',
         bubbleFav: '#D9EFFF',
-        bubbleFavHL: '#A7D8FC',
-        bubbleRed: '#DB0B0B',
+        bubbleRed: '#BD0B0B',
         textColor: "#DDDDDD",
         white: "#FFFFFF",
         factCont: "#000000",
@@ -29,6 +26,14 @@ function Colors() {
         devMode: "#FF0000",
         bgCenter: "#080808",
         bgPeriphery: "#000028"
+    };
+
+    this.hlColors = {
+        bubbleGreen: "#69B00C",
+        bubblePurple: '#D300F2',
+        bubbleShadow: '#6ED80D',
+        bubbleFav: '#A7D8FC',
+        bubbleRed: '#FC1919',
     };
 }
 
@@ -45,4 +50,7 @@ Colors.prototype.random = function () {
 
 Colors.prototype.getByName = function (name) {
     return this.themeColors[name];
+};
+Colors.prototype.getHLByName = function (name) {
+    return this.hlColors[name];
 };

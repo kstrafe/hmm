@@ -2,7 +2,6 @@
 
 # IDEAS #
 	(Favorite colored line between two favorited bubbles) 
-	If factbox is active and you teleport to bubble, load content of this bubble to factbox
 	Calibri font everywhere. Host font like this?: (http://jsfiddle.net/zMKge/)
 	Create short animation tutorials for editing
 
@@ -17,9 +16,9 @@
 
 # IN PROGRESS #
 	KEVIN: Custom node colour
-	OLE: If factbox is active and you teleport to bubble, load content of this bubble to factbox.
 
 # DONE #
+	OLE: If factbox is active and you teleport to bubble, load content of this bubble to factbox.
 	OLE: Make 10 new bubbles with content before 17.07 23.59
 	KEVIN: Create a button for factBox to almost completely maximize and become opaque
 	KEVIN: Reset the scrollbar to top after closing a factbox (opening another factbox may start with the scrollbar already down)
