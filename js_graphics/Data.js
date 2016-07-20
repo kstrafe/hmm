@@ -1070,6 +1070,6 @@ var all_bubbles = {
         color: "bubbleGreen",
         link: ["integral"],
         title: "Derive to 1/x",
-        facts: "We now know how to derive to any exponent:\n\n$$ f(x) = x^n $$\n\nThen our derivative will be\n\n$$ f'(x) = n\\cdot x^n $$\n\nBut what about getting to $x^{-1}$.\nIf we try to go from $x^0$:\n\n$$ \\frac{d}{dx} x^0 = 0\\cdot \\frac{1}{x} = 0 $$\n\nWe need to use a special function instead. It is called $\\ln$, and has the following property:\n\n$$ \\frac{d}{dx} \\ln(x) = \\frac{1}{x} $$\n\nHere is a graph of the $\\ln$ function, note that for now, we only define the function at $x \\in \\mathbb{R}^+$.\n<br>\n<br>\n<img src=\"Textures/figure_logarithmic_function.png\">",
+        facts: "We now know how to derive to any polynomial:\n\n$$ f(x) = x^n $$\n\nThen our derivative will be\n\n$$ f'(x) = n\\cdot x^{n-1} $$\n\nBut what about getting to $x^{-1}$?\nIf we try to go from $x^0$:\n\n$$ \\frac{d}{dx} x^0 = 0\\cdot \\frac{1}{x} = 0 $$\n\nWe need to use a special function instead. It is called $\\ln$, and has the following property:\n\n$$ \\frac{d}{dx} \\ln(x) = \\frac{1}{x} $$\n\nHere is a graph of the $\\ln$ function, note that for now, we only define the function at $x \\in \\mathbb{R}^+$.\n<br>\n<br>\n<img src=\"Textures/figure_logarithmic_function.png\">",
     },
 };
