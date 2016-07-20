@@ -845,7 +845,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "1. law",
-        facts: "When viewed in an inertial reference frame, an object either remains at rest or continues to move at a constant velocity, unless acted upon by a net force.\n$$\\sum \\vec{F} = \\vec{0} \\Rightarrow \\vec{a} = \\frac{d \\vec{v}}{dt} = \\vec{0}$$",
+        facts: "When viewed in an inertial reference frame, an object either remains at rest or continues to move at a constant velocity, unless acted upon by a net force.\n$$\\sum \\vec{F} = \\vec{0} \\Rightarrow \\vec{a} = \\frac{d \\vec{v}}{dt} = \\vec{0}$$\n<br>\nWe have an <strong> inertial plane of reference </strong>when space and time is described homogeneously, isotropic and time-independent. An inertial reference plane can't have acceleration.<br>\n<br>\nThink of an asteroid in deep space, far from any massive object. The forces that act on the asteroid are basically zero $(\\sum \\vec{F} = \\vec{0})$ and it will continue it's motion with no change in velocity or direction. ",
     },
     4334165748894481: {
         x: 17515.01144848184,
@@ -854,7 +854,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "2. law",
-        facts: "In an inertial reference frame, the vector sum of the forces F on an object is equal to the mass $m$ of that object multiplied by the acceleration vector $\\vec{a}$ of the object: \n$$\\vec{F} = m \\vec{a}$$",
+        facts: "In an inertial reference frame, the vector sum of the forces $F$ on an object is equal to the mass, $m$ of that object multiplied by the acceleration vector $\\vec{a}$ of the object: \n$$\\vec{F} = m \\vec{a}$$",
     },
     176922068250853: {
         x: 17749.01144848184,
@@ -863,7 +863,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "3. law",
-        facts: "When one body exerts a force on a second body, the second body simultaneously exerts a force equal in magnitude and opposite in direction on the first body.",
+        facts: "When one body exerts a force on a second body, the second body simultaneously exerts a force equal in magnitude and opposite in direction on the first body. <br>\n<br>\n<strong>Example:</strong> If you place your finger on the point of a nail and push down, you will feel a force acting on your finger. If there wasn't, you would be able to crush the nail like it was made out of thin air.",
     },
     8013549762579657: {
         x: 2236.394308943086,
