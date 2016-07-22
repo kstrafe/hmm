@@ -1097,7 +1097,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: ["4225692799553103","957797296212617","3785567626776709"],
         title: "Kepler's laws",
-        facts: "New knowledge shall arrive here soon",
+        facts: "Kepler's laws of planetary motion describes the motions of planets orbiting a star. The laws were published between 1609 and 1619 and improved the heliocentric theory of Nicolaus Copernicus. Kepler's laws are part of the foundation of modern astronomy and physics.",
     },
     4225692799553103: {
         x: 21899.24401858305,
