@@ -1059,7 +1059,7 @@ var all_bubbles = {
         y: -18517.366102538577,
         r: 100,
         color: "bubbleGreen",
-        link: ["7323588492562305"],
+        link: ["7323588492562305","8185458916792323"],
         title: "Negative Exponents",
         facts: "Expressions that look like polynomials with negative exponents use the same rules for derivation as polynomials.\n\n$$ f(x) = x^{-1} + 3x $$\n$$ f'(x) = -1\\cdot x^{-2} + 3 $$\n$$ f''(x) = 2\\cdot x^{-3} $$\n$$ f'''(x) = -6\\cdot x^{-4} $$\n$$ f''''(x) = 24\\cdot x^{-5} $$\n\nNote that the right-hand expressions are <em>not</em> polynomials.",
     },
@@ -1125,5 +1125,14 @@ var all_bubbles = {
         link: [],
         title: "3. law",
         facts: "New knowledge shall arrive here soon",
+    },
+    8185458916792323: {
+        x: -471.04123112659,
+        y: -18775.146922183518,
+        r: 100,
+        color: "bubbleGreen",
+        link: [],
+        title: "Deriving Exponentials",
+        facts: "Derive exponentials according to the following rule:\n\n$$ \\frac{d}{dx} e^{a\\cdot x} = a\\cdot e^{a\\cdot x} $$\n\nFor a base that is not $e$:\n\n$$ \\frac{d}{dx} b^{a\\cdot x} = \\frac{d}{dx} \\exp(\\ln(b^{a\\cdot x}))$$\n\nWe now use the chain rule to find the derivative:\n\n$$ \\Rightarrow \\frac{d}{dx} \\exp(\\ln(b^{a\\cdot x})) = \\exp(\\ln(b^{a\\cdot x})) \\cdot \\frac{d}{dx} \\ln(b^{a\\cdot x})$$\n$$ \\Rightarrow b^{a\\cdot x} \\cdot \\frac{d}{dx} \\ln(b^{a\\cdot x}) $$\n\nUsing the logarithmic exponential-multiplication property:\n$$ \\Rightarrow b^{a\\cdot x} \\cdot \\frac{d}{dx} a\\cdot x\\cdot \\ln(b) $$\n\n$$ \\Rightarrow b^{a\\cdot x} \\cdot a\\cdot \\ln(b) $$",
     },
 };
