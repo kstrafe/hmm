@@ -1106,7 +1106,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "1. law",
-        facts: "New knowledge shall arrive here soon",
+        facts: "-The orbit of a planet is an ellipse with the start at one of the two foci. <br>\n<br>\nMathematically, an ellipse can be represented by the formula:\n$$r = \\frac{p}{1 + \\epsilon \\cos(\\theta)}$$\nwhere $p$ is the semi-latus rectum, and $\\epsilon$ is the eccentricity of the ellipse, and $r$ is the distance from the Sun to the planet, and $\\theta$ is the angle to the planet's current position from its closest approach, as seen from the Sun. So $(r, θ)$ are polar coordinates. <br>\n<br>\n<img src=\"Textures/ellipse_parameters.png\">\n<br>\n<br>\nFor an ellipse $0 < \\epsilon < 1$. For the limiting case $\\epsilon = 0$, theorbit is a perfect circle with the star at the center. <br>\n<br>\nAt $\\theta = 0 ^{\\circ}$ , perihelion, the distance is minimum:\n$$r_{min} = \\frac{p}{1+\\epsilon}$$\nAt $\\theta = 90^{\\circ}$ and at $\\theta = 270^{\\circ}$ the distance is equal to $p$. <br>\n<br>\nAt $\\theta = 180^{\\circ}$, aphelion, the distance is maximum. <br>\n$$r_{max} = \\frac{p}{1-\\epsilon}$$",
     },
     957797296212617: {
         x: 22191.24401858305,
