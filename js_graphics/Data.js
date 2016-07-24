@@ -1115,7 +1115,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "2. law",
-        facts: "New knowledge shall arrive here soon",
+        facts: "- A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time. <br>\n<br>\n<img src=\"Textures/kepler-second-law.gif\">",
     },
     3785567626776709: {
         x: 22427.24401858305,
@@ -1124,7 +1124,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "3. law",
-        facts: "New knowledge shall arrive here soon",
+        facts: "- The square of the orbital period of a planet is directly proportional to the cube of the semi-major axis of its orbit. <br>\n<br>\n$$\\frac{P}{a^3} = \\frac{4\\pi^2}{G(M+m)} \\approx \\frac{4\\pi^2}{GM}$$",
     },
     8185458916792323: {
         x: -471.04123112659,
