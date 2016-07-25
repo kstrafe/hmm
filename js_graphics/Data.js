@@ -1151,7 +1151,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "Orbit",
-        facts: "An orbit is a curved path of an object about a point in space, for example the orbit of a planet around a star or a natural (or artificial) satellite around a planet. Orbits of planets are typically elliptical, and tje central mass being orbited is a focal point of the ellipse. <br>\n<br>\n<img src=\"Textures/iss_in_orbit.png\" >",
+        facts: "An orbit is a curved path of an object about a point in space, for example the orbit of a planet around a star or a natural (or artificial) satellite around a planet. Orbits of planets are typically elliptical, and the central mass being orbited is a focal point of the ellipse. <br>\n<br>\n<img src=\"Textures/iss_in_orbit.png\" >",
     },
     3710811329014263: {
         x: 23241.632818981252,
