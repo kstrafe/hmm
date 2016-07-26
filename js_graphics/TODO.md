@@ -7,8 +7,9 @@
 
 # MILESTONES #
 	#### UPCOMING ####
-	First 100 nodes
+	250 nodes
 	#### REACHED ####
+	First 100 nodes
 
 # TODO #
 	Semantic zoom (Basic Arithmetic, Symbolics, Geometry, Probability, ...)
@@ -18,6 +19,7 @@
 	KEVIN: Custom node colour
 
 # DONE #
+	OLE: Allow &nbsp in bubble name for easier fitting in bubble
 	OLE: If factbox is active and you teleport to bubble, load content of this bubble to factbox.
 	OLE: Make 10 new bubbles with content before 17.07 23.59
 	KEVIN: Create a button for factBox to almost completely maximize and become opaque
