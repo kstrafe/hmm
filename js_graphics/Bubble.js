@@ -168,7 +168,7 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
             tempWidth = metrics.width;
             break;
         }
-
+        words[n] = this.replaceAll(words[n], "&nbsp", " ");
         metrics = context.measureText(words[n]);
         tempWidth = Math.max(tempWidth, metrics.width);
     }
@@ -194,6 +194,7 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
     context.font = fontSize + "px Calibri";
 
     for (n = 0; n < words.length; n += 1) {
+        words[n] = this.replaceAll(words[n], "&nbsp", " ");
         context.fillText(words[n], x, y);
         y += lineHeight / 1.25;
     }
@@ -217,4 +218,9 @@ Bubble.prototype.hitTest = function (mousePos) {
 Bubble.prototype.moveTo = function (x, y) {
     this.x = x;
     this.y = y;
+};
+
+Bubble.prototype.replaceAll = function (string, search, replacement) {
+    var target = string;
+    return target.split(search).join(replacement);
 };
