@@ -194,7 +194,6 @@ Bubble.prototype.fitTextInBubble = function (context, name, x, y, r, hl) {
     context.font = fontSize + "px Calibri";
 
     for (n = 0; n < words.length; n += 1) {
-        words[n] = this.replaceAll(words[n], "&nbsp", " ");
         context.fillText(words[n], x, y);
         y += lineHeight / 1.25;
     }
