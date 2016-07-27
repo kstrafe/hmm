@@ -395,7 +395,7 @@ var all_bubbles = {
         color: "bubbleGreen",
         link: ["music"],
         title: "Click here!",
-        facts: "Welcome to 'Hmm', the sanctuary of mathematics! To get started, you can drag yourself anywhere using the mouse. The arrow keys, 'wasd', or 'hjkl' can also be used.",
+        facts: "Welcome to 'Hmm', the sanctuary of mathematics! To get started, you can drag yourself anywhere using the mouse. The arrow keys, 'wasd', or 'hjkl' can also be used. Use 'Esc', or click outside the box to exit factboxes",
     },
     music: {
         x: 43.86635141859642,
