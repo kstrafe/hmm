@@ -1241,7 +1241,7 @@ var all_bubbles = {
         color: "bubbleRed",
         link: [],
         title: "Flatness of The&nbspSolar&nbspSystem",
-        facts: "Have you ever wondered why the Solar System is flat? Why do all the planets orbit in almost the exact same plane? <br>\n<br>\n\n<iframe width=\"854\" height=\"480\" src=\"https://www.youtube.com/watch?v=tmNXKqeUtJM&ab_channel=minutephysics\" frameborder=\"0\" allowfullscreen></iframe>",
+        facts: "Have you ever wondered why the Solar System is flat? Why do all the planets orbit in almost the exact same plane? <br>\n<br>\n\n<iframe width=\"617\" height=\"347\" src=\"https://www.youtube.com/embed/tmNXKqeUtJM\" frameborder=\"0\" allowfullscreen></iframe>",
     },
     4389252847788207: {
         x: 23836.853658536587,
@@ -1276,7 +1276,7 @@ var all_bubbles = {
         r: 95,
         color: "bubbleRed",
         link: [],
-        title: "Exoplanet",
-        facts: "An exoplanet is a planet outside The Solar System. As of 15 July 2016, there have been 3,472 exoplanets in 2,597 planetary systems and 589 multiple planetary systems confirmed. The Kepler space telescope alone has discovered over 2000 of those, along with a few thousand candidate planets.",
+        title: "Exoplanets",
+        facts: "An exoplanet is a planet outside The Solar System. As of 15 July 2016, there have been 3,472 exoplanets in 2,597 planetary systems and 589 multiple planetary systems confirmed. The Kepler space telescope alone has discovered over 2000 of those, along with a few thousand candidate planets. <br>\n<br>\nOn average, there is at least one planet per star, with a percentage having multiple planets.",
     },
 };
