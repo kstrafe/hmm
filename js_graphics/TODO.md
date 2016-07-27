@@ -1,5 +1,5 @@
 # BUGS #
-	Not possible to get out of factbox when using keyboard only
+
 # IDEAS #
 	(Favorite colored line between two favorited bubbles) 
 	Calibri font everywhere. Host font like this?: (http://jsfiddle.net/zMKge/)
