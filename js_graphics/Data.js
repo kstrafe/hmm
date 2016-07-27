@@ -1203,7 +1203,7 @@ var all_bubbles = {
         y: -18872.550439688075,
         r: 100,
         color: "bubbleGreen",
-        link: ["2628578116639159"],
+        link: ["2628578116639159","6102912750634955"],
         title: "Deriving Trig",
         facts: "The derivatives of trigonometric functions can be found using MacLaurin series. Only simple rules will be showcased here. The following derivatives hold for basic trigonometric functions.\n\n$$ \\sin'(x) = \\cos(x) $$\n$$ \\cos'(x) = -\\sin(x) $$\n",
     },
@@ -1278,5 +1278,14 @@ var all_bubbles = {
         link: [],
         title: "Exoplanet",
         facts: "An exoplanet is a planet outside The Solar System. As of 15 July 2016, there have been 3,472 exoplanets in 2,597 planetary systems and 589 multiple planetary systems confirmed. The Kepler space telescope alone has discovered over 2000 of those, along with a few thousand candidate planets.",
+    },
+    6102912750634955: {
+        x: -1664.1582047453085,
+        y: -19362.802969968478,
+        r: 100,
+        color: "bubbleGreen",
+        link: [],
+        title: "Chain Rule",
+        facts: "The chain rule is a theorem.\n<br>\n<strong>Theorem:</strong>\n<br>\nLet $f$ and $g$ be functions of $x$. Then the following equality holds:\n$$ \\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x) $$\n<strong>End of Theorem</strong>\n<br>\n<br>\nLet's try this out with an exponential of a polynomial:\n\n$$ e^{x^2} $$\n\nRemember that the exponential is right-associative, so it is to be read as:\n\n$$ e^{(x^2)} $$\n\nNow, let's derive it! First we transform it into a more function-like style:\n\n$$ \\frac{d}{dx} e^{x^2} = \\frac{d}{dx} \\exp(x^2) $$\n\nNow we see a pattern, we let $f(x) = \\exp(x)$ and $g(x) = x^2$, we can now write the expression:\n\n$$ \\frac{d}{dx} \\exp(x^2) = \\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x) $$\n\nWe plug in our values, $f' = \\exp$, because the derivative of $\\exp$ with respect to $x$ is the same. $g(x) = x^2$ and $g'(x) = 2x$:\n\n$$ \\frac{d}{dx} \\exp(x^2) = \\exp(x^2) \\cdot 2x $$",
     },
 };
