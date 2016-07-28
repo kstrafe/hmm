@@ -1203,7 +1203,7 @@ var all_bubbles = {
         y: -18872.550439688075,
         r: 100,
         color: "bubbleGreen",
-        link: ["2628578116639159","6102912750634955"],
+        link: ["2628578116639159","6102912750634955","4088841108439165"],
         title: "Deriving Trig",
         facts: "The derivatives of trigonometric functions can be found using MacLaurin series. Only simple rules will be showcased here. The following derivatives hold for basic trigonometric functions.\n\n$$ \\sin'(x) = \\cos(x) $$\n$$ \\cos'(x) = -\\sin(x) $$\n",
     },
@@ -1287,5 +1287,14 @@ var all_bubbles = {
         link: [],
         title: "Chain Rule",
         facts: "The chain rule is a theorem.\n<br>\n<strong>Theorem:</strong>\n<br>\nLet $f$ and $g$ be functions of $x$. Then the following equality holds:\n$$ \\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x) $$\n<strong>End of Theorem</strong>\n<br>\n<br>\nLet's try this out with an exponential of a polynomial:\n\n$$ e^{x^2} $$\n\nRemember that the exponential is right-associative, so it is to be read as:\n\n$$ e^{(x^2)} $$\n\nNow, let's derive it! First we transform it into a more function-like style:\n\n$$ \\frac{d}{dx} e^{x^2} = \\frac{d}{dx} \\exp(x^2) $$\n\nNow we see a pattern, we let $f(x) = \\exp(x)$ and $g(x) = x^2$, we can now write the expression:\n\n$$ \\frac{d}{dx} \\exp(x^2) = \\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x) $$\n\nWe plug in our values, $f' = \\exp$, because the derivative of $\\exp$ with respect to $x$ is the same. $g(x) = x^2$ and $g'(x) = 2x$:\n\n$$ \\frac{d}{dx} \\exp(x^2) = \\exp(x^2) \\cdot 2x $$",
+    },
+    4088841108439165: {
+        x: -1799.1640119462418,
+        y: -18928.116392898628,
+        r: 100,
+        color: "bubbleGreen",
+        link: [],
+        title: "Hyperbolic Trig",
+        facts: "Deriving hyperbolic trigonometric functions is not similar to their trigonometric counterparts:\n\n$$ \\frac{d}{dx} \\sinh(x) = \\cosh(x) $$\n\n$$ \\frac{d}{dx} \\cosh(x) = \\sinh(x) $$\n\nThese can easily be seen from the definitions of these functions:\n\n$$ \\sinh(x) = \\frac{e^x - e^{-x}}{2} $$\n$$ \\cosh(x) = \\frac{e^x + e^{-x}}{2} $$\n$$ \\Rightarrow \\frac{d}{dx} \\frac{e^x - e^{-x}}{2} = \\frac{e^x - (-e^{-x})}{2} = \\frac{e^x + e^{-x}}{2} $$\n\nIt is readily observed that only the sign of the sum flips during a derivation, so any derivation simply 'flips'.",
     },
 };
