@@ -4,7 +4,7 @@
 "use strict";
 
 function Sounds() {
-    this.backgroundSong = new Audio("http://music.stravers.net/");
+    this.backgroundSong = new Audio("https://music.stravers.net/");
     this.button_hover = new Audio("Audio/button_hov2.mp3");
     this.button_open = new Audio("Audio/show_facts3.mp3");
     this.button_hover.volume = 0.3;
