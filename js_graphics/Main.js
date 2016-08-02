@@ -6,6 +6,7 @@
 /*global Blob*/
 /*global Bubble*/
 /*global Bubbles*/
+/*global Cloud*/
 /*global Colors*/
 /*global ConMenu*/
 /*global Context*/
@@ -39,6 +40,7 @@ var templine = new TempLine();
 var sounds = new Sounds();
 sounds.playBGM();
 var teleport = new Teleport();
+var cloud = new Cloud();
 
 var openBubble = null;
 var editingBubble = null;
@@ -46,7 +48,7 @@ var editingBubble = null;
 
 function renderEverything() {
     context.renderBG();
-    context.draw([floaties, bubbles, curves, templine]);
+    context.draw([floaties, bubbles, curves, templine, cloud]);
     context.drawAbsolute(factBox);
     context.drawAbsolute(sounds);
     context.drawAbsolute(edit);

@@ -93,6 +93,10 @@ Context.prototype.zoom = function (absfactor) {
     this.centerOn(center.x, center.y);
 };
 
+Context.prototype.getZoomIndex = function () {
+    return this.zoomIndex;
+}
+
 Context.prototype.centerAbs = function (x, y) {
     var width = this.canvas.width,
         height = this.canvas.height;
@@ -133,7 +137,7 @@ Context.prototype.setSpeedY = function (speed) {
 };
 
 Context.prototype.drawAbsolute = function (drawable) {
-    drawable.draw(this.context);
+    drawable.draw(this.context, this.zoomIndex);
 };
 
 Context.prototype.clear = function () {
