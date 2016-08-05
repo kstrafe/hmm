@@ -15,3 +15,11 @@ Clouds.prototype.draw = function (context, zoomIndex) {
         this.clouds[i].draw(context, zoomIndex);
     }
 };
+
+Clouds.prototype.length = function () {
+    return this.clouds.length;
+};
+
+Clouds.prototype.getCloud = function (index) {
+    return this.clouds[index];
+};

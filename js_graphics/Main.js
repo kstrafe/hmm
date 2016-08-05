@@ -327,7 +327,9 @@ function jsEscape(string) {
 function generateDataJs() {
     var tot = '"use strict";\n\nvar all_bubbles = {\n',
         i = null,
-        bubble = null;
+        bubble = null,
+        cloud = null;
+
     for (i = 0; i < bubbles.length(); i += 1) {
         bubble = bubbles.getBubble(i);
         tot += '    ' + bubble.getIndex() + ': {\n';
@@ -338,6 +340,16 @@ function generateDataJs() {
         tot += '        link: [' + curves.getForwards(bubble.getIndex()).map(surroundQuotes) + '],\n';
         tot += '        title: "' + bubble.getTitle().replace(/[\""]/g, '\\"') + '",\n';
         tot += '        facts: "' + jsEscape(bubble.getFacts()) + '",\n';
+        tot += '    },\n';
+    }
+    tot += '};\n';
+    tot += 'var all_clouds = {\n';
+    for (i = 0; i < clouds.length(); i += 1) {
+        cloud = clouds.getCloud(i);
+        tot += '    ' + cloud.getIndex() + ': {\n';
+        tot += '        xys: [' + cloud.getXYs() + '],\n';
+        tot += '        color: "' + cloud.getColor() + '",\n';
+        tot += '        title: "' + cloud.getName().replace(/[\""]/g, '\\"') + '",\n';
         tot += '    },\n';
     }
     tot += '};';
@@ -480,8 +492,8 @@ function setupClouds() {
     for (i in all_clouds) {
         if (all_clouds.hasOwnProperty(i)) {
             c = all_clouds[i];
-            console.log(c);
-            cloud = new Cloud(c.xys, c.title, c.color);
+            //console.log(c);
+            cloud = new Cloud(i, c.xys, c.title, c.color);
             clouds.add(cloud);
         }
     }

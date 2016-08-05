@@ -2,8 +2,8 @@
 
 "use strict";
 
-function Cloud(xys, name, color) {
-    //this.index = index;
+function Cloud(index, xys, name, color) {
+    this.index = index;
     this.xys = xys;
     this.name = name;
     this.colors = new Colors();
@@ -39,11 +39,27 @@ Cloud.prototype.draw = function (context, zoomIndex) {
         context.globalAlpha = 0.75;
         context.fillStyle = this.colors.getByName('white');
         context.fillText(this.name, this.getAvgX() - metrics.width / 2, this.getAvgY());
-        //console.log(this.getAvgX());
+        //console.log(Math.min(this.xys) - metrics.width);
         //console.log(this.getAvgY());
 
         context.restore();
     }
+};
+
+Cloud.prototype.getIndex = function () {
+    return this.index;
+};
+
+Cloud.prototype.getName = function () {
+    return this.name;
+};
+
+Cloud.prototype.getXYs = function () {
+    return this.xys;
+};
+
+Cloud.prototype.getColor = function () {
+    return this.colorName;
 };
 
 Cloud.prototype.getAvgX = function () {

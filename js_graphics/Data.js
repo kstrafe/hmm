@@ -1485,13 +1485,17 @@ var all_bubbles = {
         link: [],
         title: "Hyperbolic Trig",
         facts: "Deriving hyperbolic trigonometric functions is not similar to their trigonometric counterparts:\n\n$$ \\frac{d}{dx} \\sinh(x) = \\cosh(x) $$\n\n$$ \\frac{d}{dx} \\cosh(x) = \\sinh(x) $$\n\nThese can easily be seen from the definitions of these functions:\n\n$$ \\sinh(x) = \\frac{e^x - e^{-x}}{2} $$\n$$ \\cosh(x) = \\frac{e^x + e^{-x}}{2} $$\n$$ \\Rightarrow \\frac{d}{dx} \\frac{e^x - e^{-x}}{2} = \\frac{e^x - (-e^{-x})}{2} = \\frac{e^x + e^{-x}}{2} $$\n\nIt is readily observed that only the sign of the sum flips during a derivation, so any derivation simply 'flips'.",
-
     },
 };
 var all_clouds = {
     q_mech: {
-    xys: [14311,-28325, 13123,-28277, 12675, -29161, 13000, -30187, 13351, -30293, 15000, -30109, 15175, -29217, 15238, -29455, 14926,- 28700, 14890, -28495, 14311, -28325],
-    color: "bubbleRed",
-    title: "Quantum Mechanics",
+        xys: [14311,-28325,13123,-28277,12675,-29161,13000,-30187,13351,-30293,15000,-30109,15175,-29217,15238,-29455,14926,-28700,14890,-28495,14311,-28325],
+        color: "bubbleRed",
+        title: "Quantum Mechanics",
+    },
+    astronomy: {
+        xys: [21663,-25519,20785,-27405,22346,-28056,24232,-28283,25989,-28023,25663,-26852,24883,-25974,23680,-25389,23140,-25296,22606,-25064,21663,-25519],
+        color: "bubbleRed",
+        title: "Astronomy",
     },
 };
