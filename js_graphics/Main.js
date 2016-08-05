@@ -2,11 +2,13 @@
 /*global window*/
 
 /*global all_bubbles*/
+/*global all_clouds*/
 /*global all_curves*/
 /*global Blob*/
 /*global Bubble*/
 /*global Bubbles*/
 /*global Cloud*/
+/*global Clouds*/
 /*global Colors*/
 /*global ConMenu*/
 /*global Context*/
@@ -40,7 +42,7 @@ var templine = new TempLine();
 var sounds = new Sounds();
 sounds.playBGM();
 var teleport = new Teleport();
-var cloud = new Cloud();
+var clouds = new Clouds();
 
 var openBubble = null;
 var editingBubble = null;
@@ -48,7 +50,7 @@ var editingBubble = null;
 
 function renderEverything() {
     context.renderBG();
-    context.draw([floaties, bubbles, curves, templine, cloud]);
+    context.draw([floaties, bubbles, curves, templine, clouds]);
     context.drawAbsolute(factBox);
     context.drawAbsolute(sounds);
     context.drawAbsolute(edit);
@@ -470,6 +472,21 @@ function setupBubblesAndCurves() {
     }
 }
 
+function setupClouds() {
+    var i = null,
+        c = null,
+        cloud = null;
+
+    for (i in all_clouds) {
+        if (all_clouds.hasOwnProperty(i)) {
+            c = all_clouds[i];
+            console.log(c);
+            cloud = new Cloud(c.xys, c.title, c.color);
+            clouds.add(cloud);
+        }
+    }
+}
+
 function loop() {
     var frametime = 30;
     updateEverything();
@@ -481,6 +498,7 @@ function main() {
     var mousewheelevt = null;
 
     setupBubblesAndCurves();
+    setupClouds();
     onResize();
     context.centerOn(0, 0);
     context.canvas.addEventListener('mousemove', mouseHoverListener, false);
